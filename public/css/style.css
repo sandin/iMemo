@@ -1,0 +1,364 @@
+/*================= global =================*/
+body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, table, td, img, div{margin:0; padding:0; border:0}
+body {
+background: #fff;
+color: #888;
+font-family: verdana,arial,helvetica,clean,sans-serif;
+font-size:	12px;
+}
+
+ul, ol{list-style-type:none}
+select, input, img, select{vertical-align:middle}
+input {border:1px #ddd solid;}
+
+a{text-decoration:none}
+a:link{color:#0F8BC9  }    
+a:visited{color:#0F8BC9;}
+a:hover, a:active, a:focus{color:#66CBFF;}
+
+h1,h2,h3,h4,h5,h6 {font-weight:bold;}
+h1{font-size:17px;}
+h2{font-size:16px;}
+h3{font-size:15px;}
+h4{font-size:14px;}
+h5{font-size:13px;}
+h6{font-size:12px}
+p{line-height:1.4em;}
+
+.clearfix:after{ content:"."; height:0; display:block; visibility:hidden; clear:both}
+.clearfix{*display:inline-table}
+************ html .clearfix{height:1%}
+.clearfix{display:block}
+************+html .clearfix{min-height:1%}
+
+/*------------- jquery ui -------------*/
+.ui-resizable-handle {
+  z-index:			auto;
+}
+.ui-widget {
+  font-size:		12px;
+}
+.ui-lds-drag 
+{
+  opacity:			0.8;
+}
+
+/*------------- layout  -------------*/
+#wrap {
+  margin:			10px auto;
+}
+#header {
+  height:			50px;
+  line-height:		50px;
+  margin-top:		20px;
+}
+#toolbar {
+  height:			30px;
+  margin-top:		8px;
+}
+#content {
+  margin-top:		20px;
+}
+#main {
+  padding:			0;
+  border:			none;
+}
+#sidebar {
+}
+#categorys {
+  float:			left;
+  width:			15%;
+  padding:			0;
+}
+#innerContent {
+  float:			right;
+  width:			80%;
+  margin-right:		3px;
+}
+
+#footer {
+  padding:			0 5px;
+}
+
+#header ,
+#content ,
+#toolbar,
+#footer {
+  margin-left:		10px;
+  margin-right:		10px;
+}
+
+#default #content {
+  margin-left:		0;
+}
+
+/*==================== header ====================*/ 
+#header {
+  background:		url(../images/nav_bg.gif) repeat-x left bottom;
+}
+#logo {
+  float:			left;
+  margin:			0 2px 0 0;
+}
+
+/*------------- global nav -------------*/
+#nav {
+  float:			left;
+}
+#nav li {
+  list-style-type:	none;
+  float:			left;
+}
+#nav li a {
+  display:			block;
+  height:			47px;
+  background:		#fff;
+  padding:			0 10px;
+}
+#nav li a.now {
+  background:		url(../images/nav_now1.gif) no-repeat center bottom;
+}
+
+#nav li a:hover {
+}
+
+/*------------- search -----------*/
+#search {
+  float:			right;
+}
+#search_text {
+  border:			1px #ccc solid;
+  padding-left:		2px;
+}
+#search_submit {
+  background:		url(../images/icon_search_.gif) no-repeat 0 0;
+  width:			31px;
+  height:			26px; 
+  padding:			0;
+  margin:			0 0 0 5px;
+  cursor:			pointer;
+}
+
+#search_submit.ui-state-hover {
+  background-position:	0 -41px;
+  border:				none;
+}
+/*================ toolbar =================*/
+
+#intro {
+  float:			left;
+  width:			222px;
+  text-align:		right;
+}
+#message {
+  float:			left;
+  background:		orange url(../images/msg_bg.gif) no-repeat right center;
+  color:			#fff;
+  height:			21px;
+  line-height:		21px;
+  font-weight:		bold;
+  padding:			0 20px 0 0;
+  margin-left:		200px;
+}
+#message span {
+  display:			block;
+  background:		url(../images/msg_bg.gif) no-repeat left center;
+  padding:			0 0px 0 20px;			
+}
+/*------------- user -----------*/
+#user {
+  float:			right;
+}
+#user li {
+  float:			right;
+  margin:			0 5px 0 0;
+}
+
+/*------------- content -----------*/
+
+/*++++++++++++++++++ login page ++++++++++++++++++++*/
+
+/*--------- form login ---------*/
+#form_login {
+  background:		#fff;
+  border:			1px #ddd solid;
+  padding:			20px;
+}
+#form_login label {
+  display:			block;
+ } 
+#form_login .error {
+  background:		#FFE9AF;
+  border:			1px dashed #ddd;
+  padding:			5px;
+}
+.from_error {
+  color:			red;
+  margin:			0 5px;
+} 
+#my-profile {
+  cursor:			move;
+  border:			1px #ddd dashed;
+  width:			200px;
+  padding:			10px;
+}
+
+/*+++++++++++++++++ index page ++++++++++++++++++*/
+
+/*-------- sidebar ----------*/
+#categorys {
+  background:		none;
+  border:			none;
+}
+#categorys li {
+  background:		none;
+  border:			none;
+  margin:			0 0 1px;
+  padding:			0;
+}
+/*
+#categorys li a {
+  display:			block;
+  background:		#fff url(../images/button-1.gif) no-repeat right top;
+  color:			#777;
+  width:			120px;
+  height:			48px;
+  line-height:		42px;
+  padding:			0 0 0 20px;
+}
+*/
+#categorys li a {
+  display:			block;
+  background:		#A9C1C9;
+  color:			#fff;
+  width:			100px;
+  height:			35px;
+  line-height:		35px;
+  font-family:		Courier;
+  font-weight:		bold;
+  padding:			0 0 0 30px;
+  margin:			0;
+}
+#categorys li a:hover,
+#categorys li.ui-tabs-selected a{
+  ldsbackground:	#A9C1C9 url(../images/categorys_li_bg.gif) no-repeat right center;
+  padding-left:		50px;
+  color:			#000;
+}
+#categorys li a.now {
+  background:		#7C8A8C;
+}
+
+/*--------- inner/innerContent ---------*/
+#innerContent .cate {
+  padding:			0;
+  margin:			0;
+}
+.note {
+  position:			relative;
+  float:			left;
+  width:			100%;
+  background:		#F9F9F9;
+  border:			1px #ddd solid;
+  margin-bottom:	5px;
+}
+#innerContent #note_00 {
+  background:		#fff;
+  margin-bottom:	10px;
+}
+
+.ajax-add-note {
+  width:			100%;
+  background:		none;
+  border:			none;
+  border-bottom:	1px #ddd dashed;
+}
+
+/* .note .note_span */
+.note .n_s {
+}
+/* .note .note_info */
+.note .n_date {
+}
+/* .note .note_content */
+.note .n_content {
+  background:		transparent;
+  width:			79%;
+  padding:			10px;
+}
+.note .n_date {
+  width:			50px;
+  font-size:		11px;
+}
+/* .note .note_lable */
+.note .n_lable {
+/*  background:		#f9f9f9; #E0ECFF;*/  
+  background:		#fcfcfc;
+  width:			10px;
+  border-right:		1px #ddd solid;
+  cursor:			move;
+}
+.note .n_t ,
+.note .n_s {
+  width:			10px;
+}
+.note table {
+  width:			100%;
+  empty-cells:		show;
+  border-collapse:	collapse;
+  border-spacing:	0;
+}
+#editContent {
+  width:			100%;
+}
+
+.datepicker {
+  width:			80px;
+}
+
+/*==================== share ==================*/
+
+/*------------ radius ---------------*/
+.odd {
+}
+.border-radius {
+  height:			1px;
+}
+.top1 {
+  background:		#fff;
+  margin:			0 1px;
+}
+.top2 {
+  background:		#fff;
+  margin:			0 2px;
+}
+.bottom1 {
+  background:		#fff;
+  margin:			0 1px;
+}
+.bottom2 {
+  background:		#fff;
+  margin:			0 2px;
+}
+.border_00 {
+  background:		#fff;
+  padding:			5px;
+}
+
+.submit_1 {
+  border:			none;
+}
+.grepinput {
+  color:			#ccc;
+}
+
+.title_1 {
+  background:		url(../images/title_1_bg.gif) no-repeat 0 0;
+  color:			#0B6B93;
+  height:			46px;
+  line-height:		46px;
+  font-family:		Courier;
+  padding-left:		30px;
+  margin-bottom:	10px;
+
+}
