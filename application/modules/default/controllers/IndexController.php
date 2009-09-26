@@ -18,6 +18,7 @@ class IndexController extends Zend_Controller_Action
     public function indexAction()
 	{
 
+
 	  $db = Zend_Registry::get('db');
 	  $user = Zend_Registry::get('user');
 	  

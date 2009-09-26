@@ -1,4 +1,4 @@
-{if !isset($noLayout)}
+<{if !isset($noLayout)}>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
 <head>
@@ -8,19 +8,19 @@
   <link type="text/css" rel="stylesheet" media="all" href="css/style.css" />
 </head>
 
-<body id="{$module}">
+<body id="<{$module}>">
 <div id="wrap">
   <div id="header" class="clearfix">
 	<img id="logo" src="images/logo.gif" alt="Memo" />
 	<ul id="nav">
-	  <li><a class="now" href='{$PUBLIC_URL}/'>Home</a></li>
-	  <li><a href='{$PUBLIC_URL}/blog'>Memo</a></li>
-	  <li><a href='{$PUBLIC_URL}/profile'>Follow</a></li>
-	  <li><a href='{$PUBLIC_URL}/profile'>Shared</a></li>
-	  <li><a href='{$PUBLIC_URL}/profile'>Friends</a></li>
-	  <li><a href='{$PUBLIC_URL}/profile'>Help</a></li>
-	  <li><a href='{$PUBLIC_URL}/profile'>Contacts</a></li>
-	  <li><a href='{$PUBLIC_URL}/profile'>About</a></li>
+	  <li><a class="now" href='<{$PUBLIC_URL}>/'><{t}>Home<{/t}></a></li>
+	  <li><a href='<{$PUBLIC_URL}>/blog'><{t}>Memo<{/t}></a></li>
+	  <li><a href='<{$PUBLIC_URL}>/profile'><{t}>Follow<{/t}></a></li>
+	  <li><a href='<{$PUBLIC_URL}>/profile'><{t}>Shared<{/t}></a></li>
+	  <li><a href='<{$PUBLIC_URL}>/profile'><{t}>Friends<{/t}></a></li>
+	  <li><a href='<{$PUBLIC_URL}>/profile'><{t}>Help<{/t}></a></li>
+	  <li><a href='<{$PUBLIC_URL}>/profile'><{t}>Contacts<{/t}></a></li>
+	  <li><a href='<{$PUBLIC_URL}>/profile'><{t}>About<{/t}></a></li>
     </ul><!-- /nav -->
 	<form id="search" action="/note/search">
 	  <input name="search_text" id="search_text" class="grepinput" type="text" value="Search your notes" maxlength="60" size="22" title="search your notes" autocomplete="off"></input>
@@ -30,19 +30,19 @@
   </div><!-- /header --> 
   <div id="toolbar" class="clearfix">
 	<div id="intro"><a href="">Save the cheerleader,Save the world.</a></div>
-	<div id="message"><span>Test test test it's done!</span></div>
+	<div id="message"><span>Test <{$t->_('Test')}> test it's <{$t->_('done')}>!</span></div>
 	<ul id="user">
-	  {if $user}
-	  <li><a id="logout" href='{$PUBLIC_URL}/profile/index/logout'>Logout</a></li>
-	  <li><a id="logout" href='{$PUBLIC_URL}/profile/index/logout'>Setting</a></li>
-	  <li>Welcome: {$user->username}</li>
-	  {else}
-	  <li><a href='{$PUBLIC_URL}/login'>Login</a></li>
-	  <li>Welcome: Guest</li>
-	  {/if}
+	  <{if $user}>
+	  <li><a id="logout" href='<{$PUBLIC_URL}>/profile/index/logout'><{t}>Logout<{/t}></a></li>
+	  <li><a id="logout" href='<{$PUBLIC_URL}>/profile/index/logout'><{t}>Setting<{/t}></a></li>
+	  <li><{t}>Welcome<{/t}>: <{$user->username}></li>
+	  <{else}>
+	  <li><a href='<{$PUBLIC_URL}>/login'><{t}>Login<{/t}></a></li>
+	  <li><{t}>Welcome<{/t}>: <{t}>Guest<{/t}></li>
+	  <{/if}>
 	</ul><!-- /user -->
 
   </div><!-- /toolebar -->
   <div id="content" class="clearfix">
 
-{/if}
+<{/if}>

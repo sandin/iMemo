@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.26, created on 2009-09-25 22:13:39
+<?php /* Smarty version 2.6.26, created on 2009-09-26 15:10:02
          compiled from index/index.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count_characters', 'index/index.tpl', 51, false),array('function', 'debug', 'index/index.tpl', 98, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count_characters', 'index/index.tpl', 51, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -117,8 +117,6 @@ unset($_smarty_tpl_vars);
   </div><!-- /innerContent -->
 </div><!-- /main (main tags)-->
 
-
-<?php echo smarty_function_debug(array(), $this);?>
 
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/footer.tpl", 'smarty_include_vars' => array()));

@@ -7,6 +7,18 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	 
 
 	}
+
+	protected function _initTranslate()
+	{
+	  
+	  $translate = new Zend_Translate('gettext', APPLICATION_PATH . '/data/languages/zh.mo', 'zh');
+	  $translate->addTranslation(APPLICATION_PATH . '/data/languages/en.mo', 'en');
+	  $translate->setLocale('zh');
+	  $translate->setLocale('en');
+
+	  Zend_Registry::set('translate', $translate );
+	}
+
     protected function _initView()
     {
 
@@ -21,11 +33,19 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	  $smarty = $view->getEngine();
 	  //$view->setScriptPath(APPLICATION_PATH . '/templates');
 	  $smarty->compile_dir = APPLICATION_PATH . '/templates_c';
-	  //$view->getEngine()->force_compile = true;
+	  $smarty->plugins_dir[] = BOOT_PATH . '/library/smarty/plugins'; 
+	  //$smarty->register_prefilter("smarty_prefilter_pre01");
+	  $smarty->load_filter('pre','smarty_prefilter_gettext');
+	  $smarty->left_delimiter = '<{';
+	  $smarty->right_delimiter = '}>';
+	  //var_dump($smarty->plugins_dir);
+	  $view->getEngine()->force_compile = true;
 	  $smarty->debugging = true;
 	  $smarty->assign('PUBLIC_URL',PUBLIC_URL);
 	  $smarty->assign('APPLICATION_PATH',APPLICATION_PATH);
 	  $smarty->assign('user',$user);
+		$translate = Zend_Registry::get('translate');
+	  $smarty->assign('t',$translate);
 	  //$view->getEngine()->clear_compiled_tpl();
 	  //$view->render('index.tpl');
 	  //Zend_Debug::dump($view);
@@ -142,6 +162,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         ));
         return $autoloader;
 	}
-	 
-	 
+
+
 }

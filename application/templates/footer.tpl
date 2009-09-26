@@ -1,4 +1,4 @@
-{if !isset($noLayout)}
+<{if !isset($noLayout)}>
 
 </div><!-- /content -->
 
@@ -14,4 +14,4 @@
 <script type="text/javascript" src="js/all.js"></script>
 </body>
 
-{/if}
+<{/if}>
