@@ -1,7 +1,7 @@
 <?php
 
 // language
-define(NOT_NULL,'it\'s required');
+define('NOT_NULL','it\'s required');
 
 /** 
  * Lds_Models_FormCheck
