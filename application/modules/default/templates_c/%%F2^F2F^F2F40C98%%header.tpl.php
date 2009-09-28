@@ -1,5 +1,7 @@
-<?php /* Smarty version 2.6.26, created on 2009-09-26 15:10:02
+<?php /* Smarty version 2.6.26, created on 2009-09-28 08:37:29
          compiled from /home/svn/0019/trunk/application/templates/header.tpl */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', '/home/svn/0019/trunk/application/templates/header.tpl', 43, false),)), $this); ?>
 <?php if (! isset ( $this->_tpl_vars['noLayout'] )): ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
@@ -14,7 +16,8 @@
 ">
 <div id="wrap">
   <div id="header" class="clearfix">
-	<img id="logo" src="images/logo.gif" alt="Memo" />
+	<a href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+"><img id="logo" src="images/logo.gif" alt="Memo" /></a>
 	<ul id="nav">
 	  <li><a class="now" href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /'><?php echo $this->_tpl_vars['t']->_('Home'); ?>
@@ -51,7 +54,9 @@
 	<div id="intro"><a href="">Save the cheerleader,Save the world.</a></div>
 	<div id="message"><span>Test <?php echo $this->_tpl_vars['t']->_('Test'); ?>
  test it's <?php echo $this->_tpl_vars['t']->_('done'); ?>
-!</span></div>
+! <a href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/note/undo"><?php echo $this->_tpl_vars['t']->_('Undo'); ?>
+</a></span></div>
 	<ul id="user">
 	  <?php if ($this->_tpl_vars['user']): ?>
 	  <li><a id="logout" href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
@@ -71,6 +76,8 @@
 : <?php echo $this->_tpl_vars['t']->_('Guest'); ?>
 </li>
 	  <?php endif; ?>
+	  <li><?php echo ((is_array($_tmp=time())) ? $this->_run_mod_handler('date_format', true, $_tmp, "%y/%m/%d %H:%M") : smarty_modifier_date_format($_tmp, "%y/%m/%d %H:%M")); ?>
+</li>
 	</ul><!-- /user -->
 
   </div><!-- /toolebar -->

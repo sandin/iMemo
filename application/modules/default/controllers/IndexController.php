@@ -6,8 +6,10 @@ class IndexController extends Zend_Controller_Action
     public function init()
     {
         /* Initialize action controller here */
-	
-	 
+	  $this->_db = Zend_Registry::get('db');
+	  $this->_user = Zend_Registry::get('user');
+	  
+	  $this->_db_user = new Database_User($this->_db);	
     }
 
 	public function preDispatch() 
@@ -19,19 +21,21 @@ class IndexController extends Zend_Controller_Action
 	{
 
 
-	  $db = Zend_Registry::get('db');
-	  $user = Zend_Registry::get('user');
-	  
-	  $db_user = new Database_User($db);
+
 	  // create a new user
 	 /* 
 	  $db_user->username = 'liu';
 	  $db_user->password = md5(123);
 	  $db_user->save();
 	  */
-	  $db_user->load($user->user_id);
+	  $this->_db_user->load($this->_user->user_id);
 	  // create a new notes
-	  $notes = new Database_Notes($db);
+	  $notes = new Database_Notes($this->_db);
+	  $notes->load(1);
+	  //var_dump($notes);
+	  $notes->addTag('tag1');
+	  $a = $notes->tagIsExist(1,'tag1');
+	  //var_dump($a);
 	  /*
 	  $param =  array(
 		'user_id' => $db_user->getId(),
@@ -42,109 +46,22 @@ class IndexController extends Zend_Controller_Action
 	   */
 	  //$command = new Command_AddNoteCommand($notes,$param);
 	  $param =  array(
-		'user_id' => $db_user->getId(),
+		'user_id' => $this->_db_user->getId(),
 	  );
 	  $command = new Command_GetNoteCommand($notes,$param);
 
-	  $db_user->setCommand($command);
-	  $notes =  $db_user->executeCommand();
+	  $this->_db_user->setCommand($command);
+	  $notes =  $this->_db_user->executeCommand();
+
 	  $this->view->notes = $notes; 
      
 	}
 
+
+
     public function aAction()
 	{
-	  //echo "here aAction<br />";
-	  $table = new Default_Model_Persons();
-	  $db = $table->getAdapter();
-	  //$where = $db->quoteInto('name = ?' ,'lds');	  
-	  //$ru = $db->fetchAll();
-	  //Zend_Debug::dump( $ru );
-	  /*
-	  $data = array(
-	    'name' => 'King',
-		 'age'  => '200',
-		);
-	   */
-	  // $id = $table->insert($data); 
-	   $set = array(
-		  'name' => 'yellow',
-		);
-
-	  $where = $db->quoteInto('name = ?', 'yellow');
-
-	  $all = $table->fetchAll();
-	  foreach ($all as $row) {
-		//echo $row->name . "<br />";
-	  }
-	  
-
-	  $row = $table->fetchRow($where);
-	  //echo $row->age;
-	  $row->age = 300;
-	  $row->save();
-
-	  //Zend_Debug::dump($where, $label='where', $echo=true);
-	  //Zend_Debug::dump($row, $label='row', $echo=true);
-	  
-	  $filters = array(
-		'month'   => 'Digits',
-	   'account' => 'StringTrim'
-	  );
-
-	  $validators = array(
-		'month'   => 'Digits',
-		'account' => 'Alpha'
-	  );
-
-	  $validators2 = array(
-		   'password' => array(
-			  'Digits',
-			  'fields' => 'mo',
-			  'presence' => 'required'
-		  )
-		);
-	  $input2 = new Zend_Filter_Input(null,$validators2);
-	  $data2 = array (
-		'mo' => '456',
-		'password' => '123',
-	  );
-
-	  $input2->setData($data2);
-	  //echo $input2->password;
-	  //echo $input2->mo;
-
-	  //$input = new Zend_Filter_Input($filters, $validators);
-	  $input = new Zend_Filter_Input($filters,null);
-	  $data = array( 'month' => 'l12', 'account' => ' d<script>alert(312);</script>fadf ');
-	  $input->setData($data);
-	  if ($input->isValid()) {
-		//  echo $input->account . '<br />';
-		//  echo $input->month;
-		//  echo $input->getEscaped('account'); 
-		  //echo $input->getUnescaped('account'); 
-	  }
-	  //echo $input->getEscaped('month');   
-	  //Zend_Debug::dump($input);
-
-	  if ($input->hasInvalid() || $input->hasMissing()) {
-		// echo $messages = $input->getMessages();
-		}
-
-		// getMessages() simply returns the merge of getInvalid() and getMissing()
-
-		if ($input->hasInvalid()) {
-		//echo  $invalidFields = $input->getInvalid();
-		}
-
-		if ($input->hasMissing()) {
-		//echo  $missingFields = $input->getMissing();
-		}
-
-		if ($input->hasUnknown()) {
-		//echo  $unknownFields = $input->getUnknown();
-		//Zend_Debug::dump($unknownFields);
-		}
+	  $this->_db_user->unExecuteCommand();
 
 	}
 	

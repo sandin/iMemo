@@ -24,36 +24,20 @@
 		</table>
 	</div><!-- /note_00(addNote) --> 
 	
-	<ul id="js_note_templats" style="display:none">
-	 	<li class="note clearfix">
-		  <table>
-			<tbody>
-			  <tr>
-				<td class="n_lable star_<{*$item.star*}>">&nbsp;</td>
-				<td class="n_t">&nbsp;</td>
-				<td class="n_s"><input type="checkbox"></input></td>
-				<td class="n_content"><{$item.content}></td>
-				<td class="n_tag">
-				  <{foreach from=$item.tags item=tag}>
-					<span>[<{$tag.tag_name}>]</span>
-				  <{/foreach}>
-				</td>
-				<td class="n_date">12:02</td>
-			  </tr>
-			</tbody>
-		  </table>
-		 </li><!-- /note -->
-	</ul><!-- /js_note_templats -->
+	<{if $notes|@count == 0 }>
+	  <{assign var='notes' value="array(array('star'=>3))" }>
+	<{/if}>
 
 	<div id="cate-1" class="cate">
+	  
 	  <ul class="notes_list clearfix connectedSortable">
-	   <{foreach from=$notes item=item}>
-		<{if $item.content|count_characters:true > 0}>
-		<li class="note clearfix">
+
+		<{foreach from=$notes item=item}>
+		<li class="note clearfix" <{if $notes|@count == 0 }>id="js_note_templats" style="display:none;"<{/if}> >
 		  <table>
 			<tbody>
 			  <tr>
-				<td class="n_lable star_<{*$item.star*}>">&nbsp;</td>
+				<td class="n_lable star_<{$item.star}>">&nbsp;</td>
 				<td class="n_t">&nbsp;</td>
 				<td class="n_s"><input type="checkbox"></input></td>
 				<td class="n_content"><{$item.content}></td>
@@ -63,32 +47,19 @@
 				  <{/foreach}>
 				</td>
 				<td class="n_date">12:02</td>
+				<td class="n_del"><li title="" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"/></li></td>
+				<td class="n_id hidden"><{$item.user_id}></td>
 			  </tr>
 			</tbody>
 		  </table>
 		 </li><!-- /note -->
-		<{/if}>
 	  <{/foreach}>
 	  </ul><!-- /notes_list -->
 	</div><!-- /cate -->
 
 	 <div id="cate-2" class="cate">
 	  <ul class="notes_list clearfix connectedSortable">
-	  <{foreach from=$notes item=item}>
-		<{if $item.content|count_characters:true > 0}>
-		<li class="note clearfix">
-		  <table>
-			<tbody>
-			  <tr>
-				<td class="n_l"><{$item.star}></td>
-				<td class="n_c"><{$item.content}></td>
-				<td class="n_i">time date something</td>
-			  </tr>
-			</tbody>
-		  </table>
-		 </li>
-		<{/if}>
-	  <{/foreach}>
+
 	  </ul>
 	</div><!-- /cate -->
   </div><!-- /innerContent -->

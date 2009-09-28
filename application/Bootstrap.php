@@ -39,7 +39,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	  $smarty->left_delimiter = '<{';
 	  $smarty->right_delimiter = '}>';
 	  //var_dump($smarty->plugins_dir);
-	  $view->getEngine()->force_compile = true;
+	  $smarty->force_compile = true;
+	  $smarty->clear_all_cache();
+	  $smarty->clear_compiled_tpl();
 	  $smarty->debugging = true;
 	  $smarty->assign('PUBLIC_URL',PUBLIC_URL);
 	  $smarty->assign('APPLICATION_PATH',APPLICATION_PATH);

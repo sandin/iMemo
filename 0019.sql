@@ -48,6 +48,7 @@ create table lds0019_notes_tags (
 
 DROP TABLE IF EXISTS `lds0019_notes_link_tags`;
 create table lds0019_notes_link_tags (
+  link_id		 serial				  not null,
   tag_id		bigint(20) unsigned	  not null,
   note_id		bigint(20) unsigned	  not null,
 

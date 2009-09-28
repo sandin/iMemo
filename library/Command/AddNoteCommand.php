@@ -1,18 +1,42 @@
 <?php
 class Command_AddNoteCommand extends Command_Abstract 
 {
+  protected $_data;
+
   public function executeCommand()
   {
 	$note = $this->_receiver;
 	$params = $this->_param;
-	foreach ($params as $param => $value) {
-	  if ($param != 'content') {
-		$note->$param = $value;
-	  }
-	}
-	$note->save();
-	if (array_key_exists('content',$params)) {
-	  $note->setContent($note->getId(),$params['content']);
-	}
+
+	$data =	$note->createNote($params);
+
+	$old_data = $data;
+	//var_dump($this->_mHistory);
+//	$this->_mHistory->store(__CLASS__,$old_data,'undo');
+	$this->_mHistory->store($this,$old_data,'undo');
   }
+
+  public function unExecuteCommand()
+  {
+	$this->_mHistory->store($this,$old_data,'redo');
+
+	$note = $this->_receiver;
+	$note->load($this->note_id);
+	$note->delete();
+  }
+
+  protected function addHistory()
+  {
+  }
+
+  public function getData()
+  {
+	return $this->_data;
+  }
+
+  public function setData($data)
+  {
+	$this->_data = $data;
+  }
+
 }

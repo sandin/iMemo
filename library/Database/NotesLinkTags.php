@@ -6,9 +6,10 @@ class Database_NotesLinkTags extends DatabaseObject
 
   public function __construct($db)
   {
-	parent::__construct($db, 'lds0019_notes_link_tags','tag_id' );
+	parent::__construct($db, 'lds0019_notes_link_tags','link_id' );
 
 	$this->add('note_id');
+	$this->add('tag_id');
   }
 
  

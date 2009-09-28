@@ -42,6 +42,12 @@ p{line-height:1.4em;}
 {
   opacity:			0.8;
 }
+.ui-lds-icon 
+{
+  width:			17px;
+  height:			17px;
+  cursor:			pointer;
+}
 
 /*------------- layout  -------------*/
 #wrap {
@@ -274,34 +280,39 @@ p{line-height:1.4em;}
   border-bottom:	1px #ddd dashed;
 }
 
-/* .note .note_span */
-.note .n_s {
+
+.n_s {
 }
-/* .note .note_info */
-.note .n_date {
+
+.n_date {
 }
-/* .note .note_content */
-.note .n_content {
+
+.n_content {
   background:		transparent;
-  width:			79%;
+  width:			76%;
   padding:			10px;
 }
-.note .n_date {
+.n_date {
   width:			50px;
   font-size:		11px;
 }
-/* .note .note_lable */
-.note .n_lable {
+
+.n_lable {
 /*  background:		#f9f9f9; #E0ECFF;*/  
   background:		#fcfcfc;
   width:			10px;
   border-right:		1px #ddd solid;
   cursor:			move;
 }
-.note .n_t ,
-.note .n_s {
+.n_t ,
+.n_s {
   width:			10px;
 }
+.n_tag {}
+.n_del {
+  width:			28px;
+}
+
 .note table {
   width:			100%;
   empty-cells:		show;
@@ -361,4 +372,7 @@ p{line-height:1.4em;}
   padding-left:		30px;
   margin-bottom:	10px;
 
+}
+.hidden {
+  display:			none;
 }

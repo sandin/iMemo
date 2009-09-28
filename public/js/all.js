@@ -67,8 +67,16 @@
   * @return  void
   */
  function makeNoteHTML(obj){
-	var $new_note = $('#js_note_templats>li').clone();
-	$new_note.find('.n_c').html(obj.content);
+   if( $('#js_note_templates').length > 0 ) {
+	var $new_note = $('#js_note_templats').clone(true);
+	$new_note.removeAttr('id').removeAttr('style');
+   } else {
+	var $new_note = $('.note:visible:last').clone(true);
+   }
+   //console.log($new_note);
+
+	$new_note.find('td').not('.n.s').html('');
+	$new_note.find('.n_content').html(obj.content);
 	$('.notes_list:visible').prepend($new_note);
   }
 
@@ -82,7 +90,7 @@ $(function(){
 
   // notes sort
   $(".notes_list").sortable({
-	  handle: '.n_l',
+	  handle: '.n_lable',
 	  cursorAt: { cursor: 'crosshair', top: -3, left: -3 },
   });//.disableSelection();
 
@@ -113,7 +121,7 @@ $(function(){
   /////////////////////////////////////////////////////////
 
   // db click to change a note content
-  $('.n_c').dblclick(function(){
+  $('.n_content').dblclick(function(){
 	if (!$(this).hasClass('editing')) {
 	  var $td = $(this);
 	  $(this).addClass('editing');
@@ -203,7 +211,7 @@ $(function(){
   // bind add note
   addNoteBindKeyDown($('.ajax-add-note')); 
 
-  $('ul#icons li,#search_submit').hover(
+  $('ul#icons li,#search_submit,.ui-lds-icon').hover(
 	function() { $(this).addClass('ui-state-hover'); },
 	 function() { $(this).removeClass('ui-state-hover'); }
   ); 

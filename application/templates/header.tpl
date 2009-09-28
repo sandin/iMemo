@@ -11,7 +11,7 @@
 <body id="<{$module}>">
 <div id="wrap">
   <div id="header" class="clearfix">
-	<img id="logo" src="images/logo.gif" alt="Memo" />
+	<a href="<{$PUBLIC_URL}>"><img id="logo" src="images/logo.gif" alt="Memo" /></a>
 	<ul id="nav">
 	  <li><a class="now" href='<{$PUBLIC_URL}>/'><{t}>Home<{/t}></a></li>
 	  <li><a href='<{$PUBLIC_URL}>/blog'><{t}>Memo<{/t}></a></li>
@@ -30,7 +30,7 @@
   </div><!-- /header --> 
   <div id="toolbar" class="clearfix">
 	<div id="intro"><a href="">Save the cheerleader,Save the world.</a></div>
-	<div id="message"><span>Test <{$t->_('Test')}> test it's <{$t->_('done')}>!</span></div>
+	<div id="message"><span>Test <{$t->_('Test')}> test it's <{$t->_('done')}>! <a href="<{$PUBLIC_URL}>/note/undo"><{t}>Undo<{/t}></a></span></div>
 	<ul id="user">
 	  <{if $user}>
 	  <li><a id="logout" href='<{$PUBLIC_URL}>/profile/index/logout'><{t}>Logout<{/t}></a></li>
@@ -40,6 +40,7 @@
 	  <li><a href='<{$PUBLIC_URL}>/login'><{t}>Login<{/t}></a></li>
 	  <li><{t}>Welcome<{/t}>: <{t}>Guest<{/t}></li>
 	  <{/if}>
+	  <li><{$smarty.now|date_format:"%y/%m/%d %H:%M"}></li>
 	</ul><!-- /user -->
 
   </div><!-- /toolebar -->

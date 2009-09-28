@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.26, created on 2009-09-26 15:10:02
+<?php /* Smarty version 2.6.26, created on 2009-09-28 08:37:29
          compiled from index/index.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count_characters', 'index/index.tpl', 51, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'index/index.tpl', 27, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -33,42 +33,23 @@ unset($_smarty_tpl_vars);
 		</table>
 	</div><!-- /note_00(addNote) --> 
 	
-	<ul id="js_note_templats" style="display:none">
-	 	<li class="note clearfix">
-		  <table>
-			<tbody>
-			  <tr>
-				<td class="n_lable star_">&nbsp;</td>
-				<td class="n_t">&nbsp;</td>
-				<td class="n_s"><input type="checkbox"></input></td>
-				<td class="n_content"><?php echo $this->_tpl_vars['item']['content']; ?>
-</td>
-				<td class="n_tag">
-				  <?php $_from = $this->_tpl_vars['item']['tags']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
-    foreach ($_from as $this->_tpl_vars['tag']):
-?>
-					<span>[<?php echo $this->_tpl_vars['tag']['tag_name']; ?>
-]</span>
-				  <?php endforeach; endif; unset($_from); ?>
-				</td>
-				<td class="n_date">12:02</td>
-			  </tr>
-			</tbody>
-		  </table>
-		 </li><!-- /note -->
-	</ul><!-- /js_note_templats -->
+	<?php if (count($this->_tpl_vars['notes']) == 0): ?>
+	  <?php $this->assign('notes', "array(array('star'=>3))"); ?>
+	<?php endif; ?>
 
 	<div id="cate-1" class="cate">
+	  
 	  <ul class="notes_list clearfix connectedSortable">
-	   <?php $_from = $this->_tpl_vars['notes']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+
+		<?php $_from = $this->_tpl_vars['notes']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['item']):
 ?>
-		<?php if (((is_array($_tmp=$this->_tpl_vars['item']['content'])) ? $this->_run_mod_handler('count_characters', true, $_tmp, true) : smarty_modifier_count_characters($_tmp, true)) > 0): ?>
-		<li class="note clearfix">
+		<li class="note clearfix" <?php if (count($this->_tpl_vars['notes']) == 0): ?>id="js_note_templats" style="display:none;"<?php endif; ?> >
 		  <table>
 			<tbody>
 			  <tr>
-				<td class="n_lable star_">&nbsp;</td>
+				<td class="n_lable star_<?php echo $this->_tpl_vars['item']['star']; ?>
+">&nbsp;</td>
 				<td class="n_t">&nbsp;</td>
 				<td class="n_s"><input type="checkbox"></input></td>
 				<td class="n_content"><?php echo $this->_tpl_vars['item']['content']; ?>
@@ -82,36 +63,20 @@ unset($_smarty_tpl_vars);
 				  <?php endforeach; endif; unset($_from); ?>
 				</td>
 				<td class="n_date">12:02</td>
+				<td class="n_del"><li title="" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"/></li></td>
+				<td class="n_id hidden"><?php echo $this->_tpl_vars['item']['user_id']; ?>
+</td>
 			  </tr>
 			</tbody>
 		  </table>
 		 </li><!-- /note -->
-		<?php endif; ?>
 	  <?php endforeach; endif; unset($_from); ?>
 	  </ul><!-- /notes_list -->
 	</div><!-- /cate -->
 
 	 <div id="cate-2" class="cate">
 	  <ul class="notes_list clearfix connectedSortable">
-	  <?php $_from = $this->_tpl_vars['notes']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
-    foreach ($_from as $this->_tpl_vars['item']):
-?>
-		<?php if (((is_array($_tmp=$this->_tpl_vars['item']['content'])) ? $this->_run_mod_handler('count_characters', true, $_tmp, true) : smarty_modifier_count_characters($_tmp, true)) > 0): ?>
-		<li class="note clearfix">
-		  <table>
-			<tbody>
-			  <tr>
-				<td class="n_l"><?php echo $this->_tpl_vars['item']['star']; ?>
-</td>
-				<td class="n_c"><?php echo $this->_tpl_vars['item']['content']; ?>
-</td>
-				<td class="n_i">time date something</td>
-			  </tr>
-			</tbody>
-		  </table>
-		 </li>
-		<?php endif; ?>
-	  <?php endforeach; endif; unset($_from); ?>
+
 	  </ul>
 	</div><!-- /cate -->
   </div><!-- /innerContent -->

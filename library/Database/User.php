@@ -29,9 +29,19 @@ class Database_User extends DatabaseObject
 	$this->_command = $command;
   }
 
+  public function getCommand()
+  {
+	return $this->_command;
+  }
+
   public function executeCommand()
   {
 	return $this->_command->executeCommand();
+  }
+
+  public function unExecuteCommand()
+  {
+	return $this->_command->unExecuteCommand();
   }
 
 }

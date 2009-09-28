@@ -57,26 +57,49 @@ class NoteController extends Zend_Controller_Action
 	  );
 	  $this->post['user_id'] = $this->db_user->getId();
 	  $this->post['content'] = $this->post['data'];
+	  unset($this->post['data']);
 	  $param = $this->post;
-	  var_dump($param);
+	  //var_dump($param);
 
 	  $command = new Command_AddNoteCommand($notes,$param);
 
 	  $this->db_user->setCommand($command);
 	  $notes =  $this->db_user->executeCommand();
+	  $old_data = $this->db_user->getCommand()->getData();
 	  $this->view->notes = $notes; 
- 
+
+	  $history = Command_ModificationHistory::getInstance($notes);
+
+	  $myNamespace = new Zend_Session_Namespace('history');
+	  $myNamespace->instance = serialize($history);
+	  var_dump($history);
+	}
+
+	public function undoAction()
+	{
+	 $this->_helper->viewRenderer->setNoRender();	  
+
+	 $myNamespace = new Zend_Session_Namespace('history');
+	 $history =  unserialize($myNamespace->instance);	 
+	 $history->undo();
+	 //var_dump($history);
 	}
 
     public function aAction()
 	{
+	  $notes = new Database_Notes($this->db);
+	  $this->_helper->viewRenderer->setNoRender();	  
+
+	  $myNamespace = new Zend_Session_Namespace('myNamespace');
+	  $old = $myNamespace->old_data ;
 	 
+	  $command = new Command_AddNoteCommand($notes,null);
+	  $this->db_user->setCommand($command);
+	  $this->db_user->getCommand()->setData($old);
+	  $this->db_user->unExecuteCommand();
 	}
 	
-	public function bAction()
-	{
-	  
-	}
+
 
 	public function postDispatch()
 	{

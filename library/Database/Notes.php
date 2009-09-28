@@ -22,6 +22,47 @@ class Database_Notes extends DatabaseObject
 	$this->_db = $db;
   }
 
+  /** 
+	* only for $this->createNote
+	* 
+	* @param $key
+	* @param & $array
+	* @param array & $saveto 
+	* 
+	* @return 
+   */
+  public function filterData($key,& $array,& $saveto)
+  {
+	if (array_key_exists($key,$array)) {
+	  $saveto[$key] = $array[$key];
+	  unset($array[$key]);
+	}
+  }
+
+  public function createNote($params)
+  {
+	$save = array();
+	$this->filterData('content',$params,$save);
+
+	foreach ($params as $param => $value) {
+	  $this->$param = $value;
+	  $save[$param] = $value;
+	}
+	$this->save();
+	$save['note_id'] = $this->getId();
+
+	if (isset($save['content'])) {
+	  $this->setContent($this->getId(),$save['content']);
+	}
+
+	return $save;
+	
+  }
+  public function delNote()
+  {
+
+  }
+
   public function getContent($note_id = null)
   {
 	$content = new Database_NotesContent($this->_db);
@@ -40,19 +81,27 @@ class Database_Notes extends DatabaseObject
 	$content->save();
   }
 
-  public function getTags($note_id)
+  public function delContent($note_id = null)
   {
-	$note_id = (isset($note_id)) ? $note_id : $this->note_id;
+	$note_id = (isset($note_id)) ? $note_id : $this->getId();
+	$content = new Database_NotesContent($this->_db);
+	$content->loadByNotesId($note_id);
+	$content->delete();
+  }
+
+  public function getTags($note_id = null)
+  {
+	$note_id = (isset($note_id)) ? $note_id : $this->getId();
 	$query = sprintf('select %s from %s as t_l, %s as t_t
 						  where t_l.tag_id = t_t.tag_id
 						  and t_l.note_id = ?',
-					  'tag_name',
+					  '*',
 					  'lds0019_notes_link_tags',
 					  'lds0019_notes_tags');
 
     $query = $this->_db->quoteInto($query, $note_id);
 	$result = $this->_db->fetchAll($query);
-	//var_dump($result);
+//	var_dump($result);
 	return $result;
   }
 
@@ -61,21 +110,40 @@ class Database_Notes extends DatabaseObject
 	$tag = new Database_NotesTags($this->_db);
 	$tag->tag_name = $tag_name;	
 	$tag->save();
+	return $tag->getId();
   }
 
-  public function addTag($tag_name)
+  public function addTag($tag_name ,$note_id = null)
   {
-	$tag = new Database_NotesTags($this->_db);
-	$tag->tag_name = $tag_name;	
-	$tag->save();
+	$note_id = (isset($note_id)) ? $note_id : $this->getId();
+
+	if (!$this->tagIsExist($note_id,$tag_name)) {
+		$this->createTag($tag_name);
+	} else {}
+
+	$myTags = $this->getTags($note_id);
+	foreach ($myTags as $tag) {
+	  if ($tag['tag_name'] == $tag_name) {
+		$tag_id = $tag['tag_id'];
+	  }
+	}
+	//var_dump($myTags);
+
+	$link = new Database_NotesLinkTags($this->_db);
+	$link->tag_id  = $tag_id;
+	$link->note_id = $note_id;
+	//$link->save();
   }
 
    public function tagIsExist($note_id,$tag_name)
    {
 	$myTags = $this->getTags($note_id);
-	$tagId = 312; 
-
-
+	foreach ($myTags as $tag) {
+	  if (in_array($tag_name, $tag)) {
+		return true;
+	  }
+	}
+	return false;
   }
 
 
@@ -95,7 +163,6 @@ class Database_Notes extends DatabaseObject
    */
   public function getAllByUserId($user_id)
   {
-	$this->addTag('tag_test');
 	$query = sprintf('select %s from %s where user_id = ?',
                      '*',
                      $this->_table);

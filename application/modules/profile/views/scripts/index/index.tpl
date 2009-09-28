@@ -1,6 +1,6 @@
-{include file="$APPLICATION_PATH/templates/header.tpl"}
+<{include file="$APPLICATION_PATH/templates/header.tpl"}>
 
-<h2>Welcome {$user->name} !</h2>
+<h2>Welcome <{$user->name}> !</h2>
 
 
 
@@ -13,18 +13,18 @@
 		<li><a href="#tabs-3">Aenean lacinia</a></li>
 	</ul>
 	<div id="tabs-1">
-	  {if $user}
+	  <{if $user}>
 		<div id="my-profile" class="">
 			<h3>Your profile</h3>
-		  {foreach from=$user key=key item=value}
-			<p class={if $value is odd}"odd"{else}"even"{/if}>
-			  {$key} : {$value}
+		  <{foreach from=$user key=key item=value}>
+			<p class=<{if $value is odd}>"odd"<{else}>"even"<{/if}>>
+			  <{$key}> : <{$value}>
 			</p>
-		  {/foreach}
+		  <{/foreach}>
 		</div>
-	  {else}
-		pleace <a href="{$PUBLIC_URL}/login">login</a>!
-	  {/if}	
+	  <{else}>
+		pleace <a href="<{$PUBLIC_URL}>/login">login</a>!
+	  <{/if}>	
 	</div>
 	<div id="tabs-2">
 		<p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
@@ -41,4 +41,4 @@
 </div>
 
 
-{include file="$APPLICATION_PATH/templates/footer.tpl"}
+<{include file="$APPLICATION_PATH/templates/footer.tpl"}>

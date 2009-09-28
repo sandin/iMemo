@@ -1,36 +1,35 @@
-{include file="$APPLICATION_PATH/templates/header.tpl"}
+<{include file="$APPLICATION_PATH/templates/header.tpl"}>
 
-<h3 class="title_1">PLEASE LOGIN</h3>
+<h3 class="title_1"><{t}>LOGIN NOW<{/t}></h3>
 <form id="form_login" action="" method="post">
-  {if $message}
+  <{if $message}>
 	<div class="error">
-	  <h4>Tips:</h4>
-	  {foreach from=$message key=name item=value}
-		  {$name} : {$value}
-	  {/foreach}
+	  <h4><{t}>Tips:<{/t}></h4>
+	  <{foreach from=$message key=name item=value}>
+		  <{$name}> : <{$value}>
+	  <{/foreach}>
 	</div>
-  {/if}
-  <label for="user">name</label>
+  <{/if}>
+  <label for="user"><{t}>Name<{/t}></label>
   <input name="user" type="text"></input>
-  {include file="$APPLICATION_PATH/templates/error.tpl" error=$message.user}
+  <{include file="$APPLICATION_PATH/templates/error.tpl" error=$message.user}>
   <br />
 
-  <label for="user">password</label>
+  <label for="user"><{t}>Password<{/t}></label>
   <input name="password" type="password"></input>
-  {include file="$APPLICATION_PATH/templates/error.tpl" error=$message.password}
+  <{include file="$APPLICATION_PATH/templates/error.tpl" error=$message.password}>
   <br />
 
-  <label for="captcha">captcha</label>
+  <label for="captcha"><{t}>Captcha<{/t}></label>
   <input name="captcha" type="text"></input>
-  {include file="$APPLICATION_PATH/templates/error.tpl" error=$message.captcha}
-  <div id="captcha">{$captcha} </div>
-  <a id="ajax-fetch-captcha" href="{$PUBLIC_URL}/profile/index/fetch-captcha">change captcha</a>
+  <{include file="$APPLICATION_PATH/templates/error.tpl" error=$message.captcha}>
+  <div id="captcha"><{$captcha}> </div>
+  <a id="ajax-fetch-captcha" href="<{$PUBLIC_URL}>/profile/index/fetch-captcha"><{t}>change captcha<{/t}></a>
   <br />
   
-  <input name="submit" type="submit" value="submit"></input>
-  <input id="captcha_id" name="captcha_id" type="hidden" value="{$captcha_id}"></input>
+  <input name="submit" type="submit" value="<{t}>submit<{/t}>"></input>
+  <input id="captcha_id" name="captcha_id" type="hidden" value="<{$captcha_id}>"></input>
 
 </form>
 
-{$smarty.now|date_format:"%Y-%m-%d %H:%M:%S"}
-{include file="$APPLICATION_PATH/templates/footer.tpl"}
+<{include file="$APPLICATION_PATH/templates/footer.tpl"}>
