@@ -1,5 +1,9 @@
 <?php
 
+require_once 'Zend/Session.php';
+
+Zend_Session::start();
+
 // Define path to application directory
 defined('APPLICATION_PATH')
     || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));

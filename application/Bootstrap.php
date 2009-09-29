@@ -72,15 +72,15 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 	protected function _initLog()
 	{
-	  $logger = new Zend_Log();
-	  $writer = new Zend_Log_Writer_Stream( APPLICATION_PATH . '/data/logs/log.txt' );
+//	  $logger = new Zend_Log();
+//	  $writer = new Zend_Log_Writer_Stream( APPLICATION_PATH . '/data/logs/log.txt' );
 	  //$writer_firebug = new Zend_Log_Writer_Firebug();
 	  //$writer = new Zend_Log_Writer_Firebug();
 
-	  $logger->addWriter($writer);
+//	  $logger->addWriter($writer);
 	  //$logger->addWriter($writer_firebug);
 	  //Zend_Debug::dump($logger);
-      Zend_Registry::set('logger',$logger);
+ //     Zend_Registry::set('logger',$logger);
 
 
 	}

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-09-28 17:30:05
+<?php /* Smarty version 2.6.26, created on 2009-09-29 18:52:46
          compiled from index/index.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'index/index.tpl', 27, false),)), $this); ?>
@@ -54,21 +54,21 @@ unset($_smarty_tpl_vars);
 				<td class="n_s"><input type="checkbox"></input></td>
 				<td class="n_content"><?php echo $this->_tpl_vars['item']['content']; ?>
 </td>
-				<td class="n_tag">
-				  <?php $_from = $this->_tpl_vars['item']['tags']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
-    foreach ($_from as $this->_tpl_vars['tag']):
-?>
-					<span>[<?php echo $this->_tpl_vars['tag']['tag_name']; ?>
-]</span>
-				  <?php endforeach; endif; unset($_from); ?>
-				</td>
-				<td class="n_date">12:02</td>
+				<td class="n_date">1985-12-12 12:02</td>
 				<td class="n_del"><li title="" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"/></li></td>
 				<td class="n_id hidden"><?php echo $this->_tpl_vars['item']['user_id']; ?>
 </td>
 			  </tr>
 			</tbody>
 		  </table>
+		  <div class="n_tag">
+			  <?php $_from = $this->_tpl_vars['item']['tags']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['tag']):
+?>
+				<span><?php echo $this->_tpl_vars['tag']['tag_name']; ?>
+</span>
+			  <?php endforeach; endif; unset($_from); ?>
+		  </div>
 		 </li><!-- /note -->
 	  <?php endforeach; endif; unset($_from); ?>
 	  </ul><!-- /notes_list -->

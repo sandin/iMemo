@@ -8,17 +8,22 @@ class Command_ModificationHistory
   protected $_undoStack;
   protected $_objParent;
 
-  public function __construct($parent)
+  public function __construct($parent = null)
   {
 	$this->_redoStack = array();
 	$this->_undoStack = array();
 	$this->_objParent = $parent;
   }
 
-  public static function getInstance($parent)
+  public static function getInstance($parent = null)
   {
 	if(self::$instance == null) {
+		 $myNamespace = new Zend_Session_Namespace('history');
+	  if (isset($myNamespace->instance)) {
+		self::$instance = unserialize($myNamespace->instance);
+	  }	else {	
 		self::$instance = new Command_ModificationHistory($parent);
+	  }
 	}
 	return self::$instance;
   }

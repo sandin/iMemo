@@ -32,6 +32,8 @@ class Profile_Model_LoginFormCheck extends Lds_Models_FormCheck
 		// 设了namespace,获取时也需使用同样的new一遍
 		//$storage = new Zend_Auth_Storage_Session('lds-namespace');
 		$storage = new Zend_Auth_Storage_Session();
+		//$storage->setExpirationHops(5);
+		//$storage->setExpirationSeconds(3);
 		//$storage->write('123');
 		$auth->setStorage($storage);
 		//Zend_Debug::dump($storage,'s');
@@ -88,6 +90,9 @@ class Profile_Model_LoginFormCheck extends Lds_Models_FormCheck
 		  $storage = $auth->getStorage();
 		  //	  $storage->write('ads');
 		  $storage->write($authAdapter->getResultRowObject());
+
+		  
+		  Zend_Session::rememberMe(1231014);
 		 // $namespace = new Zend_Session_Namespace('lds-namespace');
 		 // Zend_Debug::dump($namespace->name);
 		  

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-09-27 23:20:05
+<?php /* Smarty version 2.6.26, created on 2009-09-29 18:51:48
          compiled from /home/svn/0019/trunk/application/templates/header.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', '/home/svn/0019/trunk/application/templates/header.tpl', 43, false),)), $this); ?>
@@ -54,7 +54,9 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
 	<div id="intro"><a href="">Save the cheerleader,Save the world.</a></div>
 	<div id="message"><span>Test <?php echo $this->_tpl_vars['t']->_('Test'); ?>
  test it's <?php echo $this->_tpl_vars['t']->_('done'); ?>
-!</span></div>
+! <a href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/note/undo"><?php echo $this->_tpl_vars['t']->_('Undo'); ?>
+</a></span></div>
 	<ul id="user">
 	  <?php if ($this->_tpl_vars['user']): ?>
 	  <li><a id="logout" href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>

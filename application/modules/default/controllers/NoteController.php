@@ -79,8 +79,9 @@ class NoteController extends Zend_Controller_Action
 	{
 	 $this->_helper->viewRenderer->setNoRender();	  
 
-	 $myNamespace = new Zend_Session_Namespace('history');
-	 $history =  unserialize($myNamespace->instance);	 
+	 $history = Command_ModificationHistory::getInstance($notes);
+	// $myNamespace = new Zend_Session_Namespace('history');
+	 //$history =  unserialize($myNamespace->instance);	 
 	 $history->undo();
 	 //var_dump($history);
 	}

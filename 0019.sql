@@ -20,7 +20,7 @@ create table lds0019_notes (
   note_id		serial		            not null,
   user_id		bigint(20) unsigned 	not null,
   dueDate		varchar(10),
-  category_id	bigint(20) unsigned,
+  category_id	bigint(20) unsigned     DEFAULT 0,
   style			varchar(255),
   star			int(5)			DEFAULT 0,	  
   ts_created    varchar(10)      not null,

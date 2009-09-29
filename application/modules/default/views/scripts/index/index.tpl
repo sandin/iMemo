@@ -41,17 +41,17 @@
 				<td class="n_t">&nbsp;</td>
 				<td class="n_s"><input type="checkbox"></input></td>
 				<td class="n_content"><{$item.content}></td>
-				<td class="n_tag">
-				  <{foreach from=$item.tags item=tag}>
-					<span>[<{$tag.tag_name}>]</span>
-				  <{/foreach}>
-				</td>
-				<td class="n_date">12:02</td>
+				<td class="n_date">1985-12-12 12:02</td>
 				<td class="n_del"><li title="" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"/></li></td>
 				<td class="n_id hidden"><{$item.user_id}></td>
 			  </tr>
 			</tbody>
 		  </table>
+		  <div class="n_tag">
+			  <{foreach from=$item.tags item=tag}>
+				<span><{$tag.tag_name}></span>
+			  <{/foreach}>
+		  </div>
 		 </li><!-- /note -->
 	  <{/foreach}>
 	  </ul><!-- /notes_list -->

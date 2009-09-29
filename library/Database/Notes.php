@@ -6,26 +6,76 @@ class Database_Notes extends DatabaseObject
   protected $_style = null;
   protected $_content = null;
   protected $_db = null;
+  protected $_join = array();
 
   public function __construct($db)
   {
 	parent::__construct($db, 'lds0019_notes', 'note_id');
 
 	$this->add('user_id');
-	$this->add('category_id','0');
+	$this->add('category_id',0);
 	$this->add('dueDate',null);
 	$this->add('star',0);
 	$this->add('style',null);
 	$this->add('ts_created', time());
+	$this->join('tag','lds0019_notes_link_tags','note_id','note_id','tag_id');
+	$this->join('content','lds0019_notes_content','note_id','note_id','content');
 
 	//$this->profile = new Profile_User($db);
 	$this->_db = $db;
+  }
+
+  public function join($join_id,$joinTable,$joinField,$selfField,$joinTargetField)
+  {
+	$this->_join[$join_id] = (object) array(
+	  'joinTable' => $joinTable,
+	  'joinField' => $joinField,
+	  'selfField' => $selfField,
+	  'joinTargetField' => $joinTargetField
+	);
+  }
+
+  public function postLoad()
+  {
+	foreach ($this->_join as $join_id => $v) {
+	  $this->getJoinRow($join_id);
+	}
+	var_dump($this->_join);
+  }
+
+  public function getJoinRow($join_id)
+  {
+	$join = $this->_join[$join_id];
+
+	$query = sprintf('SELECT %s FROM %s INNER JOIN %s 
+					  ON %s = %s
+					  where %s = ?',
+					  $join->joinTargetField,  //tag_id
+					  $this->_table,  //lds0019_notes
+					  $join->joinTable,	  //lds0019_notes_link_tags
+					  //lds0019_notes.note_id
+					  $this->_table . '.' . $join->selfField, 
+					  //lds0019_notes_link_tags.note_id
+					  $join->joinTable . '.' . $join->joinField,
+					  $this->_table . '.' . $this->_idField
+					  );
+
+    $query = $this->_db->quoteInto($query, $this->getId());
+	//var_dump($query);
+	$result = $this->_db->fetchCol($query);
+	$join->rows = $result;
+  }
+
+  public function addJoinRow($join_id)
+  {
+  	// code...
   }
 
   /** 
 	* only for $this->createNote
 	* 
 	* @param $key
+	*
 	* @param & $array
 	* @param array & $saveto 
 	* 
@@ -58,9 +108,14 @@ class Database_Notes extends DatabaseObject
 	return $save;
 	
   }
-  public function delNote()
+  public function delNote($note_id = null ,$user_id = null)
   {
-
+	if ($this->load($note_id)) {
+	  $this->user_id = $user_id;
+	  $this->delete();
+	  $this->delContent($note_id);
+	  $this->delTag($tag_id);
+	}
   }
 
   public function getContent($note_id = null)
@@ -101,8 +156,20 @@ class Database_Notes extends DatabaseObject
 
     $query = $this->_db->quoteInto($query, $note_id);
 	$result = $this->_db->fetchAll($query);
-//	var_dump($result);
+	//var_dump($result);
 	return $result;
+  }
+
+  public function delTag($tag_id = null, $note_id = null, $user_id = null)
+  {
+	$mytags = $this->getTags($note_id);
+	foreach ($mytags as $tag) {
+	  if ($tag['tag_id'] == $tag_id) {
+		$tag_db = new Database_NotesLinkTags($this->_db);
+		$tag_db->load($tag['link_id']);
+		$tag_db->delete();
+	  }
+	}
   }
 
   public function createTag($tag_name)
@@ -179,6 +246,18 @@ class Database_Notes extends DatabaseObject
 	}
 	//Zend_Debug::dump($new_result);
 	return $new_result;
+  }
+
+  public function getOneNote($note_id)
+  {
+	$note_info = array();
+	$this->load($note_id);
+	$this->_properties['content'] = $this->getContent($note_id);
+	$this->getTags($note_id);
+	$this->getCategorys($this->category_id);
+
+	return $this->_param;
+
   }
 /*
   protected function preInsert(){}
