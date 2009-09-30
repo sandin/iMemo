@@ -9,7 +9,6 @@
 	<li><a href="#cate-2">Maybe</a></li>
 	<li><a href="#cate-2">Projects</a></li>
 	<li><a href="#cate-2">Areas</a></li>
-	<li><a href="#cate-2">中文</a></li>
   </ul><!-- /categorys (sidebar) -->
 
   <div id="innerContent"> 

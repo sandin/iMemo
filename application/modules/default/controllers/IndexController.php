@@ -19,6 +19,7 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
 	{
+	  var_dump($_SESSION);
 
 
 	  // create a new user

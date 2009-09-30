@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.26, created on 2009-09-30 18:01:56
+<?php /* Smarty version 2.6.26, created on 2009-10-01 00:32:05
          compiled from index/index.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'index/index.tpl', 27, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'index/index.tpl', 26, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -17,7 +17,6 @@ unset($_smarty_tpl_vars);
 	<li><a href="#cate-2">Maybe</a></li>
 	<li><a href="#cate-2">Projects</a></li>
 	<li><a href="#cate-2">Areas</a></li>
-	<li><a href="#cate-2">中文</a></li>
   </ul><!-- /categorys (sidebar) -->
 
   <div id="innerContent"> 

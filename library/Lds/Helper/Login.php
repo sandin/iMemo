@@ -34,6 +34,7 @@ class Lds_Helper_Login
 	//Zend_Debug::dump($abs,'abs');
 	
 	$db = Zend_Registry::get('db');
+
 	$authAdapter = new Zend_Auth_Adapter_DbTable($db);
 
 	// ::todo::
@@ -65,8 +66,11 @@ class Lds_Helper_Login
 
 	  $storage = $auth->getStorage();
 	  $storage->write($authAdapter->getResultRowObject());
-	  
-	  Zend_Session::rememberMe(1231014);
+
+	  // set a cookie to save user info
+	  setcookie('ue', $user, time() + 2592000, '/', false);  
+	  // ::todo::
+	  Zend_Session::rememberMe(2592000);
 	  $this->_result = true;
 	  }	
 

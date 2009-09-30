@@ -2,6 +2,39 @@
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
+
+	protected function _initDatebase()
+	{
+	  $resources = $this->getPluginResource('db');
+	  $db = $resources->getDbAdapter();
+	  Zend_Registry::set('db',$db);
+	  $options = $this->getOption('resources');	
+	  $db_prefix = $options['db']['prefix'];
+	  Zend_Registry::set('db_prefix',$db_prefix);
+	}
+
+
+    protected function _initSession()
+	{
+	  $db = Zend_Registry::get('db');
+	  Zend_Db_Table_Abstract::setDefaultAdapter($db);
+	  //配置SessionDB字段  
+
+	  $config = array(
+		'name'           => 'lds0019_sessions',
+		'primary'        => 'id',
+		'modifiedColumn' => 'modified',
+		'dataColumn'     => 'data',
+		'lifetimeColumn' => 'lifetime'
+	  );
+	  // must before setSaveHandler,don't kown why.
+	  Zend_Session::setOptions(array('gc_maxlifetime' => '2592000' ));
+	  //new Zend_Session_SaveHandler_DbTable  
+	  Zend_Session::setSaveHandler(new Zend_Session_SaveHandler_DbTable($config));
+	  Zend_Session::start();
+	  //var_dump(Zend_Session::getOptions());
+	}
+
     protected function _initAcl()
 	{
 	 
@@ -161,15 +194,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		//$options = $this->getOption('resources');	
 	}
 	
-	protected function _initDatebase()
-	{
-	  	$resources = $this->getPluginResource('db');
-        $db = $resources->getDbAdapter();
-        Zend_Registry::set('db',$db);
-		$options = $this->getOption('resources');	
-		$db_prefix = $options['db']['prefix'];
-        Zend_Registry::set('db_prefix',$db_prefix);
-	}
+
 
 
 	protected function _initAutoload()

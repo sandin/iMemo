@@ -19,7 +19,6 @@ class Profile_Model_LoginFormCheck extends Lds_Models_FormCheck
 	$password = $this->_data['password'];
 	//$password = MD5($post['password']);
 	$login_helper = new Lds_Helper_Login($username,$password);
-	var_dump($login_helper);
 	if (!$login_helper->login()) {
 	  foreach ($login_helper->getMessages() as $message) {
 		$this->addMessage('login',$message);
