@@ -20,7 +20,6 @@ class Database_User extends DatabaseObject
 
   public function usernameIsExist($username)
   {
-
 	$query = sprintf('SELECT %s FROM %s
 					  where %s = ?',
 					  $this->_idField,					  
@@ -31,7 +30,14 @@ class Database_User extends DatabaseObject
     $query = $this->_db->quoteInto($query, $username);
 	//var_dump($query);
 	$result = $this->_db->fetchOne($query);
-var_dump($result);
+
+	return ($result == false) ? false : true;
+/*
+	if ($result == false) {
+	  return false;
+	} else {
+	  return true;
+	} */
   }
 
   public function setCommand(Command_Abstract $command)

@@ -113,19 +113,31 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 			  ->throwExceptions(true)
 			  ->registerPlugin(new Lds_Controller_Plugin_Smarty())
 			  ->registerPlugin(new Lds_Controller_Plugin_Modules())
-			  ->registerPlugin(new Lds_Controller_Plugin_Filter())
+		//	  ->registerPlugin(new Lds_Controller_Plugin_Filter())
 		;
 		
 		$router = $front->getRouter(); 
+
 		$router->addRoute(
 		  'login',
 		  new Zend_Controller_Router_Route(
-			'login/:username',
+			'login/*',
 			  array(
-				'username' => 'liud',
 				'module' => 'profile',
 				'controller' => 'index',
 				'action' => 'login',
+			  )
+		  )
+		);
+
+		$router->addRoute(
+		  'register',
+		  new Zend_Controller_Router_Route(
+			'register/*',
+			  array(
+				'module' => 'profile',
+				'controller' => 'index',
+				'action' => 'register',
 			  )
 		  )
 		);

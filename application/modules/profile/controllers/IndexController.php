@@ -42,7 +42,6 @@ class Profile_IndexController extends Zend_Controller_Action
 	  $post = $this->getRequest()->getPost();
 	  
 	  if ( count($post) > 0 ) {
-	  var_dump($post);
 		$formCheck = new Profile_Model_RegisterFormCheck($post);
 		//var_dump($post);
 	//	$formCheck->setRequired('captcha');
@@ -52,7 +51,7 @@ class Profile_IndexController extends Zend_Controller_Action
 		if ( !$formCheck->isSucceed() ) {
 		  $this->view->message =  $formCheck->getMessage();
 		} else {
-		 // $this->_redirect('/');
+		  $this->_redirect('/');
 		}	
 	  }
 	}

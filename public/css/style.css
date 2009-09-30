@@ -203,9 +203,7 @@ p{line-height:1.4em;}
   margin:			0 5px;
 } 
 #my-profile {
-  cursor:			move;
   border:			1px #ddd dashed;
-  width:			200px;
   padding:			10px;
 }
 

@@ -34,16 +34,17 @@
 	<ul id="user">
 	  <{if $user}>
 	  <li><a id="logout" href='<{$PUBLIC_URL}>/profile/index/logout'><{t}>Logout<{/t}></a></li>
-	  <li><a id="logout" href='<{$PUBLIC_URL}>/profile/index/logout'><{t}>Setting<{/t}></a></li>
-	  <li><{t}>Welcome<{/t}>: <{$user->username}></li>
+	  <li><a id="logout" href='<{$PUBLIC_URL}>/profile'> / <{t}>Setting<{/t}> / </a></li>
+	  <li><b><{$user->username}></b></li>
 	  <{else}>
 	  <li><a href='<{$PUBLIC_URL}>/login'><{t}>Login<{/t}></a></li>
+	  <li><a href='<{$PUBLIC_URL}>/register'><{t}>Sign Up Now<{/t}> / </a></li> 
 	  <li><{t}>Welcome<{/t}>: <{t}>Guest<{/t}></li>
 	  <{/if}>
-	  <li><{$smarty.now|date_format:"%y/%m/%d %H:%M"}></li>
 	</ul><!-- /user -->
 
   </div><!-- /toolebar -->
   <div id="content" class="clearfix">
 
 <{/if}>
+

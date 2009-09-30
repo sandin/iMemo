@@ -1,7 +1,5 @@
-<?php /* Smarty version 2.6.26, created on 2009-09-30 14:07:10
+<?php /* Smarty version 2.6.26, created on 2009-09-30 18:01:56
          compiled from /home/svn/0019/trunk/application/templates/header.tpl */ ?>
-<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', '/home/svn/0019/trunk/application/templates/header.tpl', 43, false),)), $this); ?>
 <?php if (! isset ( $this->_tpl_vars['noLayout'] )): ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
@@ -66,21 +64,21 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
 /profile/index/logout'><?php echo $this->_tpl_vars['t']->_('Logout'); ?>
 </a></li>
 	  <li><a id="logout" href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/profile/index/logout'><?php echo $this->_tpl_vars['t']->_('Setting'); ?>
-</a></li>
-	  <li><?php echo $this->_tpl_vars['t']->_('Welcome'); ?>
-: <?php echo $this->_tpl_vars['user']->username; ?>
-</li>
+/profile'> / <?php echo $this->_tpl_vars['t']->_('Setting'); ?>
+ / </a></li>
+	  <li><b><?php echo $this->_tpl_vars['user']->username; ?>
+</b></li>
 	  <?php else: ?>
 	  <li><a href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /login'><?php echo $this->_tpl_vars['t']->_('Login'); ?>
 </a></li>
+	  <li><a href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/register'><?php echo $this->_tpl_vars['t']->_('Sign Up Now'); ?>
+ / </a></li> 
 	  <li><?php echo $this->_tpl_vars['t']->_('Welcome'); ?>
 : <?php echo $this->_tpl_vars['t']->_('Guest'); ?>
 </li>
 	  <?php endif; ?>
-	  <li><?php echo ((is_array($_tmp=time())) ? $this->_run_mod_handler('date_format', true, $_tmp, "%y/%m/%d %H:%M") : smarty_modifier_date_format($_tmp, "%y/%m/%d %H:%M")); ?>
-</li>
 	</ul><!-- /user -->
 
   </div><!-- /toolebar -->

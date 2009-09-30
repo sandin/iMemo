@@ -1,7 +1,8 @@
 <?php
 
 // language
-define('NOT_NULL','it\'s required');
+$t = Zend_Registry::get('translate');
+define('NOT_NULL',$t->_('It\'s required'));
 
 /** 
  * Lds_Models_FormCheck
@@ -184,6 +185,11 @@ abstract class Lds_Models_FormCheck
   {
 	$this->_succeed = (count($this->_message) > 0) ? false : true; 
 	return $this->_succeed;
+  }
+
+  public function __get($name)
+  {
+	return $this->_data[$name];
   }
 
 }
