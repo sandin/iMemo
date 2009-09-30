@@ -9,6 +9,7 @@ class Database_NotesTags extends DatabaseObject
 	parent::__construct($db, 'lds0019_notes_tags','tag_id' );
 
 	$this->add('tag_name');
+	$this->add('user_id');
 	$this->add('ts_created', time());
   }
 

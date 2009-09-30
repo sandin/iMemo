@@ -23,12 +23,15 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     {
 
 	  $auth = Zend_Auth::getInstance(); 
+	  $storage = new Zend_Auth_Storage_Session();
+	  $auth->setStorage($storage);
 	  $user = $auth->getIdentity();
 	  Zend_Registry::set('user',$user);
 	  $options = $this->getOptions();
       $viewOptions = $options['resources']['view'];
        // Initialize view
 	  Zend_Loader_Autoloader::getInstance()->setFallbackAutoloader(true); 
+
 	  $view = new Lds_View_Smarty();
 	  $smarty = $view->getEngine();
 	  //$view->setScriptPath(APPLICATION_PATH . '/templates');
@@ -110,6 +113,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 			  ->throwExceptions(true)
 			  ->registerPlugin(new Lds_Controller_Plugin_Smarty())
 			  ->registerPlugin(new Lds_Controller_Plugin_Modules())
+			  ->registerPlugin(new Lds_Controller_Plugin_Filter())
 		;
 		
 		$router = $front->getRouter(); 

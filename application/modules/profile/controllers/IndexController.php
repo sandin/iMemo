@@ -13,6 +13,10 @@ class Profile_IndexController extends Zend_Controller_Action
                     ->addActionContext('process', 'json')
                     ->initContext();
 		  */
+	  $this->_db = Zend_Registry::get('db');
+	  $this->_user = Zend_Registry::get('user');
+	  
+	  $this->_db_user = new Database_User($this->_db);	
 	}
 
 	public function preDispatch()
@@ -31,6 +35,26 @@ class Profile_IndexController extends Zend_Controller_Action
 		//Zend_Debug::dump($auth->hasIdentity(),'login?');
 		//Zend_Debug::dump($_SESSION);
 		//$this->view->user = $user;
+	}
+
+	public function registerAction()
+	{
+	  $post = $this->getRequest()->getPost();
+	  
+	  if ( count($post) > 0 ) {
+	  var_dump($post);
+		$formCheck = new Profile_Model_RegisterFormCheck($post);
+		//var_dump($post);
+	//	$formCheck->setRequired('captcha');
+		$formCheck->setRequired($post);
+		$formCheck->check();
+		//var_dump($formCheck);
+		if ( !$formCheck->isSucceed() ) {
+		  $this->view->message =  $formCheck->getMessage();
+		} else {
+		 // $this->_redirect('/');
+		}	
+	  }
 	}
 
 	public function loginAction()

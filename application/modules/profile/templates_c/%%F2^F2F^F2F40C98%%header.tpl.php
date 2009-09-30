@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-09-29 18:51:48
+<?php /* Smarty version 2.6.26, created on 2009-09-30 14:18:50
          compiled from /home/svn/0019/trunk/application/templates/header.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', '/home/svn/0019/trunk/application/templates/header.tpl', 43, false),)), $this); ?>
@@ -8,8 +8,10 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Memo - 0019</title>
-  <link type="text/css" rel="stylesheet" media="all" href="share/jquery/css/smoothness/jquery-ui-1.7.2.custom.css" />
-  <link type="text/css" rel="stylesheet" media="all" href="css/style.css" />
+  <link type="text/css" rel="stylesheet" media="all" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/share/jquery/css/smoothness/jquery-ui-1.7.2.custom.css" />
+  <link type="text/css" rel="stylesheet" media="all" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/css/style.css" />
 </head>
 
 <body id="<?php echo $this->_tpl_vars['module']; ?>
@@ -17,7 +19,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
 <div id="wrap">
   <div id="header" class="clearfix">
 	<a href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-"><img id="logo" src="images/logo.gif" alt="Memo" /></a>
+"><img id="logo" src="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/images/logo.gif" alt="Memo" /></a>
 	<ul id="nav">
 	  <li><a class="now" href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /'><?php echo $this->_tpl_vars['t']->_('Home'); ?>

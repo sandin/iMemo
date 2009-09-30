@@ -21,7 +21,6 @@ class IndexController extends Zend_Controller_Action
 	{
 
 
-
 	  // create a new user
 	 /* 
 	  $db_user->username = 'liu';
@@ -33,8 +32,8 @@ class IndexController extends Zend_Controller_Action
 	  $notes = new Database_Notes($this->_db);
 	  $notes->load(1);
 	  //var_dump($notes);
-	  $notes->addTag('tag1');
-	  $a = $notes->tagIsExist(1,'tag1');
+	  //$notes->addTag('tag1');
+	  //$a = $notes->tagIsExist(1,'tag1');
 	  //var_dump($a);
 	  /*
 	  $param =  array(

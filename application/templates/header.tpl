@@ -4,14 +4,14 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Memo - 0019</title>
-  <link type="text/css" rel="stylesheet" media="all" href="share/jquery/css/smoothness/jquery-ui-1.7.2.custom.css" />
-  <link type="text/css" rel="stylesheet" media="all" href="css/style.css" />
+  <link type="text/css" rel="stylesheet" media="all" href="<{$PUBLIC_URL}>/share/jquery/css/smoothness/jquery-ui-1.7.2.custom.css" />
+  <link type="text/css" rel="stylesheet" media="all" href="<{$PUBLIC_URL}>/css/style.css" />
 </head>
 
 <body id="<{$module}>">
 <div id="wrap">
   <div id="header" class="clearfix">
-	<a href="<{$PUBLIC_URL}>"><img id="logo" src="images/logo.gif" alt="Memo" /></a>
+	<a href="<{$PUBLIC_URL}>"><img id="logo" src="<{$PUBLIC_URL}>/images/logo.gif" alt="Memo" /></a>
 	<ul id="nav">
 	  <li><a class="now" href='<{$PUBLIC_URL}>/'><{t}>Home<{/t}></a></li>
 	  <li><a href='<{$PUBLIC_URL}>/blog'><{t}>Memo<{/t}></a></li>

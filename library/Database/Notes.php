@@ -13,7 +13,6 @@ class Database_Notes extends DatabaseObject
 	parent::__construct($db, 'lds0019_notes', 'note_id');
 
 	$this->add('user_id');
-	$this->add('category_id',0);
 	$this->add('dueDate',null);
 	$this->add('star',0);
 	$this->add('style',null);
