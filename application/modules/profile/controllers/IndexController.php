@@ -107,6 +107,10 @@ class Profile_IndexController extends Zend_Controller_Action
 	public function makeCaptcha() {
 	  $captcha_all = array();
 	  // Originating request:
+
+	  $logger = Zend_Registry::get('logger');
+
+	  $logger->info('pre captcha_image profile indexController' . $_SESSION);
 	  $captcha = new Zend_Captcha_Image(array(
 		'session' => new Zend_Session_Namespace(),
 		'wordLen' => 4,
@@ -123,6 +127,7 @@ class Profile_IndexController extends Zend_Controller_Action
 
 	  $captcha_all['captcha_html'] =(string) $captcha->render();
 	  $captcha_all['captcha_id'] = $captcha_id;
+	  $logger->info('pre captcha_image profile indexController' . $_SESSION);
 	  return $captcha_all;
 	}
 

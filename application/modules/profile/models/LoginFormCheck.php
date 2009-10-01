@@ -4,10 +4,15 @@ class Profile_Model_LoginFormCheck extends Lds_Models_FormCheck
   public function preCheck()
   {
 	// 验证码检查
+	
+	 $logger = Zend_Registry::get('logger');
+
 	 $captcha_input = $this->_data['captcha'];
 	 $captcha_id = $this->_data['captcha_id'];
+	 $logger->info('pre Zend_form_captcha' . $_SESSION);
 	 $captcha_session = new Zend_Session_Namespace('Zend_Form_Captcha_' . $captcha_id);
 	 $captcha_word = $captcha_session->word;
+	 $logger->info('post Zend_form_captcha' . $_SESSION);
 	 if ($captcha_input != $captcha_word) {
 		$this->addMessage('captcha','captcha wrong.');
 	 }

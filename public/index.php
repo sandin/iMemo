@@ -1,5 +1,6 @@
 <?php
 
+
 require_once 'Zend/Session.php';
 
 //Zend_Session::start();
@@ -35,6 +36,8 @@ $application = new Zend_Application(
 $application->bootstrap()
             ->run();
 
+$logger = Zend_Registry::get('logger');
+$logger->info('index');
 
 /*
 echo $front->getModuleDirectory();

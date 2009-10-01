@@ -1,2 +1,2 @@
-<?php /* Smarty version 2.6.26, created on 2009-09-23 23:12:03
+<?php /* Smarty version 2.6.26, created on 2009-10-01 13:28:07
          compiled from note/index.tpl */ ?>

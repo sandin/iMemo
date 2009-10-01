@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-10-01 00:32:05
+<?php /* Smarty version 2.6.26, created on 2009-10-01 13:47:56
          compiled from /home/svn/0019/trunk/application/templates/header.tpl */ ?>
 <?php if (! isset ( $this->_tpl_vars['noLayout'] )): ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -59,15 +59,17 @@
 /note/undo"><?php echo $this->_tpl_vars['t']->_('Undo'); ?>
 </a></span></div>
 	<ul id="user">
+
 	  <?php if ($this->_tpl_vars['user']): ?>
 	  <li><a id="logout" href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /profile/index/logout'><?php echo $this->_tpl_vars['t']->_('Logout'); ?>
 </a></li>
 	  <li><a id="logout" href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/profile'> / <?php echo $this->_tpl_vars['t']->_('Setting'); ?>
+/profile'> / <?php echo $this->_tpl_vars['t']->_('Settings'); ?>
  / </a></li>
 	  <li><b><?php echo $this->_tpl_vars['user']->username; ?>
 </b></li>
+
 	  <?php else: ?>
 	  <li><a href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /login'><?php echo $this->_tpl_vars['t']->_('Login'); ?>
@@ -79,6 +81,7 @@
 : <?php echo $this->_tpl_vars['t']->_('Guest'); ?>
 </li>
 	  <?php endif; ?>
+
 	</ul><!-- /user -->
 
   </div><!-- /toolebar -->

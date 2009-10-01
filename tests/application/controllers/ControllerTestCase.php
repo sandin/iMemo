@@ -8,8 +8,17 @@ abstract class ControllerTestCase extends Zend_Test_PHPUnit_ControllerTestCase
 	
  	public function setUp()
     {  	
-		$this->bootstrap = array($this, 'appBootstrap');
-        parent::setUp();
+	  $this->bootstrap = array($this, 'appBootstrap');
+	  $params = array ('host'     => '127.0.0.1',
+                 'username' => 'lds',
+                 'password' => '123',
+                 'dbname'   => 'lds0019');
+
+	  $db = Zend_Db::factory('PDO_MYSQL', $params);
+
+	  Zend_Registry::set('db',$db);
+
+      parent::setUp();
     }
 	
 	public function appBootstrap()

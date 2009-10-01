@@ -1,5 +1,5 @@
 <?php
-class Command_AddNoteCommand extends Command_Abstract 
+class Command_DelNoteCommand extends Command_Abstract 
 {
 
   public function executeCommand()
@@ -7,7 +7,7 @@ class Command_AddNoteCommand extends Command_Abstract
 	$note = $this->_receiver;
 	$params = $this->_param;
 
-	$data =	$note->createNote($params);
+	$data =	$note->delNote($params);
 
 	$old_data = $data;
 	//var_dump($this->_mHistory);

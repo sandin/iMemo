@@ -37,12 +37,12 @@ class Database_Notes extends DatabaseObject
   public function postLoad()
   {
 	foreach ($this->_join as $join_id => $v) {
-	  $this->getJoinRow($join_id);
+	  $this->loadJoin($join_id);
 	}
-	var_dump($this->_join);
+	//var_dump($this->_join);
   }
 
-  public function getJoinRow($join_id)
+  public function LoadJoin($join_id)
   {
 	$join = $this->_join[$join_id];
 
@@ -63,6 +63,11 @@ class Database_Notes extends DatabaseObject
 	//var_dump($query);
 	$result = $this->_db->fetchCol($query);
 	$join->rows = $result;
+  }
+
+  public function getJoinRow($join_id)
+  {
+	return $this->_join[$join_id]->rows;
   }
 
   public function addJoinRow($join_id)
@@ -111,9 +116,9 @@ class Database_Notes extends DatabaseObject
   {
 	if ($this->load($note_id)) {
 	  $this->user_id = $user_id;
-	  $this->delete();
 	  $this->delContent($note_id);
 	  $this->delTag($tag_id);
+	  $this->delete();
 	}
   }
 
@@ -159,47 +164,115 @@ class Database_Notes extends DatabaseObject
 	return $result;
   }
 
-  public function delTag($tag_id = null, $note_id = null, $user_id = null)
+  public function delTag($tag_id)
   {
-	$mytags = $this->getTags($note_id);
-	foreach ($mytags as $tag) {
-	  if ($tag['tag_id'] == $tag_id) {
-		$tag_db = new Database_NotesLinkTags($this->_db);
-		$tag_db->load($tag['link_id']);
-		$tag_db->delete();
-	  }
+	$this_note_tags = $this->getJoinRow('tag');
+	if (!in_array($tag_id,$this_note_tags)) {
+	  
 	}
+	
   }
 
   public function createTag($tag_name)
   {
-	$tag = new Database_NotesTags($this->_db);
-	$tag->tag_name = $tag_name;	
-	$tag->save();
-	return $tag->getId();
-  }
-
-  public function addTag($tag_name ,$note_id = null)
-  {
-	$note_id = (isset($note_id)) ? $note_id : $this->getId();
-
-	if (!$this->tagIsExist($note_id,$tag_name)) {
-		$this->createTag($tag_name);
-	} else {}
-
-	$myTags = $this->getTags($note_id);
-	foreach ($myTags as $tag) {
-	  if ($tag['tag_name'] == $tag_name) {
-		$tag_id = $tag['tag_id'];
-	  }
+	if ($this->user_id) {
+	  $tag = new Database_NotesTags($this->_db);
+	  $tag->tag_name = $tag_name;	
+	  $tag->user_id = $this->user_id;	
+	  $tag->save();
+	  return $tag->getId();
 	}
-	//var_dump($myTags);
-
-	$link = new Database_NotesLinkTags($this->_db);
-	$link->tag_id  = $tag_id;
-	$link->note_id = $note_id;
-	//$link->save();
   }
+
+  public function makeTagLink($tag_id)
+  {
+	if ($this->getId()) {
+	  $taglink = new Database_NotesLinkTags($this->_db);
+	  $taglink->tag_id = $tag_id;
+	  $taglink->note_id = $this->getid();
+	  $taglink->save();
+	}
+  }
+
+  public function addTag($tag_name)
+  {
+	//确定该note没有此tag
+	if (!$this->tagIsExistInThisNote($tag_name)) {
+	  if (!($tag_id = $this->tagNameToId($tag_name)) ) {
+		$tag_id = $this->createTag($tag_name);
+	  }
+	  $this->makeTagLink($tag_id);
+	}
+  }
+
+  /** 
+	* 检查note是否已经被标记了某tag名
+	* 
+	* @param $tag_name
+	* 
+	* @return boolean
+   */
+  public function tagIsExistInThisNote($tag_name)
+  {
+	// 如果该用户拥有此名字的tag，则检查此tag是否已经赋予该note
+	if ($tag_id = $this->tagNameToId($tag_name)) {
+	  $this_note_tags = $this->getJoinRow('tag');
+	  if (in_array($tag_id,$this_note_tags)) {
+		return true;    
+	  } else 	{
+		return false;
+	  }
+	} else {
+	  // 如果用户都不拥有这个tag，则无需查询，直接可认定此note没有该tag
+	  return false;
+	}
+  }
+
+
+  public function tagIsExistInthisUser()
+  {
+
+  }
+
+  /** 
+	* tag_id 转换成 tag_name
+	* 
+	* @param $tag_id
+	* 
+	* @return 
+   */
+  public function tagIdToName($tag_id)
+  {
+	$tag_db = new Database_NotesTags($this->_db);
+	if ($tag_db->load($tag_id)) {
+	  return $tag_db->tag_name;
+	} else {
+	  return false;
+	}
+  }
+
+  /** 
+	* tag name 转换成 tag id
+	* 只在该用户的名下查找tag_name,
+	* 也就是说如果该函数返回false，则可说明该用户没有此名字的tag
+	* 
+	* @param $tag_name
+	* 
+	* @return 
+   */
+ public function tagNameToId($tag_name)
+  {
+	if ($this->user_id) {
+	$result = $this->_db->fetchOne(
+		"SELECT tag_id FROM lds0019_notes_tags WHERE user_id = :user_id AND tag_name = :tag_name",
+		array('user_id' => $this->user_id,
+			  'tag_name' => $tag_name)
+	);
+
+	  return $result;
+	}
+  }
+
 
    public function tagIsExist($note_id,$tag_name)
    {

@@ -13,9 +13,26 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	  Zend_Registry::set('db_prefix',$db_prefix);
 	}
 
+	protected function _initLog()
+	{
+	  $logger = new Zend_Log();
+	  $writer = new Zend_Log_Writer_Stream( APPLICATION_PATH . '/data/logs/log.txt' );
+	  //$writer_firebug = new Zend_Log_Writer_Firebug();
+	  //$writer = new Zend_Log_Writer_Firebug();
+
+	  $logger->addWriter($writer);
+	  //$logger->addWriter($writer_firebug);
+	  //Zend_Debug::dump($logger);
+      Zend_Registry::set('logger',$logger);
+
+
+	}
 
     protected function _initSession()
 	{
+	  $logger = Zend_Registry::get('logger');
+	  $logger->info('boot');
+
 	  $db = Zend_Registry::get('db');
 	  Zend_Db_Table_Abstract::setDefaultAdapter($db);
 	  //配置SessionDB字段  
@@ -31,7 +48,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	  Zend_Session::setOptions(array('gc_maxlifetime' => '2592000' ));
 	  //new Zend_Session_SaveHandler_DbTable  
 	  Zend_Session::setSaveHandler(new Zend_Session_SaveHandler_DbTable($config));
-	  Zend_Session::start();
+	  if(!isset($_SESSION)){
+		$logger->info('before start boot' . $_SESSION );
+		Zend_Session::start();
+		$logger->info('after start boot' . $_SESSION );
+	  }
 	  //var_dump(Zend_Session::getOptions());
 	}
 
@@ -106,20 +127,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         return $view;
 	}
 
-	protected function _initLog()
-	{
-//	  $logger = new Zend_Log();
-//	  $writer = new Zend_Log_Writer_Stream( APPLICATION_PATH . '/data/logs/log.txt' );
-	  //$writer_firebug = new Zend_Log_Writer_Firebug();
-	  //$writer = new Zend_Log_Writer_Firebug();
 
-//	  $logger->addWriter($writer);
-	  //$logger->addWriter($writer_firebug);
-	  //Zend_Debug::dump($logger);
- //     Zend_Registry::set('logger',$logger);
-
-
-	}
 
 	protected function _initControllers()
     {

@@ -49,12 +49,7 @@ class NoteController extends Zend_Controller_Action
 	   */
 	  $notes = new Database_Notes($this->db);
 
-	  $param =  array(
-		'user_id' => $this->db_user->getId(),
-		'category_id' => '1',
-		'star' => 3,
-		'content' => 'liudingsansansan'
-	  );
+
 	  $this->post['user_id'] = $this->db_user->getId();
 	  $this->post['content'] = $this->post['data'];
 	  unset($this->post['data']);
@@ -70,9 +65,46 @@ class NoteController extends Zend_Controller_Action
 
 	  $history = Command_ModificationHistory::getInstance($notes);
 
+	  $logger = Zend_Registry::get('logger');
 	  $myNamespace = new Zend_Session_Namespace('history');
+
+	  $logger->info('per namespan history' . $_SESSION);
 	  $myNamespace->instance = serialize($history);
-	  var_dump($history);
+	  $logger->info('post namespan history' . $_SESSION);
+	  //var_dump($history);
+	}
+
+	public function delAction()
+	{
+	  //var_dump($this->post);
+	  /*
+	  foreach ($this->post as $key => $value)
+	  {
+		var_dump($value);
+	  }
+	   */
+	  $notes = new Database_Notes($this->db);
+
+
+	  $this->post['user_id'] = $this->db_user->getId();
+	  $this->post['content'] = $this->post['data'];
+	  unset($this->post['data']);
+	  $param = $this->post;
+	  //var_dump($param);
+
+	  $command = new Command_DelNoteCommand($notes,$param);
+
+	  $this->db_user->setCommand($command);
+	  $notes =  $this->db_user->executeCommand();
+	  $old_data = $this->db_user->getCommand()->getData();
+	  $this->view->notes = $notes; 
+
+	  $history = Command_ModificationHistory::getInstance($notes);
+
+	  $myNamespace = new Zend_Session_Namespace('history');
+
+	  $myNamespace->instance = serialize($history);
+	  //var_dump($history);
 	}
 
 	public function undoAction()

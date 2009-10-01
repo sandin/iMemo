@@ -32,15 +32,18 @@
 	<div id="intro"><a href="">Save the cheerleader,Save the world.</a></div>
 	<div id="message"><span>Test <{$t->_('Test')}> test it's <{$t->_('done')}>! <a href="<{$PUBLIC_URL}>/note/undo"><{t}>Undo<{/t}></a></span></div>
 	<ul id="user">
+
 	  <{if $user}>
 	  <li><a id="logout" href='<{$PUBLIC_URL}>/profile/index/logout'><{t}>Logout<{/t}></a></li>
-	  <li><a id="logout" href='<{$PUBLIC_URL}>/profile'> / <{t}>Setting<{/t}> / </a></li>
+	  <li><a id="logout" href='<{$PUBLIC_URL}>/profile'> / <{t}>Settings<{/t}> / </a></li>
 	  <li><b><{$user->username}></b></li>
+
 	  <{else}>
 	  <li><a href='<{$PUBLIC_URL}>/login'><{t}>Login<{/t}></a></li>
 	  <li><a href='<{$PUBLIC_URL}>/register'><{t}>Sign Up Now<{/t}> / </a></li> 
 	  <li><{t}>Welcome<{/t}>: <{t}>Guest<{/t}></li>
 	  <{/if}>
+
 	</ul><!-- /user -->
 
   </div><!-- /toolebar -->

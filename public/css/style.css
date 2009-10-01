@@ -171,6 +171,13 @@ p{line-height:1.4em;}
   background:		url(../images/msg_bg.gif) no-repeat left center;
   padding:			0 0px 0 20px;			
 }
+#message a {
+  color:			#0F8BC9;
+  text-decoration:  underline;
+}
+#message a:hover {
+  color:			#000;
+}
 /*------------- user -----------*/
 #user {
   float:			right;
