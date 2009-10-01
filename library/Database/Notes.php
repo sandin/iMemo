@@ -202,6 +202,7 @@ class Database_Notes extends DatabaseObject
 		$tag_id = $this->createTag($tag_name);
 	  }
 	  $this->makeTagLink($tag_id);
+	  return $tag_id;
 	}
   }
 

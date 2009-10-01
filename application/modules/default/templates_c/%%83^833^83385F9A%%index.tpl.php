@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.26, created on 2009-10-01 13:47:56
+<?php /* Smarty version 2.6.26, created on 2009-10-01 17:37:55
          compiled from index/index.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'index/index.tpl', 26, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'index/index.tpl', 20, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -21,15 +21,9 @@ unset($_smarty_tpl_vars);
 
   <div id="innerContent"> 
 	<div id="note_00" class="cate note clearfix">
-		<table>
-		  <tbody>
-			<tr>
-			  <td class="n_content editing"><input name="ajax-add-note" class="ajax-add-note real" type="text" autocomplete="off" src="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/note/add"></input></td>
-			  <td class="n_s"><-- Add a new note</td>
-			</tr>
-		  </tbody>
-		</table>
+	  <div class="n_col n_content editing"><input name="ajax-add-note" class="ajax-add-note real" type="text" autocomplete="off" src="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/note/add"></input></div>
+	  <div class="n_col n_s">Add a new note</div>
 	</div><!-- /note_00(addNote) --> 
 	
 	<?php if (count($this->_tpl_vars['notes']) == 0): ?>
@@ -43,32 +37,27 @@ unset($_smarty_tpl_vars);
 		<?php $_from = $this->_tpl_vars['notes']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['item']):
 ?>
-		<li class="note clearfix" <?php if (count($this->_tpl_vars['notes']) == 0): ?>id="js_note_templats" style="display:none;"<?php endif; ?> >
-		  <table>
-			<tbody>
-			  <tr>
-				<td class="n_lable star_<?php echo $this->_tpl_vars['item']['star']; ?>
-">&nbsp;</td>
-				<td class="n_t">&nbsp;</td>
-				<td class="n_s"><input type="checkbox"></input></td>
-				<td class="n_content"><?php echo $this->_tpl_vars['item']['content']; ?>
-</td>
-				<td class="n_date">1985-12-12 12:02</td>
-				<td class="n_del"><li title="" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"/></li></td>
-				<td class="n_id hidden"><?php echo $this->_tpl_vars['item']['user_id']; ?>
-</td>
-			  </tr>
-			</tbody>
-		  </table>
-		  <div class="n_tag">
-			  <?php $_from = $this->_tpl_vars['item']['tags']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+			<li class="note clearfix" <?php if (count($this->_tpl_vars['notes']) == 0): ?>id="js_note_templats" style="display:none;"<?php endif; ?> >
+				<div class="n_col n_lable star_<?php echo $this->_tpl_vars['item']['star']; ?>
+">&nbsp;</div>
+				<div class="n_col ">&nbsp;</div>
+				<div class="n_col n_state"><input type="checkbox"></input></div>
+				<div class="n_col n_content"><?php echo $this->_tpl_vars['item']['content']; ?>
+</div>
+				<div class="n_col n_del"><li title="" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"/></li></div>
+				<div class="n_col n_date">1985-12-12 12:02</div>
+				<div class="n_col n_id hidden"><?php echo $this->_tpl_vars['item']['user_id']; ?>
+</div>
+
+				<div class="n_tag">
+				  <?php $_from = $this->_tpl_vars['item']['tags']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['tag']):
 ?>
-				<span><?php echo $this->_tpl_vars['tag']['tag_name']; ?>
+					<span><?php echo $this->_tpl_vars['tag']['tag_name']; ?>
 </span>
-			  <?php endforeach; endif; unset($_from); ?>
-		  </div>
-		 </li><!-- /note -->
+				  <?php endforeach; endif; unset($_from); ?>
+			    </div>
+			</li><!-- /note -->
 	  <?php endforeach; endif; unset($_from); ?>
 	  </ul><!-- /notes_list -->
 	</div><!-- /cate -->

@@ -286,18 +286,17 @@ p{line-height:1.4em;}
 }
 
 
-.n_s {
-}
-
-.n_date {
+.n_col {
+  float:			left;
+  height:			17px;
+  line-height:		17px;
+  padding:			10px 0;
 }
 
 .n_content {
   background:		transparent;
   width:			76%;
-  padding:			10px;
 }
-
 
 .n_lable {
 /*  background:		#f9f9f9; #E0ECFF;*/  
@@ -306,17 +305,17 @@ p{line-height:1.4em;}
   border-right:		1px #ddd solid;
   cursor:			move;
 }
-.n_t ,
-.n_s {
-  width:			10px;
-}
 .n_date {
+  float:			right;
   color:			#888;
-  width:			80px;
   font-size:		11px;
+  margin-right:		10px;
 }
 .n_del {
-  width:			20px;
+  width:			28px;
+  float:			right;
+}
+.n_del li {
 }
 .n_tag {
   position:			absolute;
@@ -331,12 +330,32 @@ p{line-height:1.4em;}
   padding:			2px;
   margin:			0 0 0 2px;
 }
+.n_state {
+  margin-right:		5px; 
+}
 .note table {
   width:			100%;
   empty-cells:		show;
   border-collapse:	collapse;
   border-spacing:	0;
 }
+
+.extend .n_col {
+  display:			none;
+}
+li.extend .n_content,
+li.extend .n_date {
+  float:			none;
+  width:			100%;
+  display:			block;
+  background:		#eee;
+}
+li.extend .n_content .hidden,
+li.extend .n_date .hidden {
+  display:			inline;
+  width:			50px;
+}
+
 #editContent {
   width:			100%;
 }

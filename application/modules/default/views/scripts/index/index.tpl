@@ -13,14 +13,8 @@
 
   <div id="innerContent"> 
 	<div id="note_00" class="cate note clearfix">
-		<table>
-		  <tbody>
-			<tr>
-			  <td class="n_content editing"><input name="ajax-add-note" class="ajax-add-note real" type="text" autocomplete="off" src="<{$PUBLIC_URL}>/note/add"></input></td>
-			  <td class="n_s"><-- Add a new note</td>
-			</tr>
-		  </tbody>
-		</table>
+	  <div class="n_col n_content editing"><input name="ajax-add-note" class="ajax-add-note real" type="text" autocomplete="off" src="<{$PUBLIC_URL}>/note/add"></input></div>
+	  <div class="n_col n_s">Add a new note</div>
 	</div><!-- /note_00(addNote) --> 
 	
 	<{if $notes|@count == 0 }>
@@ -32,26 +26,21 @@
 	  <ul class="notes_list clearfix connectedSortable">
 
 		<{foreach from=$notes item=item}>
-		<li class="note clearfix" <{if $notes|@count == 0 }>id="js_note_templats" style="display:none;"<{/if}> >
-		  <table>
-			<tbody>
-			  <tr>
-				<td class="n_lable star_<{$item.star}>">&nbsp;</td>
-				<td class="n_t">&nbsp;</td>
-				<td class="n_s"><input type="checkbox"></input></td>
-				<td class="n_content"><{$item.content}></td>
-				<td class="n_date">1985-12-12 12:02</td>
-				<td class="n_del"><li title="" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"/></li></td>
-				<td class="n_id hidden"><{$item.user_id}></td>
-			  </tr>
-			</tbody>
-		  </table>
-		  <div class="n_tag">
-			  <{foreach from=$item.tags item=tag}>
-				<span><{$tag.tag_name}></span>
-			  <{/foreach}>
-		  </div>
-		 </li><!-- /note -->
+			<li class="note clearfix" <{if $notes|@count == 0 }>id="js_note_templats" style="display:none;"<{/if}> >
+				<div class="n_col n_lable star_<{$item.star}>">&nbsp;</div>
+				<div class="n_col ">&nbsp;</div>
+				<div class="n_col n_state"><input type="checkbox"></input></div>
+				<div class="n_col n_content"><{$item.content}></div>
+				<div class="n_col n_del"><li title="" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"/></li></div>
+				<div class="n_col n_date">1985-12-12 12:02</div>
+				<div class="n_col n_id hidden"><{$item.user_id}></div>
+
+				<div class="n_tag">
+				  <{foreach from=$item.tags item=tag}>
+					<span><{$tag.tag_name}></span>
+				  <{/foreach}>
+			    </div>
+			</li><!-- /note -->
 	  <{/foreach}>
 	  </ul><!-- /notes_list -->
 	</div><!-- /cate -->
