@@ -26,6 +26,23 @@ class IndexControllerTest extends ControllerTestCase
 	$this->dispatch("/");
   }
 
+  public function testNotesLinkTags()
+  {
+	$db = Zend_Registry::get('db');
+	$tag_link = new Database_NotesLinkTags($db);
+	$tag_link->loadByTagIdAndNoteId(28,1);
+	$this->assertEquals(1,$tag_link->getId());
+	$this->assertEquals(28,$tag_link->tag_id);
+  }
+
+  public function testNotesRemoveTagLink()
+  {
+	$db = Zend_Registry::get('db');
+	$note = new Database_Notes($db);
+	$note->load(1);
+	$this->assertEquals(1,$note->user_id);
+  }
+
   public function testDelNote()
   {
 	$db = Zend_Registry::get('db');
