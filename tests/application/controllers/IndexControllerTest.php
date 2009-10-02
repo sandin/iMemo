@@ -146,6 +146,55 @@ class IndexControllerTest extends ControllerTestCase
 
   }
 
+  /** 
+	* 测试 categorys 
+	* 
+	* @return 
+   */
+  public function testCategorys()
+  {
+	$db = Zend_Registry::get('db');
+	$new_note_id = Zend_Registry::get('new_note_id');
+
+	$note = new Database_Notes($db);
+	$note->load($new_note_id);
+
+	$category_name = 'new category1';
+	//新建一个category
+	$note->addCategory($category_name);
+
+	//重载用于确认add成功
+	$note->load($new_note_id);
+	$this->assertEquals($note->getId(),$new_note_id);
+
+	/*
+	//测试 createCategory
+	$category_id =  $note->createCategory($category_name);
+	$c_id = $note->categoryNameToId($category_name);
+	$this->assertEquals($c_id,$category_id);
+	*/
+
+	//测试 makeCategoryLink
+	//$category_link_id = $note->makeCategoryLink($category_id);
+
+	$note->load($new_note_id);
+	$new_category_is_added = $note->CategoryIsExistInThisNote($category_name);
+	$this->assertTrue($new_category_is_added);
+
+	//删除刚才新建的category	
+	$note->delCategory($category_name);
+
+	//重载用于确认del成功
+	$note->load($new_note_id);
+	$new_category_is_gone = $note->CategoryIsExistInThisNote($category_name);
+	$this->assertFalse($new_category_is_gone);
+  }
+
+  /** 
+	* 测试 delNote
+	* 
+	* @return 
+   */
   public function testDelNote()
   {
 	$db = Zend_Registry::get('db');

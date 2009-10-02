@@ -17,7 +17,9 @@ class Database_Notes extends DatabaseObject
 	$this->add('star',0);
 	$this->add('style',null);
 	$this->add('ts_created', time());
+
 	$this->join('tag','lds0019_notes_link_tags','note_id','note_id','tag_id');
+	$this->join('category','lds0019_notes_link_categorys','note_id','note_id','category_id');
 	$this->join('content','lds0019_notes_content','note_id','note_id','content');
 
 	//$this->profile = new Profile_User($db);
@@ -164,29 +166,7 @@ class Database_Notes extends DatabaseObject
 	return $result;
   }
 
-  /** 
-	* 删除tag
-	* 
-	* @param $tag_name
-	* 
-	* @return 
-   */
-  public function delTag($tag_name)
-  {
-	//确认Tag存在于该note里，避免不必要的错误删除(例如删除掉其他用户的tag)
-	if ($this->tagIsExistInThisNote($tag_name)) {
-	  $tag_id = $this->tagNameToId($tag_name);
-	  $this->removeTagLink($tag_id);
-	  $tag_link_db = new Database_NotesLinkTags($this->_db);
-	  //如果该tag还有其他连接，则只删除此条连接，而不删除tag本身
-	  if (!$tag_link_db->tagHasLink($tag_id)) {
-		$tag_db = new Database_NotesTags($this->_db);
-		$tag_db->load($tag_id);
-		$tag_db->delete();		
-	  }
-	}
 
-  }
 
   public function createTag($tag_name)
   {
@@ -199,6 +179,16 @@ class Database_Notes extends DatabaseObject
 	}
   }
 
+  public function createCategory($category_name)
+  {
+	if ($this->user_id) {
+	  $tag = new Database_NotesCategorys($this->_db);
+	  $tag->category_name = $category_name;	
+	  $tag->user_id = $this->user_id;	
+	  $tag->save();
+	  return $tag->getId();
+	}
+  }
   /** 
 	* 新建tag时，需要创造新的note与tag之间的link
 	* 需Database_NotesLinkTags支持 
@@ -219,6 +209,17 @@ class Database_Notes extends DatabaseObject
 	}
   }
 
+  public function makeCategoryLink($category_id)
+  {
+	if ($this->getId()) {
+	  $taglink = new Database_NotesLinkCategorys($this->_db);
+	  $taglink->category_id = $category_id;
+	  $taglink->note_id = $this->getid();
+	  $taglink->save();
+	  return $taglink->getId();
+	}
+  }
+
   public function removeTagLink($tag_id)
   {
 	$taglink = new Database_NotesLinkTags($this->_db);
@@ -226,6 +227,12 @@ class Database_Notes extends DatabaseObject
 	$taglink->delete();
   }
 
+  public function removeCategoryLink($category_id)
+  {
+	$taglink = new Database_NotesLinkCategorys($this->_db);
+	$taglink->loadByCategoryIdAndNoteId($category_id,$this->getId());
+	$taglink->delete();
+  }
   /** 
 	* 为note增加一个tag
 	* 增加时判断该用户是否已经拥有这个tag，没有则创建一个
@@ -244,6 +251,59 @@ class Database_Notes extends DatabaseObject
 	  }
 	  $this->makeTagLink($tag_id);
 	  return $tag_id;
+	}
+  }
+
+ public function addCategory($category_name)
+  {
+	//确定该note没有此tag
+	if (!$this->CategoryIsExistInThisNote($category_name)) {
+	  echo 261;
+	  if (!($category_id = $this->categoryNameToId($category_name)) ) {
+		echo 263;
+		$category_id = $this->createCategory($category_name);
+	  }
+	  $this->makeCategoryLink($category_id);
+	  return $category_id;
+	}
+  }
+
+    /** 
+	* 删除tag
+	* 
+	* @param $tag_name
+	* 
+	* @return 
+   */
+  public function delTag($tag_name)
+  {
+	//确认Tag存在于该note里，避免不必要的错误删除(例如删除掉其他用户的tag)
+	if ($this->tagIsExistInThisNote($tag_name)) {
+	  $tag_id = $this->tagNameToId($tag_name);
+	  $this->removeTagLink($tag_id);
+	  $tag_link_db = new Database_NotesLinkTags($this->_db);
+	  //如果该tag还有其他连接，则只删除此条连接，而不删除tag本身
+	  if (!$tag_link_db->tagHasLink($tag_id)) {
+		$tag_db = new Database_NotesTags($this->_db);
+		$tag_db->load($tag_id);
+		$tag_db->delete();		
+	  }
+	}
+  }
+
+   public function delCategory($category_name)
+  {
+	//确认Category存在于该note里，避免不必要的错误删除(例如删除掉其他用户的category)
+	if ($this->categoryIsExistInThisNote($category_name)) {
+	  $category_id = $this->categoryNameToId($category_name);
+	  $this->removeCategoryLink($category_id);
+	  $category_link_db = new Database_NotesLinkCategorys($this->_db);
+	  //如果该category还有其他连接，则只删除此条连接，而不删除category本身
+	  if (!$category_link_db->categoryHasLink($category_id)) {
+		$category_db = new Database_NotesCategorys($this->_db);
+		$category_db->load($category_id);
+		$category_db->delete();		
+	  }
 	}
   }
 
@@ -270,10 +330,20 @@ class Database_Notes extends DatabaseObject
 	}
   }
 
-
-  public function tagIsExistInthisUser()
+ public function categoryIsExistInThisNote($category_name)
   {
-
+	// 如果该用户拥有此名字的category，则检查此category是否已经赋予该note
+	if ($category_id = $this->categoryNameToId($category_name)) {
+	  $this_note_categorys = $this->getJoinRow('category');
+	  if (in_array($category_id,$this_note_categorys)) {
+		return true;    
+	  } else 	{
+		return false;
+	  }
+	} else {
+	  // 如果用户都不拥有这个category，则无需查询，直接可认定此note没有该category
+	  return false;
+	}
   }
 
   /** 
@@ -317,18 +387,46 @@ class Database_Notes extends DatabaseObject
 	}
   }
 
-
-   public function tagIsExist($note_id,$tag_name)
-   {
-	$myTags = $this->getTags($note_id);
-	foreach ($myTags as $tag) {
-	  if (in_array($tag_name, $tag)) {
-		return true;
-	  }
+ /** 
+	* tag_id 转换成 tag_name
+	* 
+	* @param $tag_id
+	* 
+	* @return 
+   */
+  public function categoryIdToName($category_id)
+  {
+	$category_db = new Database_NotesCategorys($this->_db);
+	if ($category_db->load($category_id)) {
+	  return $category_db->category_name;
+	} else {
+	  return false;
 	}
-	return false;
   }
 
+  /** 
+	* category name 转换成 category id
+	* 只在该用户的名下查找category_name,
+	* 也就是说如果该函数返回false，则可说明该用户没有此名字的category
+	* 
+	* @param $category_name
+	* 
+	* @return 
+   */
+ public function categoryNameToId($category_name)
+  {
+	if ($this->user_id) {
+	$result = $this->_db->fetchOne(
+	  "SELECT category_id FROM lds0019_notes_categorys 
+		  WHERE user_id = :user_id 
+	      AND category_name = :category_name",
+	  array('user_id' => $this->user_id,
+		  'category_name' => $category_name)
+	);
+
+	  return $result;
+	}
+  }
 
   public function getCategorys($category_id)
   {
@@ -355,7 +453,6 @@ class Database_Notes extends DatabaseObject
 	$new_result = array();
 	foreach ($result as $item) {
 	  $item['content']  = $this->getContent($item['note_id']) ;
-	  $item['categorys'] = $this->getCategorys($item['category_id']) ;
 	  $item['tags'] = $this->getTags($item['note_id']);
 	  
 	  $new_result[] = $item;
