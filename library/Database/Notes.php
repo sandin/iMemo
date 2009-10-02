@@ -76,7 +76,7 @@ class Database_Notes extends DatabaseObject
   }
 
   /** 
-	* only for $this->createNote
+	* $this->createNote需要过滤一些不能直接添加的数据
 	* 
 	* @param $key
 	*
@@ -110,8 +110,8 @@ class Database_Notes extends DatabaseObject
 	}
 
 	return $save;
-	
   }
+
   public function delNote($note_id = null ,$user_id = null)
   {
 	if ($this->load($note_id)) {
@@ -125,7 +125,7 @@ class Database_Notes extends DatabaseObject
   public function getContent($note_id = null)
   {
 	$content = new Database_NotesContent($this->_db);
-	$content->loadByNotesId($note_id);
+	$content-loadByNotesId($note_id);
  	return $content->content;
   }
 
@@ -164,13 +164,28 @@ class Database_Notes extends DatabaseObject
 	return $result;
   }
 
-  public function delTag($tag_id)
+  /** 
+	* 删除tag
+	* 
+	* @param $tag_name
+	* 
+	* @return 
+   */
+  public function delTag($tag_name)
   {
-	$this_note_tags = $this->getJoinRow('tag');
-	if (!in_array($tag_id,$this_note_tags)) {
-	  
+	//确认Tag存在于该note里，避免不必要的错误删除(例如删除掉其他用户的tag)
+	if ($this->tagIsExistInThisNote($tag_name)) {
+	  $tag_id = $this->tagNameToId($tag_name);
+	  $this->removeTagLink($tag_id);
+	  $tag_link_db = new Database_NotesLinkTags($this->_db);
+	  //如果该tag还有其他连接，则只删除此条连接，而不删除tag本身
+	  if (!$tag_link_db->tagHasLink($tag_id)) {
+		$tag_db = new Database_NotesTags($this->_db);
+		$tag_db->load($tag_id);
+		$tag_db->delete();		
+	  }
 	}
-	
+
   }
 
   public function createTag($tag_name)
@@ -184,6 +199,15 @@ class Database_Notes extends DatabaseObject
 	}
   }
 
+  /** 
+	* 新建tag时，需要创造新的note与tag之间的link
+	* 需Database_NotesLinkTags支持 
+	* 
+	* 
+	* @param $tag_id
+	* 
+	* @return 
+   */
   public function makeTagLink($tag_id)
   {
 	if ($this->getId()) {
@@ -191,9 +215,26 @@ class Database_Notes extends DatabaseObject
 	  $taglink->tag_id = $tag_id;
 	  $taglink->note_id = $this->getid();
 	  $taglink->save();
+	  return $taglink->getId();
 	}
   }
 
+  public function removeTagLink($tag_id)
+  {
+	$taglink = new Database_NotesLinkTags($this->_db);
+	$taglink->loadByTagIdAndNoteId($tag_id,$this->getId());
+	$taglink->delete();
+  }
+
+  /** 
+	* 为note增加一个tag
+	* 增加时判断该用户是否已经拥有这个tag，没有则创建一个
+	* 最终都是创建一个tag与note的link
+	* 
+	* @param $tag_name
+	* 
+	* @return 
+   */
   public function addTag($tag_name)
   {
 	//确定该note没有此tag
@@ -265,9 +306,11 @@ class Database_Notes extends DatabaseObject
   {
 	if ($this->user_id) {
 	$result = $this->_db->fetchOne(
-		"SELECT tag_id FROM lds0019_notes_tags WHERE user_id = :user_id AND tag_name = :tag_name",
-		array('user_id' => $this->user_id,
-			  'tag_name' => $tag_name)
+	  "SELECT tag_id FROM lds0019_notes_tags 
+		  WHERE user_id = :user_id 
+	      AND tag_name = :tag_name",
+	  array('user_id' => $this->user_id,
+		  'tag_name' => $tag_name)
 	);
 
 	  return $result;
