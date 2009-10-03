@@ -26,6 +26,18 @@ class Database_Notes extends DatabaseObject
 	$this->_db = $db;
   }
 
+  /** 
+	* 添加外链到此表的table
+	* ::todo:: 移到抽象类中
+	* 
+	* @param $join_id       join的标识符
+	* @param $joinTable     外链table
+	* @param $joinField		 
+	* @param $selfField		  
+	* @param $joinTargetField  外链table中的目标
+	* 
+	* @return 
+   */
   public function join($join_id,$joinTable,$joinField,$selfField,$joinTargetField)
   {
 	$this->_join[$join_id] = (object) array(
@@ -36,6 +48,11 @@ class Database_Notes extends DatabaseObject
 	);
   }
 
+  /** 
+	* 为了方便，load时自动加载join table中的目标值，
+	* 
+	* @return 
+   */
   public function postLoad()
   {
 	foreach ($this->_join as $join_id => $v) {
@@ -44,6 +61,13 @@ class Database_Notes extends DatabaseObject
 	//var_dump($this->_join);
   }
 
+  /** 
+	* 载入外链table的目标值，并以数组形式存入$this->_join['join_id']->rows
+	* 
+	* @param $join_id
+	* 
+	* @return 
+   */
   public function LoadJoin($join_id)
   {
 	$join = $this->_join[$join_id];
@@ -67,6 +91,13 @@ class Database_Notes extends DatabaseObject
 	$join->rows = $result;
   }
 
+  /** 
+	* 取出一条指定join_id的目标值数组
+	* 
+	* @param $join_id
+	* 
+	* @return 
+   */
   public function getJoinRow($join_id)
   {
 	return $this->_join[$join_id]->rows;
@@ -258,9 +289,7 @@ class Database_Notes extends DatabaseObject
   {
 	//确定该note没有此tag
 	if (!$this->CategoryIsExistInThisNote($category_name)) {
-	  echo 261;
 	  if (!($category_id = $this->categoryNameToId($category_name)) ) {
-		echo 263;
 		$category_id = $this->createCategory($category_name);
 	  }
 	  $this->makeCategoryLink($category_id);
