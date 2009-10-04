@@ -126,6 +126,14 @@ class Database_Notes extends DatabaseObject
 	}
   }
 
+  /** 
+	* 新建note	
+	* 	 
+	* @param $params
+	* 
+	* @return array 返回新增（修改）note的细节
+
+   */
   public function createNote($params)
   {
 	$save = array();
@@ -142,23 +150,59 @@ class Database_Notes extends DatabaseObject
 	  $this->setContent($this->getId(),$save['content']);
 	}
 
+	if (isset($save['tags'])) {
+	  $tags = $save['tags'];
+	  if (is_array($tags)) {
+		foreach ($tags as $tagname) {
+		  $this->addTag($tagname);
+		}
+	  } else {
+		$this->addTag($tags);
+	  }
+	}
+
+	if (isset($save['categorys'])) {
+	  $categorys = $save['categorys'];
+	  if (is_array($categorys)) {
+		foreach ($categorys as $category_name) {
+		  $this->addCategory($category_name);
+		}
+	  } else {
+		$this->addCategory($category_name);
+	  }
+	}
+
 	return $save;
   }
 
-  public function delNote($note_id = null ,$user_id = null)
+  /** 
+	* 必须先load
+	* 
+	* @return 
+   */
+  public function delNote()
   {
-	if ($this->load($note_id)) {
-	  $this->user_id = $user_id;
-	  $this->delContent($note_id);
-	  $this->delTag($tag_id);
-	  $this->delete();
+
+	$categorys = $this->getJoinRow('category');
+	foreach ($categorys as $category_id) {
+	  $category_name = $this->categoryIdToName($category_id);
+	  $this->delCategory($category_name);
 	}
+
+	$tags = $this->getJoinRow('tag');
+	foreach ($tags as $tag_id) {
+	  $tag_name = $this->tagIdToName($tag_id);
+	  $this->delTag($tag_name);
+	}
+
+	$this->delContent($this->getId());
+	return $this->delete();
   }
 
   public function getContent($note_id = null)
   {
 	$content = new Database_NotesContent($this->_db);
-	$content-loadByNotesId($note_id);
+	$content->loadByNotesId($note_id);
  	return $content->content;
   }
 
@@ -345,6 +389,7 @@ class Database_Notes extends DatabaseObject
    */
   public function tagIsExistInThisNote($tag_name)
   {
+	$this->postLoad();
 	// 如果该用户拥有此名字的tag，则检查此tag是否已经赋予该note
 	if ($tag_id = $this->tagNameToId($tag_name)) {
 	  $this_note_tags = $this->getJoinRow('tag');
@@ -361,6 +406,7 @@ class Database_Notes extends DatabaseObject
 
  public function categoryIsExistInThisNote($category_name)
   {
+	$this->postLoad();
 	// 如果该用户拥有此名字的category，则检查此category是否已经赋予该note
 	if ($category_id = $this->categoryNameToId($category_name)) {
 	  $this_note_categorys = $this->getJoinRow('category');
@@ -490,16 +536,22 @@ class Database_Notes extends DatabaseObject
 	return $new_result;
   }
 
-  public function getOneNote($note_id)
+  public function getOneNote()
   {
-	$note_info = array();
-	$this->load($note_id);
-	$this->_properties['content'] = $this->getContent($note_id);
-	$this->getTags($note_id);
-	$this->getCategorys($this->category_id);
 
-	return $this->_param;
+	$result = $this->_db->fetchRow(
+	  "SELECT * FROM $this->_table 
+	      WHERE note_id = :note_id",
+	  array('note_id' => $this->getId())
+	);	
 
+	$result['tags'] = $this->getJoinRow('tag'); 
+	$result['categorys'] = $this->getJoinRow('category'); 
+	$contents = $this->getJoinRow('content'); 
+	$result['content'] = $contents[0];
+
+	//var_dump( $result );
+	return $result;
   }
 /*
   protected function preInsert(){}

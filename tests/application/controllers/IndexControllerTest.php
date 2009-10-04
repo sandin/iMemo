@@ -188,6 +188,9 @@ class IndexControllerTest extends ControllerTestCase
 	$note->load($new_note_id);
 	$new_category_is_gone = $note->CategoryIsExistInThisNote($category_name);
 	$this->assertFalse($new_category_is_gone);
+
+	//cleanup
+	$note->delNote($new_note_id);
   }
 
   /** 
@@ -198,6 +201,50 @@ class IndexControllerTest extends ControllerTestCase
   public function testDelNote()
   {
 	$db = Zend_Registry::get('db');
+	$note = new Database_Notes($db);
+
+
+	$post = array(
+	  'user_id' => 1,
+	  'content' => 'liudingsan',
+	  'tags' => 'tag_when_addNote',
+	  'categorys' => array('cate1','cate2')
+	);
+	//创建一个新note,以post数组为参数
+	$new_note = $note->createNote($post);
+	$new_note_id = $new_note['note_id'];
+
+	$note->load($new_note_id);
+	$tag = $note->tagIsExistInThisNote('tag_when_addNote');
+	$this->assertTrue($tag);
+	
+	$this->assertTrue($note->categoryIsExistInThisNote('cate1'));
+	$this->assertTrue($note->categoryIsExistInThisNote('cate2'));
+
+	$note_all = $note->getOneNote();
+//	var_dump($note_all);
+
+	//新建一个tag，用于判断delNote是否能删除其归属的tag
+	$tag_name = 'new_tag_12_18';
+	$note->addTag($tag_name);
+
+	//重载，检查addTag正常
+	$note->load($new_note_id);
+	$tag_is_added = $note->tagIsExistInThisNote($tag_name);
+	$this->assertTrue($tag_is_added);
+
+	//测试delNote
+	$result = $note->delNote();
+	$this->assertTrue($result);
+
+	//重载，测试tag是否删除
+	$note_is_gone = $note->load($new_note_id);
+	$this->assertFalse($note_is_gone);
+	//$tag_is_gone = $note->tagIsExistInThisNote($tag_name);
+	//$this->assertFalse($tag_is_gone);
+
   }
+
+
 
 }
