@@ -182,19 +182,18 @@ class Database_Notes extends DatabaseObject
    */
   public function delNote()
   {
-
-	$categorys = $this->getJoinRow('category');
-	foreach ($categorys as $category_id) {
-	  $category_name = $this->categoryIdToName($category_id);
-	  $this->delCategory($category_name);
+	if ($categorys = $this->getJoinRow('category')) {
+	  foreach ($categorys as $category_id) {
+		$category_name = $this->categoryIdToName($category_id);
+		$this->delCategory($category_name);
+	  }
 	}
-
-	$tags = $this->getJoinRow('tag');
-	foreach ($tags as $tag_id) {
-	  $tag_name = $this->tagIdToName($tag_id);
-	  $this->delTag($tag_name);
+	if ($tags = $this->getJoinRow('tag')) {
+	  foreach ($tags as $tag_id) {
+		$tag_name = $this->tagIdToName($tag_id);
+		$this->delTag($tag_name);
+	  }
 	}
-
 	$this->delContent($this->getId());
 	return $this->delete();
   }

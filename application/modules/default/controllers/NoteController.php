@@ -76,33 +76,18 @@ class NoteController extends Zend_Controller_Action
 
 	public function delAction()
 	{
-	  //var_dump($this->post);
-	  /*
-	  foreach ($this->post as $key => $value)
-	  {
-		var_dump($value);
-	  }
-	   */
+	  $this->_helper->viewRenderer->setNoRender();	  
+
 	  $notes = new Database_Notes($this->db);
+	  $note_id = $this->post;
 
-
-	  $this->post['user_id'] = $this->db_user->getId();
-	  $this->post['content'] = $this->post['data'];
-	  unset($this->post['data']);
-	  $param = $this->post;
-	  //var_dump($param);
-
-	  $command = new Command_DelNoteCommand($notes,$param);
+	  $command = new Command_DelNoteCommand($notes,$note_id);
 
 	  $this->db_user->setCommand($command);
 	  $notes =  $this->db_user->executeCommand();
-	  $old_data = $this->db_user->getCommand()->getData();
-	  $this->view->notes = $notes; 
 
 	  $history = Command_ModificationHistory::getInstance($notes);
-
 	  $myNamespace = new Zend_Session_Namespace('history');
-
 	  $myNamespace->instance = serialize($history);
 	  //var_dump($history);
 	}

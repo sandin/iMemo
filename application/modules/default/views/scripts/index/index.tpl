@@ -31,7 +31,9 @@
 				<div class="n_col ">&nbsp;</div>
 				<div class="n_col n_state"><input type="checkbox"></input></div>
 				<div class="n_col n_content"><{$item.content}></div>
-				<div class="n_col n_del"><li title="" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"/></li></div>
+				<div class="n_col n_del">
+				  <a title="a" onclick="return false" href="<{$PUBLIC_URL}>/note/del" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
+				</div>
 				<div class="n_col n_date">1985-12-12 12:02</div>
 				<div class="n_col n_id hidden"><{$item.user_id}></div>
 

@@ -59,6 +59,23 @@
   });
  }
 
+ function ajaxDelNote(jqueryObj,preFunc,postFunc,data)
+ {
+
+  var $obj = jqueryObj;
+  var url = $obj.attr('href');
+
+  preFunc();
+
+  $.ajax({
+	type:"POST",
+  	url: url,
+	data: data,
+	success: postFunc 
+  });
+
+ }
+
  /** 
   *	make note Html 
   * 
@@ -145,7 +162,17 @@ $(function(){
 		addNoteBindKeyDown($editContent);
 	}
   })
-  
+ 
+  $('.n_del>a').each(function(){
+	$(this).click(function(){
+	  var note_id = $(this).parent().siblings().filter('.n_id').text();
+	  var data = {
+		'note_id' : note_id
+	  }
+	  ajaxDelNote($(this),function(){},function(){},data);
+	});
+	
+  });
 
 
   //$('.n_c').TextAreaExpander(); 

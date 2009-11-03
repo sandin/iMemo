@@ -44,6 +44,7 @@ p{line-height:1.4em;}
 }
 .ui-lds-icon 
 {
+  display:			block;
   width:			17px;
   height:			17px;
   cursor:			pointer;

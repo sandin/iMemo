@@ -24,15 +24,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	  //$logger->addWriter($writer_firebug);
 	  //Zend_Debug::dump($logger);
       Zend_Registry::set('logger',$logger);
-
-
 	}
 
+/*
     protected function _initSession()
 	{
-	  $logger = Zend_Registry::get('logger');
-	  $logger->info('boot');
-
 	  $db = Zend_Registry::get('db');
 	  Zend_Db_Table_Abstract::setDefaultAdapter($db);
 	  //配置SessionDB字段  
@@ -49,17 +45,14 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	  //new Zend_Session_SaveHandler_DbTable  
 	  Zend_Session::setSaveHandler(new Zend_Session_SaveHandler_DbTable($config));
 	  if(!isset($_SESSION)){
-		$logger->info('before start boot' . $_SESSION );
 		Zend_Session::start();
-		$logger->info('after start boot' . $_SESSION );
 	  }
-	  //var_dump(Zend_Session::getOptions());
+	  var_dump(Zend_Session::getOptions());
 	}
-
+*/
+	
     protected function _initAcl()
 	{
-	 
-
 	}
 
 	protected function _initTranslate()
@@ -75,7 +68,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
     protected function _initView()
     {
-
 	  $auth = Zend_Auth::getInstance(); 
 	  $storage = new Zend_Auth_Storage_Session();
 	  $auth->setStorage($storage);

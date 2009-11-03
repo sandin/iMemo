@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-10-04 17:06:26
+<?php /* Smarty version 2.6.26, created on 2009-11-02 14:11:14
          compiled from index/index.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'index/index.tpl', 20, false),)), $this); ?>
@@ -44,7 +44,10 @@ unset($_smarty_tpl_vars);
 				<div class="n_col n_state"><input type="checkbox"></input></div>
 				<div class="n_col n_content"><?php echo $this->_tpl_vars['item']['content']; ?>
 </div>
-				<div class="n_col n_del"><li title="" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"/></li></div>
+				<div class="n_col n_del">
+				  <a title="a" onclick="return false" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/note/del" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
+				</div>
 				<div class="n_col n_date">1985-12-12 12:02</div>
 				<div class="n_col n_id hidden"><?php echo $this->_tpl_vars['item']['user_id']; ?>
 </div>
