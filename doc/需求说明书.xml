@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<book>
+  <bookinfo>
+    <title>需求说明书</title>
+
+    <author>
+      <firstname>lds</firstname>
+
+      <surname></surname>
+
+      <affiliation>
+        <orgname></orgname>
+      </affiliation>
+    </author>
+
+    <pubdate></pubdate>
+  </bookinfo>
+
+  <chapter>
+    <title>系统需求</title>
+
+    <section>
+      <title>基本需求</title>
+
+      <section>
+        <title>用户</title>
+
+        <para>便条操作（添加，删除，修改）</para>
+
+        <para>分类操作（添加，删除，重命名）</para>
+
+        <para>个人资料操作（注册，修改，注销）</para>
+      </section>
+
+      <section>
+        <title>管理员</title>
+
+        <para>用户管理（添加，删除，修改）</para>
+
+        <para>系统配置</para>
+      </section>
+    </section>
+
+    <section>
+      <title>扩展需求</title>
+
+      <para>共享操作（共享便条/分类）</para>
+
+      <para>RSS输出</para>
+
+      <para>API</para>
+    </section>
+  </chapter>
+</book>

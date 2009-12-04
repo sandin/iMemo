@@ -19,12 +19,9 @@ class Command_ModificationHistory
   {
     $logger = Zend_Registry::get('logger');
 	if(self::$instance == null) {
-		  $logger->info('per modification' . $_SESSION);
 		 $myNamespace = new Zend_Session_Namespace('history');
-		  $logger->info('post modification' . $_SESSION);
 	  if (isset($myNamespace->instance)) {
 		self::$instance = unserialize($myNamespace->instance);
-		  $logger->info('post unserialize modification' . $_SESSION);
 	  }	else {	
 		self::$instance = new Command_ModificationHistory($parent);
 	  }
