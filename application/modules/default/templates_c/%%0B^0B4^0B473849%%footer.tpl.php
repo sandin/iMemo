@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-12 18:36:04
+<?php /* Smarty version 2.6.26, created on 2009-12-12 19:54:10
          compiled from /home/svn/0019/trunk/application/templates/footer.tpl */ ?>
 <?php if (! isset ( $this->_tpl_vars['noLayout'] )): ?>
 
@@ -21,6 +21,8 @@
 /share/jquery/js/jquery-ui-1.7.2.custom.min.js"></script>
 <script type="text/javascript" src="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /share/jquery/js/jquery.textarea-expander.js"></script>
+<script type="text/javascript" src="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/share/json2.min.js"></script>
 <script type="text/javascript" src="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /js/all.js"></script>
 </body>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-12 18:36:03
+<?php /* Smarty version 2.6.26, created on 2009-12-12 19:54:10
          compiled from index/index.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'debug', 'index/index.tpl', 2, false),)), $this); ?>
