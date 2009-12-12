@@ -50,6 +50,10 @@ class NoteController extends Zend_Controller_Action
 	  $this->db_user->setCommand($command);
 	  $notes =  $this->db_user->executeCommand();
 	  $this->view->notes = $notes; 
+
+	  $result = array('states' => 'success','noteInfo' => $notes);
+	  $json = Zend_Json::encode($result);
+	  echo $json;
 	}
 
 	public function delAction()
@@ -69,6 +73,9 @@ class NoteController extends Zend_Controller_Action
 	  $myNamespace->instance = serialize($history);
 	  //var_dump($history);
 */
+	  $result = array('states' => 'success');
+	  $json = Zend_Json::encode($result);
+	  echo $json;
 	}
 
 	public function undoAction()

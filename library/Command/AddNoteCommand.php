@@ -9,6 +9,7 @@ class Command_AddNoteCommand extends Command_Abstract
 	$params = $this->_param;
 
 	$data =	$note->createNote($params);
+	return $data;
 
   }
 

@@ -9,7 +9,6 @@ class Command_DelNoteCommand extends Command_Abstract
 	$note->load($note_id);
 
 	$data =	$note->delNote();
-	var_dump($data);
 
 	$old_data = $data;
 	//var_dump($this->_mHistory);

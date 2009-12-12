@@ -1,103 +1,63 @@
-/*---------------- function ---------------------*/ 
-
-
-/** 
- * add a new note by ajax when keydown [ENTER] 
- * 
- * @param jquery-object $target 
- * 
- * @return 
- */
-  function addNoteBindKeyDown($target)
-  {
    
-   var $addNote = $target.keydown(function(e){
+  //add note
+  $('.ajax-add-note').keydown(function(e){
 	// console.log(e.keyCode);
 	// bug-001 linux scim(拼音) sometimes 090925	
    if (e.keyCode == 13) {
+	  //为ajax准备data
 	  var data = $(this).attr('value');
 	  var json = {
 		data : data
 	  };
-	  function postFunc(data,textStatus)
-	  {	
-		$addNote.attr('value',''); 
-		return false; 
+
+	  //为ajax准备url
+	  if ($(this).hasClass('real')) {
+	    var url = $(this).attr('src');
+	  } else {
+		var url = $('.ajax-add-note.real').attr('src');
+	  }//fi
+	  
+	  //初始化note调度中心,进行ajax发送数据
+	  var note = new Note();
+	  note.controlCenter('createNote',url,json);
+	  
+	  //进入初始状态,清空已发送的输入内容
+	  $(this).attr('value','');
+
+	}//fi
+  });//end keydown  
+
+ //del note 
+  $('.n_del>a').each(function(){
+	$(this).click(function(){
+	  var $note = $(this).parent().parent();
+
+	  //为ajax准备data
+	  var note_id = $(this).parent().siblings().filter('.n_id').text();
+	  var json = {
+		'note_id' : note_id
 	  }
-	  function preFunc()
-	  {
-		var obj = {content: data};
-		makeNoteHTML(obj);
-	  }
-	  ajaxAddNote(preFunc,postFunc,json);
-	}
-	});  
-  }
 
- /** 
-  * ajax to add/modify a new note
-  * 
-  * @param function func (ajax success function(data, textStatus))
-  * 
-  * @return 
-  */
- function ajaxAddNote(preFunc,postFunc,data)
- {
-  preFunc();
-		  
-  if ($(this).hasClass('real')) {
-	var url = $(this).attr('src');
-  } else {
-	var url = $('.ajax-add-note.real').attr('src');
-  }
+	  //为ajax准备url
+	  var url = $(this).attr('href');
+	  
+	  //初始化note调度中心,进行ajax发送数据
+	  var note = new Note();
+	  note.controlCenter('delNote',url,json);
 
-  $.ajax({
-	type:"POST",
-  	url: url,
-	data: data,
-	success: postFunc 
-  });
- }
-
- function ajaxDelNote(jqueryObj,preFunc,postFunc,data)
- {
-
-  var $obj = jqueryObj;
-  var url = $obj.attr('href');
-
-  preFunc();
-
-  $.ajax({
-	type:"POST",
-  	url: url,
-	data: data,
-	success: postFunc 
+	  //隐藏删除内容
+	  $note.fadeOut('fast'); 
+    });
+	
   });
 
- }
 
- /** 
-  *	make note Html 
-  * 
-  * @param json obj 
-  * 
-  * @return  void
-  */
- function makeNoteHTML(obj){
-	var $new_note = $('#js_note_templats').clone(true);
-	$new_note.removeAttr('id').removeAttr('style');
-   //console.log($new_note);
 
-	$new_note.find('td').not('.n.s').html('');
-	$new_note.find('.n_content').html(obj.content);
-	$('.notes_list:visible').prepend($new_note);
-  }
 
 /*-------------------------------------------------------------*/
 
 $(function(){
   
-  ///////////////////////////////////////////////////////	
 	
   $note = $('.note');
 
@@ -158,19 +118,6 @@ $(function(){
 	}
   })
 
- //删除按钮 
-  $('.n_del>a').each(function(){
-	$(this).click(function(){
-	  var $note = $(this).parent().parent();
-	  var note_id = $(this).parent().siblings().filter('.n_id').text();
-	  var data = {
-		'note_id' : note_id
-	  }
-	  ajaxDelNote($(this),function(){},function(){},data);
-	  $note.fadeOut('fast'); 
-    });
-	
-  });
 
 
   //$('.n_c').TextAreaExpander(); 
@@ -233,8 +180,6 @@ $(function(){
 	return false; 
 	});//.trigger('click');	  
 
-  // bind add note
-  addNoteBindKeyDown($('.ajax-add-note')); 
 
   $('ul#icons li,#search_submit,.ui-lds-icon').hover(
 	function() { $(this).addClass('ui-state-hover'); },

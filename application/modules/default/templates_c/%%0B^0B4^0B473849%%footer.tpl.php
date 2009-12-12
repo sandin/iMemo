@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-12 19:54:10
+<?php /* Smarty version 2.6.26, created on 2009-12-13 00:08:18
          compiled from /home/svn/0019/trunk/application/templates/footer.tpl */ ?>
 <?php if (! isset ( $this->_tpl_vars['noLayout'] )): ?>
 
@@ -25,6 +25,8 @@
 /share/json2.min.js"></script>
 <script type="text/javascript" src="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /js/all.js"></script>
+<script type="text/javascript" src="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/js/note.class.js"></script>
 </body>
 
 <?php endif; ?>
