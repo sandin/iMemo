@@ -15,7 +15,17 @@ abstract class Command_Abstract
 
   public function unExecuteCommand(){}
 
-  public function setParam($param){
+  public function setParam($param)
+  {
 	$this->_param = $param;
+  }
+
+  public function getParam($name = null)
+  {
+	if ($name && $name != null)	{
+	  return $this->_param[$name];
+	} else {
+	  return $this->_param;
+	}
   }
 }

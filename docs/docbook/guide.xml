@@ -38,13 +38,15 @@
 
       <para>系统要求:PHP5,MySQL5,Unix/Linux</para>
 
+      <para>PHP扩展:GD;</para>
+
       <para>开发框架:Zend Framework 1.9.x</para>
 
       <para>模板引擎:Smarty 3.0</para>
 
       <para>测试网址:http://localhost/svn/0019/trunk/public/</para>
 
-      <para>测试帐号:lds:123</para>
+      <para>测试帐号:lds2012@gmail.com:123456789</para>
     </section>
 
     <section>
@@ -54,14 +56,13 @@
 
       <para>2) 在传统的单纯规划时间的基础上,提供记录功能.即该管理时间理念为:</para>
 
-      <para> (1)首先通过便签来列出所需完成的任务(传统Todo list功能)</para>
+      <para>(1)首先通过便签来列出所需完成的任务(传统Todo list功能)</para>
 
-      <para> (2)然后按紧急或重要程度去规划自己的时间(可运用GTD分类或“四象限”法)</para>
+      <para>(2)然后按紧急或重要程度去规划自己的时间(可运用GTD分类或“四象限”法)</para>
 
-      <para> (3)最后可在进行每一项任务的开始和结束时记录它们的时间(即跟踪计划的成效).</para>
+      <para>(3)最后可在进行每一项任务的开始和结束时记录它们的时间(即跟踪计划的成效).</para>
 
-      <para>
-      (4)事后便可通过日志数据来总结自己时间管理的成效(对比计划和现实的差异,总结完成任务的效率,记录每天做成了哪些任务)</para>
+      <para>(4)事后便可通过日志数据来总结自己时间管理的成效(对比计划和现实的差异,总结完成任务的效率,记录每天做成了哪些任务)</para>
     </section>
 
     <section>
@@ -303,7 +304,7 @@
       <section>
         <title>更新模块</title>
 
-        <para>::待开发:: </para>
+        <para>::待开发::</para>
       </section>
 
       <section>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-09 14:55:33
+<?php /* Smarty version 2.6.26, created on 2009-12-10 14:45:44
          compiled from file:/usr/share/php/smarty/debug.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'assign_debug_info', 'file:/usr/share/php/smarty/debug.tpl', 3, false),array('function', 'cycle', 'file:/usr/share/php/smarty/debug.tpl', 119, false),array('modifier', 'escape', 'file:/usr/share/php/smarty/debug.tpl', 102, false),array('modifier', 'string_format', 'file:/usr/share/php/smarty/debug.tpl', 105, false),array('modifier', 'debug_print_var', 'file:/usr/share/php/smarty/debug.tpl', 121, false),)), $this); ?>

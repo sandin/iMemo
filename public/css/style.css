@@ -84,7 +84,18 @@ p{line-height:1.4em;}
 }
 
 #footer {
-  padding:			0 5px;
+  border-top:		1px #ddd dashed;
+  padding:			5px 0;
+  margin:			10px 0 0;
+}
+#footer p.coryright {
+  float:			left;
+}
+#footer ul.links {
+  float:			right;
+}
+#footer .links li {
+  display:			inline;
 }
 
 #header ,
@@ -277,6 +288,7 @@ p{line-height:1.4em;}
 #innerContent #note_00 {
   background:		#fff;
   margin-bottom:	10px;
+  padding:			0 0 0 10px;
 }
 
 .ajax-add-note {
@@ -305,6 +317,10 @@ p{line-height:1.4em;}
   width:			10px;
   border-right:		1px #ddd solid;
   cursor:			move;
+}
+.n_lable.hover,
+.n_lable:hover {
+  background:		url(../images/google-tasks-sprites6.png) no-repeat -252px 0;
 }
 .n_date {
   float:			right;
@@ -363,6 +379,12 @@ li.extend .n_date .hidden {
 
 .datepicker {
   width:			80px;
+}
+
+/*++++++++++++++++++ welcome page ++++++++++++++++++++*/
+#main.welcome-page {
+  text-align:		center;
+  min-height:		200px;
 }
 
 /*==================== share ==================*/

@@ -16,6 +16,7 @@ class NoteController extends Zend_Controller_Action
 	  $this->db_user = new Database_User($this->db);
 	  $this->db_user->load($this->user->user_id);
 
+	  //预处理post数据
 	  $this->post_filter = new Zend_Filter();
 	  $this->post_filter//->addFilter(new Zend_Filter_HtmlSpecialChars())
 						->addFilter(new Zend_Filter_StringTrim());
@@ -30,8 +31,6 @@ class NoteController extends Zend_Controller_Action
 
 	public function preDispatch() 
 	{
-	
-	
 	}
 
 	public function indexAction()
@@ -40,56 +39,36 @@ class NoteController extends Zend_Controller_Action
 
     public function addAction()
 	{
-	  //var_dump($this->post);
-	  /*
-	  foreach ($this->post as $key => $value)
-	  {
-		var_dump($value);
-	  }
-	   */
 	  $notes = new Database_Notes($this->db);
-
 
 	  $this->post['user_id'] = $this->db_user->getId();
 	  $this->post['content'] = $this->post['data'];
 	  unset($this->post['data']);
 	  $param = $this->post;
-	  //var_dump($param);
 
 	  $command = new Command_AddNoteCommand($notes,$param);
-
 	  $this->db_user->setCommand($command);
 	  $notes =  $this->db_user->executeCommand();
-	  $old_data = $this->db_user->getCommand()->getData();
 	  $this->view->notes = $notes; 
-
-	  $history = Command_ModificationHistory::getInstance($notes);
-
-	  $logger = Zend_Registry::get('logger');
-	  $myNamespace = new Zend_Session_Namespace('history');
-
-	  $logger->info('per namespan history' . $_SESSION);
-	  $myNamespace->instance = serialize($history);
-	  $logger->info('post namespan history' . $_SESSION);
-	  //var_dump($history);
 	}
 
 	public function delAction()
 	{
+	  //不需要视图
 	  $this->_helper->viewRenderer->setNoRender();	  
 
 	  $notes = new Database_Notes($this->db);
-	  $note_id = $this->post;
+	  $param = $this->post;
 
-	  $command = new Command_DelNoteCommand($notes,$note_id);
-
+	  $command = new Command_DelNoteCommand($notes,$param);
 	  $this->db_user->setCommand($command);
 	  $notes =  $this->db_user->executeCommand();
-
+/*
 	  $history = Command_ModificationHistory::getInstance($notes);
 	  $myNamespace = new Zend_Session_Namespace('history');
 	  $myNamespace->instance = serialize($history);
 	  //var_dump($history);
+*/
 	}
 
 	public function undoAction()
@@ -105,23 +84,12 @@ class NoteController extends Zend_Controller_Action
 
     public function aAction()
 	{
-	  $notes = new Database_Notes($this->db);
-	  $this->_helper->viewRenderer->setNoRender();	  
-
-	  $myNamespace = new Zend_Session_Namespace('myNamespace');
-	  $old = $myNamespace->old_data ;
-	 
-	  $command = new Command_AddNoteCommand($notes,null);
-	  $this->db_user->setCommand($command);
-	  $this->db_user->getCommand()->setData($old);
-	  $this->db_user->unExecuteCommand();
 	}
 	
 
 
 	public function postDispatch()
 	{
-	  //echo '<br />end of file<br />';
 	}
 
 	public function __call($method, $args)

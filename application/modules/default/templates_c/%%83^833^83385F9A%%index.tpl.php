@@ -1,12 +1,15 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-09 15:55:44
+<?php /* Smarty version 2.6.26, created on 2009-12-12 18:36:03
          compiled from index/index.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'index/index.tpl', 20, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'debug', 'index/index.tpl', 2, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+<?php echo smarty_function_debug(array(), $this);?>
+
+<?php if ($this->_tpl_vars['user']): ?>
 
 <div id="main" class="clearfix">
 
@@ -26,18 +29,31 @@ unset($_smarty_tpl_vars);
 	  <div class="n_col n_s">Add a new note</div>
 	</div><!-- /note_00(addNote) --> 
 	
-	<?php if (count($this->_tpl_vars['notes']) == 0): ?>
-	  <?php $this->assign('notes', "array(array('star'=>3))"); ?>
-	<?php endif; ?>
-
 	<div id="cate-1" class="cate">
 	  
 	  <ul class="notes_list clearfix connectedSortable">
+			<!-- note templats -->
+			<li class="note clearfix" id="js_note_templats" style="display:none;">
+				<div class="n_col n_lable star_<?php echo $this->_tpl_vars['item']['star']; ?>
+">&nbsp;</div>
+				<div class="n_col ">&nbsp;</div>
+				<div class="n_col n_state"><input type="checkbox"></input></div>
+				<div class="n_col n_content">::content::</div>
+				<div class="n_col n_del">
+				  <a title="a" onclick="return false" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/note/del" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
+				</div>
+				<div class="n_col n_date">::n_date::</div>
+				<div class="n_col n_id hidden">::note_id::</div>
 
+				<div class="n_tag">
+				   <span>::tag::</span>
+				</div>
+			</li><!-- /note js_note_templats -->
 		<?php $_from = $this->_tpl_vars['notes']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['item']):
 ?>
-			<li class="note clearfix" <?php if (count($this->_tpl_vars['notes']) == 0): ?>id="js_note_templats" style="display:none;"<?php endif; ?> >
+			<li class="note clearfix" <?php if ($this->_tpl_vars['notes'] == 0): ?>id="js_note_templats" style="display:none;"<?php endif; ?> >
 				<div class="n_col n_lable star_<?php echo $this->_tpl_vars['item']['star']; ?>
 ">&nbsp;</div>
 				<div class="n_col ">&nbsp;</div>
@@ -49,7 +65,7 @@ unset($_smarty_tpl_vars);
 /note/del" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
 				</div>
 				<div class="n_col n_date">1985-12-12 12:02</div>
-				<div class="n_col n_id hidden"><?php echo $this->_tpl_vars['item']['user_id']; ?>
+				<div class="n_col n_id hidden"><?php echo $this->_tpl_vars['item']['note_id']; ?>
 </div>
 
 				<div class="n_tag">
@@ -73,6 +89,13 @@ unset($_smarty_tpl_vars);
   </div><!-- /innerContent -->
 </div><!-- /main (main tags)-->
 
+<?php else: ?>
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/welcome.tpl", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+<?php endif; ?>
 
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/footer.tpl", 'smarty_include_vars' => array()));

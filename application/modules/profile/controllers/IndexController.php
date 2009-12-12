@@ -104,6 +104,11 @@ class Profile_IndexController extends Zend_Controller_Action
 	  $this->_redirect('/');
 	}
 
+	/** 
+	  * 制作验证图片
+	  * 
+	  * @return arrya $captcha_all
+	 */
 	public function makeCaptcha() {
 	  $captcha_all = array();
 	  // Originating request:
@@ -117,8 +122,8 @@ class Profile_IndexController extends Zend_Controller_Action
 		'width'	  => 155,
 		'height'  => 50,
 		'timeout' => 300,
-		'font' => '/usr/share/fonts/truetype/ttf-lds/MONACO.TTF', 
-		'fontsize' => 20,
+		'font' =>  BOOT_PATH . '/others/fonts/MONACO.TTF', 
+		'fontsize' => 24,
 		'imgDir' =>  BOOT_PATH	. '/public/temp/',
 		'imgUrl' =>  PUBLIC_URL . '/temp/',
 	   ));

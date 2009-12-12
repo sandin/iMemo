@@ -84,12 +84,8 @@
   * @return  void
   */
  function makeNoteHTML(obj){
-   if( $('#js_note_templates').length > 0 ) {
 	var $new_note = $('#js_note_templats').clone(true);
 	$new_note.removeAttr('id').removeAttr('style');
-   } else {
-	var $new_note = $('.note:visible:last').clone(true);
-   }
    //console.log($new_note);
 
 	$new_note.find('td').not('.n.s').html('');
@@ -135,10 +131,9 @@ $(function(){
 	}
   });
 
-  /////////////////////////////////////////////////////////
 
   // db click to change a note content
-  $('.n_content').dblclick(function(){
+  $('.n_content').click(function(){
 	if (!$(this).hasClass('editing')) {
 	  var $td = $(this);
 	  $(this).addClass('editing');
@@ -162,15 +157,18 @@ $(function(){
 		addNoteBindKeyDown($editContent);
 	}
   })
- 
+
+ //删除按钮 
   $('.n_del>a').each(function(){
 	$(this).click(function(){
+	  var $note = $(this).parent().parent();
 	  var note_id = $(this).parent().siblings().filter('.n_id').text();
 	  var data = {
 		'note_id' : note_id
 	  }
 	  ajaxDelNote($(this),function(){},function(){},data);
-	});
+	  $note.fadeOut('fast'); 
+    });
 	
   });
 

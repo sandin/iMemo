@@ -5,11 +5,11 @@ class Command_DelNoteCommand extends Command_Abstract
   public function executeCommand()
   {
 	$note = $this->_receiver;
-	$note_id = $this->_param;
+	$note_id = $this->getParam('note_id');
 	$note->load($note_id);
-	var_dump($note_id);
 
 	$data =	$note->delNote();
+	var_dump($data);
 
 	$old_data = $data;
 	//var_dump($this->_mHistory);

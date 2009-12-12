@@ -23,9 +23,6 @@ class Lds_Helper_Login
 	// 设了namespace,获取时也需使用同样的new一遍
 	//$storage = new Zend_Auth_Storage_Session('lds-namespace');
   
-	$logger = Zend_Registry::get('logger');
-	$logger->info('pre login helper' . $_SESSION);
-
 	$storage = new Zend_Auth_Storage_Session();
 	$namespace = $storage->getNamespace(); 
 	//$storage->setExpirationHops(5);
@@ -60,7 +57,6 @@ class Lds_Helper_Login
 	//$result = $authAdapter->authenticate();
 	$result = $auth->authenticate($authAdapter);
 
-	$logger->info('post login helper' . $_SESSION);
 	if (!$result->isValid()) {
 	   // Authentication failed; print the reasons why
 	  $this->_message = $result->getMessages() ;
@@ -75,9 +71,7 @@ class Lds_Helper_Login
 	  // set a cookie to save user info
 	  setcookie('ue', $user, time() + 2592000, '/', false);  
 	  // ::todo::
-	$logger->info('per rememberme login helper' . $_SESSION);
 	  Zend_Session::rememberMe(2592000);
-	$logger->info('post rememberme login helper' . $_SESSION);
 	  $this->_result = true;
 	  }	
 

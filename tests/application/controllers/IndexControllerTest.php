@@ -246,5 +246,4 @@ class IndexControllerTest extends ControllerTestCase
   }
 
 
-
 }

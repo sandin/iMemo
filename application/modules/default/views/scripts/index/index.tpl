@@ -1,4 +1,7 @@
 <{include file="$APPLICATION_PATH/templates/header.tpl"}>
+<{debug}>
+<{*如果已经登录则显示个人主页,否则显示网站欢迎页面 *}>
+<{if $user}>
 
 <div id="main" class="clearfix">
 
@@ -17,16 +20,27 @@
 	  <div class="n_col n_s">Add a new note</div>
 	</div><!-- /note_00(addNote) --> 
 	
-	<{if $notes|@count == 0 }>
-	  <{assign var='notes' value="array(array('star'=>3))" }>
-	<{/if}>
-
 	<div id="cate-1" class="cate">
 	  
 	  <ul class="notes_list clearfix connectedSortable">
+			<!-- note templats -->
+			<li class="note clearfix" id="js_note_templats" style="display:none;">
+				<div class="n_col n_lable star_<{$item.star}>">&nbsp;</div>
+				<div class="n_col ">&nbsp;</div>
+				<div class="n_col n_state"><input type="checkbox"></input></div>
+				<div class="n_col n_content">::content::</div>
+				<div class="n_col n_del">
+				  <a title="a" onclick="return false" href="<{$PUBLIC_URL}>/note/del" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
+				</div>
+				<div class="n_col n_date">::n_date::</div>
+				<div class="n_col n_id hidden">::note_id::</div>
 
+				<div class="n_tag">
+				   <span>::tag::</span>
+				</div>
+			</li><!-- /note js_note_templats -->
 		<{foreach from=$notes item=item}>
-			<li class="note clearfix" <{if $notes|@count == 0 }>id="js_note_templats" style="display:none;"<{/if}> >
+			<li class="note clearfix" <{if $notes == 0 }>id="js_note_templats" style="display:none;"<{/if}> >
 				<div class="n_col n_lable star_<{$item.star}>">&nbsp;</div>
 				<div class="n_col ">&nbsp;</div>
 				<div class="n_col n_state"><input type="checkbox"></input></div>
@@ -35,7 +49,7 @@
 				  <a title="a" onclick="return false" href="<{$PUBLIC_URL}>/note/del" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
 				</div>
 				<div class="n_col n_date">1985-12-12 12:02</div>
-				<div class="n_col n_id hidden"><{$item.user_id}></div>
+				<div class="n_col n_id hidden"><{$item.note_id}></div>
 
 				<div class="n_tag">
 				  <{foreach from=$item.tags item=tag}>
@@ -55,6 +69,9 @@
   </div><!-- /innerContent -->
 </div><!-- /main (main tags)-->
 
+<{else}>
+<{include file="$APPLICATION_PATH/templates/welcome.tpl"}>
+<{/if}>
 
 <{include file="$APPLICATION_PATH/templates/footer.tpl"}>
   <!--

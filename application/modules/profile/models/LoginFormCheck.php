@@ -22,10 +22,9 @@ class Profile_Model_LoginFormCheck extends Lds_Models_FormCheck
   {
 	$username = $this->_data['user'];
 	$password = $this->_data['password'];
-	//$password = MD5($post['password']);
 	$login_helper = new Lds_Helper_Login($username,$password);
 	if (!$login_helper->login()) {
-	  foreach ($login_helper->getMessages() as $message) {
+	  foreach ($login_helper->getMessage() as $message) {
 		$this->addMessage('login',$message);
 	  }
 	}
