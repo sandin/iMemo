@@ -16,7 +16,7 @@
 
   <div id="innerContent"> 
 	<div id="note_00" class="cate note clearfix">
-	  <div class="n_col n_content editing"><input name="ajax-add-note" class="ajax-add-note real" type="text" autocomplete="off" src="<{$PUBLIC_URL}>/note/add"></input></div>
+	  <div class="n_col n_content editing"><input name="ajax-add-note" class="ajax-add-note real" type="text" autocomplete="off" src="<{$PUBLIC_URL}>/note/add_note"></input></div>
 	  <div class="n_col n_s">Add a new note</div>
 	</div><!-- /note_00(addNote) --> 
 	
@@ -30,7 +30,7 @@
 				<div class="n_col n_state"><input type="checkbox"></input></div>
 				<div class="n_col n_content">::content::</div>
 				<div class="n_col n_del">
-				  <a title="a" onclick="return false" href="<{$PUBLIC_URL}>/note/del" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
+				  <a title="a" onclick="return false" href="<{$PUBLIC_URL}>/note/del_note" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
 				</div>
 				<div class="n_col n_date">::n_date::</div>
 				<div class="n_col n_id hidden">::note_id::</div>
@@ -46,7 +46,7 @@
 				<div class="n_col n_state"><input type="checkbox"></input></div>
 				<div class="n_col n_content"><{$item.content}></div>
 				<div class="n_col n_del">
-				  <a title="a" onclick="return false" href="<{$PUBLIC_URL}>/note/del" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
+				  <a title="a" onclick="return false" href="<{$PUBLIC_URL}>/note/del_note" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
 				</div>
 				<div class="n_col n_date">1985-12-12 12:02</div>
 				<div class="n_col n_id hidden"><{$item.note_id}></div>

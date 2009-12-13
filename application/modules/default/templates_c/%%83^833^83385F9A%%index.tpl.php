@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-13 00:08:18
+<?php /* Smarty version 2.6.26, created on 2009-12-13 18:57:13
          compiled from index/index.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'debug', 'index/index.tpl', 2, false),)), $this); ?>
@@ -25,7 +25,7 @@ unset($_smarty_tpl_vars);
   <div id="innerContent"> 
 	<div id="note_00" class="cate note clearfix">
 	  <div class="n_col n_content editing"><input name="ajax-add-note" class="ajax-add-note real" type="text" autocomplete="off" src="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/note/add"></input></div>
+/note/add_note"></input></div>
 	  <div class="n_col n_s">Add a new note</div>
 	</div><!-- /note_00(addNote) --> 
 	
@@ -41,7 +41,7 @@ unset($_smarty_tpl_vars);
 				<div class="n_col n_content">::content::</div>
 				<div class="n_col n_del">
 				  <a title="a" onclick="return false" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/note/del" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
+/note/del_note" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
 				</div>
 				<div class="n_col n_date">::n_date::</div>
 				<div class="n_col n_id hidden">::note_id::</div>
@@ -62,7 +62,7 @@ unset($_smarty_tpl_vars);
 </div>
 				<div class="n_col n_del">
 				  <a title="a" onclick="return false" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/note/del" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
+/note/del_note" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
 				</div>
 				<div class="n_col n_date">1985-12-12 12:02</div>
 				<div class="n_col n_id hidden"><?php echo $this->_tpl_vars['item']['note_id']; ?>

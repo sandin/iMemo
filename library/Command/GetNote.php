@@ -1,5 +1,5 @@
 <?php
-class Command_GetNoteCommand extends Command_Abstract 
+class Command_GetNote extends Command_Abstract 
 {
   public function executeCommand()
   {

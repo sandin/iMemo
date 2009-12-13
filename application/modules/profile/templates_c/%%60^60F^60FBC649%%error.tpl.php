@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-12 21:54:25
+<?php /* Smarty version 2.6.26, created on 2009-12-13 15:50:20
          compiled from /home/svn/0019/trunk/application/templates/error.tpl */ ?>
 <span class="from_error">
   <?php if ($this->_tpl_vars['error']): ?>

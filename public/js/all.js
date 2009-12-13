@@ -7,7 +7,7 @@
 	  //为ajax准备data
 	  var data = $(this).attr('value');
 	  var json = {
-		data : data
+		content : data
 	  };
 
 	  //为ajax准备url

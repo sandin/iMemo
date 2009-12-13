@@ -12,9 +12,11 @@ defined('APPLICATION_PATH')
 defined('APPLICATION_ENV')
     || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
 
+//root
 defined('BOOT_PATH')
     || define('BOOT_PATH', realpath(dirname(__FILE__) . '/../'));
 
+//root/public
 defined('PUBLIC_URL')
     || define('PUBLIC_URL', 'http://' . $_SERVER['HTTP_HOST'] .dirname($_SERVER['PHP_SELF']) ); 
 

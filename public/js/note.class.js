@@ -64,8 +64,23 @@ Note.prototype.getData = function ()
 Note.prototype.createNoteSuccess = function()
 {
   if (this.ajax.data && this.ajax.data != null) {
-	var noteObject = JSON.parse(this.ajax.data); 
-	this.makeNoteHTML(noteObject);
+	try 
+	{
+	  var noteObject = JSON.parse(this.ajax.data); 
+	  this.makeNoteHTML(noteObject);
+	}
+	catch(err) 
+	{
+	  txt =	 'Error: Response data is not a JSON!\n\n';
+	  txt += 'Code: 0x0000;\n\n';
+	  txt += 'Description: ' + err.description + '\n\n';
+	  
+	  if (console && console != null) {
+		console.log(txt);
+	  } else {
+		alert(txt);
+	  }
+	}
   }
 }
 
@@ -75,8 +90,8 @@ Note.prototype.makeNoteHTML = function (oData){
   //console.log($new_note);
 
   $new_note.find('td').not('.n.s').html('');
-  $new_note.find('.n_id').html(oData.noteInfo.note_id);
-  $new_note.find('.n_content').html(oData.noteInfo.content);
+  $new_note.find('.n_id').html(oData.data.note_id);
+  $new_note.find('.n_content').html(oData.data.content);
   $('.notes_list:visible').prepend($new_note);
 }  
 

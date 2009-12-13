@@ -3516,3 +3516,19 @@
 2009-12-12T21:54:33+08:00 INFO (6): pre captcha_image profile indexControllerArray
 2009-12-12T21:54:33+08:00 INFO (6): pre Zend_form_captchaArray
 2009-12-12T21:54:33+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-13T14:47:10+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-13T14:47:12+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-13T14:47:20+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-13T14:47:22+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-13T14:47:22+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-13T14:47:22+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-13T14:47:28+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-13T14:47:31+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-13T14:47:31+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-13T14:47:31+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-13T15:50:17+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-13T15:50:20+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-13T15:50:45+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-13T15:50:47+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-13T15:50:47+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-13T15:50:47+08:00 INFO (6): post Zend_form_captchaArray

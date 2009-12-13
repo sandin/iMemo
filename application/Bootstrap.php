@@ -174,6 +174,18 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 			  )
 		  )
 		);
+
+		$router->addRoute(
+		  'note',
+		  new Zend_Controller_Router_Route(
+			'note/:command',
+			  array(
+				'module' => 'default',
+				'controller' => 'note',
+				'action' => 'index',
+			  )
+		  )
+		);
 /*
         $this->frontController->throwExceptions(true);  
 		$this->frontController->setControllerDirectory(array(

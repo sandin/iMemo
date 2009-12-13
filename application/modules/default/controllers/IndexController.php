@@ -27,7 +27,7 @@ class IndexController extends Zend_Controller_Action
 		'user_id' => $this->_db_user->getId(),
 	  );
 
-	  $command = new Command_GetNoteCommand($notes,$param);
+	  $command = new Command_GetNote($notes,$param);
 	  $this->_db_user->setCommand($command);
 	  $notes =  $this->_db_user->executeCommand();
 	  

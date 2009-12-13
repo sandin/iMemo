@@ -33,25 +33,44 @@ class NoteController extends Zend_Controller_Action
 	{
 	}
 
+	/** 
+	  * Note所有操作的处理中心,根据URL来分派命令
+	  * 
+	  * @return 
+	 */
 	public function indexAction()
 	{
-	}
-
-    public function addAction()
-	{
+	  //根据路由器规定来获取command变量,格式: note/:command
+	  $request = $this->getRequest();
+	  //预处理command格式
+	  $requsetCommand = $request->getParam('command');
+	  $requsetCommand = Lds_Helper_MixedCaseToUnderscore::inflector($requsetCommand);
+	  $requsetCommand = 'Command_' . $requsetCommand;
+	 
 	  $notes = new Database_Notes($this->db);
 
+	  //user_id由服务器分配,确保身份
 	  $this->post['user_id'] = $this->db_user->getId();
-	  $this->post['content'] = $this->post['data'];
-	  unset($this->post['data']);
 	  $param = $this->post;
 
-	  $command = new Command_AddNoteCommand($notes,$param);
-	  $this->db_user->setCommand($command);
-	  $notes =  $this->db_user->executeCommand();
-	  $this->view->notes = $notes; 
+	  //初始化command
+	  $command = Command_Factory::factory($requsetCommand);
+	  //确保请求的命令存在
+	  if ($command && $command != null) {
+		$command->setReceiver($notes);
+	    $command->setParam($param);
 
-	  $result = array('states' => 'success','noteInfo' => $notes);
+		//执行command,并返回结果
+		$this->db_user->setCommand($command);
+		$status = 'success';
+		$response =  $this->db_user->executeCommand();
+	  } else {
+		$status = 'failure';
+		$response = $command;
+	  }
+
+	  //将结果打包,编码并发送
+	  $result = array('states' => $status,'data' => $response);
 	  $json = Zend_Json::encode($result);
 	  echo $json;
 	}

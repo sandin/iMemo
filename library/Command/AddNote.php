@@ -1,5 +1,5 @@
 <?php
-class Command_AddNoteCommand extends Command_Abstract 
+class Command_AddNote extends Command_Abstract 
 {
   protected $_data;
 
