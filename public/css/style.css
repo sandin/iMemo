@@ -169,6 +169,7 @@ p{line-height:1.4em;}
   text-align:		right;
 }
 #message {
+  display:			none;
   float:			left;
   background:		orange url(../images/msg_bg.gif) no-repeat right center;
   color:			#fff;
@@ -288,7 +289,12 @@ p{line-height:1.4em;}
 #innerContent #note_00 {
   background:		#fff;
   margin-bottom:	10px;
-  padding:			0 0 0 10px;
+}
+#innerContent #note_00 .n_content {
+  margin-left:		10px;
+  margin-right:		10px;
+}
+#innerContent #note_00 .n_col.n_submit {
 }
 
 .ajax-add-note {

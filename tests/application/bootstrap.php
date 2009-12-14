@@ -21,9 +21,15 @@ defined('PUBLIC_URL')
 // Define application environment
 define('APPLICATION_ENV', 'testing');
 
+$_SERVER['SERVER_NAME'] = 'http://localhost';
+
+
 /** Zend_Application */
 require_once 'Zend/Application.php';  
 
 // Create application, bootstrap, and run
             
 require_once 'controllers/ControllerTestCase.php';
+
+
+

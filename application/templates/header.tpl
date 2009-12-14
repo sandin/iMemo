@@ -30,7 +30,7 @@
   </div><!-- /header --> 
   <div id="toolbar" class="clearfix">
 	<div id="intro"><a href="">Planning your time,Recording your life.</a></div>
-	<div id="message"><span>Test <{$t->_('Test')}> test it's <{$t->_('done')}>! <a href="<{$PUBLIC_URL}>/note/undo"><{t}>Undo<{/t}></a></span></div>
+	<div id="message"><span>::message::<a href="<{$PUBLIC_URL}>/note/undo"><{t}>Undo<{/t}></a></span></div>
 	<ul id="user">
 
 	  <{if $user}>

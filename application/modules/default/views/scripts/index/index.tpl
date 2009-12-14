@@ -1,5 +1,5 @@
 <{include file="$APPLICATION_PATH/templates/header.tpl"}>
-<{debug}>
+<{*debug*}>
 <{*如果已经登录则显示个人主页,否则显示网站欢迎页面 *}>
 <{if $user}>
 
@@ -16,8 +16,13 @@
 
   <div id="innerContent"> 
 	<div id="note_00" class="cate note clearfix">
-	  <div class="n_col n_content editing"><input name="ajax-add-note" class="ajax-add-note real" type="text" autocomplete="off" src="<{$PUBLIC_URL}>/note/add_note"></input></div>
-	  <div class="n_col n_s">Add a new note</div>
+	  <form name="add_note_form" id="add_note_form" class="ajaxForm" action="<{$PUBLIC_URL}>/note/add_note" method="post">
+		<div class="n_col n_content editing">
+		  <input name="note-data" class="ajax-add-note real" type="text" autocomplete="off" src="<{$PUBLIC_URL}>/note/add_note"></input></div>
+		<div class="n_col n_submit">
+		  <input name="n_submit" type="submit" value="Submit!"></input>
+		</div>
+	  </form>
 	</div><!-- /note_00(addNote) --> 
 	
 	<div id="cate-1" class="cate">
@@ -30,10 +35,12 @@
 				<div class="n_col n_state"><input type="checkbox"></input></div>
 				<div class="n_col n_content">::content::</div>
 				<div class="n_col n_del">
-				  <a title="a" onclick="return false" href="<{$PUBLIC_URL}>/note/del_note" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
+				   <form name="del_note_form" class="ajaxForm del_note_form" action="<{$PUBLIC_URL}>/note/del_note" method="post">
+					<a title="a" onclick="return false" href="#" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
+					<input class="note_id" type="hidden" name="note_id" value="<{$item.note_id}>"></input>
+					</form>
 				</div>
 				<div class="n_col n_date">::n_date::</div>
-				<div class="n_col n_id hidden">::note_id::</div>
 
 				<div class="n_tag">
 				   <span>::tag::</span>
@@ -46,10 +53,12 @@
 				<div class="n_col n_state"><input type="checkbox"></input></div>
 				<div class="n_col n_content"><{$item.content}></div>
 				<div class="n_col n_del">
-				  <a title="a" onclick="return false" href="<{$PUBLIC_URL}>/note/del_note" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
+				  <form name="del_note_form" class="ajaxForm del_note_form" action="<{$PUBLIC_URL}>/note/del_note" method="post">
+					<a title="a" onclick="return false" href="#" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
+					<input class="note_id" type="hidden" name="note_id" value="<{$item.note_id}>"></input>
+					</form>
 				</div>
 				<div class="n_col n_date">1985-12-12 12:02</div>
-				<div class="n_col n_id hidden"><{$item.note_id}></div>
 
 				<div class="n_tag">
 				  <{foreach from=$item.tags item=tag}>

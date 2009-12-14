@@ -5,7 +5,11 @@ class Command_DelNote extends Command_Abstract
   public function executeCommand()
   {
 	$note = $this->_receiver;
-	$note_id = $this->getParam('note_id');
+
+	//解析post来的数据
+	$params = array();
+	$note_id = $this->_param['note_id'];
+
 	$note->load($note_id);
 
 	$data =	$note->delNote();

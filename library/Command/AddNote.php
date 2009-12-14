@@ -6,11 +6,19 @@ class Command_AddNote extends Command_Abstract
   public function executeCommand()
   {
 	$note = $this->_receiver;
-	$params = $this->_param;
+	
+	//解析post数据
+	$params = array();
+	$params['content'] = $this->_param['note-data'];
+	$params['user_id'] = $this->_param['user_id'];
 
-	$data =	$note->createNote($params);
+	if ($params['content'] != null) {
+	  $data = $note->createNote($params);
+	} else {
+	  $data = 'content can not be null.';
+	}
+	
 	return $data;
-
   }
 
   public function unExecuteCommand()

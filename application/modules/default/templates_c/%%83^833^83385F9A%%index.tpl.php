@@ -1,14 +1,10 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-13 18:57:13
+<?php /* Smarty version 2.6.26, created on 2009-12-14 22:37:11
          compiled from index/index.tpl */ ?>
-<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'debug', 'index/index.tpl', 2, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-<?php echo smarty_function_debug(array(), $this);?>
-
 <?php if ($this->_tpl_vars['user']): ?>
 
 <div id="main" class="clearfix">
@@ -24,9 +20,15 @@ unset($_smarty_tpl_vars);
 
   <div id="innerContent"> 
 	<div id="note_00" class="cate note clearfix">
-	  <div class="n_col n_content editing"><input name="ajax-add-note" class="ajax-add-note real" type="text" autocomplete="off" src="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+	  <form name="add_note_form" id="add_note_form" class="ajaxForm" action="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/note/add_note" method="post">
+		<div class="n_col n_content editing">
+		  <input name="note-data" class="ajax-add-note real" type="text" autocomplete="off" src="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /note/add_note"></input></div>
-	  <div class="n_col n_s">Add a new note</div>
+		<div class="n_col n_submit">
+		  <input name="n_submit" type="submit" value="Submit!"></input>
+		</div>
+	  </form>
 	</div><!-- /note_00(addNote) --> 
 	
 	<div id="cate-1" class="cate">
@@ -40,11 +42,14 @@ unset($_smarty_tpl_vars);
 				<div class="n_col n_state"><input type="checkbox"></input></div>
 				<div class="n_col n_content">::content::</div>
 				<div class="n_col n_del">
-				  <a title="a" onclick="return false" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/note/del_note" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
+				   <form name="del_note_form" class="ajaxForm del_note_form" action="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/note/del_note" method="post">
+					<a title="a" onclick="return false" href="#" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
+					<input class="note_id" type="hidden" name="note_id" value="<?php echo $this->_tpl_vars['item']['note_id']; ?>
+"></input>
+					</form>
 				</div>
 				<div class="n_col n_date">::n_date::</div>
-				<div class="n_col n_id hidden">::note_id::</div>
 
 				<div class="n_tag">
 				   <span>::tag::</span>
@@ -61,12 +66,14 @@ unset($_smarty_tpl_vars);
 				<div class="n_col n_content"><?php echo $this->_tpl_vars['item']['content']; ?>
 </div>
 				<div class="n_col n_del">
-				  <a title="a" onclick="return false" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/note/del_note" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
+				  <form name="del_note_form" class="ajaxForm del_note_form" action="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/note/del_note" method="post">
+					<a title="a" onclick="return false" href="#" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
+					<input class="note_id" type="hidden" name="note_id" value="<?php echo $this->_tpl_vars['item']['note_id']; ?>
+"></input>
+					</form>
 				</div>
 				<div class="n_col n_date">1985-12-12 12:02</div>
-				<div class="n_col n_id hidden"><?php echo $this->_tpl_vars['item']['note_id']; ?>
-</div>
 
 				<div class="n_tag">
 				  <?php $_from = $this->_tpl_vars['item']['tags']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):

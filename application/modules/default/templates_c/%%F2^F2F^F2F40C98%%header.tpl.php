@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-13 18:57:13
+<?php /* Smarty version 2.6.26, created on 2009-12-14 22:37:11
          compiled from /home/svn/0019/trunk/application/templates/header.tpl */ ?>
 <?php if (! isset ( $this->_tpl_vars['noLayout'] )): ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -53,9 +53,7 @@
   </div><!-- /header --> 
   <div id="toolbar" class="clearfix">
 	<div id="intro"><a href="">Planning your time,Recording your life.</a></div>
-	<div id="message"><span>Test <?php echo $this->_tpl_vars['t']->_('Test'); ?>
- test it's <?php echo $this->_tpl_vars['t']->_('done'); ?>
-! <a href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+	<div id="message"><span>::message::<a href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /note/undo"><?php echo $this->_tpl_vars['t']->_('Undo'); ?>
 </a></span></div>
 	<ul id="user">

@@ -1,49 +1,25 @@
-   
-  //add note
-  $('.ajax-add-note').keydown(function(e){
-	// console.log(e.keyCode);
-	// bug-001 linux scim(拼音) sometimes 090925	
-   if (e.keyCode == 13) {
-	  //为ajax准备data
-	  var data = $(this).attr('value');
-	  var json = {
-		content : data
-	  };
 
-	  //为ajax准备url
-	  if ($(this).hasClass('real')) {
-	    var url = $(this).attr('src');
-	  } else {
-		var url = $('.ajax-add-note.real').attr('src');
-	  }//fi
-	  
-	  //初始化note调度中心,进行ajax发送数据
-	  var note = new Note();
-	  note.controlCenter('createNote',url,json);
-	  
-	  //进入初始状态,清空已发送的输入内容
-	  $(this).attr('value','');
+$(window).ready(function(){
+	
+	//将大部分表单初始化为ajaxForm类型
+	$('.ajaxForm').each(function(){
+	  var $target = $(this);
+	  var form = new AjaxForm($target);
+	  form.factory();
+	});
 
-	}//fi
-  });//end keydown  
+});
+
+//$('.del_note
+
 
  //del note 
-  $('.n_del>a').each(function(){
+  $('.del_note_form>a').each(function(){
 	$(this).click(function(){
-	  var $note = $(this).parent().parent();
+	  $form = $(this).parent();
+	  $note = $form.parent().parent();
 
-	  //为ajax准备data
-	  var note_id = $(this).parent().siblings().filter('.n_id').text();
-	  var json = {
-		'note_id' : note_id
-	  }
-
-	  //为ajax准备url
-	  var url = $(this).attr('href');
-	  
-	  //初始化note调度中心,进行ajax发送数据
-	  var note = new Note();
-	  note.controlCenter('delNote',url,json);
+	  $form.ajaxSubmit(); 
 
 	  //隐藏删除内容
 	  $note.fadeOut('fast'); 
@@ -185,6 +161,36 @@ $(function(){
 	function() { $(this).addClass('ui-state-hover'); },
 	 function() { $(this).removeClass('ui-state-hover'); }
   ); 
+
+  //message conter
+  $('#message')
+	.ajaxStart(function(){
+	  $(this).fadeIn();
+	  $('span',this).html('Loading');
+	})
+	.ajaxSend(function(){
+	  $('span',this).html('Loading');
+	})
+	.ajaxSuccess(function(){
+	  $('span',this).html('It\'s done.');	
+	  $(this).fadeOut();
+	})
+	.ajaxError(function(){
+	  $('span',this).html('Error.');
+	});
+
+	$('#search_text').focus(function(){
+	  var originalText = $(this).attr('value');
+	  $(this).attr('value','');
+	  $(this).blur(function(){
+		var text = $(this).attr('value');
+		if (text == null || text == '' || text == originalText ) {
+		  $(this).attr('value',originalText);	
+		}
+	  });
+	});
+
+
 
 
 }); //end funtcion

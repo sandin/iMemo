@@ -1,17 +1,24 @@
 <?php
 require_once 'Zend/Db.php';
 
-class IndexControllerTest extends ControllerTestCase  
+class UserControllerTest extends ControllerTestCase  
 {
-  public function testTrueAddNote()
-  {
 
-  }
+    public function testCallWithoutActionShouldPullFromIndexAction()
+    {
 
- public function testTrueDelNote()
- {
-	$db = Zend_Registry::get('db');
-	$note = new Database_Notes($db);
- }
-  
+
+
+		$this->dispatch('/default/index/index');
+		$this->assertModule('default');
+        $this->assertController('index');
+        $this->assertAction('index');
+
+		 // Set POST variables:
+        $this->request->setPost(array(
+            'baz'  => 'bat',
+            'lame' => 'bogus',
+        ));
+    }
+
 }
