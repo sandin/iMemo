@@ -1,26 +1,25 @@
 
-$(window).ready(function(){
-	
-	//将大部分表单初始化为ajaxForm类型
-	$('.ajaxForm').each(function(){
-	  var $target = $(this);
-	  var form = new AjaxForm($target);
-	  form.factory();
-	});
-
-});
-
-//$('.del_note
 
 
- //del note 
+
+/*-------------------------------------------------------------*/
+
+$(window).load(function(){	
+
+  //将大部分表单初始化为ajaxForm类型
+  $('.ajaxForm').each(function(){
+	var $target = $(this);
+	var form = new AjaxForm($target);
+	form.factory();
+  });
+
+ //del note buttom, click模拟submit 
   $('.del_note_form>a').each(function(){
 	$(this).click(function(){
 	  $form = $(this).parent();
 	  $note = $form.parent().parent();
 
-	  $form.ajaxSubmit(); 
-
+	  $form.trigger('submit'); 
 	  //隐藏删除内容
 	  $note.fadeOut('fast'); 
     });
@@ -29,13 +28,6 @@ $(window).ready(function(){
 
 
 
-
-/*-------------------------------------------------------------*/
-
-$(function(){
-  
-	
-  $note = $('.note');
 
   // notes sort
   $(".notes_list").sortable({
@@ -47,7 +39,6 @@ $(function(){
   $tabs =  $("#main").tabs({
 	selected: 0 
   });
-
   $tabs.find(".ui-tabs-nav").sortable({axis:'y'});
 
   var $tab_items = $("ul:first li",$tabs).droppable({
@@ -178,24 +169,25 @@ $(function(){
 	.ajaxError(function(){
 	  $('span',this).html('Error.');
 	});
-
-	$('#search_text').focus(function(){
-	  var originalText = $(this).attr('value');
-	  $(this).attr('value','');
-	  $(this).blur(function(){
-		var text = $(this).attr('value');
-		if (text == null || text == '' || text == originalText ) {
-		  $(this).attr('value',originalText);	
-		}
-	  });
+  
+  //main search input 主搜索效果
+  $('#search_text').focus(function(){
+	var originalText = $(this).attr('value');
+	$(this).attr('value','');
+	$(this).blur(function(){
+	  var text = $(this).attr('value');
+	  if (text == null || text == '' || text == originalText ) {
+		$(this).attr('value',originalText);	
+	  }
 	});
+  });
 
 
-
-
-}); //end funtcion
-
-
-$(window).load(function(){	
 
 }); //end window load
+
+/*-------------------------------------------------------*/
+
+$(window).ready(function(){
+
+});//end window ready

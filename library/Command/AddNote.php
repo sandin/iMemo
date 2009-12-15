@@ -9,8 +9,11 @@ class Command_AddNote extends Command_Abstract
 	
 	//解析post数据
 	$params = array();
-	$params['content'] = $this->_param['note-data'];
-	$params['user_id'] = $this->_param['user_id'];
+	$params['content']   = $this->_param['note-data'];
+	$params['user_id']   = $this->_param['user_id'];
+	if (isset($this->_param['categorys'])) {
+	  $params['categorys'] = $this->_param['categorys'];  
+	}
 
 	if ($params['content'] != null) {
 	  $data = $note->createNote($params);

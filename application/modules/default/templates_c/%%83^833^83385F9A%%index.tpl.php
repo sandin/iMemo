@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-14 22:37:11
+<?php /* Smarty version 2.6.26, created on 2009-12-15 20:45:58
          compiled from index/index.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
@@ -19,7 +19,7 @@ unset($_smarty_tpl_vars);
   </ul><!-- /categorys (sidebar) -->
 
   <div id="innerContent"> 
-	<div id="note_00" class="cate note clearfix">
+	<div id="note_00" class="note clearfix">
 	  <form name="add_note_form" id="add_note_form" class="ajaxForm" action="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /note/add_note" method="post">
 		<div class="n_col n_content editing">
@@ -31,7 +31,7 @@ unset($_smarty_tpl_vars);
 	  </form>
 	</div><!-- /note_00(addNote) --> 
 	
-	<div id="cate-1" class="cate">
+	<div id="cate-1" title="INBOX" class="cate">
 	  
 	  <ul class="notes_list clearfix connectedSortable">
 			<!-- note templats -->

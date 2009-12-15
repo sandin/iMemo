@@ -168,7 +168,7 @@ class Database_Notes extends DatabaseObject
 		  $this->addCategory($category_name);
 		}
 	  } else {
-		$this->addCategory($category_name);
+		$this->addCategory($categorys);
 	  }
 	}
 
@@ -528,6 +528,7 @@ class Database_Notes extends DatabaseObject
 	foreach ($result as $item) {
 	  $item['content']  = $this->getContent($item['note_id']) ;
 	  $item['tags'] = $this->getTags($item['note_id']);
+	  $item['categorys'] = $this->getJoinRow('content');
 	  
 	  $new_result[] = $item;
 	}

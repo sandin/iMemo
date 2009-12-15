@@ -15,7 +15,7 @@
   </ul><!-- /categorys (sidebar) -->
 
   <div id="innerContent"> 
-	<div id="note_00" class="cate note clearfix">
+	<div id="note_00" class="note clearfix">
 	  <form name="add_note_form" id="add_note_form" class="ajaxForm" action="<{$PUBLIC_URL}>/note/add_note" method="post">
 		<div class="n_col n_content editing">
 		  <input name="note-data" class="ajax-add-note real" type="text" autocomplete="off" src="<{$PUBLIC_URL}>/note/add_note"></input></div>
@@ -25,7 +25,7 @@
 	  </form>
 	</div><!-- /note_00(addNote) --> 
 	
-	<div id="cate-1" class="cate">
+	<div id="cate-1" title="INBOX" class="cate">
 	  
 	  <ul class="notes_list clearfix connectedSortable">
 			<!-- note templats -->
