@@ -7,7 +7,8 @@ class Command_GetNote extends Command_Abstract
 	$params = $this->_param;
 
 	if (array_key_exists('user_id',$params)) {
-	  $result =  $note->getAllByUserId($params['user_id']);
+	  //$result =  $note->getAllByUserId($params['user_id']);
+	  $result =  $note->getAllNoteByUserId($params['user_id']);
 	  //var_dump($result);
 	  return $result;
 	}

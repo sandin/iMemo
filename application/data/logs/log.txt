@@ -3642,3 +3642,9 @@
 2009-12-15T18:30:33+08:00 INFO (6): pre captcha_image profile indexControllerArray
 2009-12-15T18:30:33+08:00 INFO (6): pre Zend_form_captchaArray
 2009-12-15T18:30:33+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-16T16:20:48+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T16:20:51+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T16:20:57+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T16:20:59+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T16:20:59+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-16T16:20:59+08:00 INFO (6): post Zend_form_captchaArray

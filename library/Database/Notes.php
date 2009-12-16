@@ -510,6 +510,7 @@ class Database_Notes extends DatabaseObject
   }
 
   /** 
+   *  注意:此为旧函数,没有任何地方调用,可以安全删除
 	* It's not _load function,just return a array with all result
 	* 
 	* @param $user_id
@@ -532,6 +533,38 @@ class Database_Notes extends DatabaseObject
 	  
 	  $new_result[] = $item;
 	}
+	//Zend_Debug::dump($new_result);
+	return $new_result;
+  }
+
+  public function getAllNoteByUserId($user_id)
+  {
+	$query = 'CALL getAllnoteByuserid(?)';
+    $query = $this->_db->quoteInto($query, $user_id);
+
+	$result = $this->_db->fetchAll($query);
+
+	$new_result = array();
+
+
+	//复制其他内容
+	foreach ($result as $item) {
+	  //解析categorys字符结果为数组,以逗号为分隔符
+	  if ($item['categorys'] != null) {
+		$categorys = $item['categorys'];
+		$new_categorys = split(',',$categorys);
+		$item['categorys'] = $new_categorys;
+	  }
+	  //解析tags字符结果为数组,以逗号为分隔符
+	  if ($result['tags'] != null) {
+		$tags = $result['tags'];
+		$new_tags = split(',',$tags);
+		$item['tags'] = $new_tags;
+	  }
+
+	  $new_result[] = $item;
+	}
+
 	//Zend_Debug::dump($new_result);
 	return $new_result;
   }
@@ -562,3 +595,6 @@ class Database_Notes extends DatabaseObject
  */
 
 }
+
+
+

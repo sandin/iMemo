@@ -28,7 +28,7 @@
     <section>
       <title>基础信息</title>
 
-      <para>中文名:我懂你</para>
+      <para>中文名:</para>
 
       <para>英文名:iMEMO</para>
 
@@ -76,11 +76,16 @@
     <section>
       <title>扩展需求</title>
 
-      <para>共享功能</para>
+      <para>发送功能 -- 可发送note给好友</para>
 
-      <para>好友模块</para>
+      <para>共享模式 -- 可共享note,设为好友可见</para>
 
-      <para>RSS/API</para>
+      <para>好友模块 -- 可加好友,并查看所有好友共享的note,并对note做回复</para>
+
+      <para>项目模块 --
+      可新建一个项目,分配独立且唯一的url页面,项目可设置成员,成员在此项目中都可新建的note,对全项目成员都可见.</para>
+
+      <para>RSS/API -- 输入RSS,并提供开发接口.</para>
     </section>
   </chapter>
 
