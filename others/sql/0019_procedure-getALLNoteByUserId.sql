@@ -1,7 +1,7 @@
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `lds0019`.`getAllNoteByuserId`$$
-CREATE PROCEDURE `lds0019`.`getAllNoteByuserId` (IN user_id BIGINT)
+DROP PROCEDURE IF EXISTS `lds0019`.`getAllNoteByUserId`$$
+CREATE PROCEDURE `lds0019`.`getAllNoteByUserId` (IN user_id BIGINT)
 BEGIN
 
 SELECT 
@@ -35,7 +35,7 @@ ON notes.note_id=ln_cate.note_id
 LEFT JOIN lds0019_notes_categorys AS cate
 ON ln_cate.category_id=cate.category_id
 
-WHERE notes.user_id=user_is
+WHERE notes.user_id=user_id
 GROUP BY notes.note_id
 
 ;

@@ -118,7 +118,7 @@ function Note(note_id)
  */
 Note.prototype.makeNoteHTML = function (oData)
 {
-  var $new_note = $('#js_note_templats').clone(true);
+  var $new_note = $('#js_note_template>li').clone(true);
   $new_note.removeAttr('id').removeAttr('style');
   //console.log($new_note);
 

@@ -70,10 +70,11 @@ p{line-height:1.4em;}
   padding:			0;
   border:			none;
 }
-#sidebar {
+.sidebar {
+  float:			left;
+  width:			19%;
 }
 #categorys {
-  float:			left;
   width:			15%;
   padding:			0;
 }

@@ -544,28 +544,49 @@ class Database_Notes extends DatabaseObject
 
 	$result = $this->_db->fetchAll($query);
 
-	$new_result = array();
+	//Zend_Debug::dump($new_result);
+	return $this->sqlResultToNewArray($result);
+  }
 
+  public function getAllNoteByCategoryId($category_id)
+  {
+	$query = 'CALL getAllNoteByCategoryId(?)';
+    $query = $this->_db->quoteInto($query, $category_id);
+
+	$result = $this->_db->fetchAll($query);
+
+	//Zend_Debug::dump($new_result);
+	return $this->sqlResultToNewArray($result);
+  }
+
+  /** 
+	* 将sql请求中含有逗号分隔符的列转换为数组
+	* 
+	* @return 
+   */
+  public function sqlResultToNewArray($result)
+  {
+
+	$new_result = array();
 
 	//复制其他内容
 	foreach ($result as $item) {
 	  //解析categorys字符结果为数组,以逗号为分隔符
-	  if ($item['categorys'] != null) {
-		$categorys = $item['categorys'];
+	  if ($item['categorys_name'] != null) {
+		$categorys = $item['categorys_name'];
 		$new_categorys = split(',',$categorys);
-		$item['categorys'] = $new_categorys;
+		$item['categorys_name'] = $new_categorys;
 	  }
 	  //解析tags字符结果为数组,以逗号为分隔符
-	  if ($result['tags'] != null) {
-		$tags = $result['tags'];
+	  if ($result['tags_name'] != null) {
+		$tags = $result['tags_name'];
 		$new_tags = split(',',$tags);
-		$item['tags'] = $new_tags;
+		$item['tags_name'] = $new_tags;
 	  }
 
 	  $new_result[] = $item;
 	}
 
-	//Zend_Debug::dump($new_result);
 	return $new_result;
   }
 
@@ -584,6 +605,14 @@ class Database_Notes extends DatabaseObject
 	$result['content'] = $contents[0];
 
 	//var_dump( $result );
+	return $result;
+  }
+
+  public function getMyCategorysByUserId($user_id)
+  {
+	$query = 'CALL getMyCategorysByUserId(?)';
+    $query = $this->_db->quoteInto($query, $user_id);
+	$result = $this->_db->fetchAll($query);
 	return $result;
   }
 /*

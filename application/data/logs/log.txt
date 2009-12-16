@@ -3648,3 +3648,23 @@
 2009-12-16T16:20:59+08:00 INFO (6): pre captcha_image profile indexControllerArray
 2009-12-16T16:20:59+08:00 INFO (6): pre Zend_form_captchaArray
 2009-12-16T16:20:59+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-16T18:51:55+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T18:51:57+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T18:52:01+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T18:52:03+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T18:52:05+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T18:52:08+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T18:52:10+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T18:52:13+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T18:52:17+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T18:52:20+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T18:52:20+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-16T18:52:20+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-16T18:52:25+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T18:52:27+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T18:52:27+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-16T18:52:27+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-16T18:52:31+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T18:52:34+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-16T18:52:34+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-16T18:52:34+08:00 INFO (6): post Zend_form_captchaArray

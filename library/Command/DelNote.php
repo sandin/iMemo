@@ -8,7 +8,7 @@ class Command_DelNote extends Command_Abstract
 
 	//解析post来的数据
 	$params = array();
-	$note_id = $this->_param['note_id'];
+	$note_id = $this->_param['n_id'];
 
 	$note->load($note_id);
 
@@ -18,6 +18,8 @@ class Command_DelNote extends Command_Abstract
 	//var_dump($this->_mHistory);
 //	$this->_mHistory->store(__CLASS__,$old_data,'undo');
 	$this->_mHistory->store($this,$old_data,'undo');
+
+	return $data;
   }
 
   public function unExecuteCommand()

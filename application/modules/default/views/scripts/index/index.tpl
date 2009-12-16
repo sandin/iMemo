@@ -1,20 +1,26 @@
 <{include file="$APPLICATION_PATH/templates/header.tpl"}>
 <{*debug*}>
+
 <{*如果已经登录则显示个人主页,否则显示网站欢迎页面 *}>
 <{if $user}>
 
 <div id="main" class="clearfix">
 
-  <ul id="categorys">
+  <ul id="categorys" class="sidebar">
 	<li><a href="#cate-1">Inbox</a></li>
 	<li><a href="#cate-2">Today</a></li>
 	<li><a href="#cate-2">Next</a></li>
 	<li><a href="#cate-2">Maybe</a></li>
 	<li><a href="#cate-2">Projects</a></li>
 	<li><a href="#cate-2">Areas</a></li>
+
+	<{foreach from=$notes name=cate_loop item=cate_data key=cate_name}>
+	<li><a href="#cate-<{$smarty.foreach.cate_loop.iteration}>"><{$cate_name}></a></li>
+	<{/foreach}>
   </ul><!-- /categorys (sidebar) -->
 
   <div id="innerContent"> 
+	<!-- main input -->
 	<div id="note_00" class="note clearfix">
 	  <form name="add_note_form" id="add_note_form" class="ajaxForm" action="<{$PUBLIC_URL}>/note/add_note" method="post">
 		<div class="n_col n_content editing">
@@ -25,56 +31,21 @@
 	  </form>
 	</div><!-- /note_00(addNote) --> 
 	
-	<div id="cate-1" title="INBOX" class="cate">
-	  
+	<!-- note templats -->
+	<ul id="js_note_template" style="display:none">
+	  <{include file="$APPLICATION_PATH/templates/note.tpl"}>
+	</ul><!-- /note js_note_templats -->
+
+  <{foreach from=$notes item=cate_data key=cate_name}>
+	<div id="cate-<{$smarty.foreach.cate_loop.iteration}>"  title="<{$cate_name}>" class="cate">
 	  <ul class="notes_list clearfix connectedSortable">
-			<!-- note templats -->
-			<li class="note clearfix" id="js_note_templats" style="display:none;">
-				<div class="n_col n_lable star_<{$item.star}>">&nbsp;</div>
-				<div class="n_col ">&nbsp;</div>
-				<div class="n_col n_state"><input type="checkbox"></input></div>
-				<div class="n_col n_content">::content::</div>
-				<div class="n_col n_del">
-				   <form name="del_note_form" class="ajaxForm del_note_form" action="<{$PUBLIC_URL}>/note/del_note" method="post">
-					<a title="a" onclick="return false" href="#" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
-					<input class="note_id" type="hidden" name="note_id" value="<{$item.note_id}>"></input>
-					</form>
-				</div>
-				<div class="n_col n_date">::n_date::</div>
-
-				<div class="n_tag">
-				   <span>::tag::</span>
-				</div>
-			</li><!-- /note js_note_templats -->
-		<{foreach from=$notes item=item}>
-			<li class="note clearfix" <{if $notes == 0 }>id="js_note_templats" style="display:none;"<{/if}> >
-				<div class="n_col n_lable star_<{$item.star}>">&nbsp;</div>
-				<div class="n_col ">&nbsp;</div>
-				<div class="n_col n_state"><input type="checkbox"></input></div>
-				<div class="n_col n_content"><{$item.content}></div>
-				<div class="n_col n_del">
-				  <form name="del_note_form" class="ajaxForm del_note_form" action="<{$PUBLIC_URL}>/note/del_note" method="post">
-					<a title="a" onclick="return false" href="#" class="ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
-					<input class="note_id" type="hidden" name="note_id" value="<{$item.note_id}>"></input>
-					</form>
-				</div>
-				<div class="n_col n_date">1985-12-12 12:02</div>
-
-				<div class="n_tag">
-				  <{foreach from=$item.tags item=tag}>
-					<span><{$tag.tag_name}></span>
-				  <{/foreach}>
-			    </div>
-			</li><!-- /note -->
-	  <{/foreach}>
+		<{foreach from=$cate_data item=item key=i}>
+		  <{include file="$APPLICATION_PATH/templates/note.tpl"}>
+		<{/foreach}><{* note loop end *}>
 	  </ul><!-- /notes_list -->
 	</div><!-- /cate -->
+<{/foreach}><{* category loop end *}>
 
-	 <div id="cate-2" class="cate">
-	  <ul class="notes_list clearfix connectedSortable">
-
-	  </ul>
-	</div><!-- /cate -->
   </div><!-- /innerContent -->
 </div><!-- /main (main tags)-->
 
@@ -83,18 +54,3 @@
 <{/if}>
 
 <{include file="$APPLICATION_PATH/templates/footer.tpl"}>
-  <!--
-
-		user_id :<{$item.user_id}>
-		note_id :<{$item.note_id}>
-		dueDate :<{$item.dueDate}>
-		category :<{$item.category}>
-		tags :
-<{foreach from=$item.tags item=tag}>
-		<{$tag.tag_name}>
-<{/foreach}>
-
-		style :<{$item.style}>
-		star :<{$item.star}>
-	ts_created :<{$item.ts_created}>
-	  -->
