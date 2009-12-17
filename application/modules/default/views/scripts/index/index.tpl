@@ -7,15 +7,14 @@
 <div id="main" class="clearfix">
 
   <ul id="categorys" class="sidebar">
-	<li><a href="#cate-1">Inbox</a></li>
-	<li><a href="#cate-2">Today</a></li>
-	<li><a href="#cate-2">Next</a></li>
-	<li><a href="#cate-2">Maybe</a></li>
-	<li><a href="#cate-2">Projects</a></li>
-	<li><a href="#cate-2">Areas</a></li>
+	<{foreach from=$notes name=cate_side_loop item=cate_data key=cate_name}>
+	<li><a href="#cate-<{$smarty.foreach.cate_side_loop.iteration}>"><{$cate_name}></a></li>
 
-	<{foreach from=$notes name=cate_loop item=cate_data key=cate_name}>
-	<li><a href="#cate-<{$smarty.foreach.cate_loop.iteration}>"><{$cate_name}></a></li>
+	<{* note_00.input[categorys]需要第一个category name *}>
+	<{if $smarty.foreach.cate_side_loop.iteration == 1}>
+	  <{assign value=$cate_name var="first_category_name"}>
+	<{/if}>
+
 	<{/foreach}>
   </ul><!-- /categorys (sidebar) -->
 
@@ -27,6 +26,7 @@
 		  <input name="note-data" class="ajax-add-note real" type="text" autocomplete="off" src="<{$PUBLIC_URL}>/note/add_note"></input></div>
 		<div class="n_col n_submit">
 		  <input name="n_submit" type="submit" value="Submit!"></input>
+		  <input id="js_current_category" name="categorys" type="hidden" value="<{$first_category_name}>"></input>
 		</div>
 	  </form>
 	</div><!-- /note_00(addNote) --> 
@@ -36,10 +36,12 @@
 	  <{include file="$APPLICATION_PATH/templates/note.tpl"}>
 	</ul><!-- /note js_note_templats -->
 
-  <{foreach from=$notes item=cate_data key=cate_name}>
+  <{* catogroy loop start *}>
+  <{foreach from=$notes item=cate_data key=cate_name name=cate_loop }>
 	<div id="cate-<{$smarty.foreach.cate_loop.iteration}>"  title="<{$cate_name}>" class="cate">
 	  <ul class="notes_list clearfix connectedSortable">
 		<{foreach from=$cate_data item=item key=i}>
+		  <{assign value=$item.note_id var=nid}>
 		  <{include file="$APPLICATION_PATH/templates/note.tpl"}>
 		<{/foreach}><{* note loop end *}>
 	  </ul><!-- /notes_list -->

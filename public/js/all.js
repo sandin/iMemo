@@ -37,7 +37,14 @@ $(window).load(function(){
 
   // tabs && drop to tabs
   $tabs =  $("#main").tabs({
-	selected: 0 
+	selected: 0,
+    select: function(event, ui) { 
+	  //切换category时将当前category name存入全局变量
+	  var current_category  = $(ui.panel).attr('title');   
+	  __LDS_GLOBAL.category = current_category;
+	  //也存入note_00.input[js_current_category]中,用于addNote时发送给服务器
+	  $('#js_current_category').attr('value',current_category);
+	}
   });
   $tabs.find(".ui-tabs-nav").sortable({axis:'y'});
 

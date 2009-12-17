@@ -9,7 +9,6 @@ class Database_NotesCategorys extends DatabaseObject
 	parent::__construct($db, 'lds0019_notes_categorys','category_id' );
 
 	$this->add('category_name');
-	$this->add('user_id');
 	$this->add('ts_created', time());
   }
 

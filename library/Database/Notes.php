@@ -182,12 +182,6 @@ class Database_Notes extends DatabaseObject
    */
   public function delNote()
   {
-	if ($categorys = $this->getJoinRow('category')) {
-	  foreach ($categorys as $category_id) {
-		$category_name = $this->categoryIdToName($category_id);
-		$this->delCategory($category_name);
-	  }
-	}
 	if ($tags = $this->getJoinRow('tag')) {
 	  foreach ($tags as $tag_id) {
 		$tag_name = $this->tagIdToName($tag_id);
@@ -258,7 +252,6 @@ class Database_Notes extends DatabaseObject
 	if ($this->user_id) {
 	  $tag = new Database_NotesCategorys($this->_db);
 	  $tag->category_name = $category_name;	
-	  $tag->user_id = $this->user_id;	
 	  $tag->save();
 	  return $tag->getId();
 	}
@@ -492,10 +485,8 @@ class Database_Notes extends DatabaseObject
 	if ($this->user_id) {
 	$result = $this->_db->fetchOne(
 	  "SELECT category_id FROM lds0019_notes_categorys 
-		  WHERE user_id = :user_id 
-	      AND category_name = :category_name",
-	  array('user_id' => $this->user_id,
-		  'category_name' => $category_name)
+		  WHERE category_name = :category_name",
+	  array('category_name' => $category_name)
 	);
 
 	  return $result;

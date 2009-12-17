@@ -1,3 +1,6 @@
+var __LDS_GLOBAL = {};
+
+
 /*---------------------------------------------------------*/
 
 /** 
@@ -260,8 +263,8 @@ AddNoteCommand.prototype.beforeSubmit = function()
  */
 AddNoteCommand.prototype.getExtraData = function()
 {
-  var categorys = $('.cate:visible').attr('title');
-  return {categorys:categorys};
+  //var category = $('.cate:visible').attr('title');
+  //return {categorys:category};
 }
 
 
