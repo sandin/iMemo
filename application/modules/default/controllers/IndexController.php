@@ -18,24 +18,15 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
 	{
-	  $this->_db_user->load($this->_user->user_id);
+	  $user_id = $this->_user->user_id;
+	  $this->_db_user->load($user_id);
 	  // create a new notes
 	  $notes = new Database_Notes($this->_db);
-	  $notes->load(1);
-
-	  $param =  array(
-		'user_id' => $this->_db_user->getId(),
-	  );
-
-	  $command = new Command_GetNote($notes,$param);
-	  $this->_db_user->setCommand($command);
-	  $notes =  $this->_db_user->executeCommand();
+	  $categorys = $notes->getMyCategorysByUserId($user_id);
 	  
-	  $this->view->notes = $notes; 
-	  var_dump($notes);
+	  $this->view->categorys = $categorys; 
+	  var_dump($categorys);
 	}
-
-
 
     public function aAction()
 	{

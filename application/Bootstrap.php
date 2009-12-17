@@ -151,6 +151,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		
 		$router = $front->getRouter(); 
 
+		//login
 		$router->addRoute(
 		  'login',
 		  new Zend_Controller_Router_Route(
@@ -163,6 +164,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		  )
 		);
 
+		//register
 		$router->addRoute(
 		  'register',
 		  new Zend_Controller_Router_Route(
@@ -175,6 +177,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		  )
 		);
 
+		//note auto command
 		$router->addRoute(
 		  'note',
 		  new Zend_Controller_Router_Route(
@@ -182,6 +185,19 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 			  array(
 				'module' => 'default',
 				'controller' => 'note',
+				'action' => 'index',
+			  )
+		  )
+		);
+
+		//note auto command
+		$router->addRoute(
+		  'category',
+		  new Zend_Controller_Router_Route(
+			'category/:category_id',
+			  array(
+				'module' => 'default',
+				'controller' => 'category',
 				'action' => 'index',
 			  )
 		  )

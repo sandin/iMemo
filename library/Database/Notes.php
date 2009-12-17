@@ -543,12 +543,13 @@ class Database_Notes extends DatabaseObject
   {
 	$query = 'CALL getAllNoteByCategoryId(?)';
     $query = $this->_db->quoteInto($query, $category_id);
-
 	$result = $this->_db->fetchAll($query);
 
 	//Zend_Debug::dump($new_result);
 	return $this->sqlResultToNewArray($result);
   }
+
+
 
   /** 
 	* 将sql请求中含有逗号分隔符的列转换为数组
@@ -606,6 +607,19 @@ class Database_Notes extends DatabaseObject
 	$result = $this->_db->fetchAll($query);
 	return $result;
   }
+
+  public function checkThisUserHasThisCategory($user_id, $category_id)
+  {
+	$query = 'CALL getMyCategorysByUserId(?)';
+    $query = $this->_db->quoteInto($query, $user_id);
+	$result = $this->_db->fetchCol($query);
+	//var_dump($result);
+	
+	return in_array($category_id, $result);
+
+  }
+
+
 /*
   protected function preInsert(){}
   protected function postLoad(){}

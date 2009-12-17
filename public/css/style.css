@@ -275,6 +275,9 @@ p{line-height:1.4em;}
 }
 
 /*--------- inner/innerContent ---------*/
+#innerContent .ui-tabs-panel {
+  padding:			0;
+}
 #innerContent .cate {
   padding:			0;
   margin:			0;
@@ -288,7 +291,7 @@ p{line-height:1.4em;}
   margin-bottom:	5px;
 }
 #innerContent #note_00 {
-  background:		#fff;
+  background-color:	#fff;
   margin-bottom:	10px;
 }
 #innerContent #note_00 .n_content {
@@ -442,4 +445,9 @@ li.extend .n_date .hidden {
 }
 .hidden {
   display:			none;
+}
+.loading {
+  background-image:		url(../images/icon_loading.gif) ;
+  background-repeat:	no-repeat;
+  background-position:	90% center;
 }

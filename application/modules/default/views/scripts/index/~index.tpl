@@ -7,10 +7,15 @@
 <div id="main" class="clearfix">
 
   <ul id="categorys" class="sidebar">
-	<{section name=i loop=$categorys}>
-	  <li><a href="<{$PUBLIC_URL}>/category/<{$categorys[i].category_id}>"><{$categorys[i].category_name}></a></li>
-	<{/section}>
+	<{foreach from=$notes name=cate_side_loop item=cate_data key=cate_name}>
+	<li><a href="#cate-<{$smarty.foreach.cate_side_loop.iteration}>"><{$cate_name}></a></li>
 
+	<{* note_00.input[categorys]需要第一个category name *}>
+	<{if $smarty.foreach.cate_side_loop.iteration == 1}>
+	  <{assign value=$cate_name var="first_category_name"}>
+	<{/if}>
+
+	<{/foreach}>
   </ul><!-- /categorys (sidebar) -->
 
   <div id="innerContent"> 
@@ -26,20 +31,25 @@
 	  </form>
 	</div><!-- /note_00(addNote) --> 
 	
-	<div id="js_panelsTarget" class=""><!-- Flash Target -->
-	</div><!-- /js_panelsTarget -->
+	<!-- note templats -->
+	<ul id="js_note_template" style="display:none">
+	  <{include file="$APPLICATION_PATH/templates/note.tpl"}>
+	</ul><!-- /note js_note_templats -->
 
-	<{foreach from=$notes item=item}>
-	<div id="cate-n"></div>
-	<{/foreach}>
+  <{* catogroy loop start *}>
+  <{foreach from=$notes item=cate_data key=cate_name name=cate_loop }>
+	<div id="cate-<{$smarty.foreach.cate_loop.iteration}>"  title="<{$cate_name}>" class="cate">
+	  <ul class="notes_list clearfix connectedSortable">
+		<{foreach from=$cate_data item=item key=i}>
+		  <{assign value=$item.note_id var=nid}>
+		  <{include file="$APPLICATION_PATH/templates/note.tpl"}>
+		<{/foreach}><{* note loop end *}>
+	  </ul><!-- /notes_list -->
+	</div><!-- /cate -->
+<{/foreach}><{* category loop end *}>
 
   </div><!-- /innerContent -->
 </div><!-- /main (main tags)-->
-
-<!-- note templats -->
-<ul id="js_note_template" style="display:none">
-  <{include file="$APPLICATION_PATH/templates/note.tpl"}>
-</ul><!-- /note js_note_template -->
 
 <{else}>
 <{include file="$APPLICATION_PATH/templates/welcome.tpl"}>

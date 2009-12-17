@@ -1,7 +1,4 @@
 
-
-
-
 /*-------------------------------------------------------------*/
 
 $(window).load(function(){	
@@ -38,7 +35,11 @@ $(window).load(function(){
   // tabs && drop to tabs
   $tabs =  $("#main").tabs({
 	selected: 0,
+	panelsTarget : '#js_panelsTarget',
+	spinner: 'Retrieving data...',
+	cache: true,
     select: function(event, ui) { 
+	  //loadding icon
 	  //切换category时将当前category name存入全局变量
 	  var current_category  = $(ui.panel).attr('title');   
 	  __LDS_GLOBAL.category = current_category;
@@ -46,6 +47,19 @@ $(window).load(function(){
 	  $('#js_current_category').attr('value',current_category);
 	}
   });
+
+  //读取URL中的#cate-1部分,并切换至
+  var hash = window.location.hash;
+  if (hash != '') {
+	var arr = hash.split('-');
+	var num = parseInt(arr[1]);
+	num--;
+	if (typeof num == 'number') {
+	  //console.log(num);
+	  $tabs.tabs('select',num);
+	}
+  }
+
   $tabs.find(".ui-tabs-nav").sortable({axis:'y'});
 
   var $tab_items = $("ul:first li",$tabs).droppable({
@@ -106,7 +120,7 @@ $(window).load(function(){
 
 
 
-  /////////////////////////////////////////////////////////
+  /*-----------------------------------------------------------*/
 	
   $("#nav").sortable();
   $("#tabs").tabs();
@@ -160,23 +174,28 @@ $(window).load(function(){
 	 function() { $(this).removeClass('ui-state-hover'); }
   ); 
 
+
   //message conter
   $('#message')
 	.ajaxStart(function(){
 	  $(this).fadeIn();
 	  $('span',this).html('Loading');
+	  //console.log(new Date(),'start');
 	})
-	.ajaxSend(function(){
-	  $('span',this).html('Loading');
-	})
+//	.ajaxSend(function(){
+//	  $('span',this).html('Loading');
+	  //console.log(new Date(),'send');
+//	})
 	.ajaxSuccess(function(){
-	  $('span',this).html('It\'s done.');	
 	  $(this).fadeOut();
+	  //console.log(new Date(),'success');
 	})
 	.ajaxError(function(){
-	  $('span',this).html('Error.');
+	  $('span',this).html('Error');
 	});
   
+
+	
   //main search input 主搜索效果
   $('#search_text').focus(function(){
 	var originalText = $(this).attr('value');
@@ -196,5 +215,5 @@ $(window).load(function(){
 /*-------------------------------------------------------*/
 
 $(window).ready(function(){
-
+ 
 });//end window ready
