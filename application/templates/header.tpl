@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Memo - 0019</title>
-  <link type="text/css" rel="stylesheet" media="all" href="<{$PUBLIC_URL}>/share/jquery/css/smoothness/jquery-ui-1.7.2.custom.css" />
+  <link type="text/css" rel="stylesheet" media="all" href="<{$PUBLIC_URL}>/share/jquery/css/flick/jquery-ui-1.7.2.custom.css" />
   <link type="text/css" rel="stylesheet" media="all" href="<{$PUBLIC_URL}>/css/style.css" />
 </head>
 
@@ -35,7 +35,7 @@
 
 	  <{if $user}>
 	  <li><a id="logout" href='<{$PUBLIC_URL}>/profile/index/logout'><{t}>Logout<{/t}></a></li>
-	  <li><a id="logout" href='<{$PUBLIC_URL}>/profile'> / <{t}>Settings<{/t}> / </a></li>
+	  <li><a id="logout" href='<{$PUBLIC_URL}>/settings'> / <{t}>Settings<{/t}> / </a></li>
 	  <li><b><{$user->username}></b></li>
 
 	  <{else}>

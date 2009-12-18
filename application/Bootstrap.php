@@ -177,7 +177,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		  )
 		);
 
-		//note auto command
+		//各种操作note的command,都有此控制器此动作分配,命令单入口
 		$router->addRoute(
 		  'note',
 		  new Zend_Controller_Router_Route(
@@ -190,7 +190,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		  )
 		);
 
-		//note auto command
+		//按category读取所拥有的note
 		$router->addRoute(
 		  'category',
 		  new Zend_Controller_Router_Route(
@@ -202,6 +202,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 			  )
 		  )
 		);
+
+	
 /*
         $this->frontController->throwExceptions(true);  
 		$this->frontController->setControllerDirectory(array(

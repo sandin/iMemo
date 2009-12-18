@@ -9,7 +9,8 @@ font-size:	12px;
 
 ul, ol{list-style-type:none}
 select, input, img, select{vertical-align:middle}
-input {border:1px #ddd solid;}
+input {}
+table {border-collapse:collapse;}
 
 a{text-decoration:none}
 a:link{color:#0F8BC9  }    
@@ -450,4 +451,31 @@ li.extend .n_date .hidden {
   background-image:		url(../images/icon_loading.gif) ;
   background-repeat:	no-repeat;
   background-position:	90% center;
+}
+
+/*----------------settings page-----------------------------------*/
+.categorys_list {
+  border:			1px #eee solid;
+  padding:			10px;
+  margin-top:		10px;
+}
+.categorys_list tr {
+  height:			30px;
+
+}
+.categorys_list .even {
+  background-color:	#eee;
+}
+.categorys_list .c_ckbox
+,.categorys_list .c_del
+,.categorys_list .c_rename 
+{
+  width:			30px;
+  text-align:		center;
+}
+.categorys_list .c_name {
+  width:			250px;
+}
+.categorys_list .c_id {
+  display:			none;
 }
