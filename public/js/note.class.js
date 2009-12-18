@@ -294,7 +294,7 @@ AjaxForm.prototype.factory = function()
   if (this.$_targetObj.length != 0) { 
 	var options = this.makeAjaxFormOptions();
 	//console.log(options);
-    this.$_targetObj.ajaxForm(options);
+    this.$_targetObj.addClass('binded').ajaxForm(options);
   }
 }
 
@@ -382,6 +382,50 @@ AjaxForm.prototype.parseURL = function()
   //返回驼峰形式
   return result;
 }
+
+/*--------------------------------------------------*/
+
+  //观察模式接口
+  function IObserver(){}
+  IObserver.prototype.update = function(sender,msg){} 
+
+  function ISubject(){
+	this._ObserverList = [];
+  }
+  ISubject.prototype.addObserver = function(observer)
+  {
+	this._ObserverList.push(observer);
+  } 
+  ISubject.prototype.delObserver = function(observer){} 
+  ISubject.prototype.notify = function(observer,msg)
+  {
+	var msg = msg || {};
+	for (i in this._ObserverList) {
+	  this._ObserverList[i].update(this,msg);
+	}
+  } 
+
+/*--------------------------------------------------*/
+
+  function BindCenter()
+  {
+	ISubject.call(this);
+  } 
+  BindCenter.prototype = new ISubject(); 
+
+  function BindAjaxForm()
+  { 
+	IObserver.call(this);
+  }
+
+  BindAjaxForm.prototype.update = function(){
+	//将大部分表单初始化为ajaxForm类型
+	$('.ajaxForm[class!="binded"]').each(function(){
+	  var $target = $(this);
+	  var form = new AjaxForm($target);
+	  form.factory();
+	});
+  }
 
 
 /*==================================================================*/

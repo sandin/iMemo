@@ -13,9 +13,11 @@ class Command_AddNote extends Command_Abstract
 	$params['user_id']   = $this->_param['user_id'];
 	if (isset($this->_param['categorys'])) {
 	  $params['categorys'] = $this->_param['categorys'];  
+	} else {
+	  $params['categorys'] = 'Inbox';
 	}
 
-	if ($params['content'] != null) {
+	if ($params['content'] != null || $params['content'] != '') {
 	  $data = $note->createNote($params);
 	} else {
 	  $data = 'content can not be null.';

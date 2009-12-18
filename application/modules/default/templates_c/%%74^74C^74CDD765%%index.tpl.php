@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-18 00:20:00
+<?php /* Smarty version 2.6.26, created on 2009-12-18 14:29:24
          compiled from category/index.tpl */ ?>
 <div title="<?php echo $this->_tpl_vars['category_name']; ?>
 " class="cate">

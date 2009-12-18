@@ -3,27 +3,33 @@
 
 $(window).load(function(){	
 
-  //将大部分表单初始化为ajaxForm类型
-  $('.ajaxForm').each(function(){
-	var $target = $(this);
-	var form = new AjaxForm($target);
-	form.factory();
-  });
+  //唯一的全局变量
+   __LDS_GLOBAL = {};
 
- //del note buttom, click模拟submit 
-  $('.del_note_form>a').each(function(){
-	$(this).click(function(){
-	  $form = $(this).parent();
-	  $note = $form.parent().parent();
+  //事件普通绑定中心(观察模式),负责需要重复绑定的对象
+  var bindCenter = new BindCenter();
+  var bindAjaxform = new BindAjaxForm();
 
-	  $form.trigger('submit'); 
-	  //隐藏删除内容
-	  $note.fadeOut('fast'); 
-    });
+  bindCenter.addObserver(bindAjaxform);
+  bindCenter.notify();
+
+
+  //事件冒泡绑定中心,用于ajax新载内容的事件绑定
+  $('#content').click(function(e){
+
+	  //删除按钮
+	  var $n_del = $(e.target).parent().parent().parent();
+	  if ($n_del.hasClass('n_del')) {
+		$form = $n_del.find('.del_note_form');
+		$note = $form.parent().parent();
+		//console.log($form);
+		//console.log($note);
+		$form.trigger('submit'); 
+		//隐藏删除内容
+		$note.fadeOut('fast'); 
+	  } 
 	
-  });
-
-
+	});//冒泡
 
 
   // notes sort
@@ -32,22 +38,40 @@ $(window).load(function(){
 	  cursorAt: { cursor: 'crosshair', top: -3, left: -3 },
   });//.disableSelection();
 
+  
+
   // tabs && drop to tabs
   $tabs =  $("#main").tabs({
-	selected: 0,
+	//selected: 0,
 	panelsTarget : '#js_panelsTarget',
 	spinner: 'Retrieving data...',
 	cache: true,
+	cookie: {expires: 30,name:'ui-tab'},
     select: function(event, ui) { 
 	  //loadding icon
 	  //切换category时将当前category name存入全局变量
-	  var current_category  = $(ui.panel).attr('title');   
+	  var current_category  = ui.tab.text;   
+	  //console.log( current_category);
 	  __LDS_GLOBAL.category = current_category;
 	  //也存入note_00.input[js_current_category]中,用于addNote时发送给服务器
 	  $('#js_current_category').attr('value',current_category);
 	}
   });
 
+
+  function setCurrentCategory()
+  {
+    var current_category_index = $tabs.tabs('option', 'selected');
+    var current_category = 
+  	$('#categorys').find('li>a').eq(current_category_index).text();
+
+	__LDS_GLOBAL.category = current_category;
+	//console.log(__LDS_GLOBAL.category);
+	$('#js_current_category').attr('value',__LDS_GLOBAL.category);
+	//console.log($('#js_current_category').attr('value') );
+  }
+  setCurrentCategory();
+  /*
   //读取URL中的#cate-1部分,并切换至
   var hash = window.location.hash;
   if (hash != '') {
@@ -59,6 +83,7 @@ $(window).load(function(){
 	  $tabs.tabs('select',num);
 	}
   }
+  */
 
   $tabs.find(".ui-tabs-nav").sortable({axis:'y'});
 
@@ -187,6 +212,8 @@ $(window).load(function(){
 	  //console.log(new Date(),'send');
 //	})
 	.ajaxSuccess(function(){
+	  //给新载入的内容绑定事件处理函数
+	  bindCenter.notify();
 	  $(this).fadeOut();
 	  //console.log(new Date(),'success');
 	})

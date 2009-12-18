@@ -539,10 +539,10 @@ class Database_Notes extends DatabaseObject
 	return $this->sqlResultToNewArray($result);
   }
 
-  public function getAllNoteByCategoryId($category_id)
+  public function getAllNoteByCategoryIdAndUserId($category_id,$user_id)
   {
-	$query = 'CALL getAllNoteByCategoryId(?)';
-    $query = $this->_db->quoteInto($query, $category_id);
+	$query = 'CALL getAllNoteByCategoryIdAndUserId(?)';
+    $query = $this->_db->quoteInto($query, array($category_id,$user_id));
 	$result = $this->_db->fetchAll($query);
 
 	//Zend_Debug::dump($new_result);
