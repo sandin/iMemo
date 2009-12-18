@@ -3708,3 +3708,9 @@
 2009-12-17T23:24:33+08:00 INFO (6): This category is not belong to you. user_id: 1
 2009-12-17T23:24:43+08:00 INFO (6): This category is not belong to you. user_id: 1
 2009-12-17T23:25:08+08:00 INFO (6): This category is not belong to you. user_id: 1
+2009-12-18T16:13:21+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-18T16:13:24+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-18T16:13:31+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-18T16:13:33+08:00 INFO (6): pre captcha_image profile indexControllerArray
+2009-12-18T16:13:33+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-18T16:13:33+08:00 INFO (6): post Zend_form_captchaArray

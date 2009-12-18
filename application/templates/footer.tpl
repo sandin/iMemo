@@ -16,11 +16,7 @@
 
 <script type="text/javascript" src="<{$PUBLIC_URL}>/share/jquery/js/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="<{$PUBLIC_URL}>/share/jquery/js/jquery-ui-1.7.2.lds.min.js"></script>
-<script type="text/javascript" src="<{$PUBLIC_URL}>/share/jquery/js/jquery.textarea-expander.js"></script>
-<script type="text/javascript" src="<{$PUBLIC_URL}>/share/jquery/plugins/jquery.form.min.js"></script>
-<script type="text/javascript" src="<{$PUBLIC_URL}>/share/json2.min.js"></script>
-<script type="text/javascript" src="<{$PUBLIC_URL}>/js/all.js"></script>
-<script type="text/javascript" src="<{$PUBLIC_URL}>/js/note.class.js"></script>
+<script type="text/javascript" src="<{$PUBLIC_URL}>/js/all.min.js"></script>
 </body>
 
 <{/if}>
