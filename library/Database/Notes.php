@@ -163,12 +163,13 @@ class Database_Notes extends DatabaseObject
 
 	if (isset($save['categorys'])) {
 	  $categorys = $save['categorys'];
+	  $user_id = $save['user_id'];
 	  if (is_array($categorys)) {
 		foreach ($categorys as $category_name) {
-		  $this->addCategory($category_name);
+		  $this->addCategory($category_name, $user_id);
 		}
 	  } else {
-		$this->addCategory($categorys);
+		$this->addCategory($categorys, $user_id);
 	  }
 	}
 
@@ -188,8 +189,14 @@ class Database_Notes extends DatabaseObject
 		$this->delTag($tag_name);
 	  }
 	}
-	$this->delContent($this->getId());
-	return $this->delete();
+	$note_id = $this->getId();
+	$this->delContent($note_id);
+	$noteLinkCate = new Database_NotesLinkCategorys($this->_db);
+	$noteLinkCate->loadByNoteId($note_id);
+	$cate_id = $noteLinkCate->category_id;
+	$result = $noteLinkCate->removeNoteCategoryLink($cate_id);
+
+	return ($this->delete() && $result);
   }
 
   public function getContent($note_id = null)
@@ -249,15 +256,18 @@ class Database_Notes extends DatabaseObject
 
   public function createCategoryToUser($category_name, $user_id)
   {
+	if ( !($cate_id = $this->categoryNameToId($user_id,$category_name)) )
+	{
 	$cate = new Database_NotesCategorys($this->_db);
 	$cate->category_name = $category_name;	
 	$cate->save();
 	$cate_id = $cate->getId();
-
+	}
 	$userLinkCate = new Database_UserLinkCategory($this->_db);
 	$userLinkCate->user_id = $user_id;
 	$userLinkCate->category_id = $cate_id;
-	return $userLinkCate->save();
+	$userLinkCate->save();
+	return $cate_id;
   }
   /** 
 	* 新建tag时，需要创造新的note与tag之间的link
@@ -306,12 +316,7 @@ class Database_Notes extends DatabaseObject
 	$taglink->delete();
   }
 
-  public function removeCategoryLink($category_id)
-  {
-	$taglink = new Database_NotesLinkCategorys($this->_db);
-	$taglink->loadByCategoryIdAndNoteId($category_id,$this->getId());
-	$taglink->delete();
-  }
+  
   /** 
 	* 为note增加一个tag
 	* 增加时判断该用户是否已经拥有这个tag，没有则创建一个
@@ -333,12 +338,13 @@ class Database_Notes extends DatabaseObject
 	}
   }
 
- public function addCategory($category_name)
+ public function addCategory($category_name,$user_id)
   {
-	//确定该note没有此tag
-	if (!$this->CategoryIsExistInThisNote($category_name)) {
-	  if (!($category_id = $this->categoryNameToId($category_name)) ) {
-		$category_id = $this->createCategory($category_name);
+	//检查note是否已经有了这个category
+	if (!$this->categoryIsExistInThisNote($user_id, $category_name)) {
+	  //检查category本身是否存在
+	  if (!($category_id = $this->categoryNameToId($user_id, $category_name)) ) {
+		$category_id = $this->createCategoryToUser($category_name,$user_id);
 	  }
 	  $this->makeCategoryLink($category_id);
 	  return $category_id;
@@ -368,19 +374,16 @@ class Database_Notes extends DatabaseObject
 	}
   }
 
-   public function delCategory($category_name)
+  public function delCategory($category_name)
   {
-	//确认Category存在于该note里，避免不必要的错误删除(例如删除掉其他用户的category)
-	if ($this->categoryIsExistInThisNote($category_name)) {
-	  $category_id = $this->categoryNameToId($category_name);
+	if ($category_id = $this->categoryNameToId($category_name)) 
+	{
 	  $this->removeCategoryLink($category_id);
-	  $category_link_db = new Database_NotesLinkCategorys($this->_db);
+	  $user_link_category = new Database_UserLinkCategory($this->_db);
 	  //如果该category还有其他连接，则只删除此条连接，而不删除category本身
-	  if (!$category_link_db->categoryHasLink($category_id)) {
-		$category_db = new Database_NotesCategorys($this->_db);
-		$category_db->load($category_id);
-		$category_db->delete();		
-	  }
+	  $category_db = new Database_NotesCategorys($this->_db);
+	  $category_db->load($category_id);
+	  return $category_db->delete();		
 	}
   }
 
@@ -408,11 +411,11 @@ class Database_Notes extends DatabaseObject
 	}
   }
 
- public function categoryIsExistInThisNote($category_name)
+ public function categoryIsExistInThisNote($user_id, $category_name)
   {
 	$this->postLoad();
 	// 如果该用户拥有此名字的category，则检查此category是否已经赋予该note
-	if ($category_id = $this->categoryNameToId($category_name)) {
+	if ($category_id = $this->categoryNameToId($user_id,$category_name)) {
 	  $this_note_categorys = $this->getJoinRow('category');
 	  if (in_array($category_id,$this_note_categorys)) {
 		return true;    
@@ -492,15 +495,21 @@ class Database_Notes extends DatabaseObject
 	* 
 	* @return 
    */
- public function categoryNameToId($category_name)
+ public function categoryNameToId($user_id, $category_name)
   {
-	if ($this->user_id) {
-	$result = $this->_db->fetchOne(
-	  "SELECT category_id FROM lds0019_notes_categorys 
-		  WHERE category_name = :category_name",
-	  array('category_name' => $category_name)
-	);
+	if ($user_id) {
+	  $result = $this->_db->fetchOne(
+	  "SELECT cate.category_id
+	   FROM lds0019_notes_categorys AS cate
+	   LEFT JOIN lds0019_users_link_categorys AS user_ln_cate 
+	   ON cate.category_id=user_ln_cate.category_id
+	   WHERE cate.category_name = :category_name
+	   AND user_ln_cate.user_id = :user_id",
+	   array('category_name' => $category_name,
+			 'user_id' => $user_id)
+	  );
 
+	  //var_dump($result);
 	  return $result;
 	}
   }
@@ -629,6 +638,14 @@ class Database_Notes extends DatabaseObject
 	
 	return in_array($category_id, $result);
 
+  }
+
+  public function delNotesByCategoryId($category_id)
+  {
+	$query = 'CALL delNotesByCategoryId(?)';
+    $query = $this->_db->quoteInto($query, $category_id);
+	$result = $this->_db->query($query);
+	//var_dump($result);
   }
 
 

@@ -42,7 +42,7 @@ class Settings_IndexController extends Zend_Controller_Action
 	  $post = $this->getRequest()->getPost();
 	  
 	  if ( count($post) > 0 ) {
-		$formCheck = new Profile_Model_RegisterFormCheck($post);
+		$formCheck = new Settings_Model_RegisterFormCheck($post);
 		//var_dump($post);
 	//	$formCheck->setRequired('captcha');
 		$formCheck->setRequired($post);
@@ -80,7 +80,7 @@ class Settings_IndexController extends Zend_Controller_Action
 	  //Zend_Debug::dump($this->getRequest()->getParam('username'),'auth-username');
 
 	  if ( count($post) > 0 ) {
-		$formCheck = new Profile_Model_LoginFormCheck($post);
+		$formCheck = new Settings_Model_LoginFormCheck($post);
 		//var_dump($post);
 	//	$formCheck->setRequired('captcha');
 		$formCheck->setRequired($post);

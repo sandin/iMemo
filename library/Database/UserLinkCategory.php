@@ -13,7 +13,34 @@ class Database_UserLinkCategory extends DatabaseObject
   }
 
 
+   /** 
+	* 删除note category link
+	* 
+	* @param $category_id
+	* 
+	* @return 
+   */
+  public function removeUserCategoryLink($category_id)
+  {
+	$table = $this->_table;
+	$where = $this->_db->quoteInto('category_id = ?', $category_id);
+	$rows_affected = $this->_db->delete($table, $where);
+  }
 
+  public function thisUserHasThisCategory($user_id, $category_id)
+  {
+	$select = $this->_db->select();
+	$select->from($this->_table, '*')
+		   ->where('user_id = ?', $user_id)
+		   ->where('category_id = ?', $category_id);
+
+	// 但是，读取数据的方法相同
+	$sql = $select->__toString();
+	var_dump($sql);
+	$result = $this->_db->fetchAll($sql);
+	var_dump($result);
+	return (count($result) > 0) ? true : false;
+  }
  
 
 

@@ -12,6 +12,12 @@ class Database_NotesCategorys extends DatabaseObject
 	$this->add('ts_created', time());
   }
 
+  public function delCategoryById($category_id)
+  {
+	$this->load($category_id);
+	return $this->delete();
+  }
+
 
 
 /*

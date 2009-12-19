@@ -56,7 +56,9 @@ abstract class Command_Abstract
 	case 'tag_name': 
 	  break;
 
-	case 'category_name': 
+	case 'category_id': 
+	  $userLinkCategory = new Database_UserLinkCategory($db);
+	  return $userLinkCategory->thisUserHasThisCategory($user_id, $compare);
 	  break;
 
 	case 'category_name': 

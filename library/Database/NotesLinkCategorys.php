@@ -12,15 +12,13 @@ class Database_NotesLinkCategorys extends DatabaseObject
 	$this->add('category_id');
   }
 
-  public function loadByCategoryIdAndNoteId($category_id,$note_id)
+
+  public function loadByNoteId($note_id)
   {
 	$result = $this->_db->fetchRow(
 	  "SELECT * FROM $this->_table 
-		  WHERE note_id = :note_id 
-		  AND category_id = :category_id",
-	  array(
-		  'note_id' => $note_id,
-		  'category_id'	=> $category_id)
+		  WHERE note_id = :note_id", 
+	  array('note_id' => $note_id)
 	);
 	$link_id = $result['link_id'];
 
@@ -40,7 +38,38 @@ class Database_NotesLinkCategorys extends DatabaseObject
 
   }
 
- 
+    /** 
+	* 删除note category link
+	* 
+	* @param $category_id
+	* 
+	* @return 
+   */
+  public function removeNoteCategoryLink($category_id)
+  {
+	$table = $this->_table;
+	$where = $this->_db->quoteInto('category_id = ?', $category_id);
+	$rows_affected = $this->_db->delete($table, $where);
+	return ($rows_affected > 0) ? true : false;
+  }
+
+  public function changeCategoryFormTo($note_id,$old_category_id,$new_category_id)
+  {
+	$query = sprintf('UPDATE %s SET
+					  category_id = ?
+					  where note_id = ?
+					  and category_id = ?',
+                     $this->_table);
+
+	$query = $this->_db->quoteInto($query,array(
+								  $new_category_id,
+								  $note_id,
+								  $old_category_id)); 
+	$result = $this->_db->query($query);	
+
+	return $result;
+  }
+
 
 
 

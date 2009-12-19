@@ -157,7 +157,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		  new Zend_Controller_Router_Route(
 			'login/*',
 			  array(
-				'module' => 'profile',
+				'module' => 'settings',
 				'controller' => 'index',
 				'action' => 'login',
 			  )
@@ -170,7 +170,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		  new Zend_Controller_Router_Route(
 			'register/*',
 			  array(
-				'module' => 'profile',
+				'module' => 'settings',
 				'controller' => 'index',
 				'action' => 'register',
 			  )

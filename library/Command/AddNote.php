@@ -11,7 +11,7 @@ class Command_AddNote extends Command_Abstract
 	$params = array();
 	$params['content']   = $this->_param['note-data'];
 	$params['user_id']   = $this->_param['user_id'];
-	if (isset($this->_param['categorys'])) {
+	if (isset($this->_param['categorys']) && $this->_param['categorys'] != '') {
 	  $params['categorys'] = $this->_param['categorys'];  
 	} else {
 	  $params['categorys'] = 'Inbox';

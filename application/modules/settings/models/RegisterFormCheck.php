@@ -1,5 +1,5 @@
 <?php
-class Profile_Model_RegisterFormCheck extends Lds_Models_FormCheck 
+class Settings_Model_RegisterFormCheck extends Lds_Models_FormCheck 
 {
 
  // public function __construct()
