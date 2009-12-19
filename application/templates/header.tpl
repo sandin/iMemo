@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Memo - 0019</title>
-  <link type="text/css" rel="stylesheet" media="all" href="<{$PUBLIC_URL}>/share/jquery/css/flick/jquery-ui-1.7.2.custom.css" />
+  <link type="text/css" rel="stylesheet" media="all" href="<{$PUBLIC_URL}>/share/jquery/css/lds/jquery-ui-1.7.2.custom.css" />
   <link type="text/css" rel="stylesheet" media="all" href="<{$PUBLIC_URL}>/css/style.css" />
 </head>
 

@@ -479,3 +479,7 @@ li.extend .n_date .hidden {
 .categorys_list .c_id {
   display:			none;
 }
+
+#create_category_form {
+  float:			right;
+}

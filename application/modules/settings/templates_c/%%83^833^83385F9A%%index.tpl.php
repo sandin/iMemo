@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-19 00:40:17
+<?php /* Smarty version 2.6.26, created on 2009-12-19 13:56:01
          compiled from index/index.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
@@ -8,7 +8,7 @@ unset($_smarty_tpl_vars);
 
 <div id="main" class="clearfix">
 
-  <div id="tabs">
+  <div id="settings-tabs">
 	<ul>
 	  <li><a href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /settings/profile"><?php echo $this->_tpl_vars['t']->_('Preferences'); ?>

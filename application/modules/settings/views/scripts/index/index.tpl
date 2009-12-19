@@ -2,7 +2,7 @@
 
 <div id="main" class="clearfix">
 
-  <div id="tabs">
+  <div id="settings-tabs">
 	<ul>
 	  <li><a href="<{$PUBLIC_URL}>/settings/profile"><{t}>Preferences<{/t}></a></li>
 	  <li><a href="<{$PUBLIC_URL}>/settings/profile"><{t}>Profile<{/t}></a></li>

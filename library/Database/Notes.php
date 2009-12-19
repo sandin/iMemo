@@ -247,14 +247,17 @@ class Database_Notes extends DatabaseObject
 	}
   }
 
-  public function createCategory($category_name)
+  public function createCategoryToUser($category_name, $user_id)
   {
-	if ($this->user_id) {
-	  $tag = new Database_NotesCategorys($this->_db);
-	  $tag->category_name = $category_name;	
-	  $tag->save();
-	  return $tag->getId();
-	}
+	$cate = new Database_NotesCategorys($this->_db);
+	$cate->category_name = $category_name;	
+	$cate->save();
+	$cate_id = $cate->getId();
+
+	$userLinkCate = new Database_UserLinkCategory($this->_db);
+	$userLinkCate->user_id = $user_id;
+	$userLinkCate->category_id = $cate_id;
+	return $userLinkCate->save();
   }
   /** 
 	* 新建tag时，需要创造新的note与tag之间的link
@@ -285,6 +288,15 @@ class Database_Notes extends DatabaseObject
 	  $taglink->save();
 	  return $taglink->getId();
 	}
+  }
+
+  public function makeUserLinkCategory($user_id, $category_id)
+  {
+	$categoryLinkUser = new Database_UserLinkCategory($this->_db);
+	$categoryLinkUser->category_id = $category_id;
+	$categoryLinkUser->user_id = $user_id();
+	$categoryLinkUser->save();
+	return $categoryLinkUser->getId();
   }
 
   public function removeTagLink($tag_id)

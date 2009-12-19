@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-19 00:30:57
+<?php /* Smarty version 2.6.26, created on 2009-12-19 13:05:44
          compiled from /home/svn/0019/trunk/application/templates/note.tpl */ ?>
 <li class="note clearfix">
 	<div class="n_col n_lable star_<?php echo $this->_tpl_vars['item']['star']; ?>

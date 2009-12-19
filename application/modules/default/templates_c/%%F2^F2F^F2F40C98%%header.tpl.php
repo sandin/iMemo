@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-19 00:30:56
+<?php /* Smarty version 2.6.26, created on 2009-12-19 13:05:43
          compiled from /home/svn/0019/trunk/application/templates/header.tpl */ ?>
 <?php if (! isset ( $this->_tpl_vars['noLayout'] )): ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -7,7 +7,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Memo - 0019</title>
   <link type="text/css" rel="stylesheet" media="all" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/share/jquery/css/flick/jquery-ui-1.7.2.custom.css" />
+/share/jquery/css/lds/jquery-ui-1.7.2.custom.css" />
   <link type="text/css" rel="stylesheet" media="all" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /css/style.css" />
 </head>

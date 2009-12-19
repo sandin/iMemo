@@ -1,11 +1,17 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-19 00:40:18
+<?php /* Smarty version 2.6.26, created on 2009-12-19 13:56:13
          compiled from categorys/index.tpl */ ?>
 <div id="settings_categorys" class="clearfix">
-  <div>
+  <div id="setting_toolbar" class="clearfix">
 	Select : <a href="">All</a>, <a href="">None</a> &nbsp;&nbsp;&nbsp;&nbsp;
 	<select><option>doing</option></select>&nbsp;&nbsp;&nbsp;
 	<input type="button" name="" value="<?php echo $this->_tpl_vars['t']->_('Delete selected'); ?>
 " />
+	<form id="create_category_form" action="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/note/create_category" method="post" class="ajaxForm">
+	  <input type="text" name="category_name" value="" />
+	  <input type="submit" name="submit" value="<?php echo $this->_tpl_vars['t']->_('Create Category'); ?>
+" />
+	  </form>
   </div>
   <table class="categorys_list" cellpadding="0" width="100%">
 	<tbody>
