@@ -25,6 +25,8 @@ class Database_UserLinkCategory extends DatabaseObject
 	$table = $this->_table;
 	$where = $this->_db->quoteInto('category_id = ?', $category_id);
 	$rows_affected = $this->_db->delete($table, $where);
+
+	return ($rows_affected > 0) ? true : false;
   }
 
   public function thisUserHasThisCategory($user_id, $category_id)

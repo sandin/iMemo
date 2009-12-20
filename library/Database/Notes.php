@@ -279,6 +279,8 @@ class Database_Notes extends DatabaseObject
 	$userLinkCate->user_id = $user_id;
 	$userLinkCate->category_id = $cate_id;
 	$userLinkCate->save();
+
+	//var_dump($cate_id);
 	return $cate_id;
   }
   /** 
@@ -412,6 +414,7 @@ class Database_Notes extends DatabaseObject
 
   /** 
 	* 删除一个category By name
+	* [unused]
 	* 
 	* @param $category_name
 	* 
@@ -541,20 +544,22 @@ class Database_Notes extends DatabaseObject
  public function categoryNameToId($user_id, $category_name)
   {
 	if ($user_id) {
-	  $result = $this->_db->fetchOne(
-	  "SELECT cate.category_id
-	   FROM lds0019_notes_categorys AS cate
-	   LEFT JOIN lds0019_users_link_categorys AS user_ln_cate 
-	   ON cate.category_id=user_ln_cate.category_id
-	   WHERE cate.category_name = :category_name
-	   AND user_ln_cate.user_id = :user_id",
-	   array('category_name' => $category_name,
-			 'user_id' => $user_id)
-	  );
+	  $query =  "SELECT cate.category_id
+		 FROM lds0019_notes_categorys AS cate
+		 LEFT JOIN lds0019_users_link_categorys AS user_ln_cate 
+		 ON cate.category_id=user_ln_cate.category_id " 
+		 . $this->_db->quoteInto(
+			'WHERE cate.category_name = ? ',
+			$category_name)
+		 . $this->_db->quoteInto(
+			'AND user_ln_cate.user_id = ? ',
+			$user_id)
+	  ;//end query
+	  $result = $this->_db->fetchOne($query);
 
 	  //var_dump($result);
-	  return $result;
-	}
+	  return (int) $result;
+	}//fi
   }
 
   /** 
@@ -644,10 +649,8 @@ class Database_Notes extends DatabaseObject
 	$query = 'CALL getMyCategorysByUserId(?)';
     $query = $this->_db->quoteInto($query, $user_id);
 	$result = $this->_db->fetchCol($query);
-	//var_dump($result);
 	
-	return in_array($category_id, $result);
-
+	return in_array((string)$category_id, $result);
   }
 
   /** 

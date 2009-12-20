@@ -55,19 +55,17 @@ class Database_NotesLinkCategorys extends DatabaseObject
 
   public function changeCategoryFormTo($note_id,$old_category_id,$new_category_id)
   {
-	$query = sprintf('UPDATE %s SET
-					  category_id = ?
-					  where note_id = ?
-					  and category_id = ?',
-                     $this->_table);
+	$db = $this->_db;
 
-	$query = $this->_db->quoteInto($query,array(
-								  $new_category_id,
-								  $note_id,
-								  $old_category_id)); 
+	$query = sprintf('UPDATE %s SET ',$this->_table);
+	$query .= $db->quoteInto('category_id = ? ',$new_category_id);	
+	$query .= $db->quoteInto('where note_id = ? ',$note_id);	
+	$query .= $db->quoteInto('and category_id = ? ',$old_category_id);	
+	//var_dump($query);
+
 	$result = $this->_db->query($query);	
 
-	return $result;
+	return ($result->rowCount() > 0) ? true : false;
   }
 
 
