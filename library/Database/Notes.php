@@ -261,6 +261,8 @@ class Database_Notes extends DatabaseObject
     * 也就是新建时不和任何一个note做链接
     * 换言之,该category在新建时,没有任何所属的note
 	* 
+	* @todo 测试内部的两个if
+	*
 	* @param $category_name
 	* @param $user_id
 	* 
@@ -268,20 +270,25 @@ class Database_Notes extends DatabaseObject
    */
   public function createCategoryToUser($category_name, $user_id)
   {
-	if ( !($cate_id = $this->categoryNameToId($user_id,$category_name)) )
+	//看字典表中是否存在
+	if (!($cate_id = $this->categoryNameToId($user_id,$category_name)) )
 	{
-	$cate = new Database_NotesCategorys($this->_db);
-	$cate->category_name = $category_name;	
-	$cate->save();
-	$cate_id = $cate->getId();
+	  $cate = new Database_NotesCategorys($this->_db);
+	  $cate->category_name = $category_name;	
+	  $cate->save();
+	  $cate_id = $cate->getId();
 	}
-	$userLinkCate = new Database_UserLinkCategory($this->_db);
-	$userLinkCate->user_id = $user_id;
-	$userLinkCate->category_id = $cate_id;
-	$userLinkCate->save();
 
+	$userLinkCate = new Database_UserLinkCategory($this->_db);
+
+	//确认链接不存在
+	if (!$userLinkCate->thisUserHasThisCategory($user_id, $cate_id)) {
+	  $userLinkCate->user_id = $user_id;
+	  $userLinkCate->category_id = $cate_id;
+	  $userLinkCate->save();
+	}
 	//var_dump($cate_id);
-	return $cate_id;
+	return (($cate_id) ? $cate_id : false);
   }
   /** 
 	* addTag时，需要创造新的note与tag之间的link

@@ -38,9 +38,9 @@ class Database_UserLinkCategory extends DatabaseObject
 
 	// 但是，读取数据的方法相同
 	$sql = $select->__toString();
-	var_dump($sql);
+	//var_dump($sql);
 	$result = $this->_db->fetchAll($sql);
-	var_dump($result);
+	//var_dump($result);
 	return (count($result) > 0) ? true : false;
   }
  

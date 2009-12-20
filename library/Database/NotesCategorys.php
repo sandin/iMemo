@@ -18,6 +18,13 @@ class Database_NotesCategorys extends DatabaseObject
 	return $this->delete();
   }
 
+  public function renameCategoryTo($category_id,$new_category_name)
+  {
+	$this->load($category_id);
+	$this->category_name = $new_category_name;
+	return $this->save();
+  }
+
 
 
 /*

@@ -30,16 +30,23 @@ class Command_DelCategory extends Command_Abstract
 	if ( $this->checkPermission($user_id,'category_id',$cate_id) )
 	{
 
+	  $noteLinkCate = new Database_NotesLinkCategorys($this->_db);
 	  //删除该category所拥有的所有note
 	  if ($delAllNote == 1) {
 		$this->_receiver->delNotesByCategoryId($cate_id);
+
+		//删除连接
+		$noteLinkCate->removeNoteCategoryLink($cate_id);
+		var_dump('del note');
 	  } else {
+		var_dump('just del cate');
 		//把所有该名下的note转移到inbox下
-		$notes = new Database_Notes($this->_db);
-		$notes->getAllNoteByCategoryIdAndUserId($cate_id, $user_id);
-		$notes->createCategoryToUser('Inbox',$user_id);
-		foreach ($notes as $note) {
-		  $noteLinkCate->changeCategoryFormTo($note['note_id'],$cate_id,1);
+		$notes = $this->_receiver;
+		//$notes = new Database_Notes($this->_db);
+		$myNotes = $notes->getAllNoteByCategoryIdAndUserId($cate_id, $user_id);
+		$new_cate_id = $notes->createCategoryToUser('Inbox',$user_id);
+		foreach ($myNotes as $note) {
+		  $noteLinkCate->changeCategoryFormTo($note['note_id'],$cate_id,$new_cate_id);
 		}
 	  }
 	  //如果不是系统所用则可以直接删除category本身
@@ -52,9 +59,6 @@ class Command_DelCategory extends Command_Abstract
 	  $userLinkCate = new Database_UserLinkCategory($this->_db);
 	  $userLinkCate->removeUserCategoryLink($cate_id);
 
-	  //删除连接
-	  $noteLinkCate = new Database_NotesLinkCategorys($this->_db);
-	  $noteLinkCate->removeNoteCategoryLink($cate_id);
 
 	  return true;
 

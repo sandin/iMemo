@@ -127,4 +127,35 @@ class DatabaseTest extends ControllerTestCase
 	$this->delCateHelper($cate_id);
   }
 
+  public function testRenameCategory()
+  {
+	//为后面重命名新建一个category
+	$cate4_name = 'cate4 by ' . __FUNCTION__;
+	$cate4_id = $this->note_db->createCategoryToUser($cate4_name, 1);
+
+	//准备新旧category名
+	$this->cate_db->load($cate4_id);
+	$old_cate_name = $this->cate_db->category_name;
+	$new_cate_name = 'new cate4 by ' . __FUNCTION__;
+
+	//重命名.并确认成功
+	$this->assertTrue(
+	 $this->cate_db->renameCategoryTo($cate4_id,$new_cate_name)
+	);
+
+	//重复检查
+	$this->assertFalse(
+	  $this->cate_db->category_name == $old_cate_name
+	);
+
+	//重复检查
+	$this->assertTrue(
+	  $this->cate_db->category_name == $new_cate_name
+	);
+
+	//清理
+	$this->delCateHelper($cate4_id);
+
+  }
+
 }
