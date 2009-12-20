@@ -3775,3 +3775,13 @@
 2009-12-19T16:54:23+08:00 INFO (6): something wrong
 2009-12-19T16:54:23+08:00 INFO (6): something wrong
 2009-12-19T16:54:39+08:00 INFO (6): something wrong
+2009-12-20T12:52:53+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-20T12:52:53+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-20T12:53:02+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-20T12:53:02+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-20T12:53:10+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-20T12:53:10+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-20T13:07:31+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-20T13:07:31+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-20T14:05:41+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-20T14:05:41+08:00 INFO (6): post Zend_form_captchaArray

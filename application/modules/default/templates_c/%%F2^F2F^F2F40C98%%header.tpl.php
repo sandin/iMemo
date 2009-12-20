@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-19 22:14:18
+<?php /* Smarty version 2.6.26, created on 2009-12-20 14:05:56
          compiled from /home/svn/0019/trunk/application/templates/header.tpl */ ?>
 <?php if (! isset ( $this->_tpl_vars['noLayout'] )): ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -60,7 +60,7 @@
 
 	  <?php if ($this->_tpl_vars['user']): ?>
 	  <li><a id="logout" href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/profile/index/logout'><?php echo $this->_tpl_vars['t']->_('Logout'); ?>
+/logout'><?php echo $this->_tpl_vars['t']->_('Logout'); ?>
 </a></li>
 	  <li><a id="logout" href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /settings'> / <?php echo $this->_tpl_vars['t']->_('Settings'); ?>

@@ -39,17 +39,20 @@ p{line-height:1.4em;}
 .ui-widget {
   font-size:		12px;
 }
-.ui-lds-drag 
-{
+.ui-lds-drag {
   opacity:			0.8;
 }
-.ui-lds-icon 
-{
+.ui-lds-icon {
   display:			block;
   width:			17px;
   height:			17px;
   cursor:			pointer;
 }
+.ui-button {
+  cursor:pointer;
+  text-align: center;
+ }
+.ui-dialog .ui-state-highlight, .ui-dialog .ui-state-error { padding: .3em; }
 
 /*------------- layout  -------------*/
 #wrap {

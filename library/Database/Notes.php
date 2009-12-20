@@ -28,7 +28,8 @@ class Database_Notes extends DatabaseObject
 
   /** 
 	* 添加外链到此表的table
-	* ::todo:: 移到抽象类中
+	*
+	* @todo 移到抽象类中
 	* 
 	* @param $join_id       join的标识符
 	* @param $joinTable     外链table
@@ -127,7 +128,8 @@ class Database_Notes extends DatabaseObject
   }
 
   /** 
-	* 新建note	
+    * 新建note	
+    * [used]
 	* 	 
 	* @param $params
 	* 
@@ -178,6 +180,7 @@ class Database_Notes extends DatabaseObject
 
   /** 
 	* 必须先load
+	* [used]
 	* 
 	* @return 
    */
@@ -199,13 +202,15 @@ class Database_Notes extends DatabaseObject
 	return ($this->delete() && $result);
   }
 
-  public function getContent($note_id = null)
-  {
-	$content = new Database_NotesContent($this->_db);
-	$content->loadByNotesId($note_id);
- 	return $content->content;
-  }
-
+  /** 
+	* createNote时需要设置note content
+    * [used]
+	* 
+	* @param $note_id
+	* @param $text
+	* 
+	* @return 
+   */
   public function setContent($note_id,$text)
   {
 	$content = new Database_NotesContent($this->_db);
@@ -217,6 +222,13 @@ class Database_Notes extends DatabaseObject
 	$content->save();
   }
 
+  /** 
+	* delNote时需要删除note content
+	* 
+	* @param $note_id
+	* 
+	* @return 
+   */
   public function delContent($note_id = null)
   {
 	$note_id = (isset($note_id)) ? $note_id : $this->getId();
@@ -225,24 +237,13 @@ class Database_Notes extends DatabaseObject
 	$content->delete();
   }
 
-  public function getTags($note_id = null)
-  {
-	$note_id = (isset($note_id)) ? $note_id : $this->getId();
-	$query = sprintf('select %s from %s as t_l, %s as t_t
-						  where t_l.tag_id = t_t.tag_id
-						  and t_l.note_id = ?',
-					  '*',
-					  'lds0019_notes_link_tags',
-					  'lds0019_notes_tags');
-
-    $query = $this->_db->quoteInto($query, $note_id);
-	$result = $this->_db->fetchAll($query);
-	//var_dump($result);
-	return $result;
-  }
-
-
-
+  /** 
+	* 为note addTag时可能需要create a new tag
+	* 
+	* @param $tag_name
+	* 
+	* @return 
+   */
   public function createTag($tag_name)
   {
 	if ($this->user_id) {
@@ -254,6 +255,17 @@ class Database_Notes extends DatabaseObject
 	}
   }
 
+  /** 
+    * 为用户创建一个全新的category
+    * 此时只操作了category和userLinkCategory,
+    * 也就是新建时不和任何一个note做链接
+    * 换言之,该category在新建时,没有任何所属的note
+	* 
+	* @param $category_name
+	* @param $user_id
+	* 
+	* @return 
+   */
   public function createCategoryToUser($category_name, $user_id)
   {
 	if ( !($cate_id = $this->categoryNameToId($user_id,$category_name)) )
@@ -270,7 +282,7 @@ class Database_Notes extends DatabaseObject
 	return $cate_id;
   }
   /** 
-	* 新建tag时，需要创造新的note与tag之间的link
+	* addTag时，需要创造新的note与tag之间的link
 	* 需Database_NotesLinkTags支持 
 	* 
 	* 
@@ -289,6 +301,13 @@ class Database_Notes extends DatabaseObject
 	}
   }
 
+  /** 
+	* addCategory时需要为note和category创建链接
+	* 
+	* @param $category_id
+	* 
+	* @return 
+   */
   public function makeCategoryLink($category_id)
   {
 	if ($this->getId()) {
@@ -300,6 +319,14 @@ class Database_Notes extends DatabaseObject
 	}
   }
 
+  /** 
+	* createCategoryToUser时需要为user和category创建链接 
+	* 
+	* @param $user_id
+	* @param $category_id
+	* 
+	* @return 
+   */
   public function makeUserLinkCategory($user_id, $category_id)
   {
 	$categoryLinkUser = new Database_UserLinkCategory($this->_db);
@@ -318,6 +345,7 @@ class Database_Notes extends DatabaseObject
 
   
   /** 
+    *  createNote时需要addTag 
 	* 为note增加一个tag
 	* 增加时判断该用户是否已经拥有这个tag，没有则创建一个
 	* 最终都是创建一个tag与note的link
@@ -338,6 +366,14 @@ class Database_Notes extends DatabaseObject
 	}
   }
 
+  /** 
+	* createNote时需要为note指定一个category
+	* 
+	* @param $category_name
+	* @param $user_id
+	* 
+	* @return 
+   */
  public function addCategory($category_name,$user_id)
   {
 	//检查note是否已经有了这个category
@@ -374,6 +410,13 @@ class Database_Notes extends DatabaseObject
 	}
   }
 
+  /** 
+	* 删除一个category By name
+	* 
+	* @param $category_name
+	* 
+	* @return 
+   */
   public function delCategory($category_name)
   {
 	if ($category_id = $this->categoryNameToId($category_name)) 
@@ -514,52 +557,14 @@ class Database_Notes extends DatabaseObject
 	}
   }
 
-  public function getCategorys($category_id)
-  {
-	$categorys = new Database_NotesCategorys($this->_db);
-	$categorys->load($category_id);
-	return $categorys->categorys_name;
-  }
-
   /** 
-   *  注意:此为旧函数,没有任何地方调用,可以安全删除
-	* It's not _load function,just return a array with all result
+	* 读取属于一个用户(user_id)所拥有的一个category名下的所有note
 	* 
+	* @param $category_id
 	* @param $user_id
 	* 
 	* @return 
    */
-  public function getAllByUserId($user_id)
-  {
-	$query = sprintf('select %s from %s where user_id = ?',
-                     '*',
-                     $this->_table);
-
-    $query = $this->_db->quoteInto($query, $user_id);
-	$result = $this->_db->fetchAll($query);
-	$new_result = array();
-	foreach ($result as $item) {
-	  $item['content']  = $this->getContent($item['note_id']) ;
-	  $item['tags'] = $this->getTags($item['note_id']);
-	  $item['categorys'] = $this->getJoinRow('content');
-	  
-	  $new_result[] = $item;
-	}
-	//Zend_Debug::dump($new_result);
-	return $new_result;
-  }
-
-  public function getAllNoteByUserId($user_id)
-  {
-	$query = 'CALL getAllnoteByuserid(?)';
-    $query = $this->_db->quoteInto($query, $user_id);
-
-	$result = $this->_db->fetchAll($query);
-
-	//Zend_Debug::dump($new_result);
-	return $this->sqlResultToNewArray($result);
-  }
-
   public function getAllNoteByCategoryIdAndUserId($category_id,$user_id)
   {
 	$query = 'CALL getAllNoteByCategoryIdAndUserId(?)';
@@ -573,7 +578,10 @@ class Database_Notes extends DatabaseObject
 
 
   /** 
-	* 将sql请求中含有逗号分隔符的列转换为数组
+    * 为getAllNoteByCategoryIdAndUserId提供数据输出处理,
+	* 将sql请求中含有逗号分隔符的列转换为数组,
+	* 例如: categorys_name字段中取出的是'cate1,cate2',
+	* 此函数将起分割为数组 categorys_name = array('cate1','cate2'); 
 	* 
 	* @return 
    */
@@ -603,24 +611,16 @@ class Database_Notes extends DatabaseObject
 	return $new_result;
   }
 
-  public function getOneNote()
-  {
-
-	$result = $this->_db->fetchRow(
-	  "SELECT * FROM $this->_table 
-	      WHERE note_id = :note_id",
-	  array('note_id' => $this->getId())
-	);	
-
-	$result['tags'] = $this->getJoinRow('tag'); 
-	$result['categorys'] = $this->getJoinRow('category'); 
-	$contents = $this->getJoinRow('content'); 
-	$result['content'] = $contents[0];
-
-	//var_dump( $result );
-	return $result;
-  }
-
+  /** 
+    * 用于读取一个用户(user_id)所拥有的所有categorys信息
+    * 包含category_name,category_id,以数组形式返回
+	* 
+    * 控制器有直接使用
+	*
+	* @param $user_id
+	* 
+	* @return Array
+   */
   public function getMyCategorysByUserId($user_id)
   {
 	$query = 'CALL getMyCategorysByUserId(?)';
@@ -629,6 +629,16 @@ class Database_Notes extends DatabaseObject
 	return $result;
   }
 
+  /** 
+	* 检查一个用户是否拥有一个category
+	*
+	* 控制器中有使用
+	* 
+	* @param $user_id
+	* @param $category_id
+	* 
+	* @return Boolean
+   */
   public function checkThisUserHasThisCategory($user_id, $category_id)
   {
 	$query = 'CALL getMyCategorysByUserId(?)';
@@ -640,6 +650,15 @@ class Database_Notes extends DatabaseObject
 
   }
 
+  /** 
+	* 删除一个category名下的所有notes
+	*
+	* @todo 需单元测试
+	* 
+	* @param $category_id
+	* 
+	* @return 
+   */
   public function delNotesByCategoryId($category_id)
   {
 	$query = 'CALL delNotesByCategoryId(?)';

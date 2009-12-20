@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-19 15:48:23
+<?php /* Smarty version 2.6.26, created on 2009-12-20 14:05:33
          compiled from index/login.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
@@ -53,7 +53,7 @@ unset($_smarty_tpl_vars);
   <div id="captcha"><?php echo $this->_tpl_vars['captcha']; ?>
  </div>
   <a id="ajax-fetch-captcha" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/profile/index/fetch-captcha"><?php echo $this->_tpl_vars['t']->_('change captcha'); ?>
+/settings/index/fetch-captcha"><?php echo $this->_tpl_vars['t']->_('change captcha'); ?>
 </a>
   <br />
   

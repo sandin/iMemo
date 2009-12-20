@@ -20,7 +20,7 @@
 		<div class="n_col n_content editing">
 		  <input name="note-data" class="ajax-add-note real" type="text" autocomplete="off" src="<{$PUBLIC_URL}>/note/add_note"></input></div>
 		<div class="n_col n_submit">
-		  <input name="n_submit" type="submit" value="Submit!"></input>
+		  <input name="n_submit" class="js_highlight ui-button ui-state-default ui-corner-all" type="submit" value="Submit!"></input>
 		  <input id="js_current_category" name="categorys" type="hidden" value="<{$first_category_name}>"></input>
 		</div>
 	  </form>

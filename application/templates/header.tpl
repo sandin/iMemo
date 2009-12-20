@@ -34,7 +34,7 @@
 	<ul id="user">
 
 	  <{if $user}>
-	  <li><a id="logout" href='<{$PUBLIC_URL}>/profile/index/logout'><{t}>Logout<{/t}></a></li>
+	  <li><a id="logout" href='<{$PUBLIC_URL}>/logout'><{t}>Logout<{/t}></a></li>
 	  <li><a id="logout" href='<{$PUBLIC_URL}>/settings'> / <{t}>Settings<{/t}> / </a></li>
 	  <li><b><{$user->username}></b></li>
 

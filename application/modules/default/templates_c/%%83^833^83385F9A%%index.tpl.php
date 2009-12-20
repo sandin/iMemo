@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-19 22:14:17
+<?php /* Smarty version 2.6.26, created on 2009-12-20 14:05:56
          compiled from index/index.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
@@ -52,7 +52,7 @@ $this->_sections['i']['last']       = ($this->_sections['i']['iteration'] == $th
 		  <input name="note-data" class="ajax-add-note real" type="text" autocomplete="off" src="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /note/add_note"></input></div>
 		<div class="n_col n_submit">
-		  <input name="n_submit" type="submit" value="Submit!"></input>
+		  <input name="n_submit" class="js_highlight ui-button ui-state-default ui-corner-all" type="submit" value="Submit!"></input>
 		  <input id="js_current_category" name="categorys" type="hidden" value="<?php echo $this->_tpl_vars['first_category_name']; ?>
 "></input>
 		</div>

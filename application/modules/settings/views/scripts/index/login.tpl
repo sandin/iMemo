@@ -24,7 +24,7 @@
   <input name="captcha" type="text"></input>
   <{include file="$APPLICATION_PATH/templates/error.tpl" error=$message.captcha}>
   <div id="captcha"><{$captcha}> </div>
-  <a id="ajax-fetch-captcha" href="<{$PUBLIC_URL}>/profile/index/fetch-captcha"><{t}>change captcha<{/t}></a>
+  <a id="ajax-fetch-captcha" href="<{$PUBLIC_URL}>/settings/index/fetch-captcha"><{t}>change captcha<{/t}></a>
   <br />
   
   <input name="submit" type="submit" value="<{t}>submit<{/t}>"></input>
