@@ -17,6 +17,8 @@ class Settings_IndexController extends Zend_Controller_Action
 	  $this->_user = Zend_Registry::get('user');
 	  
 	  $this->_db_user = new Database_User($this->_db);	
+
+	  
 	}
 
 	public function preDispatch()
@@ -26,6 +28,11 @@ class Settings_IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
+	  // only by user
+	  if  (!isset($this->_user)) {
+		$this->_redirect('/login');
+	  };
+
 	//	Zend_Session::start();
 		$auth = Zend_Auth::getInstance(); 
 		$user = $auth->getIdentity();
@@ -39,6 +46,11 @@ class Settings_IndexController extends Zend_Controller_Action
 
 	public function registerAction()
 	{
+	  // logined
+	  if  (isset($this->_user)) {
+		$this->_redirect('/');
+	  };
+
 	  $post = $this->getRequest()->getPost();
 	  
 	  if ( count($post) > 0 ) {
@@ -58,6 +70,10 @@ class Settings_IndexController extends Zend_Controller_Action
 
 	public function loginAction()
 	{
+	  // logined
+	  if  (isset($this->_user)) {
+		$this->_redirect('/');
+	  };
 	 // var_dump($this->getFrontController()->getBaseUrl());
 	 // var_dump($this->getRequest()->getBaseUrl());
 	   /*

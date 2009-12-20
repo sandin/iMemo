@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-20 14:05:33
+<?php /* Smarty version 2.6.26, created on 2009-12-20 19:11:22
          compiled from index/login.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
@@ -24,7 +24,7 @@ unset($_smarty_tpl_vars);
   <?php endif; ?>
   <label for="user"><?php echo $this->_tpl_vars['t']->_('Name'); ?>
 </label>
-  <input name="user" type="text"></input>
+  <input name="user" class="ui-state-default" type="text"></input>
   <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/error.tpl", 'smarty_include_vars' => array('error' => $this->_tpl_vars['message']['user'])));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -34,7 +34,7 @@ unset($_smarty_tpl_vars);
 
   <label for="user"><?php echo $this->_tpl_vars['t']->_('Password'); ?>
 </label>
-  <input name="password" type="password"></input>
+  <input name="password" class="ui-state-default" type="password"></input>
   <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/error.tpl", 'smarty_include_vars' => array('error' => $this->_tpl_vars['message']['password'])));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -44,20 +44,23 @@ unset($_smarty_tpl_vars);
 
   <label for="captcha"><?php echo $this->_tpl_vars['t']->_('Captcha'); ?>
 </label>
-  <input name="captcha" type="text"></input>
+  <input name="captcha" class="ui-state-default" type="text"></input>
   <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/error.tpl", 'smarty_include_vars' => array('error' => $this->_tpl_vars['message']['captcha'])));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+  <br />
+  <br />
   <div id="captcha"><?php echo $this->_tpl_vars['captcha']; ?>
  </div>
-  <a id="ajax-fetch-captcha" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+  <a id="ajax-fetch-captcha" class="" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /settings/index/fetch-captcha"><?php echo $this->_tpl_vars['t']->_('change captcha'); ?>
 </a>
   <br />
+  <br />
   
-  <input name="submit" type="submit" value="<?php echo $this->_tpl_vars['t']->_('submit'); ?>
+  <input name="submit" class="ui-button js_highlight ui-state-default" type="submit" value="<?php echo $this->_tpl_vars['t']->_('submit'); ?>
 "></input>
   <input id="captcha_id" name="captcha_id" type="hidden" value="<?php echo $this->_tpl_vars['captcha_id']; ?>
 "></input>

@@ -11,23 +11,26 @@
 	</div>
   <{/if}>
   <label for="user"><{t}>Name<{/t}></label>
-  <input name="user" type="text"></input>
+  <input name="user" class="ui-state-default" type="text"></input>
   <{include file="$APPLICATION_PATH/templates/error.tpl" error=$message.user}>
   <br />
 
   <label for="user"><{t}>Password<{/t}></label>
-  <input name="password" type="password"></input>
+  <input name="password" class="ui-state-default" type="password"></input>
   <{include file="$APPLICATION_PATH/templates/error.tpl" error=$message.password}>
   <br />
 
   <label for="captcha"><{t}>Captcha<{/t}></label>
-  <input name="captcha" type="text"></input>
+  <input name="captcha" class="ui-state-default" type="text"></input>
   <{include file="$APPLICATION_PATH/templates/error.tpl" error=$message.captcha}>
+  <br />
+  <br />
   <div id="captcha"><{$captcha}> </div>
-  <a id="ajax-fetch-captcha" href="<{$PUBLIC_URL}>/settings/index/fetch-captcha"><{t}>change captcha<{/t}></a>
+  <a id="ajax-fetch-captcha" class="" href="<{$PUBLIC_URL}>/settings/index/fetch-captcha"><{t}>change captcha<{/t}></a>
+  <br />
   <br />
   
-  <input name="submit" type="submit" value="<{t}>submit<{/t}>"></input>
+  <input name="submit" class="ui-button js_highlight ui-state-default" type="submit" value="<{t}>submit<{/t}>"></input>
   <input id="captcha_id" name="captcha_id" type="hidden" value="<{$captcha_id}>"></input>
 
 </form>

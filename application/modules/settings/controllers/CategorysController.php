@@ -17,6 +17,11 @@ class Settings_CategorysController extends Zend_Controller_Action
 	  $this->_user = Zend_Registry::get('user');
 	  
 	  $this->_db_user = new Database_User($this->_db);	
+
+	  // only by user
+	  if  (!isset($this->_user)) {
+		$this->_redirect('/login');
+	  };
 	}
 
 	public function preDispatch()

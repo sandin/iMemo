@@ -1,15 +1,18 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-20 14:05:54
+<?php /* Smarty version 2.6.26, created on 2009-12-20 19:00:47
          compiled from categorys/index.tpl */ ?>
 <div id="settings_categorys" class="clearfix">
   <div id="setting_toolbar" class="clearfix">
 	Select : <a href="">All</a>, <a href="">None</a> &nbsp;&nbsp;&nbsp;&nbsp;
-	<select><option>doing</option></select>&nbsp;&nbsp;&nbsp;
-	<input type="button" name="" value="<?php echo $this->_tpl_vars['t']->_('Delete selected'); ?>
+	<select class="ui-state-default ui-corner-all">
+	  <option>option</option>
+	  <option>option</option>
+	</select>&nbsp;&nbsp;&nbsp;
+	<input type="button" class="ui-state-default ui-button js_highlight ui-corner-all" name="" value="<?php echo $this->_tpl_vars['t']->_('Delete selected'); ?>
 " />
 	<form id="create_category_form" action="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /note/create_category" method="post" class="ajaxForm">
-	  <input type="text" name="category_name" value="" />
-	  <input type="submit" name="submit" value="<?php echo $this->_tpl_vars['t']->_('Create Category'); ?>
+	  <input type="text" class="ui-state-default ui-corner-all" name="category_name" value="" />
+	  <input type="submit" class="ui-state-default ui-button js_highlight ui-corner-all" name="submit" value="<?php echo $this->_tpl_vars['t']->_('Create Category'); ?>
 " />
 	  </form>
   </div>

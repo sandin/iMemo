@@ -1,5 +1,5 @@
 <{include file="$APPLICATION_PATH/templates/header.tpl"}>
-<{debug}>
+<{*debug*}>
 <h3 class="title_1"><{t}>WELCOME<{/t}> :: <{t}>REGISTER<{/t}></h3>
 <form id="form_login" action="" method="post">
   <{if $message}>
@@ -13,22 +13,22 @@
 	</div>
   <{/if}>
   <label for="email"><{t}>Email<{/t}></label>
-  <input name="email" type="text"></input>
+  <input name="email" class="ui-state-default" type="text"></input>
   <{include file="$APPLICATION_PATH/templates/error.tpl" error=$message.email}>
   <br />
 
   <label for="password"><{t}>Password<{/t}></label>
-  <input name="password" type="password"></input>
+  <input name="password" class="ui-state-default" type="password"></input>
   <{include file="$APPLICATION_PATH/templates/error.tpl" error=$message.password}>
   <br />
 
   <label for="repassword"><{t}>Confirm Password<{/t}></label>
-  <input name="repassword" type="password"></input>
+  <input name="repassword" class="ui-state-default" type="password"></input>
   <{include file="$APPLICATION_PATH/templates/error.tpl" error=$message.repassword}>
   <br />
   <br />
   
-  <input name="submit" type="submit" value="<{t}>submit<{/t}>"></input>
+  <input name="submit" type="submit" class="ui-button js_highlight ui-state-default ui-corner-all" value="<{t}>submit<{/t}>"></input>
 
 </form>
 
