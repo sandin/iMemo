@@ -1,7 +1,7 @@
 <?php
 require_once 'Zend/Db.php';
 
-class DBTest extends ControllerTestCase  
+class DatabaseTest extends ControllerTestCase  
 {
   protected $db;
   protected $note_db;

@@ -1,7 +1,7 @@
   <phpunit bootstrap="./application/bootstrap.php"  colors="true">         
 	<testsuite name="MyApp">
 	  <!--  <directory>./</directory> -->	  	
-		<file>./application/controllers/NoteControllerTest.php</file>
+	  <directory>./application/models</directory>	  	
 	</testsuite>
     <filter>
         <whitelist>
