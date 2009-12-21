@@ -5,6 +5,10 @@ class Settings_IndexController extends Zend_Controller_Action
 
     public function init()
     {
+	  $http = new Zend_Controller_Request_Http();
+	  if ($http->isXmlHttpRequest()) {
+	  $this->view->noLayout = true;
+	  }
         /* Initialize action controller here */
 		/*
 	    $ajaxContext = $this->_helper->getHelper('AjaxContext');
@@ -86,9 +90,9 @@ class Settings_IndexController extends Zend_Controller_Action
             $this->_helper->getHelper('FlashMessenger');
 	  //var_dump($this->_flashMessenger->getMessages());
 
-	  $captcha_all = $this->makeCaptcha();
-	  $this->view->captcha =  $captcha_all['captcha_html'];
-	  $this->view->captcha_id =  $captcha_all['captcha_id'];
+	  //$captcha_all = $this->makeCaptcha();
+	  //$this->view->captcha =  $captcha_all['captcha_html'];
+	  //$this->view->captcha_id =  $captcha_all['captcha_id'];
 
 	  //Zend_Debug::dump($this->getRequest()->getPost());
 	  $post = $this->getRequest()->getPost();

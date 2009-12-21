@@ -215,9 +215,21 @@ p{line-height:1.4em;}
   border:			1px #ddd solid;
   padding:			20px;
 }
-#form_login label {
+#form_login label, 
+#form_login input {
   display:			block;
- } 
+}
+#form_login input.text { 
+  margin-bottom:	12px; 
+  width:			255px; 
+  padding:			.4em; 
+}
+#form_login #ajax-fetch-captcha {
+  display:			inline;
+}
+#form_login .input_text {
+
+}
 #form_login .error {
   background:		#FFE9AF;
   border:			1px dashed #ddd;
@@ -451,7 +463,9 @@ li.extend .n_date .hidden {
   display:			none;
 }
 .loading {
-  background-image:		url(../images/icon_loading.gif) ;
+  width:				20px;
+  height:				20px;
+  background-image:		url(../images/icon_loading2.gif) ;
   background-repeat:	no-repeat;
   background-position:	90% center;
 }
@@ -485,4 +499,15 @@ li.extend .n_date .hidden {
 
 #create_category_form {
   float:			right;
+}
+#goto_register {
+  text-align:		right;
+}
+#js_goto_register {
+  font-size:		16px;
+  margin:			0 5px 0 0;
+}
+#js_goto_register:hover {
+  background:		#2193CD;
+  color:			#fff;
 }

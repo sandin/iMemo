@@ -39,8 +39,8 @@
 	  <li><b><{$user->username}></b></li>
 
 	  <{else}>
-	  <li><a href='<{$PUBLIC_URL}>/login'><{t}>Login<{/t}></a></li>
-	  <li><a href='<{$PUBLIC_URL}>/register'><{t}>Sign Up Now<{/t}> / </a></li> 
+	  <li><a class="js_login" id="login" title="login" href='<{$PUBLIC_URL}>/login'><{t}>Login<{/t}></a></li>
+	  <li><a class="js_login" id="js_register" title="register" href='<{$PUBLIC_URL}>/register'><{t}>Sign Up Now<{/t}> / </a></li> 
 	  <li><{t}>Welcome<{/t}>: <{t}>Guest<{/t}></li>
 	  <{/if}>
 

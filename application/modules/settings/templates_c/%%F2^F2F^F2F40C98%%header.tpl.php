@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-20 20:19:12
+<?php /* Smarty version 2.6.26, created on 2009-12-21 15:02:44
          compiled from /home/svn/0019/trunk/application/templates/header.tpl */ ?>
 <?php if (! isset ( $this->_tpl_vars['noLayout'] )): ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -69,10 +69,10 @@
 </b></li>
 
 	  <?php else: ?>
-	  <li><a href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+	  <li><a class="js_login" id="login" title="login" href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /login'><?php echo $this->_tpl_vars['t']->_('Login'); ?>
 </a></li>
-	  <li><a href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+	  <li><a class="js_login" id="js_register" title="register" href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /register'><?php echo $this->_tpl_vars['t']->_('Sign Up Now'); ?>
  / </a></li> 
 	  <li><?php echo $this->_tpl_vars['t']->_('Welcome'); ?>

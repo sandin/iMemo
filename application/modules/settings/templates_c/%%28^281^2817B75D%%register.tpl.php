@@ -1,14 +1,14 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-20 19:08:08
+<?php /* Smarty version 2.6.26, created on 2009-12-21 15:02:44
          compiled from index/register.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+<form id="form_login" action="" method="post">
 <h3 class="title_1"><?php echo $this->_tpl_vars['t']->_('WELCOME'); ?>
  :: <?php echo $this->_tpl_vars['t']->_('REGISTER'); ?>
 </h3>
-<form id="form_login" action="" method="post">
   <?php if ($this->_tpl_vars['message']): ?>
 	<div class="error">
 	  <h4><?php echo $this->_tpl_vars['t']->_('Tips:'); ?>
@@ -26,7 +26,7 @@ unset($_smarty_tpl_vars);
   <?php endif; ?>
   <label for="email"><?php echo $this->_tpl_vars['t']->_('Email'); ?>
 </label>
-  <input name="email" class="ui-state-default" type="text"></input>
+  <input name="email" class="text ui-widget-content ui-corner-all" type="text"></input>
   <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/error.tpl", 'smarty_include_vars' => array('error' => $this->_tpl_vars['message']['email'])));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -36,7 +36,7 @@ unset($_smarty_tpl_vars);
 
   <label for="password"><?php echo $this->_tpl_vars['t']->_('Password'); ?>
 </label>
-  <input name="password" class="ui-state-default" type="password"></input>
+  <input name="password" class="text ui-widget-content ui-corner-all" type="password"></input>
   <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/error.tpl", 'smarty_include_vars' => array('error' => $this->_tpl_vars['message']['password'])));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -46,7 +46,7 @@ unset($_smarty_tpl_vars);
 
   <label for="repassword"><?php echo $this->_tpl_vars['t']->_('Confirm Password'); ?>
 </label>
-  <input name="repassword" class="ui-state-default" type="password"></input>
+  <input name="repassword" class="text ui-widget-content ui-corner-all" type="password"></input>
   <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/error.tpl", 'smarty_include_vars' => array('error' => $this->_tpl_vars['message']['repassword'])));
 $this->_tpl_vars = $_smarty_tpl_vars;

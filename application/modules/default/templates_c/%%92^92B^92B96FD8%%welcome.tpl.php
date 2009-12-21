@@ -1,8 +1,24 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-20 19:02:23
+<?php /* Smarty version 2.6.26, created on 2009-12-21 15:02:41
          compiled from /home/svn/0019/trunk/application/templates/welcome.tpl */ ?>
 <div id="main" class="clearfix welcome-page">
+
+  <img src="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/temp/welcome.gif" />
+  <br />
+  <br />
+
   <h2>
-  欢迎光临,请<a href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/login">登录</a>或注册
+  WELCOME, PLEACE <a href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/login" class="js_login">LOGIN</a>
+  OR <a href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/register" class="js_login">JOIN US NOW!!</a>
   </h2>
+
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
 </div>
