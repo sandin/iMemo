@@ -106,8 +106,8 @@ class DatabaseTest extends ControllerTestCase
 	$cate3_name = 'cate3 by ' . __FUNCTION__;
 	$to_cate_id = $this->note_db->createCategoryToUser($cate3_name, 1);
 
-	var_dump($cate_id);
-	var_dump($to_cate_id);
+	//var_dump($cate_id);
+	//var_dump($to_cate_id);
 
 	//将note的category从一个变为另一个
 	$result = $this->note_ln_cate_db->changeCategoryFormTo($note_id,$cate_id,$to_cate_id);
