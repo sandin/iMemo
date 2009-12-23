@@ -44,7 +44,7 @@ class CategoryController extends Zend_Controller_Action
 	$this->view->notes = $notes; 
 	$this->view->category_name = $category_name; 
 	$this->view->category_id = $category_id; 
-	var_dump($notes); 
+	//var_dump($notes); 
   }
 
 

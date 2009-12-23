@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-20 20:19:39
+<?php /* Smarty version 2.6.26, created on 2009-12-23 11:33:33
          compiled from /home/svn/0019/trunk/application/templates/category.tpl */ ?>
 <tr<?php if ((1 & $this->_sections['i']['index'])): ?> class="even"<?php endif; ?>>
 

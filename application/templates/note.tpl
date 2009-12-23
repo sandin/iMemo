@@ -1,4 +1,4 @@
-<li class="note clearfix">
+<li class="note clearfix" id="<{$category_id}>:<{$item.note_id}>">
 	<div class="n_col n_lable star_<{$item.star}>">&nbsp;</div>
 	<div class="n_col ">&nbsp;</div>
 	<div class="n_col n_state"><input type="checkbox"></input></div>

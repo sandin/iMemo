@@ -1,7 +1,8 @@
   <phpunit bootstrap="./application/bootstrap.php"  colors="true">         
 	<testsuite name="MyApp">
 	  <!--  <directory>./</directory> -->	  	
-	  <directory>./application/models</directory>	  	
+      <!--   <directory>./application/models</directory>--> 	  	
+      <directory>./application/ONE</directory> 	  	
 	</testsuite>
     <filter>
         <whitelist>

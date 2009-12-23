@@ -1,6 +1,8 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-21 17:22:52
+<?php /* Smarty version 2.6.26, created on 2009-12-23 16:10:23
          compiled from /home/svn/0019/trunk/application/templates/note.tpl */ ?>
-<li class="note clearfix">
+<li class="note clearfix" id="<?php echo $this->_tpl_vars['category_id']; ?>
+:<?php echo $this->_tpl_vars['item']['note_id']; ?>
+">
 	<div class="n_col n_lable star_<?php echo $this->_tpl_vars['item']['star']; ?>
 ">&nbsp;</div>
 	<div class="n_col ">&nbsp;</div>

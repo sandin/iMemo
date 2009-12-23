@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-20 20:19:39
+<?php /* Smarty version 2.6.26, created on 2009-12-23 11:33:33
          compiled from categorys/index.tpl */ ?>
 <div id="settings_categorys" class="clearfix">
   <div id="setting_toolbar" class="clearfix">

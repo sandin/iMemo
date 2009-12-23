@@ -1,7 +1,7 @@
 <?php
 require_once 'PHPUnit/Framework.php';
  
-class ListTest extends ControllerTestCase  
+class LinkedListTest extends ControllerTestCase  
 {
     protected $_arr;
     protected $_list;
@@ -12,7 +12,10 @@ class ListTest extends ControllerTestCase
     {
        $this->_db = Zend_Registry::get('db');
 
-        //
+        //database版本的测试数据(后面有硬编码,不能修改).index不允许有0
+        $this->_array = $array = array(4,5,1,6,3,7,8,9);
+
+        //基础array类型的测试数据
        $this->_arr = array(
          array('front'   => 2,
                'note_id' => 1,
@@ -162,43 +165,73 @@ class ListTest extends ControllerTestCase
 
         //测试本身重载的函数
 
-        //测试数据.index不允许有0
-        $this->_array = $array = array(4,5,1,6,3,7,8,9);
         
         //从数组构建双链结构
-        $new_array = $listDB->fillIndexOrderArray($array);
+        $new_array = $listDB->fillIndexOrderArray($this->_array);
         //存储到数据库
         $listDB->saveListIntoDatabase();
 
         //测试更新一条node,在数据库中操作
         $first = $this->_array[0];
         $this->_listDB->loadByIndex(4);
-        $listDB->updateOneNode(8,200,300);
-        $listDB->updateOneNode(8,NULL,400);
-        //var_dump($new_array);
 
-        //检测update的结果
-        $mySiblings = $listDB->findSiblings(8);
-        $this->assertEquals(
-            $mySiblings[$listDB->getFronthandKey()] , 200);
-        $this->assertEquals(
-            $mySiblings[$listDB->getBackhandKey()] , 400);
-
-        //检测出队
+        //检测出队 4,1,6,3,7,8,9
         $listDB->outList(5);
         $this->assertFalse(
             $listDB->loadByIndex(5));
-
+        //再检测 4,1,6,3,7,9
+        $listDB->outList(8);
+        $this->assertFalse(
+            $listDB->loadByIndex(8));
+        //通过检查前后元素确定干净出对
         $temp = $listDB->findSiblings(4);
         $this->assertEquals(
             $temp[$listDB->getBackhandKey()] , 1);
-/*
-        //检查入队,插入到note_id = 1的后面
+        
+        //检查入队,插入到note_id = 1的后面,插入后4,1,2,6,3,7,9
         $listDB->inList(2,1);
         $newSil = $listDB->findSiblings(2);
         $this->assertEquals(
             $newSil[$listDB->getFronthandKey()], 1);
- */
+        $this->assertEquals(
+            $newSil[$listDB->getBackhandKey()], 6);
+    }
+
+    public function testPlace()
+    {
+        $listDB = $this->_listDB;
+        //从数组构建双链结构
+        $new_array = $listDB->fillIndexOrderArray($this->_array);
+        //存储到数据库
+        $listDB->saveListIntoDatabase();
+
+        //测试放置功能,将9放到4后面  放置后的顺序为 4,7,1,2,6,3,9
+        //从array(4,5,1,6,3,7,8,9);
+        //到array(4,7,5,1,6,3,8,9);
+        $listDB->placeBefore(7,4);
+        //检查
+        $newSil = $listDB->findSiblings(7);
+        $this->assertEquals(
+            $newSil[$listDB->getFronthandKey()], 4);
+        $this->assertEquals(
+            $newSil[$listDB->getBackhandKey()], 5);
+       
+        //从array(4,7,5,1,6,3,8,9);
+        //到array(4,7,5,9,1,6,3,8);
+        $listDB->placeBefore(9,5);
+        //检查
+        $newSil = $listDB->findSiblings(9);
+        $this->assertEquals(
+            $newSil[$listDB->getFronthandKey()], 5);
+        $this->assertEquals(
+            $newSil[$listDB->getBackhandKey()],  1);
+
+        $newSil = $listDB->findSiblings(8);
+        $this->assertEquals(
+            $newSil[$listDB->getFronthandKey()], 3);
+        $this->assertEquals(
+            $newSil[$listDB->getBackhandKey()],  0);
+
         //重新检查load和查找首末元素
         $n = $this->_listDB->loadByIndex(5);
         $f_id = $listDB->findFirstNode(true,null);
@@ -207,7 +240,19 @@ class ListTest extends ControllerTestCase
             $f_id , $this->_array[0]);
         $this->assertEquals(
             $l_id , end($this->_array));
+    }
 
+    public function testDBFindFirstNode()
+    {
+        $listDB = $this->_listDB;
+        $new_array = $listDB->fillIndexOrderArray($this->_array);
+        //存储到数据库
+        $listDB->saveListIntoDatabase();
+
+        $fKey = $listDB->getFronthandKey();
+        $result = $listDB->findNodeInBatabase(false,
+            'lds0019_notes_link_categorys',1,$fKey,0);
+        var_dump($result);
     }
 
 
@@ -216,7 +261,7 @@ class ListTest extends ControllerTestCase
         //清空该表
         $dbObject = $this->_listDB->getDatabaseObject();
         $table    = $dbObject->getTable();
-        $this->_db->delete($table);
+        $result   = $this->_db->delete($table);
     }
 
 }

@@ -17,11 +17,20 @@ class Command_AddNote extends Command_Abstract
 	  $params['categorys'] = 'Inbox';
 	}
 
+    //确保内容不为空
 	if ($params['content'] != null || $params['content'] != '') {
+      //在数据库中新建note
 	  $data = $note->createNote($params);
+      //为加入双链表中准备数据
+      $note_id = $data['note_id'];
+      $cate_id = $data['category_id'];
+
+      $list = LinkedList_Factory::factory('database');
+      $list->pushInto($note_id,$cate_id);
 	} else {
 	  $data = 'content can not be null.';
 	}
+
 	
 	return $data;
   }

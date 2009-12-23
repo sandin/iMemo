@@ -167,11 +167,13 @@ class Database_Notes extends DatabaseObject
 	  $categorys = $save['categorys'];
 	  $user_id = $save['user_id'];
 	  if (is_array($categorys)) {
+          //设计不支持多category,此处暂无用
 		foreach ($categorys as $category_name) {
-		  $this->addCategory($category_name, $user_id);
+		  $cate_id = $this->addCategory($category_name, $user_id);
 		}
 	  } else {
-		$this->addCategory($categorys, $user_id);
+		$cate_id = $this->addCategory($categorys, $user_id);
+        $save['category_id'] = $cate_id;
 	  }
 	}
 
@@ -583,7 +585,7 @@ class Database_Notes extends DatabaseObject
     $query = $this->_db->quoteInto($query, array($category_id,$user_id));
 	$result = $this->_db->fetchAll($query);
 
-	//Zend_Debug::dump($new_result);
+	//Zend_Debug::dump($result);
 	return $this->sqlResultToNewArray($result);
   }
 
@@ -616,6 +618,13 @@ class Database_Notes extends DatabaseObject
 		$new_tags = split(',',$tags);
 		$item['tags_name'] = $new_tags;
 	  }
+      //转换数据类型
+      if (isset($item['fronthand'])) 
+          $item['fronthand'] = (int) $item['fronthand'];
+      if (isset($item['backhand']))
+          $item['backhand']  = (int) $item['backhand'];
+      if (isset($item['note_id']))
+          $item['note_id']   = (int) $item['note_id'];
 
 	  $new_result[] = $item;
 	}

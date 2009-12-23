@@ -172,8 +172,10 @@ class LinkedList_DoubleArray
     public function findFirstNode($getId = false)
     {
         $iterator = new Iterator_SearchFilter($this->_listIterator,
-                                             $this->_fronthandKey,NULL);
+                                             $this->_fronthandKey,0);
+       //var_dump($iterator);
         $first  = iterator_to_array($iterator,false);
+        //var_dump($first);
         return ($getId == true) ? $first[0][$this->_indexKey] : $first[0];
     }
 
@@ -187,7 +189,7 @@ class LinkedList_DoubleArray
     public function findLastNode($getId = false)
     {
         $iterator = new Iterator_SearchFilter($this->_listIterator,
-                                             $this->_backhandKey,NULL);
+                                             $this->_backhandKey,0);
         $last  = iterator_to_array($iterator,false);
         return ($getId == true) ? $last[0][$this->_indexKey] : $last[0];
     }
@@ -218,9 +220,12 @@ class LinkedList_DoubleArray
     {
         $array[] = $node;
         $nextNoteId = $node[$this->_backhandKey];
+       //var_dump($node);
+       //var_dump($this->_backhandKey);
         
         $iterator = new Iterator_SearchFilter($this->_listIterator,
                                              $this->_indexKey,$nextNoteId);
+       //var_dump($iterator);
         $temp = iterator_to_array($iterator,false);
 
         if (count($temp) > 0) {

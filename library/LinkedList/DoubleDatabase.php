@@ -1,10 +1,5 @@
 <?php
 
-/** 
- * 将带有双指针的数组转换为双向链式结构
- * 提供查找第一元素,查找最后元素,以及根据指针,还原链式顺序
- *
- */
 class LinkedList_DoubleDatabase extends LinkedList_DoubleArray
 {
 
@@ -48,38 +43,69 @@ class LinkedList_DoubleDatabase extends LinkedList_DoubleArray
     }
 
     /** 
-     * 按链表结构查找首元素,直接从数据库中读取
-     * @todo join_table
+     * 在数据库查找首末元素
+     * 因为单表中存在多个链表,因此单纯的查会出现多个首末元素
+     * 故许多一个分类链接表作为join限制
      * 
-     * @param Boolean $getId 是否只返回首元素的索引键
+     * @param $getId 暂无用,父类遗留
+     * @param $join_table 连接限制表
+     * @param $join_table_value 分类限制元素
+     * @param $key 需要查找的key
+     * @param $value 需要查找的value
      * 
-     * @return Array/Int
+     * @return 
      */
-    public function findFirstNodeInBatabase($getId = false, $join_table)
+    public function findNodeInBatabase($getId = false,
+                                       $join_table,
+                                       $join_table_value,
+                                       $key,$value)
     {
-       if (isset($this->_list) && count($this->_list) > 0) 
-           $parent_result = parent::findFirstNodeInBatabase($getId);
+       $db = $this->_db;
 
-       $root = $this->loadByIndex(NULL,true,$this->_fronthandKey);
-       return ($getId == true) ? $root[$this->_indexKey] : $root;
+       //$query =  "SELECT note_order.*
+       $query =  "SELECT *
+                 FROM $this->_table AS note_order
+                 LEFT JOIN $join_table AS ln_cate
+                 ON ln_cate.$this->_indexKey = note_order.$this->_indexKey
+                 WHERE ln_cate.category_id = ?
+                 AND $key = $value";
+
+       $query = $db->quoteInto($query,$join_table_value);
+       //var_dump($query);
+       $result = $db->fetchRow($query);
+      //var_dump($result);
+       return $result;       
+
     }
 
-    /** 
-     * 按链表结构查找末首元素,支持从数据库中读取
-     * 
-     * @todo join_table
-     * @param Boolean $getId 是否只返回首元素的索引键
-     * 
-     * @return Array/Int
-     */
-    public function findLastNodeInBatabase($getId = false, $join_table)
+    public function findFirstNodeInDatabase($getId = false,$join_value)
     {
-       if (isset($this->_list) && count($this->_list) > 0) 
-           $parent_result = parent::findLastNodeInBatabase($getId);
-
-       $root = $this->loadByIndex(NULL,true,$this->_backhandKey);
-       return ($getId == true) ? $root[$this->_indexKey] : $root;
+        $fKey   = $this->_fronthandKey;
+        $iKey   = $this->_indexKey;
+        $result = $this->findNodeInBatabase(false,
+            'lds0019_notes_link_categorys',$join_value,$fKey,0);
+        return ($getId == true) ? $result[$iKey] : $result; 
     }
+
+    public function findLastNodeInDatabase($getId = false,$join_value)
+    {
+        $bKey   = $this->_backhandKey;
+        $iKey   = $this->_indexKey;
+        $result = $this->findNodeInBatabase(false,
+            'lds0019_notes_link_categorys',$join_value,$bKey,0);
+        return ($getId == true) ? $result[$iKey] : $result; 
+    }
+
+    public function pushInto($index,$join_value)
+    {
+        $last = $this->findLastNodeInDatabase(true,$join_value);
+        if ($last) {
+            return $this->inList($index,$last);
+        } else {
+            return $this->insertOneNode($index,0,0);
+        }
+    }
+
 
     /** 
      * load data by index_key,支持从数据库中读取
@@ -93,21 +119,18 @@ class LinkedList_DoubleDatabase extends LinkedList_DoubleArray
      */
     public function loadByIndex($index, $useKey = true, $byOther = null)
     {
-       if (isset($this->_list) && count($this->_list) > 0) 
-           $parent_result = parent::loadByIndex($index,$useKey);
-
        $where = (isset($byOther)) ? $byOther : $this->_indexKey; 
 
        $db = $this->_db;
        $select = $db->select();
 
        $select->from($this->_table, '*')
-              ->where($where . ' = ?', $index);
+              ->where($where . ' = ?', (int)$index);
 
        $sql = $select->__toString();
        //var_dump($sql);
        $result = $db->fetchRow($sql);
-      // var_dump($result);
+      //var_dump($result);
        return $result;       
 
     }
@@ -121,14 +144,11 @@ class LinkedList_DoubleDatabase extends LinkedList_DoubleArray
      */
     public function findSiblings($index)
     {
-       if (isset($this->_list) && count($this->_list) > 0) 
-           $parent_result = parent::findSiblings($index);
-
        $mySiblings = array();
-       $node       = $this->loadByIndex($index);
+       $node       = $this->loadByIndex((int)$index);
        $mySiblings = array( 
-           $this->_fronthandKey => $node[$this->_fronthandKey], 
-           $this->_backhandKey  => $node[$this->_backhandKey]
+           $this->_fronthandKey => (int) $node[$this->_fronthandKey], 
+           $this->_backhandKey  => (int) $node[$this->_backhandKey]
        ); 
 
        return $mySiblings;
@@ -157,20 +177,25 @@ class LinkedList_DoubleDatabase extends LinkedList_DoubleArray
             $new_behind_id = $this->_db->quote((int)$new_behind_id);
 
         //不指定则跳过
-        $set_1 = (isset($new_front_id) && $new_front_id != NULL) ?
+        $set_1 = (isset($new_front_id) && $new_front_id !== NULL) ?
             array($this->_fronthandKey => $new_front_id) : array();
-        $set_2 = (isset($new_behind_id) && $new_behind_id != NULL) ?
+        $set_2 = (isset($new_behind_id) && $new_behind_id !== NULL) ?
             array($this->_backhandKey  => $new_behind_id) : array();
         $set = array_merge($set_1,$set_2);
 
         $table = $this->_dbObject->getTable();
-        $where = $this->_db->quoteInto($this->_indexKey . ' = ?', $index);
+        $where = $this->_db->quoteInto($this->_indexKey . ' = ?', (int)$index);
 
-        //var_dump($set);var_dump($table);var_dump($where);
+       //var_dump($set);var_dump($where);
 
         $rows_affected = $this->_db->update($table,$set,$where);
         //var_dump($rows_affected);
         return $rows_affected;
+    }
+
+    public function push($index)
+    {
+
     }
 
     public function deleleOneNodeBy($byKey,$value) 
@@ -214,14 +239,14 @@ class LinkedList_DoubleDatabase extends LinkedList_DoubleArray
     public function outList($index, $emtpyPointer = true , $delIt = true) 
     {
         $result      = array();
-        $mySiblings  = $this->findSiblings($index);
+        $mySiblings  = $this->findSiblings((int)$index);
 
-        $n1 = $self        = $index;
-        $n3 = $self_front  = $mySiblings[$this->_fronthandKey];
-        $n4 = $self_behind = $mySiblings[$this->_backhandKey];
+        $n1 = $self        = (int) $index;
+        $n3 = $self_front  = (int) $mySiblings[$this->_fronthandKey];
+        $n4 = $self_behind = (int) $mySiblings[$this->_backhandKey];
 
         if ($delIt) {
-            $this->deleleOneNodeBy($this->_indexKey,$index);
+            $this->deleleOneNodeBy($this->_indexKey,(int)$index);
         } else {
             if ($emtpyPointer == true)
                 $result[] = $this->updateOneNode($n1, 0, 0);
@@ -229,6 +254,7 @@ class LinkedList_DoubleDatabase extends LinkedList_DoubleArray
         $result[] = $this->updateOneNode($n3,  NULL, $n4);
         $result[] = $this->updateOneNode($n4,  $n3,  NULL);
 
+        //var_dump($result);
         return $result;
     }
 
@@ -238,9 +264,9 @@ class LinkedList_DoubleDatabase extends LinkedList_DoubleArray
 
         $frSiblings = $this->findSiblings($front);
 
-        $n1 = $self          = $index;
-        $n2 = $target        = $front;
-        $n5 = $target_behind = $frSiblings[$this->_backhandKey];
+        $n1 = $self          = (int) $index;
+        $n2 = $target        = (int) $front;
+        $n5 = $target_behind = (int) $frSiblings[$this->_backhandKey];
 
         $result[] = $this->insertOneNode($n1,  $n2,  $n5);
         $result[] = $this->updateOneNode($n2,  NULL, $n1);
@@ -255,11 +281,13 @@ class LinkedList_DoubleDatabase extends LinkedList_DoubleArray
         $mySiblings  = $this->findSiblings($index);
         $frSiblings = $this->findSiblings($front);
 
-        $n1 = $self          = $index;
-        $n2 = $target        = $front;
-        $n3 = $self_front    = $mySiblings[$this->_fronthandKey];
-        $n4 = $self_behind   = $mySiblings[$this->_backhandKey];
-        $n5 = $target_front  = $frSiblings[$this->_fronthandKey];
+        $n1 = $self          = (int) $index;
+        $n2 = $target        = (int) $front;
+        $n3 = $self_front    = (int) $mySiblings[$this->_fronthandKey];
+        $n4 = $self_behind   = (int) $mySiblings[$this->_backhandKey];
+        $n5 = $target_behind = (int) $frSiblings[$this->_backhandKey];
+       
+        //var_dump($n1);var_dump($n2);var_dump($n3);var_dump($n4);var_dump($n5);
          
         $this->updateOneNode( $n1,  $n2,   $n5 );  
         $this->updateOneNode( $n2,  NULL,  $n1 );  
@@ -278,9 +306,9 @@ class LinkedList_DoubleDatabase extends LinkedList_DoubleArray
     public function saveListIntoDatabase()
     {
         //sort name
-        $f     = $this->_fronthandKey;
-        $b     = $this->_backhandKey;
-        $i     = $this->_indexKey;
+        $f = $this->_fronthandKey;
+        $b = $this->_backhandKey;
+        $i = $this->_indexKey;
 
         if (isset($this->_list) && count($this->_list) > 0) {
             foreach ($this->_list as &$node) {

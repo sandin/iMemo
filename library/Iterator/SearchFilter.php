@@ -34,6 +34,7 @@ class Iterator_SearchFilter extends FilterIterator {
 
     public function accept() {
         $curr = $this->current();
+        //var_dump($curr);
         return ($curr[$this->_key] === $this->_value);  // T/F
     }
 }

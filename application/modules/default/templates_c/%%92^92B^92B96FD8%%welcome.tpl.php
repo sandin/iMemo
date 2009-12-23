@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-22 13:07:39
+<?php /* Smarty version 2.6.26, created on 2009-12-23 16:00:38
          compiled from /home/svn/0019/trunk/application/templates/welcome.tpl */ ?>
 <div id="main" class="clearfix welcome-page">
 
