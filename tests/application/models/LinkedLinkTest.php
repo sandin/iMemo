@@ -208,7 +208,7 @@ class LinkedListTest extends ControllerTestCase
         //测试放置功能,将9放到4后面  放置后的顺序为 4,7,1,2,6,3,9
         //从array(4,5,1,6,3,7,8,9);
         //到array(4,7,5,1,6,3,8,9);
-        $listDB->placeBefore(7,4);
+        $listDB->placeAfter(7,4);
         //检查
         $newSil = $listDB->findSiblings(7);
         $this->assertEquals(
@@ -218,7 +218,7 @@ class LinkedListTest extends ControllerTestCase
        
         //从array(4,7,5,1,6,3,8,9);
         //到array(4,7,5,9,1,6,3,8);
-        $listDB->placeBefore(9,5);
+        $listDB->placeAfter(9,5);
         //检查
         $newSil = $listDB->findSiblings(9);
         $this->assertEquals(

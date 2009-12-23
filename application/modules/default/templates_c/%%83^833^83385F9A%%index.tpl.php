@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-23 16:10:21
+<?php /* Smarty version 2.6.26, created on 2009-12-23 18:33:54
          compiled from index/index.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
@@ -79,6 +79,9 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
 </ul><!-- /note js_note_template -->
+
+<a id="sort_note_url" style="display:none" class="hidden" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/note/sort_note">&nbsp;</a>
 
 <?php else: ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;

@@ -25,7 +25,7 @@ class Lds_Helper_Log
 	if ($content instanceof Exception) {
 	  $msg = $content->getMessage() . ' user_id: ' . $user->user_id;
 	} 
-	elseif ($content instanceof String)
+	elseif (gettype($content) == 'string')
 	{
 	  $msg = $content . ' user_id: ' . $user->user_id;
 	} else {

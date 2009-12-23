@@ -47,10 +47,15 @@ class Database_NotesLinkCategorys extends DatabaseObject
    */
   public function removeNoteCategoryLink($category_id)
   {
-	$table = $this->_table;
-	$where = $this->_db->quoteInto('category_id = ?', $category_id);
-	$rows_affected = $this->_db->delete($table, $where);
-	return ($rows_affected > 0) ? true : false;
+      $db = $this->_db;
+
+      $query = sprintf('DELETE FROM %s ',$this->_table);
+      $query .= $db->quoteInto('where note_id = ? ',$this->note_id);	
+      $query .= $db->quoteInto('and category_id = ? ',$category_id);	
+      var_dump($query);
+
+      $result = $this->_db->query($query);	
+	  return ($result->rowCount() > 0) ? true : false;
   }
 
   public function changeCategoryFormTo($note_id,$old_category_id,$new_category_id)

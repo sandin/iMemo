@@ -17,16 +17,21 @@ class Command_GetNoteByCategoryId extends Command_Abstract
 	  foreach ($notes as &$note) {
 		$note['content'] = stripslashes($note['content']);
       }
-	  //var_dump($notes);
 
       if (count($notes) > 0) {
           //根据双链表对notes排序显示
           $list = LinkedList_Factory::factory('array');
           $list->setBaseArray($notes);
-          $notes = $ordered_notes = $list->orderList(); 
-          //var_dump($ordered_notes);
+          $ordered_notes = $list->orderList(); 
+          if (count($notes) > count($ordered_notes)) {
+              Lds_Helper_Log::writeLog('order wrong.category_id: '. $category_id);
+              return $notes; 
+          } else {
+              return $ordered_notes;
+          }
       }
-	  return $notes;
+
+      return null;
 	}
   }
 }

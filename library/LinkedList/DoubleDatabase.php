@@ -268,14 +268,15 @@ class LinkedList_DoubleDatabase extends LinkedList_DoubleArray
         $n2 = $target        = (int) $front;
         $n5 = $target_behind = (int) $frSiblings[$this->_backhandKey];
 
-        $result[] = $this->insertOneNode($n1,  $n2,  $n5);
-        $result[] = $this->updateOneNode($n2,  NULL, $n1);
+        $result[] = $this->insertOneNode($n1,  $n2,  $n5 );
+        $result[] = $this->updateOneNode($n2,  NULL, $n1 );
         $result[] = $this->updateOneNode($n5,  $n1,  NUll);
 
         return $result;
     }
 
-    public function placeBefore($index, $front)
+
+    public function placeAfter($index, $front)
     {
         $result      = array();
         $mySiblings  = $this->findSiblings($index);
@@ -286,17 +287,47 @@ class LinkedList_DoubleDatabase extends LinkedList_DoubleArray
         $n3 = $self_front    = (int) $mySiblings[$this->_fronthandKey];
         $n4 = $self_behind   = (int) $mySiblings[$this->_backhandKey];
         $n5 = $target_behind = (int) $frSiblings[$this->_backhandKey];
-       
-        //var_dump($n1);var_dump($n2);var_dump($n3);var_dump($n4);var_dump($n5);
-         
-        $this->updateOneNode( $n1,  $n2,   $n5 );  
-        $this->updateOneNode( $n2,  NULL,  $n1 );  
-        $this->updateOneNode( $n3,  NULL,  $n4 );  
-        $this->updateOneNode( $n4,  $n3,   NULL );  
-        $this->updateOneNode( $n5,  $n1,   NULL );  
 
-        return $result;
+        //var_dump($n1);var_dump($n2);var_dump($n3);var_dump($n4);var_dump($n5);
+
+        $this->_db->beginTransaction();
+        try {
+            $this->updateOneNode( $n1,  $n2,   $n5  );  
+            $this->updateOneNode( $n2,  NULL,  $n1  );  
+            $this->updateOneNode( $n3,  NULL,  $n4  );  
+            $this->updateOneNode( $n4,  $n3,   NULL );  
+            $this->updateOneNode( $n5,  $n1,   NULL );  
+            $this->_db->commit();
+        } catch (Exception $e) {
+            $this->_db->rollBack();
+            return $e->getMessage();
+        }
     }
+
+    public function placeBefore($index, $before)
+    {
+        $result      = array();
+        $mySiblings  = $this->findSiblings($index);
+        $bkSiblings  = $this->findSiblings($before);
+
+        $n1 = $self          = (int) $index;
+        $n2 = $target        = (int) $before;
+        $n3 = $self_front    = (int) $mySiblings[$this->_fronthandKey];
+        $n4 = $self_behind   = (int) $mySiblings[$this->_backhandKey];
+        $n5 = $target_front  = (int) $bkSiblings[$this->_fronthandKey];
+
+        //var_dump($n1);var_dump($n2);var_dump($n3);var_dump($n4);var_dump($n5);
+
+        $this->updateOneNode( $n1,  $n5,   $n2  );  
+        $this->updateOneNode( $n2,  $n1,   NULL );  
+        $this->updateOneNode( $n3,  NULL,  $n4  );  
+        $this->updateOneNode( $n4,  $n3,   NULL );  
+        $this->updateOneNode( $n5,  NULL,  $n1  );  
+    }
+
+
+
+
 
     /** 
      * 将$this->_list数组中的数组存入数据库
