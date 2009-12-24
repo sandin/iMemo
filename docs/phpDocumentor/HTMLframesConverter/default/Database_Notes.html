@@ -1,0 +1,1520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos  -->
+			<title>Docs For Class Database_Notes</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+						<script src="../media/lib/classTree.js"></script>
+												<script language="javascript" type="text/javascript">
+				var imgPlus = new Image();
+				var imgMinus = new Image();
+				imgPlus.src = "../media/images/plus.png";
+				imgMinus.src = "../media/images/minus.png";
+				
+				function showNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgMinus.src;
+					oTable.style.display = "block";
+				}
+				
+				function hideNode(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+							var oImg = document.layers["img" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+							var oImg = document.all["img" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+							var oImg = document.getElementById("img" + Node);
+									break;
+							}
+					oImg.src = imgPlus.src;
+					oTable.style.display = "none";
+				}
+				
+				function nodeIsVisible(Node){
+							switch(navigator.family){
+								case 'nn4':
+									// Nav 4.x code fork...
+							var oTable = document.layers["span" + Node];
+									break;
+								case 'ie4':
+									// IE 4/5 code fork...
+							var oTable = document.all["span" + Node];
+									break;
+								case 'gecko':
+									// Standards Compliant code fork...
+							var oTable = document.getElementById("span" + Node);
+									break;
+							}
+					return (oTable && oTable.style.display == "block");
+				}
+				
+				function toggleNodeVisibility(Node){
+					if (nodeIsVisible(Node)){
+						hideNode(Node);
+					}else{
+						showNode(Node);
+					}
+				}
+			</script>
+					</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Database_Notes</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+		<p class="notes">
+			Located in <a class="field" href="_library---Database---Notes.php.html">/library/Database/Notes.php</a> (line <span class="field">4</span>)
+		</p>
+		
+				
+		<pre>DatabaseObject
+   |
+   --Database_Notes</pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$_content" title="details" class="var-name">$_content</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$_db" title="details" class="var-name">$_db</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$_join" title="details" class="var-name">$_join</a>
+				</div>
+																<div class="var-title">
+					<img src="../media/images/Variable.png" alt=" " />
+					<span class="var-type">mixed</span>
+					<a href="#$_style" title="details" class="var-name">$_style</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																																																																																																																																																																															
+				<div class="method-definition">
+					<img src="../media/images/Constructor.png" alt=" "/>
+											<span class="method-result">Database_Notes</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$db</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#addCategory" title="details" class="method-name">addCategory</a>
+											(<span class="var-type">$category_name</span>&nbsp;<span class="var-name">$category_name</span>, <span class="var-type">$user_id</span>&nbsp;<span class="var-name">$user_id</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#addJoinRow" title="details" class="method-name">addJoinRow</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$join_id</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#addTag" title="details" class="method-name">addTag</a>
+											(<span class="var-type">$tag_name</span>&nbsp;<span class="var-name">$tag_name</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#categoryIdToName" title="details" class="method-name">categoryIdToName</a>
+											(<span class="var-type">$tag_id</span>&nbsp;<span class="var-name">$category_id</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#categoryIsExistInThisNote" title="details" class="method-name">categoryIsExistInThisNote</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$user_id</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$category_name</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#categoryNameToId" title="details" class="method-name">categoryNameToId</a>
+											(<span class="var-type">$category_name</span>&nbsp;<span class="var-name">$user_id</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$category_name</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">Boolean</span>
+										<a href="#checkThisUserHasThisCategory" title="details" class="method-name">checkThisUserHasThisCategory</a>
+											(<span class="var-type">$user_id</span>&nbsp;<span class="var-name">$user_id</span>, <span class="var-type">$category_id</span>&nbsp;<span class="var-name">$category_id</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#createCategoryToUser" title="details" class="method-name">createCategoryToUser</a>
+											(<span class="var-type">$category_name</span>&nbsp;<span class="var-name">$category_name</span>, <span class="var-type">$user_id</span>&nbsp;<span class="var-name">$user_id</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">array</span>
+										<a href="#createNote" title="details" class="method-name">createNote</a>
+											(<span class="var-type">$params</span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#createTag" title="details" class="method-name">createTag</a>
+											(<span class="var-type">$tag_name</span>&nbsp;<span class="var-name">$tag_name</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#delCategory" title="details" class="method-name">delCategory</a>
+											(<span class="var-type">$category_name</span>&nbsp;<span class="var-name">$category_name</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#delContent" title="details" class="method-name">delContent</a>
+											([<span class="var-type">$note_id</span>&nbsp;<span class="var-name">$note_id</span> = <span class="var-default">null</span>])
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#delNote" title="details" class="method-name">delNote</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#delNotesByCategoryId" title="details" class="method-name">delNotesByCategoryId</a>
+											(<span class="var-type">$category_id</span>&nbsp;<span class="var-name">$category_id</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#delTag" title="details" class="method-name">delTag</a>
+											(<span class="var-type">$tag_name</span>&nbsp;<span class="var-name">$tag_name</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#filterData" title="details" class="method-name">filterData</a>
+											(<span class="var-type">$key</span>&nbsp;<span class="var-name">$key</span>, <span class="var-type"></span>&nbsp;<span class="var-name">&$array</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">&$saveto</span>, <span class="var-type">&</span>&nbsp;<span class="var-name">$array</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#getAllNoteByCategoryIdAndUserId" title="details" class="method-name">getAllNoteByCategoryIdAndUserId</a>
+											(<span class="var-type">$category_id</span>&nbsp;<span class="var-name">$category_id</span>, <span class="var-type">$user_id</span>&nbsp;<span class="var-name">$user_id</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#getJoinRow" title="details" class="method-name">getJoinRow</a>
+											(<span class="var-type">$join_id</span>&nbsp;<span class="var-name">$join_id</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">Array</span>
+										<a href="#getMyCategorysByUserId" title="details" class="method-name">getMyCategorysByUserId</a>
+											(<span class="var-type">$user_id</span>&nbsp;<span class="var-name">$user_id</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#join" title="details" class="method-name">join</a>
+											(<span class="var-type">$join_id</span>&nbsp;<span class="var-name">$join_id</span>, <span class="var-type">$joinTable</span>&nbsp;<span class="var-name">$joinTable</span>, <span class="var-type">$joinField</span>&nbsp;<span class="var-name">$joinField</span>, <span class="var-type">$selfField</span>&nbsp;<span class="var-name">$selfField</span>, <span class="var-type">$joinTargetField</span>&nbsp;<span class="var-name">$joinTargetField</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#LoadJoin" title="details" class="method-name">LoadJoin</a>
+											(<span class="var-type">$join_id</span>&nbsp;<span class="var-name">$join_id</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#makeCategoryLink" title="details" class="method-name">makeCategoryLink</a>
+											(<span class="var-type">$category_id</span>&nbsp;<span class="var-name">$category_id</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#makeTagLink" title="details" class="method-name">makeTagLink</a>
+											(<span class="var-type">$tag_id</span>&nbsp;<span class="var-name">$tag_id</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#makeUserLinkCategory" title="details" class="method-name">makeUserLinkCategory</a>
+											(<span class="var-type">$user_id</span>&nbsp;<span class="var-name">$user_id</span>, <span class="var-type">$category_id</span>&nbsp;<span class="var-name">$category_id</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#postLoad" title="details" class="method-name">postLoad</a>
+										()
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#removeTagLink" title="details" class="method-name">removeTagLink</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$tag_id</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#setContent" title="details" class="method-name">setContent</a>
+											(<span class="var-type">$note_id</span>&nbsp;<span class="var-name">$note_id</span>, <span class="var-type">$text</span>&nbsp;<span class="var-name">$text</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#sqlResultToNewArray" title="details" class="method-name">sqlResultToNewArray</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$result</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#tagIdToName" title="details" class="method-name">tagIdToName</a>
+											(<span class="var-type">$tag_id</span>&nbsp;<span class="var-name">$tag_id</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">boolean</span>
+										<a href="#tagIsExistInThisNote" title="details" class="method-name">tagIsExistInThisNote</a>
+											(<span class="var-type">$tag_name</span>&nbsp;<span class="var-name">$tag_name</span>)
+									</div>
+															
+				<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#tagNameToId" title="details" class="method-name">tagNameToId</a>
+											(<span class="var-type">$tag_name</span>&nbsp;<span class="var-name">$tag_name</span>)
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			
+<a name="var$_content" id="$_content"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$_content</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number">7</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_db" id="$_db"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$_db</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number">8</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_join" id="$_join"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$_join</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number">9</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_style" id="$_style"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<img src="../media/images/Variable.png" />
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$_style</span>
+			 = <span class="var-default"> null</span>			(line <span class="line-number">6</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Constructor.png" />
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">11</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Database_Notes</span>
+		<span class="method-name">
+			__construct
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$db</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$db</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodaddCategory" id="addCategory"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">addCategory</span> (line <span class="line-number">388</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">createNote时需要为note指定一个category</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			addCategory
+		</span>
+					(<span class="var-type">$category_name</span>&nbsp;<span class="var-name">$category_name</span>, <span class="var-type">$user_id</span>&nbsp;<span class="var-name">$user_id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$category_name</span>
+				<span class="var-name">$category_name</span>			</li>
+					<li>
+				<span class="var-type">$user_id</span>
+				<span class="var-name">$user_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodaddJoinRow" id="addJoinRow"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">addJoinRow</span> (line <span class="line-number">107</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			addJoinRow
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$join_id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$join_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodaddTag" id="addTag"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">addTag</span> (line <span class="line-number">368</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">createNote时需要addTag</p>
+<p class="description"><p>为note增加一个tag  增加时判断该用户是否已经拥有这个tag，没有则创建一个  最终都是创建一个tag与note的link</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			addTag
+		</span>
+					(<span class="var-type">$tag_name</span>&nbsp;<span class="var-name">$tag_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$tag_name</span>
+				<span class="var-name">$tag_name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcategoryIdToName" id="categoryIdToName"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">categoryIdToName</span> (line <span class="line-number">534</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">tag_id 转换成 tag_name</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			categoryIdToName
+		</span>
+					(<span class="var-type">$tag_id</span>&nbsp;<span class="var-name">$category_id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$tag_id</span>
+				<span class="var-name">$category_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcategoryIsExistInThisNote" id="categoryIsExistInThisNote"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">categoryIsExistInThisNote</span> (line <span class="line-number">469</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			categoryIsExistInThisNote
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$user_id</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$category_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$user_id</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$category_name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcategoryNameToId" id="categoryNameToId"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">categoryNameToId</span> (line <span class="line-number">553</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">category name 转换成 category id  只在该用户的名下查找category_name,  也就是说如果该函数返回false，则可说明该用户没有此名字的category</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			categoryNameToId
+		</span>
+					(<span class="var-type">$category_name</span>&nbsp;<span class="var-name">$user_id</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$category_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$category_name</span>
+				<span class="var-name">$user_id</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$category_name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcheckThisUserHasThisCategory" id="checkThisUserHasThisCategory"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">checkThisUserHasThisCategory</span> (line <span class="line-number">663</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">检查一个用户是否拥有一个category</p>
+<p class="description"><p>控制器中有使用</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Boolean</span>
+		<span class="method-name">
+			checkThisUserHasThisCategory
+		</span>
+					(<span class="var-type">$user_id</span>&nbsp;<span class="var-name">$user_id</span>, <span class="var-type">$category_id</span>&nbsp;<span class="var-name">$category_id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$user_id</span>
+				<span class="var-name">$user_id</span>			</li>
+					<li>
+				<span class="var-type">$category_id</span>
+				<span class="var-name">$category_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcreateCategoryToUser" id="createCategoryToUser"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">createCategoryToUser</span> (line <span class="line-number">273</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">为用户创建一个全新的category</p>
+<p class="description"><p>此时只操作了category和userLinkCategory,  也就是新建时不和任何一个note做链接  换言之,该category在新建时,没有任何所属的note</p></p>
+	<ul class="tags">
+				<li><span class="field">TODO:</span> 测试内部的两个if</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			createCategoryToUser
+		</span>
+					(<span class="var-type">$category_name</span>&nbsp;<span class="var-name">$category_name</span>, <span class="var-type">$user_id</span>&nbsp;<span class="var-name">$user_id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$category_name</span>
+				<span class="var-name">$category_name</span>			</li>
+					<li>
+				<span class="var-type">$user_id</span>
+				<span class="var-name">$user_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcreateNote" id="createNote"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">createNote</span> (line <span class="line-number">139</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">新建note  [used]</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> 返回新增（修改）note的细节</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			createNote
+		</span>
+					(<span class="var-type">$params</span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$params</span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcreateTag" id="createTag"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">createTag</span> (line <span class="line-number">249</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">为note addTag时可能需要create a new tag</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			createTag
+		</span>
+					(<span class="var-type">$tag_name</span>&nbsp;<span class="var-name">$tag_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$tag_name</span>
+				<span class="var-name">$tag_name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddelCategory" id="delCategory"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">delCategory</span> (line <span class="line-number">432</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">删除一个category By name  [unused]</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			delCategory
+		</span>
+					(<span class="var-type">$category_name</span>&nbsp;<span class="var-name">$category_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$category_name</span>
+				<span class="var-name">$category_name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddelContent" id="delContent"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">delContent</span> (line <span class="line-number">234</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">delNote时需要删除note content</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			delContent
+		</span>
+					([<span class="var-type">$note_id</span>&nbsp;<span class="var-name">$note_id</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$note_id</span>
+				<span class="var-name">$note_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddelNote" id="delNote"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">delNote</span> (line <span class="line-number">189</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">必须先load  [used]</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			delNote
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methoddelNotesByCategoryId" id="delNotesByCategoryId"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">delNotesByCategoryId</span> (line <span class="line-number">681</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">删除一个category名下的所有notes</p>
+	<ul class="tags">
+				<li><span class="field">TODO:</span> 需单元测试</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			delNotesByCategoryId
+		</span>
+					(<span class="var-type">$category_id</span>&nbsp;<span class="var-name">$category_id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$category_id</span>
+				<span class="var-name">$category_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoddelTag" id="delTag"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">delTag</span> (line <span class="line-number">408</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">删除tag</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			delTag
+		</span>
+					(<span class="var-type">$tag_name</span>&nbsp;<span class="var-name">$tag_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$tag_name</span>
+				<span class="var-name">$tag_name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodfilterData" id="filterData"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">filterData</span> (line <span class="line-number">122</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">$this-&gt;createNote需要过滤一些不能直接添加的数据</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			filterData
+		</span>
+					(<span class="var-type">$key</span>&nbsp;<span class="var-name">$key</span>, <span class="var-type"></span>&nbsp;<span class="var-name">&$array</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">&$saveto</span>, <span class="var-type">&</span>&nbsp;<span class="var-name">$array</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">&</span>
+				<span class="var-name">$array</span>			</li>
+					<li>
+				<span class="var-type">$key</span>
+				<span class="var-name">$key</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">&$saveto</span><span class="var-description">: &amp; $saveto</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">&$array</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetAllNoteByCategoryIdAndUserId" id="getAllNoteByCategoryIdAndUserId"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getAllNoteByCategoryIdAndUserId</span> (line <span class="line-number">582</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">读取属于一个用户(user_id)所拥有的一个category名下的所有note</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getAllNoteByCategoryIdAndUserId
+		</span>
+					(<span class="var-type">$category_id</span>&nbsp;<span class="var-name">$category_id</span>, <span class="var-type">$user_id</span>&nbsp;<span class="var-name">$user_id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$category_id</span>
+				<span class="var-name">$category_id</span>			</li>
+					<li>
+				<span class="var-type">$user_id</span>
+				<span class="var-name">$user_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetJoinRow" id="getJoinRow"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getJoinRow</span> (line <span class="line-number">102</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">取出一条指定join_id的目标值数组</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getJoinRow
+		</span>
+					(<span class="var-type">$join_id</span>&nbsp;<span class="var-name">$join_id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$join_id</span>
+				<span class="var-name">$join_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetMyCategorysByUserId" id="getMyCategorysByUserId"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">getMyCategorysByUserId</span> (line <span class="line-number">645</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">用于读取一个用户(user_id)所拥有的所有categorys信息  包含category_name,category_id,以数组形式返回</p>
+<p class="description"><p>控制器有直接使用</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Array</span>
+		<span class="method-name">
+			getMyCategorysByUserId
+		</span>
+					(<span class="var-type">$user_id</span>&nbsp;<span class="var-name">$user_id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$user_id</span>
+				<span class="var-name">$user_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodjoin" id="join"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">join</span> (line <span class="line-number">42</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">添加外链到此表的table</p>
+	<ul class="tags">
+				<li><span class="field">TODO:</span> 移到抽象类中</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			join
+		</span>
+					(<span class="var-type">$join_id</span>&nbsp;<span class="var-name">$join_id</span>, <span class="var-type">$joinTable</span>&nbsp;<span class="var-name">$joinTable</span>, <span class="var-type">$joinField</span>&nbsp;<span class="var-name">$joinField</span>, <span class="var-type">$selfField</span>&nbsp;<span class="var-name">$selfField</span>, <span class="var-type">$joinTargetField</span>&nbsp;<span class="var-name">$joinTargetField</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$join_id</span>
+				<span class="var-name">$join_id</span><span class="var-description">: join的标识符</span>			</li>
+					<li>
+				<span class="var-type">$joinTable</span>
+				<span class="var-name">$joinTable</span><span class="var-description">: 外链table</span>			</li>
+					<li>
+				<span class="var-type">$joinField</span>
+				<span class="var-name">$joinField</span>			</li>
+					<li>
+				<span class="var-type">$selfField</span>
+				<span class="var-name">$selfField</span>			</li>
+					<li>
+				<span class="var-type">$joinTargetField</span>
+				<span class="var-name">$joinTargetField</span><span class="var-description">: 外链table中的目标</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodLoadJoin" id="LoadJoin"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">LoadJoin</span> (line <span class="line-number">72</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">载入外链table的目标值，并以数组形式存入$this-&gt;_join['join_id']-&gt;rows</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			LoadJoin
+		</span>
+					(<span class="var-type">$join_id</span>&nbsp;<span class="var-name">$join_id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$join_id</span>
+				<span class="var-name">$join_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmakeCategoryLink" id="makeCategoryLink"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">makeCategoryLink</span> (line <span class="line-number">322</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">addCategory时需要为note和category创建链接</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			makeCategoryLink
+		</span>
+					(<span class="var-type">$category_id</span>&nbsp;<span class="var-name">$category_id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$category_id</span>
+				<span class="var-name">$category_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmakeTagLink" id="makeTagLink"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">makeTagLink</span> (line <span class="line-number">304</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">addTag时，需要创造新的note与tag之间的link  需Database_NotesLinkTags支持</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			makeTagLink
+		</span>
+					(<span class="var-type">$tag_id</span>&nbsp;<span class="var-name">$tag_id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$tag_id</span>
+				<span class="var-name">$tag_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmakeUserLinkCategory" id="makeUserLinkCategory"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">makeUserLinkCategory</span> (line <span class="line-number">341</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">createCategoryToUser时需要为user和category创建链接</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			makeUserLinkCategory
+		</span>
+					(<span class="var-type">$user_id</span>&nbsp;<span class="var-name">$user_id</span>, <span class="var-type">$category_id</span>&nbsp;<span class="var-name">$category_id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$user_id</span>
+				<span class="var-name">$user_id</span>			</li>
+					<li>
+				<span class="var-type">$category_id</span>
+				<span class="var-name">$category_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodpostLoad" id="postLoad"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">postLoad</span> (line <span class="line-number">57</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">为了方便，load时自动加载join table中的目标值，</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			postLoad
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodremoveTagLink" id="removeTagLink"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">removeTagLink</span> (line <span class="line-number">350</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			removeTagLink
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$tag_id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$tag_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetContent" id="setContent"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setContent</span> (line <span class="line-number">216</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">createNote时需要设置note content  [used]</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setContent
+		</span>
+					(<span class="var-type">$note_id</span>&nbsp;<span class="var-name">$note_id</span>, <span class="var-type">$text</span>&nbsp;<span class="var-name">$text</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$note_id</span>
+				<span class="var-name">$note_id</span>			</li>
+					<li>
+				<span class="var-type">$text</span>
+				<span class="var-name">$text</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsqlResultToNewArray" id="sqlResultToNewArray"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">sqlResultToNewArray</span> (line <span class="line-number">602</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">为getAllNoteByCategoryIdAndUserId提供数据输出处理,</p>
+<p class="description"><p>将sql请求中含有逗号分隔符的列转换为数组,  例如: categorys_name字段中取出的是'cate1,cate2',  此函数将起分割为数组 categorys_name = array('cate1','cate2');</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			sqlResultToNewArray
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$result</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$result</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtagIdToName" id="tagIdToName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">tagIdToName</span> (line <span class="line-number">493</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">tag_id 转换成 tag_name</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			tagIdToName
+		</span>
+					(<span class="var-type">$tag_id</span>&nbsp;<span class="var-name">$tag_id</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$tag_id</span>
+				<span class="var-name">$tag_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtagIsExistInThisNote" id="tagIsExistInThisNote"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">tagIsExistInThisNote</span> (line <span class="line-number">452</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">检查note是否已经被标记了某tag名</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			tagIsExistInThisNote
+		</span>
+					(<span class="var-type">$tag_name</span>&nbsp;<span class="var-name">$tag_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$tag_name</span>
+				<span class="var-name">$tag_name</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtagNameToId" id="tagNameToId"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">tagNameToId</span> (line <span class="line-number">512</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">tag name 转换成 tag id  只在该用户的名下查找tag_name,  也就是说如果该函数返回false，则可说明该用户没有此名字的tag</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			tagNameToId
+		</span>
+					(<span class="var-type">$tag_name</span>&nbsp;<span class="var-name">$tag_name</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">$tag_name</span>
+				<span class="var-name">$tag_name</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 24 Dec 2009 11:26:23 +0800 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>
