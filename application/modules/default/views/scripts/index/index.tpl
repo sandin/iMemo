@@ -42,6 +42,7 @@
 </ul><!-- /note js_note_template -->
 
 <a id="sort_note_url" style="display:none" class="hidden" href="<{$PUBLIC_URL}>/note/sort_note">&nbsp;</a>
+<a id="alter_note_url" style="display:none" class="hidden" href="<{$PUBLIC_URL}>/note/alter_note">&nbsp;</a>
 
 <{else}>
 <{include file="$APPLICATION_PATH/templates/welcome.tpl"}>

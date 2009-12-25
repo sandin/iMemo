@@ -1,6 +1,6 @@
 <{include file="$APPLICATION_PATH/templates/header.tpl"}>
 <{*debug*}>
-<form id="form_login" action="" method="post">
+<form id="form_login" action="<{$PUBLIC_URL}>/register" method="post">
 <h3 class="title_1"><{t}>WELCOME<{/t}> :: <{t}>REGISTER<{/t}></h3>
   <{if $message}>
 	<div class="error">

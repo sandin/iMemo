@@ -1,6 +1,6 @@
 <{include file="$APPLICATION_PATH/templates/header.tpl"}>
 
-<form id="form_login" action="" method="post" title="login">
+<form id="form_login" action="<{$PUBLIC_URL}>/login" method="post" title="login">
   <h3 class="title_1"><{t}>WELCOME<{/t}> :: <{t}>LOGIN<{/t}></h3>
   <{if $message}>
 	<div class="error">

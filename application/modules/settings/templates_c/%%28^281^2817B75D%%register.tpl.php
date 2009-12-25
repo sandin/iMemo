@@ -1,11 +1,12 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-22 21:27:22
+<?php /* Smarty version 2.6.26, created on 2009-12-24 19:27:41
          compiled from index/register.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-<form id="form_login" action="" method="post">
+<form id="form_login" action="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/register" method="post">
 <h3 class="title_1"><?php echo $this->_tpl_vars['t']->_('WELCOME'); ?>
  :: <?php echo $this->_tpl_vars['t']->_('REGISTER'); ?>
 </h3>

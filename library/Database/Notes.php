@@ -204,6 +204,29 @@ class Database_Notes extends DatabaseObject
 	return ($this->delete() && $result);
   }
 
+  public function alterNote($data)
+  {
+      //为setContent的储存结果
+      $result = true;
+
+      $note_id = $data['note_id'];
+      $this->load($note_id);
+      //允许修改的字段
+      $alterable = array('content','dueDate','star','style');
+      //避免修改其不应该修改的字段
+      foreach ($data as $key => $value) {
+          if (in_array($key,$alterable)) {
+              //content在外表中
+              if ($key == 'content') {
+                  $result = $this->setContent($note_id,$value);
+              } else {
+                  $this->$key = $value;
+              }
+          }
+      }
+      return ($this->save() && $result);
+  }
+
   /** 
 	* createNote时需要设置note content
     * [used]
@@ -221,7 +244,7 @@ class Database_Notes extends DatabaseObject
 	} 
 	$content->content = $text;
 	$content->ts_modified = time();
-	$content->save();
+	return $content->save();
   }
 
   /** 

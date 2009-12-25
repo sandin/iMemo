@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-23 18:33:55
+<?php /* Smarty version 2.6.26, created on 2009-12-25 13:02:08
          compiled from /home/svn/0019/trunk/application/templates/note.tpl */ ?>
 <li class="note clearfix" id="<?php echo $this->_tpl_vars['category_id']; ?>
 :<?php echo $this->_tpl_vars['item']['note_id']; ?>
@@ -6,8 +6,8 @@
 	<div class="n_col n_lable star_<?php echo $this->_tpl_vars['item']['star']; ?>
 ">&nbsp;</div>
 	<div class="n_col ">&nbsp;</div>
-	<div class="n_col n_state"><input type="checkbox"></input></div>
-	<div class="n_col n_content"><?php echo $this->_tpl_vars['item']['content']; ?>
+	<div class="n_col n_state"><div class="checkbox">&nbsp;</div></div>
+	<div class="n_col n_content" contenteditable='' unselectable=""><?php echo $this->_tpl_vars['item']['content']; ?>
 </div>
 	<div class="n_col n_del">
 	  <form name="del_note_form" class="ajaxForm del_note_form" action="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>

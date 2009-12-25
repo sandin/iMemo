@@ -28,14 +28,6 @@ class IndexController extends Zend_Controller_Action
 	  var_dump($categorys);
 	}
 
-    public function aAction()
-	{
-	}
-	
-	public function bAction()
-	{
-	}
-
 	public function postDispatch()
 	{
 	  //echo '<br />end of file<br />';
