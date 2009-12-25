@@ -13,7 +13,6 @@ BindLoginForm.prototype.update = function(){
   var sThis = this;
 
   var $login_form = $('div#login_form');
-  var title = $login_form.attr('title');
   if ($login_form.length < 1 || !$login_form.hasClass('binded')) { 
 	$login_form.addClass('binded')
 		.dialog({
@@ -27,15 +26,13 @@ BindLoginForm.prototype.update = function(){
 			}
 		});//end dialog
   }//fi
-  $login_form = null;
-  title       = null;
 
   // ajax - fetch captcha
   var $fetch_captch = $('#ajax-fetch-captcha');
   if (!$fetch_captch.hasClass('binded'))
   {
-	$fetch_captch.click(function(){
 	$fetch_captch.addClass('binded');
+	$fetch_captch.click(function(){
 	  var url = $(this).attr('href');
 	  $.ajax({
 		type:"POST",
@@ -47,11 +44,10 @@ BindLoginForm.prototype.update = function(){
 		  $('#captcha_id').attr('value', dataObj.captcha_id);
 		}	
 	  });
-      url = null;
 	  return false; 
 	});//.trigger('click');	  
+    $fetch_captch = null;
   }//fi
-  $fetch_captch = null;
 
 
   var $input_captcha = $('#input_captcha');
@@ -63,7 +59,7 @@ BindLoginForm.prototype.update = function(){
       if (!$(this).hasClass('once')) {
         $(this).addClass('once');
 	    $('#captcha>.loading').slideDown();
-	    $fetch_captch.trigger('click');
+	    $('#ajax-fetch-captcha').trigger('click');
       }      
     });
   }//fi

@@ -36,22 +36,23 @@ BindDelButton.prototype.update = function(){
 					sThis._delAllNote = 0
 					sThis.ajaxSend($tr,$a);
 					$(this).dialog('close');
+                    $tr = null;
+                    $a  = null;
+                    sThis = null;
 				  },
 				  'Delete notes': function() {
 					sThis._delAllNote = 1;
 					sThis.ajaxSend($tr,$a);
 					$(this).dialog('close');
+                    $tr = null;
+                    $a  = null;
+                    sThis = null;
 				  }
 			  }
 		});
-
-      $tr = null;
-      $a  = null;
 	  });//end click
-
 	}//fi
   });//end each
-    sThis = null;
 }//end function
 
 BindDelButton.prototype.ajaxSend = function($tr,$a)

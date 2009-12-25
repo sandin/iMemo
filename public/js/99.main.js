@@ -196,13 +196,13 @@ if ($('body').attr('id').toLowerCase() == 'default')
 			buttons: {
 				'Comfirm': function() {
 					location.href = url;
+                    url = null;
 				},
 				'Cancel': function() {
 					$(this).dialog('close');
 				}
 			}
 	  });
-    url = null;
 	return false;
   });//end click
 
@@ -230,7 +230,7 @@ if ($('body').attr('id').toLowerCase() == 'default')
 
 		//ajax请求html并载入到容器中
 		$login_form.load($url + " #form_login",{},function(){
-		  $login_form.dialog('open');
+		  $('div#login_form').dialog('open');
 		  //为了绑定change captcha按钮
 		  bindCenter.notify();
 		});//end load
