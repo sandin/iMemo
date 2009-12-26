@@ -1,6 +1,7 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-26 20:43:01
+<?php /* Smarty version 2.6.26, created on 2009-12-26 22:04:41
          compiled from category/index.tpl */ ?>
-<div title="<?php echo $this->_tpl_vars['category_name']; ?>
+<div id="cate_<?php echo $this->_tpl_vars['category_id']; ?>
+" title="<?php echo $this->_tpl_vars['category_name']; ?>
 " class="cate">
   <ul class="notes_list clearfix connectedSortable">
 	<?php $_from = $this->_tpl_vars['notes']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):

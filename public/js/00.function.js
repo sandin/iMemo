@@ -43,3 +43,17 @@ LdsHelper.prototype.parseIdArray = function(arr,type)
             return false;
     }
 }
+
+LdsHelper.prototype.setCurrentCategory = function($current_category_ul_a)
+  {
+    var current_category       = $current_category_ul_a.text();
+    var current_category_id    = $current_category_ul_a.attr('id').replace('c','');
+
+	__LDS_GLOBAL.category    = current_category;
+	__LDS_GLOBAL.category_id = current_category_id;
+	//console.log(__LDS_GLOBAL.category);
+	$('#js_current_category').attr('value',__LDS_GLOBAL.category);
+	//console.log($('#js_current_category').attr('value') );
+    current_category = null;
+    current_category_index = null;
+  }

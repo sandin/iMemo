@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-26 20:43:01
+<?php /* Smarty version 2.6.26, created on 2009-12-26 22:04:39
          compiled from index/index.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
@@ -35,7 +35,8 @@ $this->_sections['i']['index_next'] = $this->_sections['i']['index'] + $this->_s
 $this->_sections['i']['first']      = ($this->_sections['i']['iteration'] == 1);
 $this->_sections['i']['last']       = ($this->_sections['i']['iteration'] == $this->_sections['i']['total']);
 ?>
-	  <li><a href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+	  <li><a id="c<?php echo $this->_tpl_vars['categorys'][$this->_sections['i']['index']]['category_id']; ?>
+" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /category/<?php echo $this->_tpl_vars['categorys'][$this->_sections['i']['index']]['category_id']; ?>
 "><?php echo $this->_tpl_vars['categorys'][$this->_sections['i']['index']]['category_name']; ?>
 </a></li>
@@ -86,6 +87,8 @@ unset($_smarty_tpl_vars);
 /note/alter_note">&nbsp;</a>
 <a id="del_note_url" style="display:none" class="hidden" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /note/del_note">&nbsp;</a>
+<a id="change_category_url" style="display:none" class="hidden" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+/note/change_category">&nbsp;</a>
 
 <?php else: ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;

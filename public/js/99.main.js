@@ -22,12 +22,14 @@ $(window).load(function(){
 
     //冒泡绑定中心
     var bubbleBind = new BubbleBind();
+    //帮助函数
+    var helper     = new LdsHelper();
 
 /*------------------------index page-----------------------------*/
 if ($('body').attr('id').toLowerCase() == 'default')
 {
     //设置捕捉器
-    bubbleBind.setTarget('#content');
+    bubbleBind.setTarget('#wrap');
 
     //删除note按钮
     bubbleBind.bind('.n_del a>span','click',function(e){
@@ -43,6 +45,11 @@ if ($('body').attr('id').toLowerCase() == 'default')
         url     = null;
     });
 
+  //储存category的tab index
+  $('#categorys>li').each(function(i){
+    $(this).data('i',i);        
+  });
+
   // tabs && drop to tabs
   $("#main").tabs({
 	//selected: 0,
@@ -53,42 +60,16 @@ if ($('body').attr('id').toLowerCase() == 'default')
     select: function(event, ui) { 
 	  //loadding icon
 	  //切换category时将当前category name存入全局变量
-	  var current_category  = ui.tab.text;   
-	  //console.log( current_category);
-	  __LDS_GLOBAL.category = current_category;
-	  //也存入note_00.input[js_current_category]中,用于addNote时发送给服务器
-	  $('#js_current_category').attr('value',current_category);
-     current_category = null
+	  var $current_category_ul_a  = $(ui.tab);  
+      helper.setCurrentCategory($current_category_ul_a);
+      current_category = null
 	}
   });
 
-
-  function setCurrentCategory()
-  {
+    //设置当前category
     var current_category_index = $('#main').tabs('option', 'selected');
-    var current_category = 	$('#categorys').find('li>a').eq(current_category_index).text();
-
-	__LDS_GLOBAL.category = current_category;
-	//console.log(__LDS_GLOBAL.category);
-	$('#js_current_category').attr('value',__LDS_GLOBAL.category);
-	//console.log($('#js_current_category').attr('value') );
-    current_category = null;
-    current_category_index = null;
-  }
-  setCurrentCategory();
-  /*
-  //读取URL中的#cate-1部分,并切换至
-  var hash = window.location.hash;
-  if (hash != '') {
-	var arr = hash.split('-');
-	var num = parseInt(arr[1]);
-	num--;
-	if (typeof num == 'number') {
-	  //console.log(num);
-	  $tabs.tabs('select',num);
-	}
-  }
-  */
+    var $current_category_ul_a = $('#categorys').find('li>a').eq(current_category_index);
+    helper.setCurrentCategory($current_category_ul_a);
 
   $("#categorys").sortable({axis:'y'});
 
@@ -97,16 +78,26 @@ if ($('body').attr('id').toLowerCase() == 'default')
 	accept: ".connectedSortable li",
 	hoverClass: "ui-state-hover",
 	drop: function(ev, ui) {
+        //ul#category>li,拖到的目的地
 		var $item = $(this);
-		var $list = $($item.find('a').attr('href')).find('.connectedSortable');
+        var target_tab_index =  $item.data('i');
+        var url   = $('#change_category_url').attr('href');
+        var data  = {
+            old_category_id : __LDS_GLOBAL.category_id,
+            new_category_id : $item.find('a').attr('id').replace('c',''),
+            note_id         : $(ui.draggable).attr('id').split(':')[1]
+        };
 
-		ui.draggable.hide('slow', function() {
-			// auto change tab on/off
-			$('#main').tabs('select', $('#main ul:first li').index($item));
-			$(this).prependTo($list).show('slow');
-		});//end hide
+        $.post(url,data,function(){
+            //ui.draggale => li.note
+		    ui.draggable.hide('slow');
+            $('#main').tabsExtra({reload:true,reloadIndex:target_tab_index});
+        });
+           
         $item = null;
         $list = null;
+        url   = null;
+        data  = null;
 	}
   });
   $tab_items = null;

@@ -1,4 +1,4 @@
-<div title="<{$category_name}>" class="cate">
+<div id="cate_<{$category_id}>" title="<{$category_name}>" class="cate">
   <ul class="notes_list clearfix connectedSortable">
 	<{foreach from=$notes item=item key=i}>
 	  <{assign value=$item.note_id var=nid}>

@@ -8,7 +8,7 @@
 
   <ul id="categorys" class="sidebar">
 	<{section name=i loop=$categorys}>
-	  <li><a href="<{$PUBLIC_URL}>/category/<{$categorys[i].category_id}>"><{$categorys[i].category_name}></a></li>
+	  <li><a id="c<{$categorys[i].category_id}>" href="<{$PUBLIC_URL}>/category/<{$categorys[i].category_id}>"><{$categorys[i].category_name}></a></li>
 	<{/section}>
 
   </ul><!-- /categorys (sidebar) -->
@@ -44,6 +44,7 @@
 <a id="sort_note_url" style="display:none" class="hidden" href="<{$PUBLIC_URL}>/note/sort_note">&nbsp;</a>
 <a id="alter_note_url" style="display:none" class="hidden" href="<{$PUBLIC_URL}>/note/alter_note">&nbsp;</a>
 <a id="del_note_url" style="display:none" class="hidden" href="<{$PUBLIC_URL}>/note/del_note">&nbsp;</a>
+<a id="change_category_url" style="display:none" class="hidden" href="<{$PUBLIC_URL}>/note/change_category">&nbsp;</a>
 
 <{else}>
 <{include file="$APPLICATION_PATH/templates/welcome.tpl"}>
