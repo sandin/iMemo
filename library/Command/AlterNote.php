@@ -11,6 +11,7 @@ class Command_AlterNote extends Command_Abstract
     	$note    = $this->_receiver;
         $note_id = $this->_param['note_id'];
 	    $user_id = $this->_param['user_id'];
+        //$this->_param['content'] = ($this->_param['content']);
         unset($this->_param['user_id']);
 
 	    if ( $this->checkPermission($user_id,'note_id',$note_id) )

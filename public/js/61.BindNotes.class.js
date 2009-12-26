@@ -33,6 +33,7 @@ BindNotes.prototype.update = function(){
                    var curr_cate_id   = curr_arr[0];
                    //将category和note的混合id数组解析出只包含note_id的数组
                    var all_notes_arr  = helper.parseIdArray(all_arr,'note_id');
+                   //console.log(all_notes_arr,all_arr);
                    //当前移动的note在顺序中的数组索引
                    var curr_index     = arrayIndexOf(all_notes_arr,curr_note_id);
                    //移动后,前一note的id
@@ -48,15 +49,6 @@ BindNotes.prototype.update = function(){
                             categorys: curr_cate_id
                    };
                    sThis.sendSortData(data);
-                   helper        =  null;
-                   all_arr       =  null;
-                   curr_arr      =  null;
-                   curr_note_id  =  null;
-                   curr_cate_id  =  null;
-                   all_notes_arr =  null;
-                   curr_index    =  null;
-                   front_note_id =  null;
-                   data          =  null;
                 }
       }); //.disableSelection();
 	}//fi
@@ -114,22 +106,22 @@ BindNotes.prototype.bindContent = function ()
         var old_content;
 
         $(this).focus(function(){
-            old_content = $(this).html();
+            old_content = $(this).text();
         });//edn focus
 
         $(this).blur(function(){
-            var content = $(this).html();
+            var content = $(this).text();
             //确保用户修改了内容
             if (content !== old_content) {
-                var note_id = $note.attr('id').split(":")[1];
-                var data = {content:content,note_id:note_id};
-                var url =  $('#alter_note_url').attr('href');
+                var note_id =  $note.attr('id').split(":")[1];
+                var data    =  {content:content,note_id:note_id};
+                var url     =  $('#alter_note_url').attr('href');
                 $.post(url,data);
+                $note       = null;
+                old_content = null;
             }
             content = null;
         });//edn blur
-        $note       = null;
-        old_content = null;
 	}//fi
   });//end click
 }

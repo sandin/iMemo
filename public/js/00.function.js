@@ -24,16 +24,20 @@ function arrayIndexOf(data,key)       /*JS暴虐查找*/
 
 function LdsHelper(){};
 
+// 将category_id:note_id这种形式的数组
+// ["3:117", "3:112", "3:116", "3:113", "3:114", "3:115"]
+// 解析成只有note_id或category_id的数组
+// ["117", "112", "116", "113", "114", "115"]
 LdsHelper.prototype.parseIdArray = function(arr,type)
 {
     var a = arr.toString() + ',';
     switch (type)
     {
         case 'note_id':
-            return a.match(/\d(?!:)/g);
+            return a.match(/\d+(?!:)/g);
             break;
         case 'category_id':
-            return a.match(/\d(?!,)/g);
+            return a.match(/\d+(?!,)/g);
             break;
         default:
             return false;

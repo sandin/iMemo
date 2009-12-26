@@ -26,7 +26,7 @@ $(window).load(function(){
 /*------------------------index page-----------------------------*/
 if ($('body').attr('id').toLowerCase() == 'default')
 {
-
+    //设置捕捉器
     bubbleBind.setTarget('#content');
 
     //删除note按钮
