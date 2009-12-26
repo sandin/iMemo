@@ -23,7 +23,6 @@ AddNoteCommand.prototype.success = function()
   if (this.params.statusText && this.params.statusText.toLowerCase() == 'success') {
 	try 
 	{
-	  //console.log(this.params.ajax.responseText,'responseText');
 	  var noteObject = JSON.parse(this.params.responseText); 
 	  var note = new Note();
 	  note.makeNoteHTML(noteObject);

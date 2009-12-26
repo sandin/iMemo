@@ -51,7 +51,7 @@ AjaxForm.prototype.makeAjaxFormOptions = function()
 						  'status'  : 'beforeSubmit',
 						  'formData': formData,
 						  'jqForm'  : jqForm,
-						  'options' : options,
+						  'options' : options
 						 });
 				   },
 	success:       function(responseText, statusText)

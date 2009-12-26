@@ -5,7 +5,7 @@ class Command_DelNote extends Command_Abstract
   public function executeCommand()
   {
 	$note = $this->_receiver;
-	$note_id = $this->_param['n_id'];
+	$note_id = $this->_param['note_id'];
 	$user_id = $this->_param['user_id'];
 
 	if ( $this->checkPermission($user_id,'note_id',$note_id) )

@@ -38,3 +38,24 @@
 2009-12-25T15:20:57+08:00 INFO (6): This user delete note which not belong to him user_id: 1
 2009-12-25T15:20:57+08:00 INFO (6): This user delete note which not belong to him user_id: 1
 2009-12-25T15:20:58+08:00 INFO (6): This user delete note which not belong to him user_id: 1
+2009-12-25T19:51:43+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-25T19:51:43+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-25T19:59:47+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-25T19:59:47+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-25T20:00:05+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-25T20:00:05+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-25T20:48:28+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-25T20:48:28+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-26T15:42:55+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-26T15:42:55+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-26T15:58:17+08:00 INFO (6): This user delete note which not belong to him user_id: 1
+2009-12-26T15:58:17+08:00 INFO (6): This user delete note which not belong to him user_id: 1
+2009-12-26T15:58:18+08:00 INFO (6): This user delete note which not belong to him user_id: 1
+2009-12-26T15:58:19+08:00 INFO (6): This user delete note which not belong to him user_id: 1
+2009-12-26T15:58:20+08:00 INFO (6): This user delete note which not belong to him user_id: 1
+2009-12-26T15:58:22+08:00 INFO (6): This user delete note which not belong to him user_id: 1
+2009-12-26T15:58:24+08:00 INFO (6): This user delete note which not belong to him user_id: 1
+2009-12-26T15:58:25+08:00 INFO (6): This user delete note which not belong to him user_id: 1
+2009-12-26T15:58:25+08:00 INFO (6): This user delete note which not belong to him user_id: 1
+2009-12-26T15:58:26+08:00 INFO (6): This user delete note which not belong to him user_id: 1
+2009-12-26T16:06:48+08:00 INFO (6): This user delete note which not belong to him user_id: 1

@@ -10,6 +10,7 @@ function CommandFactory(commandType)
 {
   var command = ucwords(commandType);
   command += 'Command';
+  //console.log(command);
 
   //确认所请求的Command类是存在的
   if (eval('typeof ' + command + ' != "undefined"')) {

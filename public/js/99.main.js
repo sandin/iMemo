@@ -1,14 +1,15 @@
 
+//唯一的全局变量
+__LDS_GLOBAL = {};
+__LDS_GLOBAL.baseUrl = '/';  
+
 $(window).load(function(){	
 
 /*------------------------init-----------------------------*/
-  //唯一的全局变量
-   __LDS_GLOBAL = {};
-   __LDS_GLOBAL.baseUrl = '/';  
 
-  //绑定中心初始化
+     //绑定中心初始化
     var bindCenter = new BindCenter();
-  //注册绑定
+    //注册绑定
     bindCenter.addObserver(new BindHighLight)
 			.addObserver(new BindAjaxForm)
 			.addObserver(new BindDelButton)
@@ -16,33 +17,31 @@ $(window).load(function(){
 			.addObserver(new BindLoginForm);
 
 
-  //执行全部绑定
-  bindCenter.notify();
+    //执行全部绑定
+    bindCenter.notify();
+
+    //冒泡绑定中心
+    var bubbleBind = new BubbleBind();
+
 /*------------------------index page-----------------------------*/
 if ($('body').attr('id').toLowerCase() == 'default')
 {
 
+    bubbleBind.setTarget('#content');
 
-  //事件冒泡绑定中心,用于ajax新载内容的事件绑定
-    $('#content').click(function(e){
-
-	  //删除按钮
-	  var $n_del = $(e.target).parent().parent().parent();
-	  if ($n_del.hasClass('n_del')) {
-		var $form = $n_del.find('.del_note_form');
-		var $note = $form.parent().parent();
-		//console.log($form);
-		//console.log($note);
-		$form.trigger('submit'); 
-		//隐藏删除内容
+    //删除note按钮
+    bubbleBind.bind('.n_del a>span','click',function(e){
+        var $note   = e.parent().parent().parent();
+        var note_id = $note.attr('id').split(':')[1];
+        var data    = {note_id:note_id};
+        var url     = $('#del_note_url').attr('href');
+        $.post(url,data,function(){});
 		$note.fadeOut('fast'); 
-        $from = null;
-        $note = null;
-	  } 
-      $n_del = null;
-
-	});//冒泡
-
+        $note   = null;
+        note_id = null;
+        data    = null;
+        url     = null;
+    });
 
   // tabs && drop to tabs
   $("#main").tabs({

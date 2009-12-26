@@ -52,7 +52,7 @@ class Database_NotesLinkCategorys extends DatabaseObject
       $query = sprintf('DELETE FROM %s ',$this->_table);
       $query .= $db->quoteInto('where note_id = ? ',$this->note_id);	
       $query .= $db->quoteInto('and category_id = ? ',$category_id);	
-      var_dump($query);
+      //var_dump($query);
 
       $result = $this->_db->query($query);	
 	  return ($result->rowCount() > 0) ? true : false;

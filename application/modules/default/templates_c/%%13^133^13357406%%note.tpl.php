@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-25 18:18:48
+<?php /* Smarty version 2.6.26, created on 2009-12-26 16:25:28
          compiled from /home/svn/0019/trunk/application/templates/note.tpl */ ?>
 <li class="note clearfix" id="<?php echo $this->_tpl_vars['category_id']; ?>
 :<?php echo $this->_tpl_vars['item']['note_id']; ?>
@@ -10,14 +10,7 @@
 	<div class="n_col n_content" contenteditable='' unselectable=""><?php echo $this->_tpl_vars['item']['content']; ?>
 </div>
 	<div class="n_col n_del">
-	  <form name="del_note_form" class="ajaxForm del_note_form" action="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/note/del_note" method="post">
 		<a title="a" onclick="return false" href="#" class="js_highlight ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
-				<input class="note_id" type="hidden" name="smarty_bug" value="<?php echo $this->_tpl_vars['nid']; ?>
-"></input>
-		<input class="note_id" name="n_id" value="<?php echo $this->_tpl_vars['nid']; ?>
-" type="hidden"></input>
-		</form>
 	</div>
 	<div class="n_col n_date">1985-12-12 12:02</div>
 
