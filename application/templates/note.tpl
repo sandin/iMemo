@@ -6,7 +6,8 @@
 	<div class="n_col n_del">
 		<a title="a" onclick="return false" href="#" class="js_highlight ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
 	</div>
-	<div class="n_col n_date">1985-12-12 12:02</div>
+	<div class="n_col n_time"><{$item.dueDate.time}></div>
+	<div class="n_col n_date"><{$item.dueDate.date}></div>
 
 	<div class="n_tag">
 	  <{foreach from=$item.tags item=tag}>

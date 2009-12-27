@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-26 22:05:06
+<?php /* Smarty version 2.6.26, created on 2009-12-27 17:11:30
          compiled from /home/svn/0019/trunk/application/templates/footer.tpl */ ?>
 <?php if (! isset ( $this->_tpl_vars['noLayout'] )): ?>
 

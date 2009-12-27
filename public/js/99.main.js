@@ -26,7 +26,7 @@ $(window).load(function(){
     var helper     = new LdsHelper();
 
 /*------------------------index page-----------------------------*/
-if ($('body').attr('id').toLowerCase() == 'default')
+if ($('body').attr('id').toLowerCase() == 'default' && $('#categorys').length > 0 )
 {
     //设置捕捉器
     bubbleBind.setTarget('#wrap');

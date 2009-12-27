@@ -348,7 +348,7 @@ padding:			0 0 0 20px;
 .n_lable:hover {
     background:		url(../images/google-tasks-sprites6.png) no-repeat -252px 0;
 }
-.n_date {
+.n_date,.n_time {
     float:			right;
     color:			#888;
     font-size:		11px;

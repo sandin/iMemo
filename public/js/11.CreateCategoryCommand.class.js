@@ -24,7 +24,7 @@ CreateCategoryCommand.prototype.success = function()
 	try 
 	{
 	  //console.log(this.params.ajax.responseText,'responseText');
-	  var noteObject = JSON.parse(this.params.responseText); 
+	  var noteObject = JSON.parse($.trim(this.params.responseText)); 
 	  if (noteObject.data) {
 		//reload tab zoom
 		$('#settings-tabs').tabsExtra({'reload':true});
@@ -33,18 +33,7 @@ CreateCategoryCommand.prototype.success = function()
 	}
 	catch(err) 
 	{
-	  var txt =	 'Error: Response data is not a JSON!\n\n';
-	  txt += 'Code: 0x0000;\n\n';
-	  txt += 'Error name: ' + err.name + '\n\n';
-	  txt += 'Error message: ' + err.message + '\n\n';
-	  txt += 'Description: ' + err.description + '\n\n';
-	  
-	  if (console && console != null) {
-		console.log(txt);
-	  } else {
-		alert(txt);
-	  }
-      txt = null;
+	  throw 'Error 0x0000: Response data is not a JSON!';
 	}
   }
 }

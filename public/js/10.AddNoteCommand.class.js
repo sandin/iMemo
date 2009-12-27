@@ -23,27 +23,17 @@ AddNoteCommand.prototype.success = function()
   if (this.params.statusText && this.params.statusText.toLowerCase() == 'success') {
 	try 
 	{
-	  var noteObject = JSON.parse(this.params.responseText); 
+	    var noteObject = JSON.parse(this.params.responseText); 
+	}
+	catch(err) 
+	{
+        var noteObject = {};
+        throw 'Error 0x0000: Response data is not a JSON!';
+	}
 	  var note = new Note();
 	  note.makeNoteHTML(noteObject);
       noteObject = null;
       note = null;
-	}
-	catch(err) 
-	{
-	  var txt =	 'Error: Response data is not a JSON!\n\n';
-	  txt += 'Code: 0x0000;\n\n';
-	  txt += 'Error name: ' + err.name + '\n\n';
-	  txt += 'Error message: ' + err.message + '\n\n';
-	  txt += 'Description: ' + err.description + '\n\n';
-	  
-	  if (console && console != null) {
-		console.log(txt);
-	  } else {
-		alert(txt);
-	  }
-      txt = null;
-	}
   }
 }
 

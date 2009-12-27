@@ -52,7 +52,7 @@ class LinkedListTest extends ControllerTestCase
               ->setIndexKey('note_id');
 
     }
-
+/*
     public function testBaseFunction()
     {
         $list = $this->_list; 
@@ -147,13 +147,15 @@ class LinkedListTest extends ControllerTestCase
         $this->assertEquals(
             $mySiblings[$this->_backhandKey]  ,3 );
     }
-
+ */
+ 
     /** 
      * 测试LinkedList_DoubleDatabase
      * 数据库版
      * 
      * @return 
      */
+/*
     public function testListDbBaseFunction()
     {
         $listDB = $this->_listDB;
@@ -208,7 +210,7 @@ class LinkedListTest extends ControllerTestCase
         //测试放置功能,将9放到4后面  放置后的顺序为 4,7,1,2,6,3,9
         //从array(4,5,1,6,3,7,8,9);
         //到array(4,7,5,1,6,3,8,9);
-        $listDB->placeAfter(7,4);
+        $listDB->placeBefore(7,4);
         //检查
         $newSil = $listDB->findSiblings(7);
         $this->assertEquals(
@@ -218,7 +220,7 @@ class LinkedListTest extends ControllerTestCase
        
         //从array(4,7,5,1,6,3,8,9);
         //到array(4,7,5,9,1,6,3,8);
-        $listDB->placeAfter(9,5);
+        $listDB->placeBefore(9,5);
         //检查
         $newSil = $listDB->findSiblings(9);
         $this->assertEquals(
@@ -246,13 +248,27 @@ class LinkedListTest extends ControllerTestCase
     {
         $listDB = $this->_listDB;
         $new_array = $listDB->fillIndexOrderArray($this->_array);
-        //存储到数据库
         $listDB->saveListIntoDatabase();
 
         $fKey = $listDB->getFronthandKey();
         $result = $listDB->findNodeInBatabase(false,
             'lds0019_notes_link_categorys',1,$fKey,0);
-        var_dump($result);
+        //var_dump($result);
+    }
+ */
+    public function testPush()
+    {
+        $listDB = $this->_listDB;
+
+        $listDB->pushInto(1,1);
+        /* 测试需要格外数据 
+         * INSERT INTO lds0019_notes_links_categorys VALUES(null,1,1); 
+         *
+        $this->assertEquals(
+            $listDB->findFirstNodeInDatabase(true,1),1);
+        $this->assertEquals(
+            $listDB->findLastNodeInDatabase(true,1),1);
+         */
     }
 
 

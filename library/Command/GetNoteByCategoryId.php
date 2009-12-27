@@ -13,9 +13,14 @@ class Command_GetNoteByCategoryId extends Command_Abstract
 	  //var_dump($category_id);
 	  //var_dump($category_id);
 	  $notes = $note->getAllNoteByCategoryIdAndUserId($category_id,$user_id );
-	  //去除转义符
+	  //预处理输出数据格式
 	  foreach ($notes as &$note) {
-		$note['content'] = stripslashes($note['content']);
+        //去转义符  
+        $note['content'] = stripslashes($note['content']);
+        //格式化时间日期
+        if (isset($note['dueDate'])) {
+            $note['dueDate'] = Lds_Helper_MainInput::dateFormater($note['dueDate']);
+        }
       }
 
       if (count($notes) > 0) {
@@ -23,6 +28,7 @@ class Command_GetNoteByCategoryId extends Command_Abstract
           $list = LinkedList_Factory::factory('array');
           $list->setBaseArray($notes);
           $ordered_notes = $list->orderList(); 
+          //排序表出错，记录到日志并直接返回未排序的结果
           if (count($notes) > count($ordered_notes)) {
               Lds_Helper_Log::writeLog('order wrong.category_id: '. $category_id);
               return $notes; 

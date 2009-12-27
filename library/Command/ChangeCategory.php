@@ -17,6 +17,11 @@ class Command_ChangeCategory extends Command_Abstract
 
 	if ( $this->checkPermission($user_id,'note_id',$note_id) )
     {
+        //出入双链
+        $list = LinkedList_Factory::factory('database');
+        $list->outList($note_id,true,true);
+        $list->pushInto($note_id,$new_cate_id);
+
         $ln_cate = new Database_NotesLinkCategorys($this->_db);
         return $ln_cate->changeCategoryFormTo($note_id,$old_cate_id,$new_cate_id);
     } else {

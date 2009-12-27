@@ -9,8 +9,17 @@ class Command_AddNote extends Command_Abstract
 	
 	//解析post数据
 	$params = array();
-	$params['content']   = $this->_param['note-data'];
-	$params['user_id']   = $this->_param['user_id'];
+    //解析main input的内容
+    $i_helper = new Lds_Helper_MainInput($this->_param['note-data']);
+    $i_helper->parse();
+    $dueDate = $i_helper->makeDate();
+    $content = $i_helper->getString();
+
+    $params['content']  = $content;
+    if ($dueDate !== null)
+        $params['dueDate']  = $dueDate;
+	$params['user_id']  = $this->_param['user_id'];
+
 	if (isset($this->_param['categorys']) && $this->_param['categorys'] != '') {
 	  $params['categorys'] = $this->_param['categorys'];  
 	} else {
@@ -27,6 +36,11 @@ class Command_AddNote extends Command_Abstract
 
       $list = LinkedList_Factory::factory('database');
       $list->pushInto($note_id,$cate_id);
+
+      if (isset($data['dueDate']) && $data['dueDate'] !== null) {
+          $data['dueDate'] = Lds_Helper_MainInput::dateFormater($data['dueDate']);
+
+      }//fi
 	} else {
 	  $data = 'content can not be null.';
 	}

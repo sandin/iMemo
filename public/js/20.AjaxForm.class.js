@@ -70,6 +70,7 @@ AjaxForm.prototype.makeAjaxFormOptions = function()
 						  'XMLHttpRequest': 'XMLHttpRequest'
 						  });
 					},
+   //dataType: 'json',
 
 	// other available options: 
 	//url:       url         // override for form's 'action' attribute 

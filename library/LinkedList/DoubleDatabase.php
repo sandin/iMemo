@@ -99,7 +99,7 @@ class LinkedList_DoubleDatabase extends LinkedList_DoubleArray
     public function pushInto($index,$join_value)
     {
         $last = $this->findLastNodeInDatabase(true,$join_value);
-        if ($last) {
+        if (isset($last) && $last != null) {
             return $this->inList($index,$last);
         } else {
             return $this->insertOneNode($index,0,0);
@@ -218,12 +218,13 @@ class LinkedList_DoubleDatabase extends LinkedList_DoubleArray
     public function insertOneNode($index,$front,$behind)
     {
         $row = array (
-            $this->_indexKey      => $this->_db->quote($index),
-            $this->_fronthandKey  => $this->_db->quote($front),
-            $this->_backhandKey   => $this->_db->quote($behind),
+            $this->_indexKey      => (int) $index,
+            $this->_fronthandKey  => (int) $front,
+            $this->_backhandKey   => (int) $behind,
         );
         $table = $this->_table;
         $rows_affected = $this->_db->insert($table, $row);
+
         return  $this->_db->lastInsertId();
     }
 

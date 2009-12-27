@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-26 22:04:39
+<?php /* Smarty version 2.6.26, created on 2009-12-27 19:17:58
          compiled from /home/svn/0019/trunk/application/templates/note.tpl */ ?>
 <li class="note clearfix" id="<?php echo $this->_tpl_vars['category_id']; ?>
 :<?php echo $this->_tpl_vars['item']['note_id']; ?>
@@ -12,7 +12,10 @@
 	<div class="n_col n_del">
 		<a title="a" onclick="return false" href="#" class="js_highlight ui-lds-icon ui-state-default ui-corner-all"><span class="ui-icon ui-icon-closethick"></span></a>
 	</div>
-	<div class="n_col n_date">1985-12-12 12:02</div>
+	<div class="n_col n_time"><?php echo $this->_tpl_vars['item']['dueDate']['time']; ?>
+</div>
+	<div class="n_col n_date"><?php echo $this->_tpl_vars['item']['dueDate']['date']; ?>
+</div>
 
 	<div class="n_tag">
 	  <?php $_from = $this->_tpl_vars['item']['tags']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
