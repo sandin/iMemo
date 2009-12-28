@@ -120,3 +120,18 @@
 2009-12-27T19:12:09+08:00 INFO (6): This user delete note which not belong to him user_id: 1
 2009-12-27T19:12:09+08:00 INFO (6): This user delete note which not belong to him user_id: 1
 2009-12-27T19:12:10+08:00 INFO (6): This user delete note which not belong to him user_id: 1
+2009-12-28T11:57:03+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-28T11:57:03+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-28T11:58:35+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-28T11:58:35+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-28T11:58:50+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-28T11:58:50+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-28T11:59:33+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-28T11:59:33+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-28T12:00:07+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-28T12:00:07+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-28T12:00:23+08:00 INFO (6): pre Zend_form_captchaArray
+2009-12-28T12:00:23+08:00 INFO (6): post Zend_form_captchaArray
+2009-12-28T17:34:30+08:00 INFO (6): No date part in '[object Ob' found. user_id: 1
+2009-12-28T17:34:45+08:00 INFO (6): No date part in '[object Ob' found. user_id: 1
+2009-12-28T19:00:15+08:00 INFO (6): This user delete note which not belong to him user_id: 1

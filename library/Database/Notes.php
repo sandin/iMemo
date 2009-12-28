@@ -211,14 +211,19 @@ class Database_Notes extends DatabaseObject
 
       $note_id = $data['note_id'];
       $this->load($note_id);
+      $dueDate = $this->dueDate;
       //允许修改的字段
-      $alterable = array('content','dueDate','star','style');
+      $alterable = array('content','dueDate','dueDate_date','dueDate_time','star','style');
       //避免修改其不应该修改的字段
       foreach ($data as $key => $value) {
           if (in_array($key,$alterable)) {
               //content在外表中
               if ($key == 'content') {
                   $result = $this->setContent($note_id,$value);
+              } elseif ($key == 'dueDate_date') {
+                  $this->dueDate = Lds_Helper_MainInput::makeDateStatic($dueDate,$value,null);
+              } elseif ($key == 'dueDate_time') {
+                  $this->dueDate = Lds_Helper_MainInput::makeDateStatic($dueDate,null,$value);
               } else {
                   $this->$key = $value;
               }

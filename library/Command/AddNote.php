@@ -20,6 +20,7 @@ class Command_AddNote extends Command_Abstract
         $params['dueDate']  = $dueDate;
 	$params['user_id']  = $this->_param['user_id'];
 
+    //必须设置category,未指定则放置于系统分类Inbox中
 	if (isset($this->_param['categorys']) && $this->_param['categorys'] != '') {
 	  $params['categorys'] = $this->_param['categorys'];  
 	} else {
@@ -33,10 +34,11 @@ class Command_AddNote extends Command_Abstract
       //为加入双链表中准备数据
       $note_id = $data['note_id'];
       $cate_id = $data['category_id'];
-
+      //存入双链顺序表
       $list = LinkedList_Factory::factory('database');
       $list->pushInto($note_id,$cate_id);
-
+      //数据库需要时间戳
+      //TODO : 添加时解析时间和日期尚为解决
       if (isset($data['dueDate']) && $data['dueDate'] !== null) {
           $data['dueDate'] = Lds_Helper_MainInput::dateFormater($data['dueDate']);
 

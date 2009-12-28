@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-27 19:17:53
+<?php /* Smarty version 2.6.26, created on 2009-12-28 21:04:21
          compiled from index/index.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
@@ -81,13 +81,13 @@ unset($_smarty_tpl_vars);
  ?>
 </ul><!-- /note js_note_template -->
 
-<a id="sort_note_url" style="display:none" class="hidden" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+<a id="sort_note_url" style="display:none" class="request_url hidden" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /note/sort_note">&nbsp;</a>
-<a id="alter_note_url" style="display:none" class="hidden" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+<a id="alter_note_url" style="display:none" class="request_url hidden" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /note/alter_note">&nbsp;</a>
-<a id="del_note_url" style="display:none" class="hidden" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+<a id="del_note_url" style="display:none" class="request_url hidden" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /note/del_note">&nbsp;</a>
-<a id="change_category_url" style="display:none" class="hidden" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
+<a id="change_category_url" style="display:none" class="request_url hidden" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /note/change_category">&nbsp;</a>
 
 <?php else: ?>

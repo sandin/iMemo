@@ -1,7 +1,14 @@
 
 //唯一的全局变量
 __LDS_GLOBAL = {};
-__LDS_GLOBAL.baseUrl = '/';  
+__LDS_GLOBAL.baseUrl = '/';
+__LDS_GLOBAL.requestUrl = [];
+$('.request_url').each(function(){
+    var name = $(this).attr('id');
+    var url  = $(this).attr('href');
+    __LDS_GLOBAL.requestUrl[name] = url;    
+});
+
 
 $(window).load(function(){	
 
@@ -45,7 +52,67 @@ if ($('body').attr('id').toLowerCase() == 'default' && $('#categorys').length > 
         url     = null;
     });
 
-  //储存category的tab index
+    //datepicker
+    bubbleBind.bind('.n_date','click',function(e){
+        // date picker
+        if (!e.hasClass('binded')) {
+            e.removeClass('c_min').addClass('binded').datepicker({
+                dateFormat: 'yy-mm-dd',
+                onClose: function(dateText, inst) { 
+                    var url  = __LDS_GLOBAL.requestUrl['alter_note_url'];
+                    var note_id = e.parent().attr('id').split(':')[1];
+                    var data = {note_id:note_id,dueDate_date:dateText};
+                    //console.log(url,data);
+                    $.post(url,data);
+                    url=null;note_id=null;data=null;
+                    }//end onChange
+            }).datepicker('show');
+        }
+    });
+
+    //timepicker
+    bubbleBind.bind('.n_time','mouseover',function(e){
+        // date picker
+        if (!e.hasClass('binded')) {
+            e.addClass('binded').timePicker().dpSetOffset(-20, 200);;
+        }
+    });
+    bubbleBind.bind('.n_time','change',function(e){
+        e.removeClass('c_min');
+        var url  = __LDS_GLOBAL.requestUrl['alter_note_url'];
+        var note_id = e.parent().attr('id').split(':')[1];
+        var time = e.attr('value');
+        var data = {note_id:note_id,dueDate_time:time};
+        $.post(url,data);
+        url=null;note_id=null;data=null;
+    });
+
+
+
+    //全局按钮控制，快捷键
+    $(window).keydown(function(event){
+        //console.log(event);
+        if ($(event.target).hasClass('n_content')) {
+            switch (event.keyCode) {
+                //[Enter]
+                case 13:
+                case 108:
+                    //防止用户在n_content区域输入enter 
+                    return false;
+                    break;
+                //[Tab]
+                case 9:
+                    //TODO : 代码是focus date,firefox下却focue到next note
+                    $(event.target).siblings().filter('.n_date').focus(); 
+            }
+        }//fi
+    });
+
+
+
+    //储存category的tab index
+
+    //储存category的tab index
   $('#categorys>li').each(function(i){
     $(this).data('i',i);        
   });
@@ -104,14 +171,6 @@ if ($('body').attr('id').toLowerCase() == 'default' && $('#categorys').length > 
 
 
   //$('.n_c').TextAreaExpander(); 
-
-  // date picker
-  $(".datepicker").datepicker({
-	dateFormat: 'yy-mm-dd',
-	showOn: 'button',
-   	buttonImage: 'images/icon_calendar.gif'
-   	//buttonImageOnly: true
-  });
 
 
 

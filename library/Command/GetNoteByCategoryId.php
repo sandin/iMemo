@@ -19,7 +19,14 @@ class Command_GetNoteByCategoryId extends Command_Abstract
         $note['content'] = stripslashes($note['content']);
         //格式化时间日期
         if (isset($note['dueDate'])) {
+            try
+            {
             $note['dueDate'] = Lds_Helper_MainInput::dateFormater($note['dueDate']);
+            } 
+            catch (Exception $e)
+            {
+                Lds_Helper_Log::writeLog($e);
+            }
         }
       }
 

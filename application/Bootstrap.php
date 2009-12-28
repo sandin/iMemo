@@ -60,7 +60,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	  
 	  $translate = new Zend_Translate('gettext', APPLICATION_PATH . '/data/languages/zh.mo', 'zh');
 	  $translate->addTranslation(APPLICATION_PATH . '/data/languages/en.mo', 'en');
-	  $translate->setLocale('zh');
+	  //$translate->setLocale('zh');
 	  $translate->setLocale('en');
 
 	  Zend_Registry::set('translate', $translate );

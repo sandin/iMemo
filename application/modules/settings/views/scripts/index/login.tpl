@@ -8,20 +8,23 @@
 	  <{foreach from=$message key=name item=value}>
 		  <{$name}> : <{$value}>
 	  <{/foreach}>
-	</div>
+	</div><br />
   <{/if}>
 
-	<label for="user"><{t}>Name<{/t}></label>
-	<input name="user" class="text ui-widget-content ui-corner-all" type="text"></input>
+	<label for="user"><{t}>Name<{/t}>
 	<{include file="$APPLICATION_PATH/templates/error.tpl" error=$message.user}>
+    </label>
+	<input name="user" class="text ui-widget-content ui-corner-all" type="text"></input>
 
-	<label for="user"><{t}>Password<{/t}></label>
-	<input name="password" class="text ui-widget-content ui-corner-all" type="password"></input>
+	<label for="user"><{t}>Password<{/t}>
 	<{include file="$APPLICATION_PATH/templates/error.tpl" error=$message.password}>
+    </label>
+	<input name="password" class="text ui-widget-content ui-corner-all" type="password"></input>
  
-	<label for="captcha"><{t}>Captcha<{/t}></label>
-	<input id='input_captcha' name="captcha" class="text ui-widget-content ui-corner-all" type="text"></input>
+	<label for="captcha"><{t}>Captcha<{/t}>
 	<{include file="$APPLICATION_PATH/templates/error.tpl" error=$message.captcha}>
+    </label>
+	<input id='input_captcha' name="captcha" class="text ui-widget-content ui-corner-all" type="text"></input>
 
   <div id="captcha"><{*$captcha*}><div class="loading hidden"></div></div>
   <a id="ajax-fetch-captcha" class="" href="<{$PUBLIC_URL}>/settings/index/fetch-captcha"><{t}>change captcha<{/t}></a>

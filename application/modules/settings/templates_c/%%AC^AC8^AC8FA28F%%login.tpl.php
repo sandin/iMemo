@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-27 17:11:30
+<?php /* Smarty version 2.6.26, created on 2009-12-28 12:00:07
          compiled from index/login.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
@@ -22,35 +22,38 @@ unset($_smarty_tpl_vars);
  : <?php echo $this->_tpl_vars['value']; ?>
 
 	  <?php endforeach; endif; unset($_from); ?>
-	</div>
+	</div><br />
   <?php endif; ?>
 
 	<label for="user"><?php echo $this->_tpl_vars['t']->_('Name'); ?>
-</label>
-	<input name="user" class="text ui-widget-content ui-corner-all" type="text"></input>
+
 	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/error.tpl", 'smarty_include_vars' => array('error' => $this->_tpl_vars['message']['user'])));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+    </label>
+	<input name="user" class="text ui-widget-content ui-corner-all" type="text"></input>
 
 	<label for="user"><?php echo $this->_tpl_vars['t']->_('Password'); ?>
-</label>
-	<input name="password" class="text ui-widget-content ui-corner-all" type="password"></input>
+
 	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/error.tpl", 'smarty_include_vars' => array('error' => $this->_tpl_vars['message']['password'])));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+    </label>
+	<input name="password" class="text ui-widget-content ui-corner-all" type="password"></input>
  
 	<label for="captcha"><?php echo $this->_tpl_vars['t']->_('Captcha'); ?>
-</label>
-	<input id='input_captcha' name="captcha" class="text ui-widget-content ui-corner-all" type="text"></input>
+
 	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/error.tpl", 'smarty_include_vars' => array('error' => $this->_tpl_vars['message']['captcha'])));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+    </label>
+	<input id='input_captcha' name="captcha" class="text ui-widget-content ui-corner-all" type="text"></input>
 
   <div id="captcha"><div class="loading hidden"></div></div>
   <a id="ajax-fetch-captcha" class="" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>

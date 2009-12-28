@@ -32,8 +32,13 @@ Note.prototype.makeNoteHTML = function (oData)
 
     $new_note.find('.n_content').html(oData.data.content);
     if (typeof oData.data.dueDate !== 'undefined') {
-        $new_note.find('.n_time').html(oData.data.dueDate.time);
-        $new_note.find('.n_date').html(oData.data.dueDate.date);
+        $new_note.find('.n_time').attr('value',oData.data.dueDate.time);
+        if (typeof oData.data.dueDate.dateHuman !== 'undefined') {
+            var newDate = oData.data.dueDate.dateHuman;
+        } else {
+            var newDate = oData.data.dueDate.date;
+        }
+        $new_note.find('.n_date').attr('value',newDate);
     }
     $('.notes_list:visible').append($new_note);
 

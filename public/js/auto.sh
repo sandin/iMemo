@@ -8,14 +8,11 @@
 
 rm all.min.js
 #合并本文件夹中和share文件夹下所有js
-cat ../share/*.js *.*.js > all.js
+cat ../share/*.js ../share/jquery/plugins/*.js *.*.js > all.js
 
 #jsmin
 #~/script/jsmin.py < all.js > all.temp.min.js
-java -jar ~/script/yuicompressor-2.4.2/build/yuicompressor-2.4.2.jar all.js > all.temp.min.js 
-
-#追加jquery所有已经min化的plugins
-cat ../share/jquery/plugins/jquery.*.js all.temp.min.js > all.min.js
+java -jar ~/script/yuicompressor-2.4.2/build/yuicompressor-2.4.2.jar all.js > all.min.js 
 
 #删除临时文件
-rm all.js all.temp.min.js
+rm all.js
