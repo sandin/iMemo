@@ -26,6 +26,39 @@ BindLoginForm.prototype.update = function(){
 			}
 		});//end dialog
   }//fi
+  $login_form = null;
+
+  /** 
+   * 无法用冒泡完成 一般元素不支持submit绑定
+   * 
+   * @param '#form_login'
+   * 
+   * @return 
+   */
+  var $form_login = $('#form_login');
+  if (!$form_login.hasClass('binded')) { 
+	$form_login.addClass('binded')
+        .submit(function(){
+            var help = new LdsHelper();
+            var $password_input = $(this).find('input[name=password]');
+            var password    =  $password_input.attr('value');
+            var newPassword =  help.makePassword(password);
+            $password_input.attr('value',newPassword);
+
+            var $rePassword_input = $(this).find('input[name=repassword]');
+            if ($rePassword_input.length > 0) {
+                var rePassword    =  $rePassword_input.attr('value');
+                var newRePassword =  help.makePassword(rePassword);
+                $rePassword_input.attr('value',newRePassword);
+            }
+            
+           //console.log(newPassword);
+           //console.log(newRePassword);
+           //return false;       
+         });
+  
+  }
+
 
   // ajax - fetch captcha
   var $fetch_captch = $('#ajax-fetch-captcha');

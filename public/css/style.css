@@ -370,7 +370,8 @@ border: none;
 text-align: left;
 cursor: pointer;
 }
-.n_input:focus {
+.n_input:focus,
+.n_content:focus {
 color: #66CBFF;
 }
 input.n_date,

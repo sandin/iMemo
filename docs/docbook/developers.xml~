@@ -64,7 +64,7 @@
 
       <para>| `-- temp 临时</para>
 
-      <para>|-- tags </para>
+      <para>|-- tags</para>
 
       <para>`-- tests 单元测试目录</para>
 
@@ -125,6 +125,40 @@
       <title></title>
 
       <para></para>
+    </section>
+
+    <section>
+      <title></title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title></title>
+
+      <para></para>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>调试</title>
+
+    <section>
+      <title>错误代码</title>
+
+      <para>0x0000</para>
+
+      <para>说明:客户端请求时服务器返回的数据不是JSON对象.从而引发javascript的JSON解析错误.</para>
+
+      <para>代码:public/js/note.class.js - createNoteSuccess</para>
+
+      <para></para>
+
+      <para>0x0001</para>
+
+      <para>说明:客户端请求的操作不存在.</para>
+
+      <para>代码:library/Command/Factory.php</para>
     </section>
 
     <section>

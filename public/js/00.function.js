@@ -45,7 +45,8 @@ LdsHelper.prototype.parseIdArray = function(arr,type)
 }
 
 LdsHelper.prototype.setCurrentCategory = function($current_category_ul_a)
-  {
+{
+    if ($current_category_ul_a.length > 0) {
     var current_category       = $current_category_ul_a.text();
     var current_category_id    = $current_category_ul_a.attr('id').replace('c','');
 
@@ -56,4 +57,12 @@ LdsHelper.prototype.setCurrentCategory = function($current_category_ul_a)
 	//console.log($('#js_current_category').attr('value') );
     current_category = null;
     current_category_index = null;
-  }
+    }
+}
+
+LdsHelper.prototype.makePassword = function(password)
+{
+    var newPassword = password.toString().toUpperCase() + 'LDS';
+    newPassword = hex_md5(newPassword);
+    return newPassword;
+}

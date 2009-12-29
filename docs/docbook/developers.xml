@@ -173,4 +173,37 @@
       <para></para>
     </section>
   </chapter>
+
+  <chapter>
+    <title>安全</title>
+
+    <section>
+      <title>前台密码加密算法</title>
+
+      <para>为避免网络监听和在传输途中被截获，密码在发送前进行了加密。</para>
+
+      <para>注意：此处的javascript加密只是为防止传输过程时密码的明文传输问题，并非安全设置。密码在服务器端还有另一层加密。</para>
+
+      <para>算法:</para>
+
+      <para>var newPassword = oldPassword.toString().toUpperCase() + 'LDS';
+      </para>
+
+      <para>newPassword = hex_md5(newPassword); </para>
+
+      <para>return newPassword;</para>
+    </section>
+
+    <section>
+      <title></title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title></title>
+
+      <para></para>
+    </section>
+  </chapter>
 </book>

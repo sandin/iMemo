@@ -7,7 +7,8 @@ create table lds0019_users (
   user_id		serial		  not null,
   username		varchar(255)  not null,
   password		varchar(32)	  not null,
-  ts_created    varchar(10)      not null,
+  safecode		varchar(32)	  not null,
+  ts_created    varchar(10)   not null,
   ts_last_login	varchar(10),
 
   primary key (user_id),

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-28 21:04:21
+<?php /* Smarty version 2.6.26, created on 2009-12-29 13:50:36
          compiled from /home/svn/0019/trunk/application/templates/header.tpl */ ?>
 <?php if (! isset ( $this->_tpl_vars['noLayout'] )): ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -24,25 +24,19 @@
 /'><?php echo $this->_tpl_vars['t']->_('Home'); ?>
 </a></li>
 	  <li><a href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/blog'><?php echo $this->_tpl_vars['t']->_('Memo'); ?>
+/shared'><?php echo $this->_tpl_vars['t']->_('Shared'); ?>
 </a></li>
 	  <li><a href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/profile'><?php echo $this->_tpl_vars['t']->_('Follow'); ?>
+/friends'><?php echo $this->_tpl_vars['t']->_('Friends'); ?>
 </a></li>
 	  <li><a href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/profile'><?php echo $this->_tpl_vars['t']->_('Shared'); ?>
+/projects'><?php echo $this->_tpl_vars['t']->_('Projects'); ?>
 </a></li>
 	  <li><a href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/profile'><?php echo $this->_tpl_vars['t']->_('Friends'); ?>
+/help'><?php echo $this->_tpl_vars['t']->_('Help'); ?>
 </a></li>
 	  <li><a href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/profile'><?php echo $this->_tpl_vars['t']->_('Help'); ?>
-</a></li>
-	  <li><a href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/profile'><?php echo $this->_tpl_vars['t']->_('Contacts'); ?>
-</a></li>
-	  <li><a href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/profile'><?php echo $this->_tpl_vars['t']->_('About'); ?>
+/about'><?php echo $this->_tpl_vars['t']->_('About'); ?>
 </a></li>
     </ul><!-- /nav -->
 	<form id="search" action="/note/search">

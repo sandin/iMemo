@@ -74,7 +74,7 @@ if ($('body').attr('id').toLowerCase() == 'default' && $('#categorys').length > 
     bubbleBind.bind('.n_time','mouseover',function(e){
         // date picker
         if (!e.hasClass('binded')) {
-            e.addClass('binded').timePicker().dpSetOffset(-20, 200);;
+            e.addClass('binded').timePicker();
         }
     });
     bubbleBind.bind('.n_time','change',function(e){
@@ -86,8 +86,6 @@ if ($('body').attr('id').toLowerCase() == 'default' && $('#categorys').length > 
         $.post(url,data);
         url=null;note_id=null;data=null;
     });
-
-
 
     //全局按钮控制，快捷键
     $(window).keydown(function(event){

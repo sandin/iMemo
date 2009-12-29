@@ -14,13 +14,11 @@
 	<a href="<{$PUBLIC_URL}>"><img id="logo" src="<{$PUBLIC_URL}>/images/logo.gif" alt="Memo" /></a>
 	<ul id="nav">
 	  <li><a class="now" href='<{$PUBLIC_URL}>/'><{t}>Home<{/t}></a></li>
-	  <li><a href='<{$PUBLIC_URL}>/blog'><{t}>Memo<{/t}></a></li>
-	  <li><a href='<{$PUBLIC_URL}>/profile'><{t}>Follow<{/t}></a></li>
-	  <li><a href='<{$PUBLIC_URL}>/profile'><{t}>Shared<{/t}></a></li>
-	  <li><a href='<{$PUBLIC_URL}>/profile'><{t}>Friends<{/t}></a></li>
-	  <li><a href='<{$PUBLIC_URL}>/profile'><{t}>Help<{/t}></a></li>
-	  <li><a href='<{$PUBLIC_URL}>/profile'><{t}>Contacts<{/t}></a></li>
-	  <li><a href='<{$PUBLIC_URL}>/profile'><{t}>About<{/t}></a></li>
+	  <li><a href='<{$PUBLIC_URL}>/shared'><{t}>Shared<{/t}></a></li>
+	  <li><a href='<{$PUBLIC_URL}>/friends'><{t}>Friends<{/t}></a></li>
+	  <li><a href='<{$PUBLIC_URL}>/projects'><{t}>Projects<{/t}></a></li>
+	  <li><a href='<{$PUBLIC_URL}>/help'><{t}>Help<{/t}></a></li>
+	  <li><a href='<{$PUBLIC_URL}>/about'><{t}>About<{/t}></a></li>
     </ul><!-- /nav -->
 	<form id="search" action="/note/search">
 	  <input name="search_text" id="search_text" class="grepinput" type="text" value="Search your notes" maxlength="60" size="22" title="search your notes" autocomplete="off"></input>

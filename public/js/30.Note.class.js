@@ -31,14 +31,18 @@ Note.prototype.makeNoteHTML = function (oData)
     $new_note.find('td').not('.n.s').html('');
 
     $new_note.find('.n_content').html(oData.data.content);
+    //如果提供了到期时间
     if (typeof oData.data.dueDate !== 'undefined') {
-        $new_note.find('.n_time').attr('value',oData.data.dueDate.time);
+        //设置时间
+        $new_note.find('.n_time').attr('value',oData.data.dueDate.time).removeClass('c_min');
+        //如果提供了dateHuman(人读日期)
         if (typeof oData.data.dueDate.dateHuman !== 'undefined') {
             var newDate = oData.data.dueDate.dateHuman;
         } else {
             var newDate = oData.data.dueDate.date;
         }
-        $new_note.find('.n_date').attr('value',newDate);
+        //设置日期
+        $new_note.find('.n_date').attr('value',newDate).removeClass('c_min');
     }
     $('.notes_list:visible').append($new_note);
 

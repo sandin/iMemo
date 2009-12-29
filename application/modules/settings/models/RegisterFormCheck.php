@@ -53,22 +53,30 @@ class Settings_Model_RegisterFormCheck extends Lds_Models_FormCheck
   public function postCheck()
   {
 	//ccreate a new user
-	
 	$username = $this->email;
 	$password = $this->password;
 	
 	$this->_db_user = new Database_User($this->_db);	
-	$this->_db_user->username = $this->_data['email'];
-	$this->_db_user->password = md5($this->_data['password']);
-	$this->_db_user->save();
+	//$this->_db_user->username = $this->_data['email'];
+	//$this->_db_user->password = md5($this->_data['password']);
+    //$this->_db_user->save();
 
-	// auto login with new user's name and password
-	$login_helper = new Lds_Helper_Login($username,$password);
-	if (!$login_helper->login()) {
-	  foreach ($login_helper->getMessages() as $message) {
-		$this->addMessage('login',$message);
-	  }
-	}
+    //创建用户成功则帮助用户用新的密码和用户名登录
+    $newId = $this->_db_user->createUser($username,$password); 
+    if ($newId != null && (int)$newId > 0) {
+	    // auto login with new user's name and password
+	    $login_helper = new Lds_Helper_Login($username,$password);
+        //登录失败
+	    if (!$login_helper->login()) {
+	        foreach ($login_helper->getMessage() as $message) {
+	    	    $this->addMessage('login',$message);
+	        }//foreach
+        }//fi
+    } else {
+        //创建用户失败
+        //TODO : 应该把失败的信息传递给客户端
+        return false;
+    }
 
   }
 }

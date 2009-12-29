@@ -45,12 +45,14 @@ class Lds_Helper_Login
 	  ->setCredentialColumn('password')
 	;
 	
-	$user = $this->_user;
-	$password = $this->_password;
+
+	$user     = $this->_user;
+    $userDB   = new Database_User($db);
+	$password = $userDB->getSafePassword($this->_password,$user);
 
 	$authAdapter
 	  ->setIdentity($user)
-	  ->setCredential(md5($password))
+	  ->setCredential($password)
 	;
 
 	// 执行认证查询，并保存结果

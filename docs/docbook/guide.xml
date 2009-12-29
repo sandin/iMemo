@@ -161,6 +161,17 @@
         <title>注册</title>
 
         <para>通过[注册]按钮进入注册页面(可修改为在当前页面弹出注册/登录框)</para>
+
+        <para></para>
+
+        <para>注册规则</para>
+
+        <para>用户名：
+        为邮箱地址，需通过Zend_Validate_EmailAddress检测，并不允许注册别人使用过的用户名</para>
+
+        <para>密码：任何字符，最少8个字符</para>
+
+        <para>表单检查顺序：密码+re密码是否相同-&gt;用户名/密码</para>
       </section>
 
       <section>
@@ -182,6 +193,8 @@
       <title>登录功能</title>
 
       <para>检查用户名/用户密码/验证码.</para>
+
+      <para>表单检查顺序：验证码-&gt;用户名+密码</para>
 
       <para>提供[记住我]功能,一个月之内在该客户端上无需再次登录.</para>
     </section>

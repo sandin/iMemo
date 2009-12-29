@@ -7,7 +7,8 @@ create table lds0019_users (
   user_id		serial		  not null,
   username		varchar(255)  not null,
   password		varchar(32)	  not null,
-  ts_created    varchar(10)      not null,
+  safecode		varchar(32)	  not null,
+  ts_created    varchar(10)   not null,
   ts_last_login	varchar(10),
 
   primary key (user_id),
@@ -93,8 +94,10 @@ create table lds0019_notes_content (
 
 
 /* 创建原始数据 */
+/*
 INSERT INTO lds0019_users VALUE
 (NULL,'lds2012@gmail.com','25d55ad283aa400af464c76d713c07ad',1261027980,NULL);
+*/
 INSERT INTO lds0019_notes_categorys VALUE(null,'Inbox',1261027980);
 INSERT INTO lds0019_notes_categorys VALUE(null,'Today',1261027980);
 INSERT INTO lds0019_notes_categorys VALUE(null,'Next',1261027980);
