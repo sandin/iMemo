@@ -184,5 +184,10 @@ class Lds_View_Smarty extends Zend_View_Abstract
         return $this->_smarty->fetch($name);
     }
 
+    public function display($tpl)
+    {   
+        return $this->_smarty->display($tpl);
+    }
+
 	public function _run() {}
 }

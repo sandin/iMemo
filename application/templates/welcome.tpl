@@ -1,6 +1,11 @@
 <div id="main" class="clearfix welcome-page">
 
-  <img src="<{$PUBLIC_URL}>/temp/welcome.gif" />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
   <br />
   <br />
 
@@ -9,6 +14,10 @@
   OR <a href="<{$PUBLIC_URL}>/register" class="js_login">JOIN US NOW!!</a>
   </h2>
 
+  <br />
+  <br />
+  <br />
+  <br />
   <br />
   <br />
   <br />

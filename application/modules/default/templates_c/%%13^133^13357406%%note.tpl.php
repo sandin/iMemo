@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-29 13:50:37
+<?php /* Smarty version 2.6.26, created on 2009-12-30 16:32:30
          compiled from /home/svn/0019/trunk/application/templates/note.tpl */ ?>
 <li class="note clearfix" id="<?php echo $this->_tpl_vars['category_id']; ?>
 :<?php echo $this->_tpl_vars['item']['note_id']; ?>

@@ -2,6 +2,10 @@
 
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
+    protected function _initDebug()
+    {
+        $env = getenv('APPLICATION_ENV');
+    }
 
 	protected function _initDatebase()
 	{
@@ -72,6 +76,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	  $storage = new Zend_Auth_Storage_Session();
 	  $auth->setStorage($storage);
 	  $user = $auth->getIdentity();
+      //var_dump($user);
 	  Zend_Registry::set('user',$user);
 	  $options = $this->getOptions();
       $viewOptions = $options['resources']['view'];
@@ -139,13 +144,17 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $this->bootstrap('FrontController');
 
         //$this->frontController->setControllerDirectory(APPLICATION_PATH . '/controllers', 'default');
+        $error_plugin = new Zend_Controller_Plugin_ErrorHandler();
+        $error_plugin->setErrorHandlerModule('default')
+                     ->setErrorHandlerController('error')
+                     ->setErrorHandlerAction('error');
 
 		$front = $this->frontController;
-		$front//->addModuleDirectory(APPLICATION_PATH . '/modules')
-			  ->setParam('Zend_Acl', $acl)
-			  ->throwExceptions(true)
+		$front->setParam('Zend_Acl', $acl)
+			  ->throwExceptions(true) //设置true则ErrorController不会捕捉
 			  ->registerPlugin(new Lds_Controller_Plugin_Smarty())
 			  ->registerPlugin(new Lds_Controller_Plugin_Modules())
+              ->registerPlugin($error_plugin);
 		//	  ->registerPlugin(new Lds_Controller_Plugin_Filter())
 		;
 		

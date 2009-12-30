@@ -1,9 +1,13 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-29 13:27:41
+<?php /* Smarty version 2.6.26, created on 2009-12-30 15:44:13
          compiled from /home/svn/0019/trunk/application/templates/welcome.tpl */ ?>
 <div id="main" class="clearfix welcome-page">
 
-  <img src="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/temp/welcome.gif" />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
   <br />
   <br />
 
@@ -14,6 +18,10 @@
 /register" class="js_login">JOIN US NOW!!</a>
   </h2>
 
+  <br />
+  <br />
+  <br />
+  <br />
   <br />
   <br />
   <br />

@@ -37,7 +37,7 @@ class Settings_CategorysController extends Zend_Controller_Action
 
 	  $user_id = $this->_user->user_id;
 	  $this->_db_user->load($user_id);
-	  // create a new notes
+	  // get my  categories
 	  $notes = new Database_Notes($this->_db);
 	  $categorys = $notes->getMyCategorysByUserId($user_id);
 	

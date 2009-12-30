@@ -16,7 +16,7 @@
     </label>
 	<input name="user" class="text ui-widget-content ui-corner-all" type="text"></input>
 
-	<label for="user"><{t}>Password<{/t}>
+	<label for="password"><{t}>Password<{/t}>
 	<{include file="$APPLICATION_PATH/templates/error.tpl" error=$message.password}>
     </label>
 	<input name="password" class="text ui-widget-content ui-corner-all" type="password"></input>

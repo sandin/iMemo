@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-29 11:53:06
+<?php /* Smarty version 2.6.26, created on 2009-12-30 18:03:07
          compiled from index/index.tpl */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['APPLICATION_PATH'])."/templates/header.tpl", 'smarty_include_vars' => array()));
@@ -11,16 +11,16 @@ unset($_smarty_tpl_vars);
   <div id="settings-tabs">
 	<ul>
 	  <li><a href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/settings/profile"><?php echo $this->_tpl_vars['t']->_('Preferences'); ?>
+/settings/profile"><?php echo $this->_tpl_vars['t']->_('Profile'); ?>
 </a></li>
 	  <li><a href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/settings/profile"><?php echo $this->_tpl_vars['t']->_('Profile'); ?>
+/settings/preferences"><?php echo $this->_tpl_vars['t']->_('Preferences'); ?>
 </a></li>
 	  <li><a href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 /settings/categorys"><?php echo $this->_tpl_vars['t']->_('Categorys'); ?>
 </a></li>
 	  <li><a href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/settings/profile"><?php echo $this->_tpl_vars['t']->_('Tags'); ?>
+/settings/tags"><?php echo $this->_tpl_vars['t']->_('Tags'); ?>
 </a></li>
 	</ul>
 </div>

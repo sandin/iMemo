@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2009-12-29 13:50:36
+<?php /* Smarty version 2.6.26, created on 2009-12-30 16:32:29
          compiled from /home/svn/0019/trunk/application/templates/header.tpl */ ?>
 <?php if (! isset ( $this->_tpl_vars['noLayout'] )): ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

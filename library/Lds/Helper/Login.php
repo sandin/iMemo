@@ -68,7 +68,9 @@ class Lds_Helper_Login
 	  //Zend_Debug::dump($identity);
 
 	  $storage = $auth->getStorage();
-	  $storage->write($authAdapter->getResultRowObject());
+      $storage->write($authAdapter->getResultRowObject(
+          array('username','user_id'))
+      );
 
 	  // set a cookie to save user info
 	  setcookie('ue', $user, time() + 2592000, '/', false);  
