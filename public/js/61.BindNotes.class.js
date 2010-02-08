@@ -107,6 +107,7 @@ BindNotes.prototype.bindContent = function ()
 
         $(this).focus(function(){
             old_content = $(this).text();
+            //console.log(old_content,'o');
         });//edn focus
 
         $(this).blur(function(){
@@ -117,7 +118,6 @@ BindNotes.prototype.bindContent = function ()
                 var data    =  {content:content,note_id:note_id};
                 var url     =  $('#alter_note_url').attr('href');
                 $.post(url,data);
-                $note       = null;
                 old_content = null;
             }
             content = null;

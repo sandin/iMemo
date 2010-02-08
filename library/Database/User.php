@@ -42,7 +42,30 @@ class Database_User extends DatabaseObject
       $this->password = self::makePassword($password,$safeCode);
       $this->safecode = $safeCode;
       $this->save();
-      return $this->getId();
+      $user_id = $this->getId();
+
+      //为新用户分配其他数据，如附赠系统分类
+	  //$query = 'CALL register(?)';
+      //$query = $this->_db->quoteInto($query,$user_id);
+      //$this->_db->query($query);
+
+      //附赠系统分类
+      //TODO : 应该order表中读取分类时依赖于category_id
+      //所以目前category表无法作为字典表，用户不能复用相同id的category
+      //今后可以改进，避免每注册一个用户就无谓的为category表添加相同的系统分类
+      $userDB = new Database_Notes($this->_db);
+      $system_categories = array(
+          'Inbox',
+          'Today',
+          'Next',
+          'Maybe',
+          'Projects',
+          'Areas');
+     foreach ($system_categories as $category_name) {
+          $userDB->addCategory($category_name,$user_id);
+      }
+
+      return $user_id;
   }
 
   /** 

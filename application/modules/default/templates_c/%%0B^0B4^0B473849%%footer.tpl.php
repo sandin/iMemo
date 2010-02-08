@@ -1,11 +1,11 @@
-<?php /* Smarty version 2.6.26, created on 2010-01-01 09:59:47
+<?php /* Smarty version 2.6.26, created on 2010-02-08 12:28:00
          compiled from /home/svn/0019/trunk/application/templates/footer.tpl */ ?>
 <?php if (! isset ( $this->_tpl_vars['noLayout'] )): ?>
 
 </div><!-- /content -->
 
 <div id="footer" class="clearfix">
-  <p class="coryright">©2009 - lds, all rights reserved. ICP xxxxxxxxxx</p>
+  <p class="coryright">©2009 - 2012 lds, all rights reserved. ICP xxxxxxxxxx</p>
   <ul class="links">
 	<li><a href="" title="">Our Blog</a></li> /
 	<li><a href="" title="">Contact us</a></li> /

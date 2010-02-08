@@ -10,6 +10,11 @@ INSERT INTO lds0019_notes_categorys VALUE(null,'Next',1261027980);
 INSERT INTO lds0019_notes_categorys VALUE(null,'Maybe',1261027980);
 INSERT INTO lds0019_notes_categorys VALUE(null,'Projects',1261027980);
 INSERT INTO lds0019_notes_categorys VALUE(null,'Areas',1261027980);
+INSERT INTO lds0019_notes_categorys VALUE(null,'uncategory',1261027980);
+INSERT INTO lds0019_notes_categorys VALUE(null,'uncategory',1261027980);
+INSERT INTO lds0019_notes_categorys VALUE(null,'uncategory',1261027980);
+INSERT INTO lds0019_notes_categorys VALUE(null,'uncategory',1261027980);
+INSERT INTO lds0019_notes_categorys VALUE(null,'uncategory',1261027980);
 
 INSERT INTO lds0019_users_link_categorys VALUE(null,1,1);
 INSERT INTO lds0019_users_link_categorys VALUE(null,1,2);

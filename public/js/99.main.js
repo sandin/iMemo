@@ -96,6 +96,8 @@ if ($('body').attr('id').toLowerCase() == 'default' && $('#categorys').length > 
                 case 13:
                 case 108:
                     //防止用户在n_content区域输入enter 
+                    //blur it so can send date for user.
+                    $(event.target).blur(); 
                     return false;
                     break;
                 //[Tab]

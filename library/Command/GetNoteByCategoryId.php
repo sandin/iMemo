@@ -35,6 +35,10 @@ class Command_GetNoteByCategoryId extends Command_Abstract
           $list = LinkedList_Factory::factory('array');
           $list->setBaseArray($notes);
           $ordered_notes = $list->orderList(); 
+          var_dump('note');
+          var_dump($note);
+          var_dump('noteorder');
+          var_dump($ordered_notes);
           //排序表出错，记录到日志并直接返回未排序的结果
           if (count($notes) > count($ordered_notes)) {
               Lds_Helper_Log::writeLog('order wrong.category_id: '. $category_id);

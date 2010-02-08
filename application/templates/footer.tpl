@@ -3,7 +3,7 @@
 </div><!-- /content -->
 
 <div id="footer" class="clearfix">
-  <p class="coryright">©2009 - lds, all rights reserved. ICP xxxxxxxxxx</p>
+  <p class="coryright">©2009 - 2012 lds, all rights reserved. ICP xxxxxxxxxx</p>
   <ul class="links">
 	<li><a href="" title="">Our Blog</a></li> /
 	<li><a href="" title="">Contact us</a></li> /
