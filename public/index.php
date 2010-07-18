@@ -38,6 +38,9 @@ $application = new Zend_Application(
 $application->bootstrap()
 	->run();
 
+
+
+
 /*
 echo $front->getModuleDirectory();
 $URL = $front->getBaseUrl();
