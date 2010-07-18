@@ -6,37 +6,37 @@ require_once 'Zend/Session.php';
 
 // Define path to application directory
 defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
+	|| define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
 
 // Define application environment
 defined('APPLICATION_ENV')
-    || define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
+	|| define('APPLICATION_ENV', (getenv('APPLICATION_ENV') ? getenv('APPLICATION_ENV') : 'production'));
 
 //root
 defined('BOOT_PATH')
-    || define('BOOT_PATH', realpath(dirname(__FILE__) . '/../'));
+	|| define('BOOT_PATH', realpath(dirname(__FILE__) . '/../'));
 
 //root/public
 defined('PUBLIC_URL')
-    || define('PUBLIC_URL', 'http://' . $_SERVER['HTTP_HOST'] .dirname($_SERVER['PHP_SELF']) ); 
+	|| define('PUBLIC_URL', 'http://' . $_SERVER['HTTP_HOST'] .dirname($_SERVER['PHP_SELF']) );
 
 // Ensure library/ is on include_path
 set_include_path(implode(PATH_SEPARATOR, array(
-    realpath(APPLICATION_PATH . '/../library'),
-    get_include_path(),
+	realpath(APPLICATION_PATH . '/../library'),
+	get_include_path(),
 )));
 
 /** Zend_Application */
 require_once 'Zend/Application.php';  
 // Create application, bootstrap, and run
 $application = new Zend_Application(
-    APPLICATION_ENV, 
-    //APPLICATION_PATH . '/configs/application.ini'
-    APPLICATION_PATH . '/configs/application.xml'
+	APPLICATION_ENV,
+	//APPLICATION_PATH . '/configs/application.ini'
+	APPLICATION_PATH . '/configs/application.xml'
 );
 
 $application->bootstrap()
-            ->run();
+	->run();
 
 /*
 echo $front->getModuleDirectory();
@@ -53,5 +53,4 @@ echo "new line";
 $router     = new Zend_Controller_Router_Rewrite();
 print_r($router);
 $front->dispatch();
- */
-
+*/
