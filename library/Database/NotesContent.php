@@ -1,7 +1,6 @@
 <?php
-require_once('ldslibs/DatabaseObject.php'); 
 
-class Database_NotesContent extends DatabaseObject
+class Database_NotesContent extends Database_DatabaseObject
 {
 
   public function __construct($db)

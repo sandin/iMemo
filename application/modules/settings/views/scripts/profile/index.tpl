@@ -23,7 +23,7 @@
         <{*修改密码在另一页面*}>
         <tr>
             <td class="lb"><{t}>Password<{/t}></td>
-            <td><a class="js_highlight ui-button ui-state-default ui-corner-all" href="<{$PUBLIC_URL}>/settings/profile/password" title="change password"><{t}>Change your password<{/t}></a></td>
+            <td><a class="js_highlight ui-button ui-state-default ui-corner-all" href="<{$PUBLIC_URL}>settings/profile/password" title="change password"><{t}>Change your password<{/t}></a></td>
         </tr>
 <{debug}>
         </tbody>

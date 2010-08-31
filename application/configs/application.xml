@@ -25,7 +25,7 @@
           <host>localhost</host>
           <username>lds</username>
           <password>123</password>
-          <dbname>lds0019</dbname>
+          <dbname>imemo</dbname>
         </params>
         <isDefaultTableAdapter>1</isDefaultTableAdapter>
         <prefix>lds0019_</prefix>

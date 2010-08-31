@@ -1,5 +1,5 @@
 <span class="from_error">
-  <{if $error}>
+  <{if isset($error)}>
 	 <- <{$error}>
   <{/if}>
 </span>

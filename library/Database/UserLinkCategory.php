@@ -1,7 +1,6 @@
 <?php
-require_once('ldslibs/DatabaseObject.php'); 
 
-class Database_UserLinkCategory extends DatabaseObject
+class Database_UserLinkCategory extends Database_DatabaseObject
 {
 
   public function __construct($db)

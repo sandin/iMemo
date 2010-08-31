@@ -12,7 +12,7 @@ class Lds_Controller_Plugin_Smarty extends Zend_Controller_Plugin_Abstract
 		$module_path = APPLICATION_PATH . '/modules/' . $module_name;
         $view = Zend_Registry::get('view');
 		$smarty = $view->getEngine();
-		$smarty->compile_dir = $module_path . '/templates_c';
+//		$smarty->compile_dir = $module_path . '/templates_c';
 		$smarty->assign('module',$module_name);
 
     }

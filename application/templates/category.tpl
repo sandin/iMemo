@@ -11,7 +11,7 @@
 	<{/if}>
   </td>
   <td class="c_del">
-	<a title="a" onclick="return false" href="<{$PUBLIC_URL}>/note/del_category" class="js_highlight ui-lds-icon ui-state-default ui-corner-all">
+	<a title="a" onclick="return false" href="<{$PUBLIC_URL}>note/del_category" class="js_highlight ui-lds-icon ui-state-default ui-corner-all">
 	  <span class="ui-icon ui-icon-closethick"></span>
 	</a>
   </td>

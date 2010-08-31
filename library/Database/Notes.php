@@ -1,7 +1,6 @@
 <?php
-require_once('ldslibs/DatabaseObject.php'); 
 
-class Database_Notes extends DatabaseObject
+class Database_Notes extends Database_DatabaseObject
 {
   protected $_style = null;
   protected $_content = null;

@@ -201,3 +201,17 @@
 2010-01-01T12:49:02+08:00 INFO (6): order wrong.category_id: 1 user_id: 3
 2010-01-01T12:49:12+08:00 INFO (6): order wrong.category_id: 1 user_id: 3
 2010-01-01T12:49:17+08:00 INFO (6): order wrong.category_id: 1 user_id: 3
+2010-07-19T14:34:33+08:00 INFO (6): pre Zend_form_captchaArray
+2010-07-19T14:34:33+08:00 INFO (6): post Zend_form_captchaArray
+2010-07-19T14:42:30+08:00 INFO (6): pre Zend_form_captchaArray
+2010-07-19T14:42:30+08:00 INFO (6): post Zend_form_captchaArray
+2010-07-19T14:44:03+08:00 INFO (6): pre Zend_form_captchaArray
+2010-07-19T14:44:03+08:00 INFO (6): post Zend_form_captchaArray
+2010-07-19T14:45:28+08:00 INFO (6): pre Zend_form_captchaArray
+2010-07-19T14:45:28+08:00 INFO (6): post Zend_form_captchaArray
+2010-07-19T14:50:07+08:00 INFO (6): pre Zend_form_captchaArray
+2010-07-19T14:50:07+08:00 INFO (6): post Zend_form_captchaArray
+2010-07-19T14:53:59+08:00 INFO (6): pre Zend_form_captchaArray
+2010-07-19T14:53:59+08:00 INFO (6): post Zend_form_captchaArray
+2010-07-19T14:59:02+08:00 INFO (6): pre Zend_form_captchaArray
+2010-07-19T14:59:02+08:00 INFO (6): post Zend_form_captchaArray

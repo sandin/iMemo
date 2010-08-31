@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2010-02-08 12:36:13
+<?php /* Smarty version 2.6.26, created on 2010-07-30 10:43:53
          compiled from /home/svn/0019/trunk/application/templates/header.tpl */ ?>
 <?php if (! isset ( $this->_tpl_vars['noLayout'] )): ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -7,9 +7,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Memo - 0019</title>
   <link type="text/css" rel="stylesheet" media="all" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/share/jquery/css/lds/jquery-ui-1.7.2.custom.css" />
+share/jquery/css/lds/jquery-ui-1.7.2.custom.css" />
   <link type="text/css" rel="stylesheet" media="all" href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/css/style.css" />
+css/style.css" />
 </head>
 
 <body id="<?php echo $this->_tpl_vars['module']; ?>
@@ -18,25 +18,25 @@
   <div id="header" class="clearfix">
 	<a href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
 "><img id="logo" src="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/images/logo.gif" alt="Memo" /></a>
+images/logo.gif" alt="Memo" /></a>
 	<ul id="nav">
 	  <li><a class="now" href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/'><?php echo $this->_tpl_vars['t']->_('Home'); ?>
+'><?php echo $this->_tpl_vars['t']->_('Home'); ?>
 </a></li>
 	  <li><a href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/shared'><?php echo $this->_tpl_vars['t']->_('Shared'); ?>
+shared'><?php echo $this->_tpl_vars['t']->_('Shared'); ?>
 </a></li>
 	  <li><a href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/friends'><?php echo $this->_tpl_vars['t']->_('Friends'); ?>
+friends'><?php echo $this->_tpl_vars['t']->_('Friends'); ?>
 </a></li>
 	  <li><a href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/projects'><?php echo $this->_tpl_vars['t']->_('Projects'); ?>
+projects'><?php echo $this->_tpl_vars['t']->_('Projects'); ?>
 </a></li>
 	  <li><a href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/help'><?php echo $this->_tpl_vars['t']->_('Help'); ?>
+help'><?php echo $this->_tpl_vars['t']->_('Help'); ?>
 </a></li>
 	  <li><a href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/about'><?php echo $this->_tpl_vars['t']->_('About'); ?>
+about'><?php echo $this->_tpl_vars['t']->_('About'); ?>
 </a></li>
     </ul><!-- /nav -->
 	<form id="search" action="/note/search">
@@ -48,26 +48,26 @@
   <div id="toolbar" class="clearfix">
 	<div id="intro"><a href="">Planning your time,Recording your life.</a></div>
 	<div id="message"><span>::message::<a href="<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/note/undo"><?php echo $this->_tpl_vars['t']->_('Undo'); ?>
+note/undo"><?php echo $this->_tpl_vars['t']->_('Undo'); ?>
 </a></span></div>
 	<ul id="user">
 
 	  <?php if ($this->_tpl_vars['user']): ?>
 	  <li><a id="logout" href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/logout'><?php echo $this->_tpl_vars['t']->_('Logout'); ?>
+logout'><?php echo $this->_tpl_vars['t']->_('Logout'); ?>
 </a></li>
 	  <li><a id="logout" href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/settings'> / <?php echo $this->_tpl_vars['t']->_('Settings'); ?>
+settings'> / <?php echo $this->_tpl_vars['t']->_('Settings'); ?>
  / </a></li>
 	  <li><b><?php echo $this->_tpl_vars['user']->username; ?>
 </b></li>
 
 	  <?php else: ?>
 	  <li><a class="js_login" id="login" title="login" href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/login'><?php echo $this->_tpl_vars['t']->_('Login'); ?>
+login'><?php echo $this->_tpl_vars['t']->_('Login'); ?>
 </a></li>
 	  <li><a class="js_login" id="js_register" title="register" href='<?php echo $this->_tpl_vars['PUBLIC_URL']; ?>
-/register'><?php echo $this->_tpl_vars['t']->_('Sign Up Now'); ?>
+register'><?php echo $this->_tpl_vars['t']->_('Sign Up Now'); ?>
  / </a></li> 
 	  <li><?php echo $this->_tpl_vars['t']->_('Welcome'); ?>
 : <?php echo $this->_tpl_vars['t']->_('Guest'); ?>

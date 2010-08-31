@@ -1,7 +1,6 @@
 <?php
-require_once('ldslibs/DatabaseObject.php'); 
 
-class Database_User extends DatabaseObject
+class Database_User extends Database_DatabaseObject
 {
   protected $_profile = null;
   protected $_command = null;
