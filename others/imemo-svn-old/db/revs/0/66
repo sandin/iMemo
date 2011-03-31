@@ -1,0 +1,112 @@
+PLAIN
+END
+ENDREP
+id: 3-30.0-26.r66/17
+type: dir
+pred: 3-30.0-26.r30/218146
+count: 1
+text: 66 0 4 4 2d2977d1c96f487abe4a1e202dd03b4e
+cpath: /docs/phpDocumentor/HTMLframesConverter
+copyroot: 26 /docs
+
+PLAIN
+K 19
+HTMLframesConverter
+V 20
+dir 3-30.0-26.r66/17
+END
+ENDREP
+id: 1-30.0-26.r66/267
+type: dir
+pred: 1-30.0-26.r30/218386
+count: 1
+text: 66 199 55 55 6df6d87e5a95b4d0b443cd7b6265a0af
+cpath: /docs/phpDocumentor
+copyroot: 26 /docs
+
+PLAIN
+K 7
+docbook
+V 22
+dir 1-26.0-26.r49/9022
+K 13
+phpDocumentor
+V 21
+dir 1-30.0-26.r66/267
+END
+ENDREP
+id: 0-24.0-26.r66/537
+type: dir
+pred: 0-24.0-26.r49/9293
+count: 12
+text: 66 434 90 90 219d35be468ca1ec79a0d7b1b4bca0d9
+cpath: /docs
+copyroot: 26 /docs
+
+PLAIN
+K 14
+.zfproject.xml
+V 21
+file 2v-1.0.r1/407137
+K 11
+application
+V 20
+dir b-1.0.r65/355265
+K 4
+docs
+V 21
+dir 0-24.0-26.r66/537
+K 7
+library
+V 20
+dir 0-7.0.r65/359370
+K 6
+others
+V 17
+dir 2w-1.0.r41/53
+K 6
+public
+V 20
+dir 3q-1.0.r61/16111
+K 4
+tags
+V 22
+file 52-1.0.r65/359533
+K 5
+tests
+V 20
+dir 0-6.0.r65/350363
+END
+ENDREP
+id: 0.0.r66/1014
+type: dir
+pred: 0.0.r65/360015
+count: 66
+text: 66 689 312 312 1869cf5aea580eb10ebbad3f80e79dbb
+props: 7 17121 36 0 f2e72ae9c0d228f0153ffa39f85f7025
+cpath: /
+copyroot: 0 /
+minfo-cnt: 5
+
+30-30.0-26.r30/216872 delete false false /docs/phpDocumentor/HTMLframesConverter/elementindex_default.html
+
+5-30.0-26.r30/217071 delete false false /docs/phpDocumentor/HTMLframesConverter/blank.html
+
+32-30.0-26.r30/217251 delete false false /docs/phpDocumentor/HTMLframesConverter/index.html
+
+33-30.0-26.r30/217432 delete false false /docs/phpDocumentor/HTMLframesConverter/li_default.html
+
+7-30.0-26.r30/179188 delete false false /docs/phpDocumentor/HTMLframesConverter/classtrees_default.html
+
+31-30.0-26.r30/179382 delete false false /docs/phpDocumentor/HTMLframesConverter/errors.html
+
+34-30.0-26.r30/185046 delete false false /docs/phpDocumentor/HTMLframesConverter/media
+
+3p-30.0-26.r30/185221 delete false false /docs/phpDocumentor/HTMLframesConverter/packages.html
+
+8-30.0-26.r30/216503 delete false false /docs/phpDocumentor/HTMLframesConverter/default
+
+2z-30.0-26.r30/216681 delete false false /docs/phpDocumentor/HTMLframesConverter/elementindex.html
+
+
+1014 1216

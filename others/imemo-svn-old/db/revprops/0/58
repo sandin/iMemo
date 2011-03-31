@@ -1,0 +1,19 @@
+K 10
+svn:author
+V 3
+lds
+K 8
+svn:date
+V 27
+2009-12-20T09:01:06.561241Z
+K 7
+svn:log
+V 107
+目前Database层面通过了单元测试的有:
+addNote
+delNote
+createCategory
+changeCategory
+delCategory
+
+END

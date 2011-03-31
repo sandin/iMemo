@@ -1,0 +1,19 @@
+K 10
+svn:author
+V 3
+lds
+K 8
+svn:date
+V 27
+2009-12-20T12:58:32.801322Z
+K 7
+svn:log
+V 134
+人工测试:
+delCategory内部两种情况(删除名下notes,或不只删除category),通过.
+
+单元测试:
+renameCategory,通过.
+
+
+END

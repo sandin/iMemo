@@ -1,0 +1,22 @@
+K 10
+svn:author
+V 3
+lds
+K 8
+svn:date
+V 27
+2009-12-27T11:23:06.103235Z
+K 7
+svn:log
+V 464
+增加Lds_Helper_MainInput，用于解析main input中用户输入的到期时间，tag等
+    其中使用Zend_Date对时间进行输出格式化，今后可复用。现已完成分离出到期时间，今后可扩展tag解析，加入正则表达式即可。
+后台和前台可正常显示到期时间，包括在add note后的即时显示，人工测试。
+待完成：
+    修改时间的前台后台功能
+    引入UI中的datepicker，帮助修改日期
+
+
+
+
+END

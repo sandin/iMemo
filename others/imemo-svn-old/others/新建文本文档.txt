@@ -1,0 +1,8 @@
+wupinping_eriji
+FTP地址：220.173.60.198
+用户名：wupinping
+密码：12160605
+数据库名称：wupinping_eriji
+用户名：wupinping_eriji
+密码：12160605
+

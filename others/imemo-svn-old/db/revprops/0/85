@@ -1,0 +1,21 @@
+K 10
+svn:author
+V 3
+lds
+K 8
+svn:date
+V 27
+2009-12-30T12:05:25.373744Z
+K 7
+svn:log
+V 292
+多浏览器支持 ie6/7初步正常
+css基本通过验证
+settings-profile前台个人资料显示完成，前台修改密码页面及表单完成
+待完成
+    修改密码表单后台支持
+可扩展
+    profile表单，储存更多用户资料，另建表即可，以user_id为主键。
+
+
+END

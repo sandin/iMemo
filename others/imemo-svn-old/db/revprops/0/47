@@ -1,0 +1,16 @@
+K 10
+svn:author
+V 3
+lds
+K 8
+svn:date
+V 27
+2009-12-18T09:10:39.328482Z
+K 7
+svn:log
+V 122
+按类分离js脚本,
+新增auto.sh系统脚本用于合并和min化所有脚本
+用以减少http请求次数和通信量
+
+END

@@ -1,0 +1,72 @@
+PLAIN
+K 5
+fonts
+V 20
+dir 1-32.0.r32/66292
+END
+ENDREP
+id: 2w-1.0.r41/53
+type: dir
+pred: 2w-1.0.r40/23243
+count: 5
+text: 41 0 40 40 c909eef924cfa2787c878969b85a082b
+cpath: /others
+copyroot: 0 /
+
+PLAIN
+K 14
+.zfproject.xml
+V 21
+file 2v-1.0.r1/407137
+K 8
+0019.sql
+V 21
+file 3n-1.0.r13/18495
+K 11
+application
+V 19
+dir b-1.0.r40/20508
+K 4
+docs
+V 23
+dir 0-24.0-26.r38/13658
+K 7
+library
+V 19
+dir 0-7.0.r40/22477
+K 6
+others
+V 17
+dir 2w-1.0.r41/53
+K 6
+public
+V 20
+dir 3q-1.0.r40/24530
+K 11
+session.vim
+V 21
+file 3p-1.0.r1/412996
+K 4
+tags
+V 20
+file 52-1.0.r4/27193
+K 5
+tests
+V 19
+dir 0-6.0.r36/30811
+END
+ENDREP
+id: 0.0.r41/599
+type: dir
+pred: 0.0.r40/25089
+count: 41
+text: 41 193 393 393 ee4903951b2701c0961ceece12e9ab51
+props: 7 17121 36 0 f2e72ae9c0d228f0153ffa39f85f7025
+cpath: /
+copyroot: 0 /
+minfo-cnt: 5
+
+1-33.0.r40/23005 delete false false /others/sql
+
+
+599 799

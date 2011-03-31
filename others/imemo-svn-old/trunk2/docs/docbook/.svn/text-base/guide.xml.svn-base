@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<book>
+  <bookinfo>
+    <title>说明书</title>
+
+    <author>
+      <firstname>lds</firstname>
+
+      <surname></surname>
+
+      <affiliation>
+        <orgname></orgname>
+      </affiliation>
+    </author>
+
+    <copyright>
+      <year></year>
+    </copyright>
+
+    <pubdate></pubdate>
+  </bookinfo>
+
+  <chapter>
+    <title>产品特性</title>
+
+    <section>
+      <title>基础信息</title>
+
+      <para>中文名:</para>
+
+      <para>英文名:iMEMO</para>
+
+      <para>项目编码:0019</para>
+
+      <para>内部代号:Avatar</para>
+
+      <para>系统要求:PHP5,MySQL5,Unix/Linux</para>
+
+      <para>PHP扩展:GD;</para>
+
+      <para>开发框架:Zend Framework 1.9.x</para>
+
+      <para>模板引擎:Smarty 3.0</para>
+
+      <para>测试网址:http://localhost/svn/0019/trunk/public/</para>
+
+      <para>测试帐号:lds2012@gmail.com:123456789</para>
+    </section>
+
+    <section>
+      <title>产品特性</title>
+
+      <para>1) 类Todo list产品,并引入GTD概念,用于管理个人时间.</para>
+
+      <para>2) 在传统的单纯规划时间的基础上,提供记录功能.即该管理时间理念为:</para>
+
+      <para>(1)首先通过便签来列出所需完成的任务(传统Todo list功能)</para>
+
+      <para>(2)然后按紧急或重要程度去规划自己的时间(可运用GTD分类或“四象限”法)</para>
+
+      <para>(3)最后可在进行每一项任务的开始和结束时记录它们的时间(即跟踪计划的成效).</para>
+
+      <para>(4)事后便可通过日志数据来总结自己时间管理的成效(对比计划和现实的差异,总结完成任务的效率,记录每天做成了哪些任务)</para>
+    </section>
+
+    <section>
+      <title>产品文案</title>
+
+      <para>Planning your time,Recording your life.</para>
+
+      <para>计划你的时间，记录的你的生活。</para>
+    </section>
+
+    <section>
+      <title>扩展需求</title>
+
+      <para>发送功能 -- 可发送note给好友</para>
+
+      <para>共享模式 -- 可共享note,设为好友可见</para>
+
+      <para>好友模块 -- 可加好友,并查看所有好友共享的note,并对note做回复</para>
+
+      <para>项目模块 --
+      可新建一个项目,分配独立且唯一的url页面,项目可设置成员,成员在此项目中都可新建的note,对全项目成员都可见.</para>
+
+      <para>RSS/API -- 输入RSS,并提供开发接口.</para>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>用户模块</title>
+
+    <section>
+      <title>便条操作</title>
+
+      <section>
+        <title>添加</title>
+
+        <para>用户可在主输入框内输入字符串,将其解析并发送给后台服务器,存入数据库.</para>
+
+        <para>输入的内容可包含:便签内容,到期时间,重要级别,TAG和分类.</para>
+
+        <para>每次添加都加入一个category,如果用户为指定则使用'Inbox'类别.</para>
+      </section>
+
+      <section>
+        <title>删除</title>
+
+        <para>通过点击[删除]按钮,删除便签.</para>
+      </section>
+
+      <section>
+        <title>修改</title>
+
+        <para>直接单击便签文字区域便可修改便签内容,若需修改其他详情(除分类外),则需要点击[修改详情]按钮.</para>
+      </section>
+
+      <section>
+        <title>排序</title>
+
+        <para>直接拖拽可手动排序便签,也可通过[到期时间],[重要级别]等自动排序.</para>
+      </section>
+
+      <section>
+        <title>分类</title>
+
+        <para>直接拖拽便签到指定分类.</para>
+      </section>
+    </section>
+
+    <section>
+      <title>分类操作</title>
+
+      <section>
+        <title>添加</title>
+
+        <para>在[分类管理]页面,新建分类,</para>
+
+        <para>也可直接点击[添加分类]按钮新建分类</para>
+      </section>
+
+      <section>
+        <title>删除</title>
+
+        <para>在[分类管理]页面,删除分类</para>
+      </section>
+
+      <section>
+        <title>重命名</title>
+
+        <para>在[分类管理]页面,重命名分类</para>
+      </section>
+    </section>
+
+    <section>
+      <title>个人资料操作</title>
+
+      <section>
+        <title>注册</title>
+
+        <para>通过[注册]按钮进入注册页面(可修改为在当前页面弹出注册/登录框)</para>
+
+        <para></para>
+
+        <para>注册规则</para>
+
+        <para>用户名：
+        为邮箱地址，需通过Zend_Validate_EmailAddress检测，并不允许注册别人使用过的用户名</para>
+
+        <para>密码：任何字符，最少8个字符</para>
+
+        <para>表单检查顺序：密码+re密码是否相同-&gt;用户名/密码</para>
+      </section>
+
+      <section>
+        <title>修改</title>
+
+        <para>在[个人资料]页面可修改详细个人资料</para>
+      </section>
+
+      <section>
+        <title>注销</title>
+
+        <para>在[个人资料]页面可点击[注销帐号]</para>
+
+        <para>注意:注销只冻结帐号,并不自动删除帐号及资料.管理员可手动删除.</para>
+      </section>
+    </section>
+
+    <section>
+      <title>登录功能</title>
+
+      <para>检查用户名/用户密码/验证码.</para>
+
+      <para>表单检查顺序：验证码-&gt;用户名+密码</para>
+
+      <para>提供[记住我]功能,一个月之内在该客户端上无需再次登录.</para>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>管理模块</title>
+
+    <section>
+      <title>用户管理</title>
+
+      <section>
+        <title>用户资料</title>
+
+        <para>在[用户管理]-[用户资料]列出所有用户,可查看/编辑详细资料</para>
+      </section>
+
+      <section>
+        <title>帐号管理</title>
+
+        <para>在[用户管理]-[帐号管理]中列出所有用户,可冻结/删除帐号.</para>
+      </section>
+
+      <section>
+        <title>权限设置</title>
+
+        <para>在[用户管理]-[权限设置]中列出所有管理员及其分组.</para>
+      </section>
+    </section>
+
+    <section>
+      <title>系统配置</title>
+
+      <section>
+        <title>网站设置</title>
+
+        <section>
+          <title>网址</title>
+
+          <para>在[系统配置]-[网站设置]表单中.</para>
+        </section>
+
+        <section>
+          <title>网站名称</title>
+
+          <para>在[系统配置]-[网站设置]表单中.</para>
+        </section>
+
+        <section>
+          <title>网站简介</title>
+
+          <para>在[系统配置]-[网站设置]表单中.</para>
+        </section>
+
+        <section>
+          <title>网站模板</title>
+
+          <para>::待开发::</para>
+        </section>
+      </section>
+
+      <section>
+        <title>数据库设置</title>
+
+        <section>
+          <title>帐号密码</title>
+
+          <para>在[系统配置]-[数据库设置]表单中.</para>
+        </section>
+
+        <section>
+          <title>数据库名称</title>
+
+          <para>在[系统配置]-[数据库设置]表单中.</para>
+        </section>
+
+        <section>
+          <title>数据表 前缀</title>
+
+          <para>在[系统配置]-[数据库设置]表单中.</para>
+        </section>
+      </section>
+
+      <section>
+        <title>安全设置</title>
+
+        <section>
+          <title>暂闭网站</title>
+
+          <para>::待开发:: 暂时关闭网站</para>
+        </section>
+
+        <section>
+          <title>数据备份</title>
+
+          <para>::待开发:: 数据库导出/导入</para>
+        </section>
+      </section>
+
+      <section>
+        <title>高级管理</title>
+
+        <section>
+          <title>application.ini</title>
+
+          <para>[谨慎操作]直接编辑该配置文件.(需FTP权限,仅限高级管理员,并具备相关知识)</para>
+        </section>
+
+        <section>
+          <title>.htaccess</title>
+
+          <para>[谨慎操作]直接编辑该配置文件.(需FTP权限,仅限高级管理员,并具备相关知识)</para>
+        </section>
+      </section>
+    </section>
+
+    <section>
+      <title>模块管理</title>
+
+      <section>
+        <title>激活模块</title>
+
+        <para>::待开发::
+        将文件放置到模块目录后,可在[模块管理]-[未激活模块]列表中显示,可点击[激活]按钮来向系统注册该模块.</para>
+      </section>
+
+      <section>
+        <title>更新模块</title>
+
+        <para>::待开发::</para>
+      </section>
+
+      <section>
+        <title>删除模块</title>
+
+        <para>::待开发:: [模块管理]-[激活模块]中可删除指定模块(系统相关模块无法删除).</para>
+      </section>
+    </section>
+
+    <section>
+      <title></title>
+
+      <para></para>
+    </section>
+  </chapter>
+</book>

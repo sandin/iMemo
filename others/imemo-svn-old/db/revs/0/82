@@ -1,0 +1,147 @@
+PLAIN
+K 14
+jquery.tabs.js
+V 21
+file r-69.0.r79/14571
+END
+ENDREP
+id: 3-36.0.r82/64
+type: dir
+pred: 3-36.0.r79/14925
+count: 7
+text: 82 0 51 51 157bf0aefc3c611570f2ec45120f5f30
+cpath: /public/share/jquery/plugins
+copyroot: 0 /
+
+PLAIN
+K 3
+css
+V 20
+dir 3t-1.0.r69/40774
+K 2
+js
+V 21
+dir 4a-1.0.r51/196419
+K 7
+plugins
+V 17
+dir 3-36.0.r82/64
+END
+ENDREP
+id: 3s-1.0.r82/345
+type: dir
+pred: 3s-1.0.r79/15218
+count: 10
+text: 82 225 107 107 c1ef1886b7590a7832e4c8694eca3293
+cpath: /public/share/jquery
+copyroot: 0 /
+
+PLAIN
+K 6
+jquery
+V 18
+dir 3s-1.0.r82/345
+K 12
+json2.min.js
+V 20
+file 8-32.0.r47/1571
+END
+ENDREP
+id: 3r-1.0.r82/600
+type: dir
+pred: 3r-1.0.r79/15478
+count: 12
+text: 82 504 83 83 653226f622d67cc4098d5b25385e7289
+cpath: /public/share
+copyroot: 0 /
+
+PLAIN
+K 9
+.htaccess
+V 21
+file 4y-1.0.r1/426944
+K 3
+css
+V 21
+dir 4w-1.0.r80/160613
+K 6
+images
+V 21
+dir 4j-1.0.r43/165866
+K 9
+index.php
+V 22
+file 51-1.0.r35/271913
+K 2
+js
+V 21
+dir 1-72.0.r80/162972
+K 5
+share
+V 18
+dir 3r-1.0.r82/600
+K 4
+temp
+V 21
+dir 6-77.0.r77/179135
+END
+ENDREP
+id: 3q-1.0.r82/1027
+type: dir
+pred: 3q-1.0.r80/163407
+count: 35
+text: 82 750 264 264 6287ea235a76ab63c071610a30c85391
+cpath: /public
+copyroot: 0 /
+
+PLAIN
+K 14
+.zfproject.xml
+V 21
+file 2v-1.0.r1/407137
+K 11
+application
+V 20
+dir b-1.0.r80/157741
+K 4
+docs
+V 24
+dir 0-24.0-26.r67/357398
+K 7
+library
+V 20
+dir 0-7.0.r80/160223
+K 6
+others
+V 19
+dir 2w-1.0.r74/8418
+K 6
+public
+V 19
+dir 3q-1.0.r82/1027
+K 4
+tags
+V 22
+file 52-1.0.r80/163559
+K 5
+tests
+V 17
+dir 0-6.0.r81/670
+END
+ENDREP
+id: 0.0.r82/1501
+type: dir
+pred: 0.0.r81/1142
+count: 82
+text: 82 1175 313 313 a2ec6c41d3f0ac1b60e854027e9e3f78
+props: 7 17121 36 0 f2e72ae9c0d228f0153ffa39f85f7025
+cpath: /
+copyroot: 0 /
+minfo-cnt: 5
+
+2y-51.0.r51/175724 delete false false /public/share/jquery/plugins/jquery.cookie.min.js
+
+5-36.0.r47/213 delete false false /public/share/jquery/plugins/jquery.form.min.js
+
+
+1501 1702

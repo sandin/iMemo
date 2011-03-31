@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 3
+lds
+K 8
+svn:date
+V 27
+2009-10-02T06:59:35.247541Z
+K 7
+svn:log
+V 30
+增加delTag等一系列函数
+END

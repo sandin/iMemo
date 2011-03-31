@@ -1,0 +1,108 @@
+id: 5-26.0-31.r31/0
+type: dir
+pred: 5-26.0-26.r26/5351
+count: 1
+cpath: /docs/docbook/html
+copyfrom: 28 /docs/html
+
+PLAIN
+K 9
+guide.xml
+V 23
+file 3-26.0-26.r26/5007
+K 4
+html
+V 19
+dir 5-26.0-31.r31/0
+END
+ENDREP
+id: 1-26.0-26.r31/209
+type: dir
+pred: 1-26.0-26.r26/5215
+count: 1
+text: 31 115 81 81 1431024fc6893292700832283df23fc7
+cpath: /docs/docbook
+copyroot: 26 /docs
+
+PLAIN
+K 7
+docbook
+V 21
+dir 1-26.0-26.r31/209
+K 13
+phpDocumentor
+V 24
+dir 1-30.0-26.r30/218386
+END
+ENDREP
+id: 0-24.0-26.r31/473
+type: dir
+pred: 0-24.0-26.r30/218675
+count: 6
+text: 31 368 92 92 d7355ccaa00b188c2ed658fbb68163e1
+cpath: /docs
+copyroot: 26 /docs
+
+PLAIN
+K 14
+.zfproject.xml
+V 21
+file 2v-1.0.r1/407137
+K 8
+0019.sql
+V 21
+file 3n-1.0.r13/18495
+K 11
+application
+V 18
+dir b-1.0.r26/4844
+K 4
+docs
+V 21
+dir 0-24.0-26.r31/473
+K 6
+eg.txt
+V 21
+file 3o-1.0.r1/412868
+K 7
+library
+V 19
+dir 0-7.0.r24/13527
+K 6
+others
+V 20
+dir 2w-1.0.r1/408139
+K 6
+public
+V 20
+dir 3q-1.0.r23/18468
+K 11
+session.vim
+V 21
+file 3p-1.0.r1/412996
+K 4
+tags
+V 20
+file 52-1.0.r4/27193
+K 5
+tests
+V 19
+dir 0-6.0.r23/10717
+END
+ENDREP
+id: 0.0.r31/1070
+type: dir
+pred: 0.0.r30/219279
+count: 31
+text: 31 626 431 431 867e6f1442b38a34370e76b9f1dfd831
+props: 7 17121 36 0 f2e72ae9c0d228f0153ffa39f85f7025
+cpath: /
+copyroot: 0 /
+minfo-cnt: 5
+
+5-26._0.t30-x add false false /docs/docbook/html
+28 /docs/html
+5-26.0-26.r26/5351 delete false false /docs/html
+
+
+1070 1272

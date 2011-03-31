@@ -67,3 +67,12 @@ msgstr "欢迎"
 #: header.c:38
 msgid "Guest"
 msgstr "游客"
+
+#: 
+msgid "Value is required and can't be empty"  
+msgstr "输入值不可以为空"
+
+#:
+msgid "'%value%' has not only alphabetic and digit characters"
+msgstr "'%value%'不是字母或数字"
+

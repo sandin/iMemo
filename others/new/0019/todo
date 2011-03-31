@@ -1,0 +1,10 @@
+    view $user 里面包含了隐私信息,需删除
+    重构js代码(全部)
+    工厂模式
+    合并noteC,建立新的note/add等路由.
+    user能不能操作不属于自己的note
+
+    客户端的addnote,传送什么都会引发服务器的addnote
+
+分割window load为几个小的，避免一个错误导致全部功能失效
+change content bind bug

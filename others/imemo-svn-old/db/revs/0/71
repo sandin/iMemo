@@ -1,0 +1,59 @@
+id: 0-71.0.r71/0
+type: dir
+count: 0
+cpath: /1
+copyroot: 0 /
+
+PLAIN
+K 14
+.zfproject.xml
+V 21
+file 2v-1.0.r1/407137
+K 1
+1
+V 16
+dir 0-71.0.r71/0
+K 11
+application
+V 19
+dir b-1.0.r70/10794
+K 4
+docs
+V 24
+dir 0-24.0-26.r67/357398
+K 7
+library
+V 19
+dir 0-7.0.r69/33620
+K 6
+others
+V 17
+dir 2w-1.0.r41/53
+K 6
+public
+V 20
+dir 3q-1.0.r69/41688
+K 4
+tags
+V 22
+file 52-1.0.r65/359533
+K 5
+tests
+V 20
+dir 0-6.0.r65/350363
+END
+ENDREP
+id: 0.0.r71/415
+type: dir
+pred: 0.0.r70/11286
+count: 71
+text: 71 61 341 341 8a425efcf59f72a1c8a15ca29d272dc4
+props: 7 17121 36 0 f2e72ae9c0d228f0153ffa39f85f7025
+cpath: /
+copyroot: 0 /
+minfo-cnt: 5
+
+_0.0.t70-2f add false false /1
+
+
+415 614

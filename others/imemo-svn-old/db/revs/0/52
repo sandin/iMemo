@@ -1,0 +1,49 @@
+PLAIN
+K 14
+.zfproject.xml
+V 21
+file 2v-1.0.r1/407137
+K 11
+application
+V 20
+dir b-1.0.r51/175418
+K 4
+docs
+V 22
+dir 0-24.0-26.r49/9293
+K 7
+library
+V 20
+dir 0-7.0.r44/621803
+K 6
+others
+V 17
+dir 2w-1.0.r41/53
+K 6
+public
+V 21
+dir 3q-1.0.r51/197712
+K 4
+tags
+V 22
+file 52-1.0.r44/624334
+K 5
+tests
+V 20
+dir 0-6.0.r43/149548
+END
+ENDREP
+id: 0.0.r52/327
+type: dir
+pred: 0.0.r51/198238
+count: 52
+text: 52 0 314 314 53bcf3737a9430b9872bd0119f3ff3d9
+props: 7 17121 36 0 f2e72ae9c0d228f0153ffa39f85f7025
+cpath: /
+copyroot: 0 /
+minfo-cnt: 5
+
+30-51.0.r51/175585 delete false false /svn-commit.tmp
+
+
+327 526

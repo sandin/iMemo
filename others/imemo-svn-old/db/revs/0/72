@@ -1,0 +1,94 @@
+id: 1-72.0.r72/0
+type: dir
+count: 0
+cpath: /public/js
+copyroot: 0 /
+
+PLAIN
+K 9
+.htaccess
+V 21
+file 4y-1.0.r1/426944
+K 3
+css
+V 20
+dir 4w-1.0.r68/21793
+K 6
+images
+V 21
+dir 4j-1.0.r43/165866
+K 9
+index.php
+V 22
+file 51-1.0.r35/271913
+K 2
+js
+V 16
+dir 1-72.0.r72/0
+K 5
+share
+V 20
+dir 3r-1.0.r69/41325
+END
+ENDREP
+id: 3q-1.0.r72/306
+type: dir
+pred: 3q-1.0.r69/41688
+count: 28
+text: 72 69 224 224 9202c1078cd9157287493221ed2217d5
+cpath: /public
+copyroot: 0 /
+
+PLAIN
+K 14
+.zfproject.xml
+V 21
+file 2v-1.0.r1/407137
+K 1
+1
+V 16
+dir 0-71.0.r71/0
+K 11
+application
+V 19
+dir b-1.0.r70/10794
+K 4
+docs
+V 24
+dir 0-24.0-26.r67/357398
+K 7
+library
+V 19
+dir 0-7.0.r69/33620
+K 6
+others
+V 17
+dir 2w-1.0.r41/53
+K 6
+public
+V 18
+dir 3q-1.0.r72/306
+K 4
+tags
+V 22
+file 52-1.0.r65/359533
+K 5
+tests
+V 20
+dir 0-6.0.r65/350363
+END
+ENDREP
+id: 0.0.r72/803
+type: dir
+pred: 0.0.r71/415
+count: 72
+text: 72 451 339 339 7d9ce4b840a8c784fe6ee30a0a842c53
+props: 7 17121 36 0 f2e72ae9c0d228f0153ffa39f85f7025
+cpath: /
+copyroot: 0 /
+minfo-cnt: 5
+
+_1.0.t71-2g add false false /public/js
+
+
+803 1001

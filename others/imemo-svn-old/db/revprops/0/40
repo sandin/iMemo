@@ -1,0 +1,13 @@
+K 10
+svn:author
+V 3
+lds
+K 8
+svn:date
+V 27
+2009-12-16T13:33:35.363836Z
+K 7
+svn:log
+V 146
+添加getNote的相关例程,并修改相关的php代码,整个数据库的底层sql命令已改变,基本都改为储存例程,方便今后优化
+END

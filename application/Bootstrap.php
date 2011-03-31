@@ -243,6 +243,20 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 			    'namespace' => 'Default',
 			    'basePath' => APPLICATION_PATH,
 			));
+
+			new Zend_Application_Module_Autoloader(array(
+    			'basePath'  => APPLICATION_PATH . '/modules/default' ,
+    			'namespace' => 'Default',
+			));
+
+        $modules = Tomato_Module_Loader::getInstance()->getModuleNames();
+
+        	foreach ($modules as $module) {
+			new Zend_Application_Module_Autoloader(array(
+    			'basePath'  => APPLICATION_PATH . '/modules' . $module,
+    			'namespace' => ucfirst($module) . '_',
+			));
+		}
 		return $autoloader;
 	}
 

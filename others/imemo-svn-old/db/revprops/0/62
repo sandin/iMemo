@@ -1,0 +1,19 @@
+K 10
+svn:author
+V 3
+lds
+K 8
+svn:date
+V 27
+2009-12-22T10:12:24.233880Z
+K 7
+svn:log
+V 465
+加入双链链表结构的类,用于note的排序结果保存.
+共两个类,
+    LinkedList_DoubleArray为父类,负责双链的基础功能,主要用于将含有双指针的数组进行双链结构的构建,以排序显示.
+    LinkedList_DoubleDatabse继承于Array版本的,负责从含有双指针的数据表中操作数据,主要用于添加note时加入到链表中,以及用户手工排序时对排序结果以双链链表的结构储存到数据库中.
+
+
+
+END

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<book>
+  <bookinfo>
+    <title>开发参考手册</title>
+
+    <author>
+      <firstname>lds</firstname>
+
+      <surname></surname>
+
+      <affiliation>
+        <orgname></orgname>
+      </affiliation>
+    </author>
+
+    <pubdate></pubdate>
+  </bookinfo>
+
+  <chapter>
+    <title></title>
+
+    <section>
+      <title>目录结构</title>
+
+      <para>.</para>
+
+      <para>|-- application</para>
+
+      <para>| |-- Bootstrap.php 启动配置</para>
+
+      <para>| |-- configs 配置文件夹</para>
+
+      <para>| |-- data 数据文件夹,含网站日志</para>
+
+      <para>| |-- layouts</para>
+
+      <para>| |-- modules 模块文件夹</para>
+
+      <para>| `-- templates</para>
+
+      <para>|-- docs 文档</para>
+
+      <para>|-- library 库目录</para>
+
+      <para>| |-- Lds 自定义库目录</para>
+
+      <para>| `-- smarty 补丁插件等.</para>
+
+      <para>|-- others 其他</para>
+
+      <para>|-- public 开放目录</para>
+
+      <para>| |-- css</para>
+
+      <para>| |-- images</para>
+
+      <para>| |-- index.php</para>
+
+      <para>| |-- js</para>
+
+      <para>| |-- share 共享</para>
+
+      <para>| `-- temp 临时</para>
+
+      <para>|-- tags</para>
+
+      <para>`-- tests 单元测试目录</para>
+
+      <para>|-- application</para>
+
+      <para>|-- library</para>
+
+      <para>|-- log</para>
+
+      <para>`-- phpunit.xml 自动测试配置文件</para>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>模块开发</title>
+
+    <section>
+      <title>系统模块</title>
+
+      <section>
+        <title>default 默认模块</title>
+
+        <para>中心模块区域,负责网站首页和便签处理等基础功能</para>
+
+        <section>
+          <title>IndexController</title>
+
+          <para>首页内容</para>
+        </section>
+
+        <section>
+          <title>NoteController</title>
+
+          <para>便签处理</para>
+        </section>
+
+        <section>
+          <title></title>
+
+          <para></para>
+        </section>
+      </section>
+
+      <section>
+        <title></title>
+
+        <para></para>
+      </section>
+
+      <section>
+        <title></title>
+
+        <para></para>
+      </section>
+    </section>
+
+    <section>
+      <title></title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title></title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title></title>
+
+      <para></para>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>调试</title>
+
+    <section>
+      <title>错误代码</title>
+
+      <para>0x0000</para>
+
+      <para>说明:客户端请求时服务器返回的数据不是JSON对象.从而引发javascript的JSON解析错误.</para>
+
+      <para>代码:public/js/note.class.js - createNoteSuccess</para>
+
+      <para></para>
+
+      <para>0x0001</para>
+
+      <para>说明:客户端请求的操作不存在.</para>
+
+      <para>代码:library/Command/Factory.php</para>
+    </section>
+
+    <section>
+      <title></title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title></title>
+
+      <para></para>
+    </section>
+  </chapter>
+</book>

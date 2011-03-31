@@ -1,0 +1,17 @@
+K 10
+svn:author
+V 3
+lds
+K 8
+svn:date
+V 27
+2009-12-19T14:24:22.178562Z
+K 7
+svn:log
+V 176
+增加delCategory
+但有bug,在选择delAllNote选项后,于预期有差别
+重新做DB层面的单元测试(因源代码修改太多,旧的单元测试几乎不能使用了.
+
+
+END

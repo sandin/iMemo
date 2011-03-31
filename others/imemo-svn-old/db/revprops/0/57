@@ -1,0 +1,15 @@
+K 10
+svn:author
+V 3
+lds
+K 8
+svn:date
+V 27
+2009-12-20T06:07:28.997164Z
+K 7
+svn:log
+V 79
+整理Notes.php,去除没有使用的function,并保存原文件于~Notes.php
+
+
+END

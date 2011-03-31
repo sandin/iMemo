@@ -1,0 +1,16 @@
+K 10
+svn:author
+V 3
+lds
+K 8
+svn:date
+V 27
+2009-12-23T10:36:03.870623Z
+K 7
+svn:log
+V 89
+note排序正常, 待完成:
+删除note时出双链表
+更换categorys时双链表更新
+
+END

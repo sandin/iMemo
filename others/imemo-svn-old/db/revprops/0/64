@@ -1,0 +1,17 @@
+K 10
+svn:author
+V 3
+lds
+K 8
+svn:date
+V 27
+2009-12-23T08:20:03.272608Z
+K 7
+svn:log
+V 121
+双向链表应用于note的排序
+入链经测试
+note sort 所需的js数据准备就绪,待增加后台响应command
+
+
+END

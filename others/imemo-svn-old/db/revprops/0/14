@@ -1,0 +1,15 @@
+K 10
+svn:author
+V 3
+lds
+K 8
+svn:date
+V 27
+2009-09-30T10:06:08.760888Z
+K 7
+svn:log
+V 39
+add register action 
+add login helper 
+
+END
